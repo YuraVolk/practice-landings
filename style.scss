@@ -1,5 +1,8 @@
-$mainWhite: #f8fff1;
-$mainOrange: #dd9406;
+$mainWhite: #ffffff;
+$mainGray: #e6e6e6;
+$mainDark: #2c2c2c;
+$secondaryDark: #11130b;
+$mainOrange: #e2940f;
 $secondaryOrange: #e19608;
 
 @font-face {
@@ -40,12 +43,29 @@ $secondaryOrange: #e19608;
     font-display: swap;
 }
 
+@mixin backgroundPlacement($urlString) {
+    background-image: url($urlString);
+    background-repeat: no-repeat;
+    background-size: calc(100% + 1px) 100%;
+    background-position-x: -1px;
+}
+
 body {
     margin: 0;
 }
 
 h3 {
     font-family: "Brush Script", sans-serif;
+}
+
+p {
+    margin: 0;
+    font-size: 9px;
+    font-family: "Kyrial Sans Pro", sans-serif;
+
+    @media (min-width: 1200px) {
+        font-size: 13px;
+    }
 }
 
 .button {
@@ -69,19 +89,25 @@ h3 {
         word-spacing: -1px;
         background-color: $mainWhite;
     }
+
+    &--black {
+        border: 2px solid $secondaryDark;
+        padding: 6px 32px;
+        font-size: 8px;
+        background-color: $mainDark;
+        color: $mainOrange;
+        text-transform: initial;
+    }
 }
 
 .header {
+    @include backgroundPlacement("./img/header-background.jpg");
     display: flex;
     align-items: center;
     flex-direction: column;
     width: 100vw;
     font-weight: 100;
     color: $mainWhite;
-    background-image: url("./img/header-background.jpg");
-    background-repeat: no-repeat;
-    background-size: calc(100% + 1px) 100%;
-    background-position-x: -1px;
 
     &-title {
         margin-bottom: 0;
@@ -169,4 +195,83 @@ h3 {
     & > :last-child {
         margin-bottom: 8.5em;
     }
+}
+
+.showcase-section {
+    position: relative;
+    width: 100vw;
+    height: 19.25em;
+    background-color: $mainGray;
+}
+
+.showcase-article {
+    $extensionSize: 2.25em;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    position: absolute;
+    top: -$extensionSize;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    width: 63.5vw;
+    height: 19.25em + $extensionSize + $extensionSize;
+    box-shadow: 6px 2px 2px rgba($color: $mainDark, $alpha: 0.2);
+
+    &--compact {
+        grid-template-columns: 22.45vw 41.5vw;
+    }
+
+    &--compact &__section--description:first-of-type {
+        padding: 30px 20px 24px 20px;
+    }
+
+    &--compact &__section--description:last-of-type {
+        padding: 40px 40px 45px 30px;
+    }
+
+    &__section {
+        overflow: hidden;
+
+        &--image > img {
+            width: 100%;
+            height: 100%;
+        }
+
+        &--description {
+            text-align: center;
+            background-color: $mainWhite;
+        }
+    }
+
+    &__header {
+        margin: 0;
+        font-size: 32px;
+        font-weight: 100;
+        line-height: 0.9;
+        color: $mainOrange;
+    }
+
+    &__description {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+}
+
+.speciality-section {
+    @include backgroundPlacement("./img/section-key-image.png");
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 24.375em;
+}
+
+.section__heading {
+    font: bold 30px/1 "Core Sans", sans-serif;
+    text-transform: uppercase;
+    word-spacing: 22px;
+    letter-spacing: 7.5px;
+    color: $mainWhite;
 }
