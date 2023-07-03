@@ -51,7 +51,7 @@ $secondaryOrange: #e19608;
     background-size: calc(100% + 3px) 100%;
     background-position-x: -3px;
 
-    @media (max-width: 599px) {
+    @media (max-width: 599px), (min-width: 1600px) {
         background-size: cover;
     }
 }
