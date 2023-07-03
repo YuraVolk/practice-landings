@@ -3,6 +3,7 @@ $mainGray: #e6e6e6;
 $mainDark: #2c2c2c;
 $secondaryDark: #11130b;
 $tertiaryDark: #101519;
+$black: #090909;
 $mainOrange: #e2940f;
 $secondaryOrange: #e19608;
 
@@ -107,7 +108,7 @@ p {
     display: flex;
     align-items: center;
     flex-direction: column;
-    width: 100vw;
+    width: 100%;
     font-weight: 100;
     color: $mainWhite;
 
@@ -201,7 +202,7 @@ p {
 
 .showcase-section {
     position: relative;
-    width: 100vw;
+    width: 100%;
     height: 25vw;
     background-color: $mainGray;
 }
@@ -294,15 +295,15 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100vw;
+    width: 100%;
     height: 38vw;
+    color: $mainWhite;
 }
 
 .section__heading {
     font: bold 20px/1 "Core Sans", sans-serif;
     text-transform: uppercase;
     letter-spacing: 7.5px;
-    color: $mainWhite;
     margin: 0;
 }
 
@@ -328,7 +329,6 @@ p {
         text-transform: initial;
     }
 }
-
 
 .meal-type-list {
     display: flex;
@@ -356,5 +356,53 @@ p {
         margin-top: 25px;
         margin-bottom: 12.5px;
         font: bold 0.7em/1 "Kyrial Sans Pro", sans-serif;
+    }
+}
+
+.menu-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 7vw 0 3.3vw 0;
+    background-color: $mainGray;
+    color: $black;
+
+    .section__heading {
+        margin-bottom: 1em;
+    }
+
+    > p {
+        max-width: 49em;
+    }
+
+    &-list {
+        display: grid;
+        grid-auto-rows: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.125em 3.125em;
+        width: 61vw;
+        margin-top: 2.35em;
+        padding: 0;
+        list-style: none;
+
+        &-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+
+            &__description {
+                max-width: 19.5vw;
+                color: $mainDark;
+            }
+
+            &__heading {
+                margin: 0;
+                font: bold 0.7em/1.5 "Kyrial Sans Pro", sans-serif;
+            }
+
+            &__price {
+                font: bold 0.7em/2 "Kyrial Sans Pro", sans-serif;
+            }
+        }
     }
 }
