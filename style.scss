@@ -11,6 +11,8 @@ $tertiaryActive: #1d3051;
 $primaryActiveLight: #8bb0f7;
 $primaryYellow: #c7ab47;
 
+$headerSubsectionHeight: 11.92vw; 
+
 @font-face {
     font-family: Latinaires;
     font-weight: 400;
@@ -187,6 +189,12 @@ p {
         background-color: transparent;
         border: $lightGray 2px solid;
     }
+
+    &--gray {
+        background-color: transparent;
+        border: $primaryDarkGray 2px solid;
+        color: $primaryDarkGray;
+    }
 }
 
 .button + .button {
@@ -227,12 +235,12 @@ p {
 
     &-information {
         position: absolute;
-        bottom: math.div(11.92vw, 2) * -1;
+        bottom: math.div($headerSubsectionHeight, 2) * -1;
         left: 50%;
         transform: translateX(-50%);
         display: flex;
         width: 61vw;
-        height: 11.92vw;
+        height: $headerSubsectionHeight;
         box-sizing: border-box;
         background-color: $primaryActive;
 
@@ -442,5 +450,88 @@ p {
                 margin-right: 1.25rem;
             }
         }
+    }
+}
+
+.header-subsection {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: math.div($headerSubsectionHeight, 2) + 6.3vw;
+    overflow: hidden;
+
+    &__chinese-heading {
+        margin-top: 0;
+        margin-bottom: 0.5rem;
+        font-size: 1.75rem;
+        font-weight: 300;
+        text-shadow: textStroke($stroke: 3, $color: $secondaryActive, $step: 0.05px);
+        color: $secondaryActive;
+    }
+
+    &__heading {
+        position: relative;
+        margin-top: 0;
+        margin-bottom: 2.5rem;
+        font-size: 0.75rem;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: $primaryDarkGray;
+
+        &::before {
+            position: absolute;
+            top: 5px;
+            left: -3.5px;
+            transform: translateX(-100%);
+            width: 100vw;
+            height: 2px;
+            background-color: $primaryDarkGray;
+            content: "";
+        }
+    }
+
+    &__paragraph {
+        max-width: 35vw;
+        margin-bottom: 3.875rem;
+        font-size: 0.875rem;
+        line-height: 1.3;
+    }
+
+    &__paragraph + .button {
+        position: relative;
+        left: -0.7692vw;
+        float: right;
+        margin-right: 8.935vw;
+
+        @supports (-moz-appearance: none) {
+            left: -8.7692vw;
+            margin-right: 0.5rem;
+        }
+    }
+
+    &__paragraph + .button + .button {
+        position: relative;
+        left: -0.7692vw;
+        float: right;
+        margin-right: 0.5rem;
+
+        @supports (-moz-appearance: none) {
+            left: -8.7692vw;
+        }
+    }
+
+    &__image {
+        position: relative;
+        float: right;
+        shape-outside: polygon(11% 37%, 16% 30%, 9% 0, 100% 48%, 30% 54%);
+        shape-margin: 3.25px;
+        width: 52.3vw;
+    }
+
+    &__description {
+        width: 100%;
+        padding-left: 19.61vw;
+        box-sizing: border-box;
     }
 }
