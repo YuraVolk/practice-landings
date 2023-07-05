@@ -1,0 +1,140 @@
+$white: #fff;
+
+@font-face {
+    font-family: Latinaires;
+    font-weight: 400;
+    src: url("./fonts/LatinairesPro-Regular.woff2") format("woff2"),
+        url("./fonts/LatinairesPro-Regular.woff") format("woff");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Latinaires;
+    font-weight: 500;
+    src: url("./fonts/LatinairesProSC-Regular.woff2") format("woff2"),
+        url("./fonts/LatinairesProSC-Regular.woff") format("woff");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Icons;
+    src: url('./fonts/icomoon.eot?e3ow6l');
+    src: url('./fonts/icomoon.eot?e3ow6l#iefix') format('embedded-opentype'),
+        url('./fonts/icomoon.ttf?e3ow6l') format('truetype'),
+        url('./fonts/icomoon.woff?e3ow6l') format('woff'),
+        url('./fonts/icomoon.svg?e3ow6l#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@mixin fontIcon {
+    font-family: Icons !important;
+    speak: never;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+%icon-arrow-up::before {
+    @include fontIcon;
+    content: "\1f5a2";
+}
+
+%icon-phone::before {
+    @include fontIcon;
+    content: "\1f57e";
+}
+
+%icon-contact::before {
+    @include fontIcon;
+    content: "\1f57e";
+}
+
+%icon-message::before {
+    @include fontIcon;
+    content: "\1f5e9";
+}
+
+%icon-uniF125::before {
+    @include fontIcon;
+    content: "\1f582";
+}
+
+%icon-uniF123::before {
+    @include fontIcon;
+    content: "\1f4cd";
+}
+
+%icon-uniF141::before {
+    @include fontIcon;
+    content: "\1f57f";
+}
+
+%icon-phone1::before {
+    @include fontIcon;
+    content: "\1f580";
+}
+
+%icon-envelop::before {
+    @include fontIcon;
+    content: "\1f4e9";
+}
+
+%icon-user::before {
+    @include fontIcon;
+    content: "\1f466";
+}
+
+%icon-user-tie::before {
+    @include fontIcon;
+    content: "\1f482";
+}
+
+%icon-google-plus::before {
+    @include fontIcon;
+    content: "\ea8b";
+}
+
+%icon-hangouts::before {
+    @include fontIcon;
+    content: "\ea8e";
+}
+
+%icon-facebook::before {
+    @include fontIcon;
+    content: "\ea90";
+}
+
+%icon-telegram::before {
+    @include fontIcon;
+    content: "\ea95";
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    margin: 0;
+    border-top: 1.92vw solid #ecedf1;
+}
+
+.header {}
+
+.navigation {
+    padding-top: 2rem;
+    background-color: $white;
+
+    >* {
+        display: flex;
+        max-width: 72.7vw;
+    }
+
+    &-contacts {}
+}
