@@ -1,10 +1,13 @@
 @use "sass:color";
+@use "sass:math";
 
 $white: #fff;
 $lightGray: #e0e0e0;
 $primaryDarkGray: #acacac;
 $secondaryDarkGray: #555555;
 $primaryActive: #304771;
+$secondaryActive: #283b63;
+$tertiaryActive: #1d3051;
 $primaryActiveLight: #8bb0f7;
 $primaryYellow: #c7ab47;
 
@@ -224,10 +227,65 @@ p {
 
     &-information {
         position: absolute;
-        display: none;
+        bottom: math.div(11.92vw, 2) * -1;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        width: 61vw;
+        height: 11.92vw;
+        box-sizing: border-box;
+        background-color: $primaryActive;
+
+        &-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1 0 math.div(100%, 3);
+            padding-top: 1.25rem;
+            font-size: 0.625rem;
+            line-height: 1.5;
+            text-align: center;
+            color: $lightGray;
+
+            &:nth-child(2) {
+                background-color: $secondaryActive;
+            }
+
+            &:nth-child(3) {
+                background-color: $tertiaryActive;
+            }
+
+            &__image {
+                &-wrap {
+                    width: 2.25rem;
+                    height: 2.875rem;
+                    overflow: hidden;
+                }
+              
+                display: block;
+                width: calc(2.25rem + 1px);
+                height: inherit;
+                margin-left: -2.25rem;
+                background-image: url("./img/header-icon.png");
+                background-position: -100% 0;
+                background-size: 2.25rem 2.875rem;
+                -webkit-filter: blur(0.3px) drop-shadow(2.25rem 0px $primaryYellow);
+                filter: blur(0.3px) drop-shadow(2.25rem 0px $primaryYellow);
+            }
+        }
+
+        &__heading {
+            margin-top: 1rem;
+            margin-bottom: 0.845rem;
+            font-size: 0.845rem;
+            font-weight: 700;
+            line-height: 0.9em;
+            word-spacing: 2px;
+            text-transform: uppercase;
+            color: $white;
+        }
     }
 }
-
 
 .navigation {
     display: flex;
