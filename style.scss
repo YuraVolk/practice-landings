@@ -504,9 +504,11 @@ p {
         float: right;
         margin-right: 8.935vw;
 
-        @supports (-moz-appearance: none) {
-            left: -8.7692vw;
-            margin-right: 0.5rem;
+        @media (max-width: 1299px) {
+            left: calc(3.55rem + 1.875rem + 1.875rem + 4px + 0.5rem); // font-size + paddings + borders + margin-left
+            float: none;
+            clear: both;
+            margin-right: 0;
         }
     }
 
@@ -516,8 +518,11 @@ p {
         float: right;
         margin-right: 0.5rem;
 
-        @supports (-moz-appearance: none) {
-            left: -8.7692vw;
+        @media (max-width: 1299px) {
+            left: calc((3.55rem + 1.875rem + 1.875rem + 4px + 0.5rem) * -1); // font-size + paddings + borders + margin-left
+            float: none;
+            clear: both;
+            margin-right: 0;
         }
     }
 
