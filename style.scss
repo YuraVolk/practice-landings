@@ -470,9 +470,9 @@ p {
     &__chinese-heading {
         margin-top: 0;
         margin-bottom: 0.5rem;
-        font-size: 1.75rem;
+        font-size: 1.2rem;
         font-weight: 300;
-        text-shadow: textStroke($stroke: 3, $color: $secondaryActive, $step: 0.05px);
+        text-shadow: textStroke($stroke: 3, $color: $secondaryActive, $step: 0.02px);
         color: $secondaryActive;
     }
 
@@ -494,6 +494,12 @@ p {
             height: 2px;
             background-color: $primaryDarkGray;
             content: "";
+        }
+        
+        &--right-centric::before {
+            left: initial;
+            right: -3.5px;
+            transform: translateX(100%);
         }
     }
 
@@ -576,5 +582,161 @@ p {
         font-size: 0.75rem;
         line-height: 1.5;
         color: $lightGray;
+    }
+}
+
+.partnership-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 5.4vw;
+}
+
+.partnership-advantages {
+    display: grid;
+    grid-template-columns: repeat(3, 20.75vw);
+    grid-auto-rows: 1fr;
+    padding-bottom: 3.25rem;
+
+    &-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 4.45vw;
+        padding-bottom: 2.85vw;
+        transition: all 0.4s ease-in-out;
+
+        * {
+            transition: all 0.4s ease-in-out;
+        }
+
+        &__icon-wrap {
+            position: relative;
+            width: 4.375rem;
+            height: 2.5rem;
+            margin-bottom: 4.461vw;
+
+            &::before {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform-origin: 53% 51%;
+                 
+                width: 6.75rem;
+                height: 6.75rem;
+                border: 2.5px solid $primaryActiveLight;
+                border-radius: 50%;
+
+                -webkit-clip-path: polygon(66% 10%, 66% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0%, 33% 0%, 33% 10%);
+                clip-path: polygon(66% 10%, 66% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0%, 33% 0%, 33% 10%);
+                transition: all 0.4s ease-in-out;
+                content: "";
+            }
+
+            &::after {
+                position: absolute;
+                width: 0.469rem;
+                height: 0.469rem;
+                box-sizing: border-box;
+                border: 2px solid $primaryActiveLight;
+                border-radius: 2.5px;
+                transition: all 0.4s ease-in-out;
+                content: "";
+            }
+        }
+
+        &:nth-child(3n + 1) &__icon-wrap::before {
+            transform-origin: 50% 51%;
+            transform: translate(-50%, -50%) rotate(125deg);
+        }
+
+        &:nth-child(3n + 1):hover &__icon-wrap::before {
+            transform: translate(-50%, -50%) rotate(125deg + 360deg);
+        }
+
+        &:nth-child(3n + 1) &__icon-wrap::after {
+            top: 85%;
+            right: -32%;
+            transform: rotate(46deg);
+        }
+
+        &:nth-child(3n + 2) &__icon-wrap::before {
+            transform-origin: 49% 52.9%;
+            transform: translate(-50%, -50%) rotate(30deg);
+        }
+
+        &:nth-child(3n + 2):hover &__icon-wrap::before {
+            transform: translate(-50%, -50%) rotate(30deg + 360deg);
+        }
+
+        &:nth-child(3n + 2) &__icon-wrap::after {
+            top: -90%;
+            right: 25%;
+            transform: rotate(65deg);
+        }
+
+        &:nth-child(3n + 3) &__icon-wrap::before {
+            transform-origin: 53% 51.1%;
+            transform: translate(-50%, -50%) rotate(-30deg);
+        }
+
+        &:nth-child(3n + 3):hover &__icon-wrap::before {
+            transform: translate(-50%, -50%) rotate(-30deg + -360deg);
+        }
+
+        &:nth-child(3n + 3) &__icon-wrap::after {
+            top: -50%;
+            left: -11%;
+            transform: rotate(-75deg);
+        }
+
+        &:hover {
+            background-color: $primaryActive;
+        }
+
+        &:hover &__icon {
+            filter: brightness(10);
+        }
+
+        &:hover &__icon-wrap::before,
+        &:hover &__icon-wrap::after {
+            border-color: $lightGray;
+        }
+
+        &__heading {
+            @include aliasedTextStroke($stroke: 1, $color: $primaryYellow, $step: 0.01px);
+            margin-top: 0;
+            margin-bottom: 0.875rem;
+            transform: scaleY(1.25);
+            transform-origin: 0 0;
+            font-size: 0.8rem;
+            font-weight: 400;
+            line-height: 1.1;
+        }
+
+        &:hover &__heading {
+            @include aliasedTextStroke($stroke: 1, $color: $white, $step: 0.01px);
+        }
+
+        &__description {
+            @include aliasedTextStroke($stroke: 1, $color: rgba(#000, 0.2), $step: 0.01px);
+            max-width: 7.5vw;
+            font: small-caps 500 0.625rem/1.5 Latinaires, sans-serif;
+            text-align: center;
+
+            &--capital {
+                text-shadow: none;
+                color: #000;
+            }
+        }
+
+        &:hover &__description {
+            text-shadow: none;
+            color: $white;
+        }
+
+        &:hover &__description--capital {
+            color: $white;
+        }
     }
 }
