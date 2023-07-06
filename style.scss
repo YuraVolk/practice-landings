@@ -88,7 +88,7 @@ $headerSubsectionHeight: 11.92vw;
     content: "\1f4cd";
 }
 
-%icon-uniF141::before {
+%icon-phone3::before {
     @include fontIcon;
     content: "\1f57f";
 }
@@ -151,6 +151,14 @@ $headerSubsectionHeight: 11.92vw;
     @return $shadow;
 }
 
+@function obtainViewportWidth($targetWidth, $baseWidth: 1300px) {
+    @if ($targetWidth >= $baseWidth) {
+        @error "Target width should be less than base width";
+    }
+
+    @return ($targetWidth * 100vw) / $baseWidth;
+}
+
 @mixin aliasedTextStroke($stroke, $color, $step: 0.3px) {
     text-shadow: textStroke($stroke, $color, $step);
     filter: blur(0.1px);
@@ -204,7 +212,7 @@ p {
     }
 }
 
-.button + .button {
+.button+.button {
     margin-left: 0.5rem;
 }
 
@@ -338,7 +346,7 @@ p {
             }
 
             &--email {
-                @extend %icon-envelop;
+                @extend %icon-uniF125;
             }
 
             &::before {
@@ -465,7 +473,7 @@ p {
     flex-direction: column;
     align-items: center;
     padding-top: math.div($headerSubsectionHeight, 2) + 6.3vw;
-    overflow: hidden;
+    overflow-x: hidden;
 
     &__chinese-heading {
         margin-top: 0;
@@ -495,7 +503,7 @@ p {
             background-color: $primaryDarkGray;
             content: "";
         }
-        
+
         &--right-centric::before {
             left: initial;
             right: -3.5px;
@@ -514,7 +522,7 @@ p {
         margin-bottom: 3rem;
     }
 
-    &__paragraph + .button {
+    &__paragraph+.button {
         position: relative;
         left: -0.7692vw;
         float: right;
@@ -528,7 +536,7 @@ p {
         }
     }
 
-    &__paragraph + .button + .button {
+    &__paragraph+.button+.button {
         position: relative;
         left: -0.7692vw;
         float: right;
@@ -590,6 +598,7 @@ p {
     flex-direction: column;
     align-items: center;
     padding-top: 5.4vw;
+    overflow-x: hidden;
 }
 
 .partnership-advantages {
@@ -621,7 +630,7 @@ p {
                 top: 50%;
                 left: 50%;
                 transform-origin: 53% 51%;
-                 
+
                 width: 6.75rem;
                 height: 6.75rem;
                 border: 2.5px solid $primaryActiveLight;
@@ -737,6 +746,91 @@ p {
 
         &:hover &__description--capital {
             color: $white;
+        }
+    }
+}
+
+.statistics-section {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: obtainViewportWidth(131px);
+    padding: obtainViewportWidth(77.5px) obtainViewportWidth(150px) obtainViewportWidth(42px) obtainViewportWidth(150px);
+    color: $white;
+
+    &::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        background-image: url("./img/header-image.jpg");
+        background-position: -65px 65.5%;
+        background-repeat: no-repeat;
+        background-size: 105% auto;
+        filter: brightness(0.66);
+        content: "";
+    }
+   
+    &-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+
+        &__icon {
+            position: relative;
+            width: 2.625rem;
+            height: 2.625rem;
+            margin-bottom: 1.85rem;
+            font-size: 1.75rem;
+            line-height: 1.3;
+
+            &::after {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 2.625rem;
+                height: 2.625rem;
+                border: 3px solid $white;
+                border-radius: 50%;
+                content: "";
+            }
+            
+            &--phone {
+                @extend %icon-phone3;
+            }
+
+            &--chat {
+                @extend %icon-message;
+            }
+
+            &--message {
+                @extend %icon-envelop;
+            }
+
+            &--official-user {
+                @extend %icon-user-tie;
+            }
+
+            &--user {
+                @extend %icon-user;
+            }
+        }
+
+        &__heading {
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+        }
+
+        &__label {
+            font-size: 0.8rem;
+            line-height: 1.3;
+            color: $lightGray;
         }
     }
 }
