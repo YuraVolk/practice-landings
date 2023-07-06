@@ -156,13 +156,19 @@ $headerSubsectionHeight: 11.92vw;
         @error "Target width should be less than base width";
     }
 
-    @return ($targetWidth * 100vw) / $baseWidth;
+    @return math.div($targetWidth * 100vw, $baseWidth);
 }
 
 @mixin aliasedTextStroke($stroke, $color, $step: 0.3px) {
     text-shadow: textStroke($stroke, $color, $step);
     filter: blur(0.1px);
     color: $color;
+}
+
+@mixin centralizeItems {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 html {
@@ -217,10 +223,8 @@ p {
 }
 
 .header {
+    @include centralizeItems;
     position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     padding-bottom: 14.23vw;
     background-image: url("./img/header-image.jpg");
     background-repeat: no-repeat;
@@ -260,9 +264,7 @@ p {
         background-color: $primaryActive;
 
         &-block {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            @include centralizeItems;
             flex: 1 0 math.div(100%, 3);
             padding-top: 1.25rem;
             font-size: 0.625rem;
@@ -311,9 +313,7 @@ p {
 }
 
 .navigation {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    @include centralizeItems;
     gap: 0.75rem;
     width: 100%;
     padding-top: 2rem;
@@ -468,10 +468,8 @@ p {
 }
 
 .header-subsection {
+    @include centralizeItems;
     position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     padding-top: math.div($headerSubsectionHeight, 2) + 6.3vw;
     overflow-x: hidden;
 
@@ -567,9 +565,7 @@ p {
 }
 
 .ceo-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    @include centralizeItems;
     padding-bottom: 2rem;
     background-image: url("./img/section-2-image.jpg");
     background-size: cover;
@@ -594,9 +590,7 @@ p {
 }
 
 .partnership-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    @include centralizeItems;
     padding-top: 5.4vw;
     overflow-x: hidden;
 }
@@ -608,9 +602,7 @@ p {
     padding-bottom: 3.25rem;
 
     &-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        @include centralizeItems;
         padding-top: 4.45vw;
         padding-bottom: 2.85vw;
         transition: all 0.4s ease-in-out;
@@ -753,6 +745,7 @@ p {
 .statistics-section {
     position: relative;
     display: flex;
+    justify-content: center;
     align-items: center;
     gap: obtainViewportWidth(131px);
     padding: obtainViewportWidth(77.5px) obtainViewportWidth(150px) obtainViewportWidth(42px) obtainViewportWidth(150px);
@@ -774,9 +767,7 @@ p {
     }
    
     &-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        @include centralizeItems;;
         text-align: center;
 
         &__icon {
@@ -831,6 +822,128 @@ p {
             font-size: 0.8rem;
             line-height: 1.3;
             color: $lightGray;
+        }
+    }
+}
+
+.our-team-section {
+    @include centralizeItems;
+    padding-top: obtainViewportWidth(45px);
+}
+
+.our-team {
+    display: flex;
+    gap: 1.125rem;
+    width: obtainViewportWidth(850px);
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: 2.375rem;
+
+    &-item {
+        display: flex;
+        align-items: flex-end;
+        flex: 1 1 0;
+        box-sizing: border-box;
+
+        &--description {
+            display: block;
+            border: 1.5px solid $secondaryActive;
+            border-radius: 1px;
+            padding: 1.875rem 0.625rem;
+            background-color: $primaryActive;
+            font-size: 0.75rem;
+            color: $lightGray;
+        }
+
+        &__image {
+            position: relative;
+            grid-row: 1 / -1;
+            width: 3.75rem;
+            height: 3.75rem;
+            background-color: lighten($lightGray, 5);
+            border-radius: 100%;
+            overflow: hidden;
+            
+            &::before {
+                position: absolute;
+                width: 2.5rem;
+                height: 3.3rem;
+                top: 0.25rem;
+                left: 0.5rem;
+                background-image: url("./img/section-showcase-image-2.png");
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+
+                content: "";
+            }
+        }
+
+        &__adviser-wrap {
+            display: grid;
+            grid-template-columns: 3.875rem 6.25rem;
+            grid-template-rows: 1.875rem 1.875rem;
+            column-gap: 3px;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        &__description-heading {
+            margin: 0;
+            align-self: end;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+
+        &__subheading {
+            margin-top: 0;
+            margin-bottom: 3px;
+            align-self: end;
+        }
+
+        &__paragraph {
+            max-width: 77%;
+            line-height: 1.5;
+        }
+
+        &:first-child {
+            background-image: url("./img/section-showcase-image.png");
+            background-size: 100% 100%;
+        }
+
+        &:nth-child(3) {
+            background-image: url("./img/section-1-image.png");
+            background-size: auto 100%;
+            background-repeat: no-repeat;
+            background-position: 45.7% 2px;
+        }
+
+        &:last-child {
+            background-image: url("./img/our-team-image.png");
+            background-size: cover;
+        }
+
+        &__heading {
+            position: relative;
+            z-index: 1;
+            flex-grow: 1;
+            margin: 0;
+            padding: 0.625rem 0;
+            font-size: 0.825rem;
+            font-weight: 300;
+            text-align: center;
+            color: $lightGray;
+
+            &::before {
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: -1;
+                width: 100%;
+                height: 100%;
+                background-color: $primaryActive;
+                opacity: 0.8;
+                content: "";
+            }
         }
     }
 }
