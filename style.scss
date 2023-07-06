@@ -11,7 +11,7 @@ $tertiaryActive: #1d3051;
 $primaryActiveLight: #8bb0f7;
 $primaryYellow: #c7ab47;
 
-$headerSubsectionHeight: 11.92vw; 
+$headerSubsectionHeight: 11.92vw;
 
 @font-face {
     font-family: Latinaires;
@@ -141,6 +141,7 @@ $headerSubsectionHeight: 11.92vw;
 @function textStroke($stroke, $color, $step: 0.3px) {
     $shadow: ();
     $from: $stroke * -1;
+
     @for $i from $from through $stroke {
         @for $j from $from through $stroke {
             $shadow: append($shadow, $i * $step $j * $step 0 $color, comma);
@@ -148,6 +149,12 @@ $headerSubsectionHeight: 11.92vw;
     }
 
     @return $shadow;
+}
+
+@mixin aliasedTextStroke($stroke, $color, $step: 0.3px) {
+    text-shadow: textStroke($stroke, $color, $step);
+    filter: blur(0.1px);
+    color: $color;
 }
 
 html {
@@ -269,7 +276,7 @@ p {
                     height: 2.875rem;
                     overflow: hidden;
                 }
-              
+
                 display: block;
                 width: calc(2.25rem + 1px);
                 height: inherit;
@@ -313,7 +320,7 @@ p {
     &-contacts {
         display: flex;
         align-items: center;
-        
+
         &__text {
             position: relative;
             line-height: 0;
@@ -369,7 +376,7 @@ p {
             &::-webkit-search-results-decoration {
                 display: none;
             }
-            
+
             &-wrap {
                 @extend %icon-search;
                 position: relative;
@@ -393,12 +400,11 @@ p {
         align-items: flex-end;
 
         &__logo {
+            @include aliasedTextStroke($stroke: 1, $color: $primaryYellow);
             margin-bottom: 8px;
             font: 500 24px/24px Latinaires, sans-serif;
             letter-spacing: 1px;
             text-transform: uppercase;
-            text-shadow: textStroke($stroke: 1, $color: $primaryYellow);
-            color: $primaryYellow;
             flex: 1 0 32.5%;
         }
 
@@ -439,7 +445,7 @@ p {
         &__text {
             padding-bottom: calc(4px + 0.188rem);
             font: 500 0.9rem/0.9rem Latinaires, sans-serif;
-            
+
             &--active {
                 padding-bottom: 4px;
                 border-bottom: 0.188rem solid $primaryActiveLight;
@@ -498,6 +504,10 @@ p {
         line-height: 1.3;
     }
 
+    .button {
+        margin-bottom: 3rem;
+    }
+
     &__paragraph + .button {
         position: relative;
         left: -0.7692vw;
@@ -531,6 +541,7 @@ p {
         float: right;
         shape-outside: polygon(11% 37%, 16% 30%, 9% 0, 100% 48%, 30% 54%);
         shape-margin: 3.25px;
+        z-index: -1;
         width: 52.3vw;
     }
 
@@ -538,5 +549,32 @@ p {
         width: 100%;
         padding-left: 19.61vw;
         box-sizing: border-box;
+    }
+}
+
+.ceo-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 2rem;
+    background-image: url("./img/section-2-image.jpg");
+    background-size: cover;
+
+    &__heading {
+        @include aliasedTextStroke($stroke: 1, $color: $white, $step: 0.01px);
+        margin-top: 3rem;
+        margin-bottom: 1.625rem;
+        font-weight: 400;
+        font-size: 1.875rem;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+    }
+
+    &__paragraph {
+        max-width: 44vw;
+        margin-bottom: 3.625rem;
+        font-size: 0.75rem;
+        line-height: 1.5;
+        color: $lightGray;
     }
 }
