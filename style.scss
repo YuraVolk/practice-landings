@@ -45,7 +45,7 @@ $headerSubsectionHeight: 11.92vw;
     font-display: block;
 }
 
-@mixin fontIcon {
+%font-icon {
     font-family: Icons !important;
     speak: never;
     font-style: normal;
@@ -59,82 +59,82 @@ $headerSubsectionHeight: 11.92vw;
 }
 
 %icon-arrow-up::before {
-    @include fontIcon;
+    @extend %font-icon;
     content: "\1f5a2";
 }
 
 %icon-phone::before {
-    @include fontIcon;
+    @extend %font-icon;
     content: "\1f57e";
 }
 
 %icon-contact::before {
-    @include fontIcon;
+    @extend %font-icon;
     content: "\1f57e";
 }
 
 %icon-message::before {
-    @include fontIcon;
+    @extend %font-icon;
     content: "\1f5e9";
 }
 
 %icon-uniF125::before {
-    @include fontIcon;
+    @extend %font-icon;
     content: "\1f582";
 }
 
 %icon-pushpin::before {
-    @include fontIcon;
+    @extend %font-icon;
     content: "\1f4cd";
 }
 
 %icon-phone3::before {
-    @include fontIcon;
+    @extend %font-icon;
     content: "\1f57f";
 }
 
 %icon-phone1::before {
-    @include fontIcon;
+    @extend %font-icon;
     content: "\1f580";
 }
 
 %icon-envelop::before {
-    @include fontIcon;
+    @extend %font-icon;
     content: "\1f4e9";
 }
 
 %icon-user::before {
-    @include fontIcon;
+    @extend %font-icon;
     content: "\1f466";
 }
 
 %icon-user-tie::before {
-    @include fontIcon;
+    @extend %font-icon;
     content: "\1f482";
 }
 
 %icon-google-plus::before {
-    @include fontIcon;
+    @extend %font-icon;
     content: "\ea8b";
 }
 
 %icon-hangouts::before {
-    @include fontIcon;
+    @extend %font-icon;
     content: "\ea8e";
 }
 
 %icon-facebook::before {
-    @include fontIcon;
+    @extend %font-icon;
     content: "\ea90";
 }
 
 %icon-telegram::before {
-    @include fontIcon;
+    @extend %font-icon;
     content: "\ea95";
 }
 
 %icon-search::before {
-    @include fontIcon;
+    @extend %font-icon;
     content: "\1f5d0";
 }
 
@@ -160,9 +160,12 @@ $headerSubsectionHeight: 11.92vw;
 }
 
 @mixin aliasedTextStroke($stroke, $color, $step: 0.3px) {
-    text-shadow: textStroke($stroke, $color, $step);
-    filter: blur(0.1px);
-    color: $color;
+    @media (min-width: 880px) {
+        text-shadow: textStroke($stroke, $color, $step);
+        filter: blur(0.1px);
+    }
+
+    color: $color; 
 }
 
 @mixin centralizeItems {
@@ -173,6 +176,26 @@ $headerSubsectionHeight: 11.92vw;
 
 html {
     font-size: 16px;
+
+    @media (max-width: 1200px) {
+        font-size: 14px;
+    }
+
+    @media (max-width: 880px) {
+        font-size: 11px;
+    }
+
+    @media (max-width: 700px) {
+        font-size: 9px;
+    }
+
+    @media (max-width: 600px) {
+        font-size: 7px;
+    }
+
+    @media (max-width: 450px) {
+        font-size: 5px;
+    }
 }
 
 body {
@@ -192,6 +215,14 @@ body {
 
 p {
     margin: 0;
+}
+
+button {
+    @media (max-width: 880px) {
+        font-size: inherit;
+    }
+
+    cursor: pointer;
 }
 
 .button {
@@ -241,6 +272,10 @@ p {
         line-height: 1.1;
         letter-spacing: 4px;
         text-transform: uppercase;
+
+        @media (max-width: 600px) {
+            font-size: 3vw;
+        }
     }
 
     &-description {
@@ -285,6 +320,10 @@ p {
                     width: 2.25rem;
                     height: 2.875rem;
                     overflow: hidden;
+
+                    @media (max-width: 900px) {
+                        display: none;
+                    }
                 }
 
                 display: block;
@@ -329,6 +368,10 @@ p {
         display: flex;
         align-items: center;
 
+        @media (max-width: 450px) {
+            flex-wrap: wrap;
+        }
+
         &__text {
             position: relative;
             line-height: 0;
@@ -370,6 +413,7 @@ p {
 
             &::placeholder {
                 color: $lightGray;
+                font-size: 1rem;
             }
 
             &:focus,
@@ -414,6 +458,10 @@ p {
             letter-spacing: 1px;
             text-transform: uppercase;
             flex: 1 0 32.5%;
+
+            @media (max-width: 600px) {
+                font-size: 3vw;
+            }
         }
 
         &__settings {
@@ -453,6 +501,7 @@ p {
         &__text {
             padding-bottom: calc(4px + 0.188rem);
             font: 500 0.9rem/0.9rem Latinaires, sans-serif;
+            cursor: pointer;
 
             &--active {
                 padding-bottom: 4px;
@@ -500,6 +549,10 @@ p {
             height: 2px;
             background-color: $primaryDarkGray;
             content: "";
+
+            @media (max-width: 500px) {
+                content: none;
+            }
         }
 
         &--right-centric::before {
@@ -518,34 +571,6 @@ p {
 
     .button {
         margin-bottom: 3rem;
-    }
-
-    &__paragraph+.button {
-        position: relative;
-        left: -0.7692vw;
-        float: right;
-        margin-right: 8.935vw;
-
-        @media (max-width: 1299px) {
-            left: calc(3.55rem + 1.875rem + 1.875rem + 4px + 0.5rem); // font-size + paddings + borders + margin-left
-            float: none;
-            clear: both;
-            margin-right: 0;
-        }
-    }
-
-    &__paragraph+.button+.button {
-        position: relative;
-        left: -0.7692vw;
-        float: right;
-        margin-right: 0.5rem;
-
-        @media (max-width: 1299px) {
-            left: calc((3.55rem + 1.875rem + 1.875rem + 4px + 0.5rem) * -1); // font-size + paddings + borders + margin-left
-            float: none;
-            clear: both;
-            margin-right: 0;
-        }
     }
 
     &__image {
@@ -601,14 +626,23 @@ p {
     grid-auto-rows: 1fr;
     padding-bottom: 3.25rem;
 
+    @media (max-width: 400px) {
+        grid-template-columns: repeat(2, 33vw);
+    }
+
     &-item {
         @include centralizeItems;
         padding-top: 4.45vw;
         padding-bottom: 2.85vw;
         transition: all 0.4s ease-in-out;
+        cursor: pointer;
 
         * {
             transition: all 0.4s ease-in-out;
+        }
+
+        &__icon {
+            width: inherit;
         }
 
         &__icon-wrap {
@@ -632,6 +666,10 @@ p {
                 clip-path: polygon(66% 10%, 66% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0%, 33% 0%, 33% 10%);
                 transition: all 0.4s ease-in-out;
                 content: "";
+
+                @media (max-width: 400px) {
+                    content: none;
+                }
             }
 
             &::after {
@@ -643,6 +681,10 @@ p {
                 border-radius: 2.5px;
                 transition: all 0.4s ease-in-out;
                 content: "";
+
+                @media (max-width: 400px) {
+                    content: none;
+                }
             }
         }
 
@@ -729,6 +771,11 @@ p {
                 text-shadow: none;
                 color: #000;
             }
+
+            @media (max-width: 880px) {
+                font-variant: normal;
+                color: #000;
+            }
         }
 
         &:hover &__description {
@@ -751,6 +798,11 @@ p {
     padding: obtainViewportWidth(77.5px) obtainViewportWidth(150px) obtainViewportWidth(42px) obtainViewportWidth(150px);
     color: $white;
 
+    @media (max-width: 400px) {
+        flex-wrap: wrap;
+        background-color: #1d3051;;
+    }
+
     &::before {
         position: absolute;
         top: 0;
@@ -761,13 +813,17 @@ p {
         background-image: url("./img/header-image.jpg");
         background-position: -65px 65.5%;
         background-repeat: no-repeat;
-        background-size: 105% auto;
+        background-size: 120vw auto;
         filter: brightness(0.66);
         content: "";
+
+        @media (max-width: 400px) {
+            content: none;
+        }
     }
    
     &-item {
-        @include centralizeItems;;
+        @include centralizeItems;
         text-align: center;
 
         &__icon {
@@ -839,6 +895,17 @@ p {
     margin-top: 0;
     margin-bottom: 2.375rem;
 
+    @media (max-width: 1000px) {
+        display: grid;
+        grid-template-columns: 20vw 20vw;
+        grid-auto-rows: 20vw 20vw;
+        justify-content: center;
+    }
+
+    @media (max-width: 450px) {
+        grid-template-columns: 20vw;
+    }
+
     &-item {
         display: flex;
         align-items: flex-end;
@@ -903,6 +970,10 @@ p {
         &__paragraph {
             max-width: 77%;
             line-height: 1.5;
+
+            @media (max-width: 450px) {
+                line-height: 1;
+            }
         }
 
         &:first-child {
@@ -976,6 +1047,7 @@ p {
         margin: 0 0 1.15rem 0;
         padding: 0;
         list-style-type: none;
+        cursor: pointer;
     }
 
     &-icon {
@@ -1026,6 +1098,10 @@ p {
     display: flex;
     align-items: center;
     width: obtainViewportWidth(570px);
+
+    @media (max-width: 700px) {
+        width: 100%;
+    }
 }
 
 .qr-code {
