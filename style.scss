@@ -1,0 +1,108 @@
+@namespace svg url('http://www.w3.org/2000/svg');
+
+$firstBlue: #179aea;
+$secondBlue: #01e8f8;
+$transparentBlue: #0f597c;
+$backgroundPrimary: #1d224c;
+$backgroundSecondary: #51398f;
+$backgroundTertiaryRight: #172145;
+$backgroundTertiaryLeft: #272b51;
+$contentMain: #75778e;
+$primaryActive: #f6f8f7;
+$firstRed: #ff2c86;
+$secondRed: #ff225e;
+$tertiaryRed: #f8184a;
+$tertiaryGradientRed: #f7286e;
+$transparentRed: #681a56;
+$firstOrange: #ff5108;
+$secondOrange: #ffa21f;
+$transparentOrange: #684937;
+$secondaryRedBorder: #b42052;
+$secondaryBlueBorder: #00d7d0;
+$secondaryOrangeLeft: #fb67c5;
+$secondaryOrangeRight: #ffa18b;
+$secondaryBlueLeft: #7e55d7;
+$secondaryBlueRight: #04d1f0;
+$widgetBackgroundLeft: #080a31;
+$widgetBackgroundRight: #222955;
+$pieChartGradientRed: #771d51;
+$pieChatGradientViolet: #2b2d91;
+$violetPrimary: #464aff;
+$violetSecondary: #a234eb;
+$backgroundViolet: #574aa6;
+
+@font-face {
+    font-family: Icons;
+    src: url('fonts/icomoon.eot?m765po');
+    src: url('fonts/icomoon.eot?m765po#iefix') format('embedded-opentype'),
+        url('fonts/icomoon.ttf?m765po') format('truetype'),
+        url('fonts/icomoon.woff?m765po') format('woff'),
+        url('fonts/icomoon.svg?m765po#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+%font-icon {
+    font-family: 'icomoon' !important;
+    speak: never;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-notifications-outline::before {
+    @extend %font-icon;
+    content: "\1f514";
+}
+
+.icon-notebook-list::before {
+    @extend %font-icon;
+    content: "\1f4dd";
+}
+
+.icon-notebook::before {
+    @extend %font-icon;
+    content: "\1f4d2";
+}
+
+.icon-book::before {
+    @extend %font-icon;
+    content: "\1f4d9";
+}
+
+.icon-lock::before {
+    @extend %font-icon;
+    content: "\1f512";
+}
+
+.icon-shield::before {
+    @extend %font-icon;
+    content: "\1f6e1";
+}
+
+.icon-home::before {
+    @extend %font-icon;
+    content: "\1f3e0";
+}
+
+.icon-coin-dollar::before {
+    @extend %font-icon;
+    content: "\1f4b2";
+}
+
+.icon-search::before {
+    @extend %font-icon;
+    content: "\1f50e";
+}
+
+.icon-cog::before {
+    @extend %font-icon;
+    content: "\2699";
+}
+
