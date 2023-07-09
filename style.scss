@@ -7,6 +7,8 @@ $backgroundPrimary: #1d224c;
 $backgroundSecondary: #51398f;
 $backgroundTertiaryRight: #172145;
 $backgroundTertiaryLeft: #272b51;
+$backgroundInnerLeft: #161d4b;
+$backgroundInnerRight: #26204c;
 $contentMain: #75778e;
 $primaryActive: #f6f8f7;
 $firstRed: #ff2c86;
@@ -44,7 +46,7 @@ $backgroundViolet: #574aa6;
 }
 
 %font-icon {
-    font-family: 'icomoon' !important;
+    font-family: Icons !important;
     speak: never;
     font-style: normal;
     font-weight: normal;
@@ -56,53 +58,225 @@ $backgroundViolet: #574aa6;
     -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-notifications-outline::before {
+%icon-notifications-outline::before {
     @extend %font-icon;
     content: "\1f514";
 }
 
-.icon-notebook-list::before {
+%icon-notebook-list::before {
     @extend %font-icon;
     content: "\1f4dd";
 }
 
-.icon-notebook::before {
+%icon-notebook::before {
     @extend %font-icon;
     content: "\1f4d2";
 }
 
-.icon-book::before {
+%icon-book::before {
     @extend %font-icon;
     content: "\1f4d9";
 }
 
-.icon-lock::before {
+%icon-lock::before {
     @extend %font-icon;
     content: "\1f512";
 }
 
-.icon-shield::before {
+%icon-shield::before {
     @extend %font-icon;
     content: "\1f6e1";
 }
 
-.icon-home::before {
+%icon-home::before {
     @extend %font-icon;
     content: "\1f3e0";
 }
 
-.icon-coin-dollar::before {
+%icon-coin-dollar::before {
     @extend %font-icon;
     content: "\1f4b2";
 }
 
-.icon-search::before {
+%icon-search::before {
     @extend %font-icon;
     content: "\1f50e";
 }
 
-.icon-cog::before {
+%icon-cog::before {
     @extend %font-icon;
     content: "\2699";
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(to right, $firstBlue, $secondBlue);
+    font-family: Arial;
+}
+
+.application {
+    display: flex;
+    flex-wrap: wrap;
+    width: 90vw;
+    height: 92.5vh;
+    padding-top: 16px;
+    padding-left: 16px;
+    border-radius: 1.5vh;
+    overflow: hidden;
+    background: linear-gradient(to bottom right, $backgroundPrimary, $backgroundInnerRight);
+    border-radius: 16px;
+    box-shadow: 19px 19px 38px rgba(#222, 0.4),
+        -19px -19px 38px rgba(#222, 0.35);
+}
+
+.header {
+    @mixin headerButton {
+        position: relative;
+        width: 1.55rem;
+        height: 1.55rem;
+        border-radius: 50%;
+        box-shadow: 3px 2px 5px rgba(0, 0, 0, 0.85),
+             -2px -2px 5px rgba($primaryActive, 0.2);
+    }
+
+    display: flex;
+    align-items: center;
+    gap: 6.5vw;
+    flex: 1 1 100%;
+    padding-bottom: 3.8vh;
+
+    &-logotype {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+
+        &__image {
+            @include headerButton;
+            background: linear-gradient(to bottom right, $firstRed, $secondRed);
+
+            &::before {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 0.875rem;
+                font-weight: 600;
+                color: $primaryActive;
+                content: "L";
+            }
+        }
+
+        &__heading {
+            padding: 0.31rem 0.4rem 0.22rem 0.5rem;
+            border: rgba($primaryActive, 0.25) 2px solid;
+            border-radius: 0.15rem;
+            margin: 0;
+            font: 700 0.7rem/1.1 Arial, sans-serif;
+            color: $primaryActive;
+            text-transform: uppercase;
+        }
+    }
+
+    &-navigation {
+        display: flex;
+        align-items: center;
+        gap: 2.85vw;
+
+        &__link {
+            padding-bottom: 0.18rem;
+            font-size: 0.58rem;
+            color: $contentMain;
+            text-decoration: none;
+            letter-spacing: 0.4px;
+
+            &--active {
+                padding-top: calc(0.18rem - 1.75px);
+                border-bottom-width: 1.75px;
+                border-bottom-style: solid;
+                border-image: linear-gradient(to right, $firstBlue 25%, $secondBlue) 10;
+                color: $primaryActive;
+            }
+        }
+    }
+
+    &-user-information {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 2.1818vw;
+        flex-grow: 1;
+        color: $primaryActive;
+        
+        &__search-icon {
+            @extend %icon-search;
+            font-size: 1.125rem;
+        }
+
+        &__notifications {
+            @extend %icon-notifications-outline;
+            position: relative;
+            font-size: 1.125rem;
+
+            &::after {
+                position: absolute;
+                top: 0;
+                transform: translate(-45%, -33%);
+                padding: 0.225rem 0.2515rem 0.2rem 0.2515rem;
+                border-radius: 50%;
+                font-size: 0.6rem;
+                line-height: 0.7;
+                background: linear-gradient(to bottom right, $firstRed, $secondRed);
+                content: attr(data-notifications);
+            }
+        }
+    }
+}
+
+.sidebar {
+    flex: 0 1 15vw;
+}
+
+.main {
+    position: relative;
+    flex: 1 0 auto;
+    padding: 4vh 0 0 4vw;
+    border-top-left-radius: 12px;
+    background: linear-gradient(to bottom right, $backgroundInnerLeft, $backgroundInnerRight);
+    transform: perspective(150px);
+    overflow-x: hidden;
+
+    &::after {
+        position: absolute;
+        width: 160%;
+        height: 100%;
+        top: 0;
+        left: -3%;
+        right: 0;
+        bottom: 0;
+        border-top-left-radius: inherit;
+        transform-origin: left center 0;
+        box-shadow: inset 4vw 4vh 0 #0d143b;
+        -webkit-clip-path: polygon(100% 0, 15% 16%, 1% 18%, 0 11%, 0 0);
+        clip-path: polygon(100% 0, 15% 16%, 1% 18%, 0 11%, 0 0);
+        mask-size: 100vw 100vh;
+        -webkit-mask-size: 100vw 100vh;
+        mask-image: -webkit-gradient(linear, center bottom, center top,
+                color-stop(0.00, rgba(0, 0, 0, 0)),
+                color-stop(1.00, rgba(0, 0, 0, 1)));
+        -webkit-mask-image: -webkit-gradient(linear, center bottom, center top,
+                color-stop(0.00, rgba(0, 0, 0, 0)),
+                color-stop(1.00, rgba(0, 0, 0, 1)));
+        filter: blur(calc((3.55vw + 2.526vh) / 4));
+        content: "";
+    }
 }
 
