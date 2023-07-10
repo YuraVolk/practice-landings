@@ -313,7 +313,7 @@ body {
     padding-left: 2.5vw;
     padding-right: 2.5vw;
     font-size: 0.6rem;
-    background: linear-gradient(to bottom, $backgroundPrimary, $backgroundTertiaryRight 5%);
+    background: linear-gradient(to bottom, $backgroundPrimary, $backgroundTertiaryRight 3.5%);
 
     &__heading {
         margin: 2.15vw 0 0 0;
@@ -462,13 +462,22 @@ body {
 }
 
 .main {
+    display: grid;
+    grid-template-columns: 33% 30% 37%;
+    grid-template-rows: 23.5% 24.5% 15% 7.5% 29.5%;
+    grid-template-areas: "todo-list todo-list todo-list"
+        "pie-charts settings histograms"
+        "area-charts settings progress-bars"
+        "area-charts combined-area-chart line-chart"
+        "area-charts combined-area-chart line-chart";
+    height: 77.7vh;
     position: relative;
-    flex: 1 0 auto;
+    flex: 1 0 0;
     padding: 4vh 0 0 4vw;
     border-top-left-radius: 12px;
     background: linear-gradient(to bottom right, $backgroundInnerLeft, $backgroundInnerRight);
     transform: perspective(150px);
-    overflow-x: hidden;
+    overflow: hidden;
 
     &::after {
         position: absolute;
@@ -482,7 +491,7 @@ body {
         transform-origin: left center 0;
         box-shadow: inset 4vw 4vh 0 #0d143b;
         -webkit-clip-path: polygon(100% 0, 15% 16%, 1% 18%, 0 11%, 0 0);
-        clip-path: polygon(100% 0, 15% 16%, 1% 18%, 0 11%, 0 0);
+        clip-path: polygon(100% 0, 65% 66%, 1% 68%, 0 11%, 0 0);
         mask-size: 100vw 100vh;
         -webkit-mask-size: 100vw 100vh;
         mask-image: -webkit-gradient(linear, center bottom, center top,
@@ -491,7 +500,143 @@ body {
         -webkit-mask-image: -webkit-gradient(linear, center bottom, center top,
                 color-stop(0.00, rgba(0, 0, 0, 0)),
                 color-stop(1.00, rgba(0, 0, 0, 1)));
-        filter: blur(calc((3.55vw + 2.526vh) / 4));
+                filter: blur(calc((3.55vw + 2.526vh) / 4));
         content: "";
     }
+}
+
+.todo-list {
+    &-wrap {
+        display: grid;
+        align-items: center;
+        grid-area: todo-list;
+        padding: 0 3vw 0 0;
+    }
+
+    position: relative;
+    transform: perspective(150px);
+    transform-style: preserve-3d;
+    display: flex;
+    align-items: center;
+    height: 56.5%;
+    padding: 0;
+    border: 1px solid rgba($contentMain, 0.1);
+    border-radius: 0.65rem;
+    margin: 0;
+    list-style-type: none;
+    background: linear-gradient(to right, $backgroundTertiaryLeft, $backgroundTertiaryRight);
+
+    &::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        transform-origin: left center 0;
+        transform: rotateY(9deg);
+        border-radius: 0.65rem;
+        box-shadow: 0 0 8.75px 7.5px #212545;
+        content: "";
+    }
+
+    &::after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        transform-origin: right center 0;
+        transform: rotateY(-9deg);
+        border-radius: 0.65rem;
+        box-shadow: 0 0 8px 2.5px #0c101f;
+        content: "";
+    }
+
+    &-item {
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 13.75% 49.75% 24%;
+        column-gap: 6.25%;
+        flex: 1 1 0;
+        padding: 0 0.76vw 0 1.3vw;
+
+        &:not(:last-child) {
+            border-right: 1px solid $contentMain;
+        }
+        
+        &__icon {
+            grid-row: span 2;
+            align-self: center;
+            color: $contentMain;
+            font-size: 150%;
+
+            &::before {
+                margin-right: 5px;
+            }
+
+            &--book {
+                @extend %icon-book;
+            }
+
+            &--book-with-pencil {
+                @extend %icon-notebook-list;
+            }
+
+            &--notebook {
+                @extend %icon-notebook;
+            }
+        }
+
+        &__heading {
+            align-self: end;
+            margin: 0;
+            color: $primaryActive;
+            font-size: 0.6rem;
+        }
+
+        &__description {
+            margin: 0;
+            color: $contentMain;
+            font-size: 0.5rem;
+        }
+
+        &__price {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid $secondaryBlueBorder;
+            border-radius: 0.5rem;
+            font-size: 0.45rem;
+            letter-spacing: -0.5px;
+            background: linear-gradient(to right, $firstBlue, $secondBlue);
+        }
+    }
+}
+
+.pie-chart-section {
+    grid-area: pie-charts;
+}
+
+.settings-section {
+    grid-area: settings;
+}
+
+.histogram-section {
+    grid-area: histograms;
+}
+
+.progress-section {
+    grid-area: progress-bars;
+}
+
+.area-charts-section {
+    grid-area: area-charts;
+}
+
+.combined-area-chart-section {
+    grid-area: combined-area-chart;
+}
+
+.line-chart-section {
+    grid-area: line-chart;
 }
