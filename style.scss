@@ -108,6 +108,16 @@ $backgroundViolet: #574aa6;
     content: "\2699";
 }
 
+@mixin centralizeAbsolute($defaultTransform: true) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    @if ($defaultTransform) {
+        transform: translate(-50%, -50%);
+    }
+}
+
 html {
     font-size: 16px;
 }
@@ -129,7 +139,6 @@ body {
     width: 90vw;
     height: 92.5vh;
     padding-top: 16px;
-    padding-left: 16px;
     border-radius: 1.5vh;
     overflow: hidden;
     background: linear-gradient(to bottom right, $backgroundPrimary, $backgroundInnerRight);
@@ -152,6 +161,7 @@ body {
     align-items: center;
     gap: 6.5vw;
     flex: 1 1 100%;
+    padding-left: 16px;
     padding-bottom: 5vh;
 
     &-logotype {
@@ -164,10 +174,7 @@ body {
             background: linear-gradient(to bottom right, $firstRed, $secondRed);
 
             &::before {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
+                @include centralizeAbsolute;
                 font-size: 0.875rem;
                 font-weight: 600;
                 color: $primaryActive;
@@ -247,9 +254,7 @@ body {
             overflow: hidden;
 
             svg|svg {
-                position: absolute;
-                top: 50%;
-                left: 50%;
+                @include centralizeAbsolute($defaultTransform: false);
                 transform: translate(-55%, -36%) scale(1.6);
             }
 
@@ -304,10 +309,11 @@ body {
 }
 
 .sidebar {
-    width: 15vw;
-    padding-right: 2.424vw;
-    box-sizing: border-box;
+    width: 12.5vw;
+    padding-left: 2.5vw;
+    padding-right: 2.5vw;
     font-size: 0.6rem;
+    background: linear-gradient(to bottom, $backgroundPrimary, $backgroundTertiaryRight 5%);
 
     &__heading {
         margin: 2.15vw 0 0 0;
@@ -327,7 +333,8 @@ body {
             border-bottom: 1.5px solid $contentMain;
             color: $primaryActive;
             text-decoration: none;
-            line-height: 1.2;
+            line-height: 1.25;
+            font-size: 0.9em;
 
             &::before {
                 margin-right: 0.7rem;
@@ -358,6 +365,7 @@ body {
     }
 
     &-counter {
+        position: relative;
         width: 100%;
         aspect-ratio: 1/1;
         margin: 5vh 0 0;
@@ -378,6 +386,77 @@ body {
             font-weight: bold;
             letter-spacing: -0.5px;
             color: $contentMain;
+        }
+
+        &__circle {
+            @include centralizeAbsolute($defaultTransform: false);
+            transform: translate(-50%, -60%);
+            width: calc(53% + 1px);
+            height: 53%;
+            box-sizing: border-box;
+            padding: 0.5px;
+            border: 2px dotted rgba($contentMain, 0.6);
+            border-radius: 50%;
+            background: linear-gradient(275deg, $widgetBackgroundLeft 15%, $widgetBackgroundRight);
+            background-clip: content-box;
+            background-position: center;
+            box-shadow: 0.15pc 0.15pc 1.625pc #0e1022;
+            text-align: center;
+            color: $primaryActive;
+
+            &::before {
+                position: absolute;
+                top: -25%;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 2;
+                width: 12.5%;
+                height: 12.5%;
+                background: linear-gradient(to right, $firstRed, $secondRed);
+                -webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+                clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+                content: "";
+            }
+        }
+
+        &__amount {
+            display: block;
+            font-size: 0.55rem;
+            font-weight: 700;
+            transform: translateY(110%);
+        }
+
+        &__description {
+            margin: 0;
+            font-size: 0.35rem;
+            transform: translateY(0.75rem);
+        }
+
+        &__heading {
+            position: absolute;
+            left: 50%;
+            bottom: 14%;
+            transform: translateX(-50%);
+            width: 100%;
+            margin: 0;
+            font: 700 0.425rem/0 Arial, sans-serif;
+            text-align: center;
+            text-transform: uppercase;
+            color: $primaryActive;
+        }
+
+        &__upper-indicator {
+            @include centralizeAbsolute($defaultTransform: false);
+            transform: translate(-50%, -60%);
+            z-index: 1;
+            width: 64%;
+            height: 63%;
+            border-radius: 50%;
+            background: linear-gradient(to right, $firstRed, $secondRed);
+            -webkit-mask-image: radial-gradient(circle at center, transparent 59.1269%, white 60.1269%);
+            mask-image: radial-gradient(circle at center, transparent 84.1269%, white 85.1269%);
+            -webkit-clip-path: polygon(0 0, 100% 0, 100% 25%, 87% 33%, 13% 33%, 0% 25%);
+            clip-path: polygon(0 0, 100% 0, 100% 25%, 87% 33%, 13% 33%, 0% 25%);
         }
     }
 }
@@ -416,4 +495,3 @@ body {
         content: "";
     }
 }
-
