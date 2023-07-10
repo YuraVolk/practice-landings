@@ -230,12 +230,74 @@ body {
                 position: absolute;
                 top: 0;
                 transform: translate(-45%, -33%);
-                padding: 0.225rem 0.2515rem 0.2rem 0.2515rem;
+                padding: 0.225rem 0.2515rem 0.18rem 0.2515rem;
                 border-radius: 50%;
                 font-size: 0.6rem;
                 line-height: 0.7;
                 background: linear-gradient(to bottom right, $firstRed, $secondRed);
                 content: attr(data-notifications);
+            }
+        }
+
+        &__avatar {
+            @include headerButton;
+            position: relative;
+            margin-right: 1.125rem;
+            background: linear-gradient(to bottom right, $violetPrimary, $violetSecondary);
+            overflow: hidden;
+
+            svg|svg {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-55%, -36%) scale(1.6);
+            }
+
+            svg|g.head {
+                fill: $primaryActive;
+            }
+
+            #person-gradient {
+                --color-start: #26204c;
+                --color-end: #161d4b;
+            }
+
+            svg|g.body {
+                fill: url(#person-gradient) #26204c;
+            }
+        }
+
+        &__hamburger {
+            position: relative;
+            width: 1rem;
+            height: 1.5px;
+            margin-left: 0.5rem;
+            margin-right: 1.15rem;
+            background-color: $primaryActive;
+            cursor: pointer;
+
+            &::before {
+                position: absolute;
+                top: 0;
+                right: 0;
+                transform: translateY(-300%);
+                width: 1.5rem;
+                height: 1.5px;
+                background-color: $primaryActive;
+                cursor: pointer;
+                content: "";
+            }
+
+            &::after {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                transform: translateY(300%);
+                width: 1.5rem;
+                height: 1.5px;
+                background-color: $primaryActive;
+                cursor: pointer;
+                content: "";
             }
         }
     }

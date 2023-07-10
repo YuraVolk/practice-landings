@@ -24,8 +24,28 @@
             </nav>
             <div class="header-user-information">
                 <span class="header-user-information__search-icon" role="img" aria-label="Search"></span>
-                <span class="header-user-information__notifications" data-notifications="5" role="img" aria-label="Notifications"></span>
-                <img class="header-user-information__avatar" src="" alt="User avatar">
+                <span class="header-user-information__notifications" data-notifications="5" role="img"
+                    aria-label="Notifications"></span>
+                <div class="header-user-information__avatar" role="img" aria-label="User avatar">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34 35">
+                        <defs>
+                            <linearGradient id="person-gradient" x1="0%" y1="0%" x2="133%" y2="0%" gradientUnits="userSpaceOnUse">
+                                <stop offset="0%" stop-color="var(--color-start)" />
+                                <stop offset="100%" stop-color="var(--color-end)" />
+                            </linearGradient>
+                        </defs>
+                        <g>
+                            <g class="head">
+                                <ellipse cx="17" cy="10.5" rx="8" ry="7.4" />
+                                <rect x="13.5" y="13" width="7" height="9" />
+                            </g>
+                            <g class="body">
+                                <path d="M34,35H0l3.2-7.4a10.8,10.8,0,0,1,10-6.6h7.6a10.8,10.8,0,0,1,10,6.6Z" />
+                                <path d="M8.4,10s5-9,9-3,9,2,9,2,0-9-9-9S8.4,7,8.4,10Z" />
+                            </g>
+                        </g>
+                    </svg>
+                </div>
                 <span class="header-user-information__hamburger" role="img" aria-label="More menu options"></span>
             </div>
         </header>
@@ -119,20 +139,28 @@
                     </thead>
                     <tbody class="histogram__body">
                         <tr class="histogram__line">
-                            <td class="histogram__stat histogram__stat--filled histogram__stat--red" data-value="16"></td>
-                            <td class="histogram__stat histogram__stat--transparent histogram__stat--red" data-value="39"></td>
+                            <td class="histogram__stat histogram__stat--filled histogram__stat--red" data-value="16">
+                            </td>
+                            <td class="histogram__stat histogram__stat--transparent histogram__stat--red"
+                                data-value="39"></td>
                         </tr>
                         <tr class="histogram__line">
-                            <td class="histogram__stat histogram__stat--filled histogram__stat--red" data-value="19"></td>
-                            <td class="histogram__stat histogram__stat--transparent histogram__stat--red" data-value="50"></td>
+                            <td class="histogram__stat histogram__stat--filled histogram__stat--red" data-value="19">
+                            </td>
+                            <td class="histogram__stat histogram__stat--transparent histogram__stat--red"
+                                data-value="50"></td>
                         </tr>
                         <tr class="histogram__line">
-                            <td class="histogram__stat histogram__stat--filled histogram__stat--red" data-value="24"></td>
-                            <td class="histogram__stat histogram__stat--transparent histogram__stat--red" data-value="64"></td>
+                            <td class="histogram__stat histogram__stat--filled histogram__stat--red" data-value="24">
+                            </td>
+                            <td class="histogram__stat histogram__stat--transparent histogram__stat--red"
+                                data-value="64"></td>
                         </tr>
                         <tr class="histogram__line">
-                            <td class="histogram__stat histogram__stat--filled histogram__stat--red" data-value="18"></td>
-                            <td class="histogram__stat histogram__stat--transparent histogram__stat--red" data-value="46"></td>
+                            <td class="histogram__stat histogram__stat--filled histogram__stat--red" data-value="18">
+                            </td>
+                            <td class="histogram__stat histogram__stat--transparent histogram__stat--red"
+                                data-value="46"></td>
                         </tr>
                     </tbody>
                 </table>
@@ -143,20 +171,28 @@
                     </thead>
                     <tbody class="histogram__body">
                         <tr class="histogram__line">
-                            <td class="histogram__stat histogram__stat--filled histogram__stat--blue" data-value="19"></td>
-                            <td class="histogram__stat histogram__stat--transparent histogram__stat--blue" data-value="31"></td>
+                            <td class="histogram__stat histogram__stat--filled histogram__stat--blue" data-value="19">
+                            </td>
+                            <td class="histogram__stat histogram__stat--transparent histogram__stat--blue"
+                                data-value="31"></td>
                         </tr>
                         <tr class="histogram__line">
-                            <td class="histogram__stat histogram__stat--filled histogram__stat--blue" data-value="11"></td>
-                            <td class="histogram__stat histogram__stat--transparent histogram__stat--blue" data-value="19"></td>
+                            <td class="histogram__stat histogram__stat--filled histogram__stat--blue" data-value="11">
+                            </td>
+                            <td class="histogram__stat histogram__stat--transparent histogram__stat--blue"
+                                data-value="19"></td>
                         </tr>
                         <tr class="histogram__line">
-                            <td class="histogram__stat histogram__stat--filled histogram__stat--blue" data-value="19"></td>
-                            <td class="histogram__stat histogram__stat--transparent histogram__stat--blue" data-value="45"></td>
+                            <td class="histogram__stat histogram__stat--filled histogram__stat--blue" data-value="19">
+                            </td>
+                            <td class="histogram__stat histogram__stat--transparent histogram__stat--blue"
+                                data-value="45"></td>
                         </tr>
                         <tr class="histogram__line">
-                            <td class="histogram__stat histogram__stat--filled histogram__stat--blue" data-value="17"></td>
-                            <td class="histogram__stat histogram__stat--transparent histogram__stat--blue" data-value="28"></td>
+                            <td class="histogram__stat histogram__stat--filled histogram__stat--blue" data-value="17">
+                            </td>
+                            <td class="histogram__stat histogram__stat--transparent histogram__stat--blue"
+                                data-value="28"></td>
                         </tr>
                     </tbody>
                 </table>
@@ -167,28 +203,38 @@
                     </thead>
                     <tbody class="histogram__body">
                         <tr class="histogram__line">
-                            <td class="histogram__stat histogram__stat--filled histogram__stat--orange" data-value="14"></td>
-                            <td class="histogram__stat histogram__stat--transparent histogram__stat--orange" data-value="33"></td>
+                            <td class="histogram__stat histogram__stat--filled histogram__stat--orange" data-value="14">
+                            </td>
+                            <td class="histogram__stat histogram__stat--transparent histogram__stat--orange"
+                                data-value="33"></td>
                         </tr>
                         <tr class="histogram__line">
-                            <td class="histogram__stat histogram__stat--filled histogram__stat--orange" data-value="28"></td>
-                            <td class="histogram__stat histogram__stat--transparent histogram__stat--orange" data-value="70"></td>
+                            <td class="histogram__stat histogram__stat--filled histogram__stat--orange" data-value="28">
+                            </td>
+                            <td class="histogram__stat histogram__stat--transparent histogram__stat--orange"
+                                data-value="70"></td>
                         </tr>
                         <tr class="histogram__line">
-                            <td class="histogram__stat histogram__stat--filled histogram__stat--orange" data-value="15"></td>
-                            <td class="histogram__stat histogram__stat--transparent histogram__stat--orange" data-value="35"></td>
+                            <td class="histogram__stat histogram__stat--filled histogram__stat--orange" data-value="15">
+                            </td>
+                            <td class="histogram__stat histogram__stat--transparent histogram__stat--orange"
+                                data-value="35"></td>
                         </tr>
                         <tr class="histogram__line">
-                            <td class="histogram__stat histogram__stat--filled histogram__stat--orange" data-value="8"></td>
-                            <td class="histogram__stat histogram__stat--transparent histogram__stat--orange" data-value="24"></td>
+                            <td class="histogram__stat histogram__stat--filled histogram__stat--orange" data-value="8">
+                            </td>
+                            <td class="histogram__stat histogram__stat--transparent histogram__stat--orange"
+                                data-value="24"></td>
                         </tr>
                     </tbody>
                 </table>
             </article>
             <article class="progress-section">
-                <progress class="progress-bar" aria-label="Progress Bar 1" id="progress-bar-1" value="55" max="116"></progress>
+                <progress class="progress-bar" aria-label="Progress Bar 1" id="progress-bar-1" value="55"
+                    max="116"></progress>
                 <label class="progress-description" for="progress-bar-1">55%</label>#
-                <progress class="progress-bar" aria-label="Progress Bar 2" id="progress-bar-2" value="76" max="116"></progress>
+                <progress class="progress-bar" aria-label="Progress Bar 2" id="progress-bar-2" value="76"
+                    max="116"></progress>
                 <label class="progress-description" for="progress-bar-2">76%</label>
             </article>
             <article class="area-charts-section">
