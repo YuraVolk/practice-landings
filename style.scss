@@ -1,4 +1,5 @@
 @use "sass:math";
+@use "sass:string";
 
 @namespace svg url('http://www.w3.org/2000/svg');
 
@@ -842,8 +843,113 @@ body {
     }
 }
 
-.histogram-section {
-    grid-area: histograms;
+.histogram {
+    @-webkit-keyframes histogramFill {
+        from {
+            flex-basis: 0;
+        }
+    }
+
+    @keyframes histogramFill {
+        from {
+            flex-basis: 0;
+        }
+    }
+
+    &-section {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-area: histograms;
+        width: 87%;
+    }
+    
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 0.28rem;
+    border-spacing: 0;
+
+    &__head > tr {
+        width: 100vh;
+    }
+
+    &:last-child &__heading:last-child {
+        border-right: 1px solid rgba($primaryActive, 0.5);
+        border-top-right-radius: 0.2rem;
+        border-bottom-right-radius: 0.2rem;
+    }
+
+    &:first-child &__heading:first-child {
+        border-top-left-radius: 0.2rem;
+        border-bottom-left-radius: 0.2rem;
+    }
+
+    &__heading {
+        width: 100vh;
+        font-size: 0.4rem;
+        padding: 0.4rem 0;
+        color: $primaryActive;
+        border: 1px solid rgba($primaryActive, 0.5);
+        border-right: 0;
+
+        &:last-child {
+            width: 50vh;
+            color: $tertiaryRed;
+            font-weight: 700;
+            white-space: nowrap;
+            margin-right: 0.45rem;
+            border-left: 0;
+        }
+    }
+
+    &__body {
+        display: flex;
+        width: 80%;
+        height: 60%;
+        gap: 0.3rem;
+        align-self: center;
+    }
+
+    &__line {
+        display: flex;
+        flex-direction: column-reverse;
+        flex: 1 1 0;
+    }
+
+    &__stat {
+        box-shadow: 3px 3px 3px #1f1a3e,
+            -1px -1px 4px #2d265a;
+        animation: 1.6s ease-in-out histogramFill;
+
+        &--filled#{&}--red {
+            background: linear-gradient(to bottom, $firstRed, $secondRed);
+        }
+
+        &--filled#{&}--blue {
+            background: linear-gradient(to top, $firstBlue, $secondBlue);
+        }
+
+        &--filled#{&}--orange {
+            background: linear-gradient(to top, $firstOrange, $secondOrange);
+        }
+
+        &--transparent#{&}--red {
+            background-color: $transparentRed;
+        }
+
+        &--transparent#{&}--blue {
+            background-color: $transparentBlue;
+        }
+
+        &--transparent#{&}--orange {
+            background-color: $transparentOrange;
+        }
+
+        @for $i from 1 through 100 {
+            &[data-value="#{$i}"] {
+                flex-basis: string.unquote("#{$i}%");
+            }
+        }
+    }
 }
 
 .progress-section {
