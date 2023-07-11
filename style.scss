@@ -953,10 +953,10 @@ body {
 
 .progress-section {
     display: grid;
-    margin-right: 17%;
-    grid-template-columns: 80% 12%;
+    margin-right: 14%;
+    grid-template-columns: 80% 10%;
     grid-auto-rows: 1fr;
-    gap: 0.5rem 8%;
+    gap: 0.5rem 10%;
     grid-area: progress-bars;
     align-self: center;
 }
@@ -1013,7 +1013,9 @@ body {
 }
 
 .progress-description {
-    font-size: 0.5rem;
+    font-size: 0.55rem;
+    font-weight: bold;
+    text-align: right;
     color: $primaryActive;
 }
 
