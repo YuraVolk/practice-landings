@@ -471,7 +471,7 @@ body {
 .main {
     display: grid;
     grid-template-columns: 33% 30% 37%;
-    grid-template-rows: 23.5% 24.5% 15% 7.5% 29.5%;
+    grid-template-rows: 23.5% 22.5% 17% 7.5% 29.5%;
     grid-template-areas: "todo-list todo-list todo-list"
         "pie-charts settings histograms"
         "area-charts settings progress-bars"
@@ -502,7 +502,7 @@ body {
         transform-origin: left center 0;
         box-shadow: inset 4vw 4vh 0 #0d143b;
         -webkit-clip-path: polygon(100% 0, 15% 16%, 1% 18%, 0 11%, 0 0);
-        clip-path: polygon(100% 0, 65% 66%, 1% 68%, 0 11%, 0 0);
+        clip-path: polygon(100% 0, 65% 76%, 1% 88%, 0 71%, 0 0);
         mask-size: 100vw 100vh;
         -webkit-mask-size: 100vw 100vh;
         mask-image: -webkit-gradient(linear, center bottom, center top,
@@ -952,7 +952,69 @@ body {
 }
 
 .progress-section {
+    display: grid;
+    margin-right: 17%;
+    grid-template-columns: 80% 12%;
+    grid-auto-rows: 1fr;
+    gap: 0.5rem 8%;
     grid-area: progress-bars;
+    align-self: center;
+}
+
+.progress-bar {
+    @-webkit-keyframes progressbarFill {
+        from {
+            width: 0;
+        }
+    }
+
+    @keyframes progressbarFill {
+        from {
+            width: 0;
+        }
+    }
+
+    display: none;
+
+    &-wrap {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        border-radius: 0.5rem;
+        background: linear-gradient(to right, #50398b 25%, #5f51b0);
+        box-shadow:  1px 1px 2px #48337d,
+             -1px -1px 2px #583f99;
+
+        &::before {
+            position: absolute;
+            top: 50%;
+            left: 0.5px;
+            transform: translateY(-50%);
+            height: 80%;
+            border-radius: 0.5rem;
+            content: "";
+            animation: 1.5s cubic-bezier(0.7, 0.4, 0.165, 1) progressbarFill;
+        }
+
+        &--blue::before {
+            background: linear-gradient(to right, $secondaryBlueLeft, $secondaryBlueRight);
+        }
+
+        &--orange::before {
+            background: linear-gradient(to right, $secondaryOrangeLeft, $secondaryOrangeRight);
+        }
+
+        @for $i from 0 through 116 {
+            &[data-value="#{$i}"]::before {
+                width: string.unquote("#{mapToRange($i, 0, 116, 0, 100)}%");
+            }
+        }
+    }
+}
+
+.progress-description {
+    font-size: 0.5rem;
+    color: $primaryActive;
 }
 
 .area-charts-section {
