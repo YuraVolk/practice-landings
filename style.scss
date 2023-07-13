@@ -1195,7 +1195,7 @@ body {
     &__anchor {
         position: relative;
         flex: 0 1 0;
-        font: 400 0.3rem/2.5 Arial, sans-serif;
+        font: 400 0.3rem/2.75 Arial, sans-serif;
         color: $primaryActive;
 
         &::before {
@@ -1213,7 +1213,7 @@ body {
     display: flex;
     place-content: stretch;
     width: 90%;
-    height: 8vw;
+    height: 9vw;
     margin-left: auto;
     animation: 1.5s cubic-bezier(1, 0.1, 0.165, 1) areaChartSlideIn;
 
@@ -1233,7 +1233,7 @@ body {
 
     &::after {
         position: absolute;
-        top: 41%;
+        top: 44%;
         left: calc(60%);
         transform: translateX(-26%);
         z-index: 2;
@@ -1278,7 +1278,7 @@ body {
 
         &:last-child {
             background-image: linear-gradient(to bottom, $secondBlue 80%, $violetSecondary 90%);
-            opacity: 0.9;
+            opacity: 0.8;
         }
     }
 
@@ -1289,6 +1289,158 @@ body {
     }
 }
 
-.line-chart-section {
-    grid-area: line-chart;
+.line-chart {
+    @mixin fixedBorder($borderSize) {
+        border-left-color: transparent;
+
+        &::before {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: $borderSize;
+            border-left: 1.5px dashed rgba($primaryActive, 0.5);
+            content: "";
+        }
+    }
+
+    &-section {
+        position: relative;
+        grid-area: line-chart;
+    }
+
+    &__head {
+        position: absolute;
+        top: 0.75vw;
+
+        > tr {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    &__anchor {
+        font: 400 0.4rem/2.75 Arial, sans-serif;
+        color: $primaryActive;
+    }
+
+    &-wrap {
+        width: 95%;
+        border-collapse: collapse;
+        border-spacing: 0;
+        border: 1.5px solid transparent;
+    }
+
+    &__cell {
+        position: relative;
+        width: 100vh;
+        height: 2vw;
+        border-left: 1.5px dashed rgba($primaryActive, 0.5);
+        border-bottom: 1.5px solid rgba($primaryActive, 0.25);
+
+        &:last-child {
+            border-bottom: 1.5px solid transparent;
+        }
+
+        > * {
+            position: absolute;
+        }
+    }
+
+    &__circle {
+        display: block;
+        right: 0;
+        transform: translateX(calc(50% + 0.75px));
+        z-index: 1;
+        width: 0.4rem;
+        height: 0.4rem;
+        border-radius: 50%;
+        background-color: $tertiaryRed;
+        content: "";
+
+        &--white {
+            transform: translate(calc(150% + 0.75px), -100%);
+            background-color: $primaryActive;
+
+        }
+
+        @for $i from 0 through 100 {
+            &[data-displacement="#{$i}"] {
+                top: string.unquote("#{$i}%");
+            }
+        }
+    }
+
+    &__peak-value {
+        top: -125%;
+        left: 150%;
+        font-size: 10px;
+        color: $primaryActive;
+    }
+
+    &__line:first-child &__cell {
+        border-left-color: transparent;
+    }
+
+    &__line:nth-child(2) &__cell:nth-child(2),
+    &__line:nth-child(2) &__cell:nth-child(5),
+    &__line:nth-child(2) &__cell:nth-child(6),
+    &__line:nth-child(2) &__cell:nth-child(8),
+    &__line:nth-child(2) &__cell:nth-child(9),
+    &__line:nth-child(2) &__cell:nth-child(10),
+    &__line:nth-child(2) &__cell:nth-child(11),
+    &__line:nth-child(3) &__cell:nth-child(2),
+    &__line:nth-child(3) &__cell:nth-child(9),
+    &__line:nth-child(4) &__cell:nth-child(2) {
+        border-left-color: transparent;
+    }
+
+    &__line:nth-child(2) &__cell:nth-child(3),
+    &__line:nth-child(2) &__cell:nth-child(7),
+    &__line:nth-child(3) &__cell:nth-child(5) {
+        @include fixedBorder(30%);
+    }
+
+    &__line:nth-child(2) &__cell:nth-child(4),
+    &__line:nth-child(3) &__cell:nth-child(10) {
+        @include fixedBorder(50%);
+    }
+
+    &__line:nth-child(3) &__cell:nth-child(6) {
+        @include fixedBorder(75%);
+    }
+
+    &__line:nth-child(3) &__cell:nth-child(8) {
+        @include fixedBorder(10%);
+    }
+
+    &__line:nth-child(4) &__cell:nth-child(9) {
+        @include fixedBorder(60%);
+    }
+
+    &-dashed-line {
+        position: absolute;
+        top: 17%;
+        left: 8%;
+        width: 78%;
+
+        &__path {
+            fill: none;
+            stroke: $primaryActive;
+            stroke-width: 2px;
+            stroke-dasharray: 4, 2;
+            stroke-linejoin: round;
+            opacity: 0.75;
+        }
+    }
+
+    &-red-line {
+        @extend .line-chart-dashed-line;
+
+        &__path {
+            fill: none;
+            stroke: $tertiaryRed;
+            stroke-width: 2.5px;
+        }
+    }
 }

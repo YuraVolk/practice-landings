@@ -10,6 +10,14 @@
 </head>
 
 <body>
+    <svg width="0" height="0">
+        <defs>
+            <clipPath id="lineChartCurve" clipPathUnits="objectBoundingBox">
+                <path
+                    d="M.5,138.6s39-142,68-138,35,60,61,64,60-35,60-35,26-16,40,1,31,68,66,67,42-45,56-53,30-15,30-10v139H.5Z" />
+            </clipPath>
+        </defs>
+    </svg>
     <main class="application">
         <header class="header">
             <div class="header-logotype">
@@ -233,13 +241,13 @@
             <article class="progress-section">
                 <div class="progress-bar-wrap progress-bar-wrap--blue" data-value="55">
                     <progress class="progress-bar" aria-label="Progress Bar 1" id="progress-bar-1" value="55"
-                    max="116"></progress>
-                </div>       
+                        max="116"></progress>
+                </div>
                 <label class="progress-description" for="progress-bar-1">55%</label>
                 <div class="progress-bar-wrap progress-bar-wrap--orange" data-value="76">
                     <progress class="progress-bar" aria-label="Progress Bar 2" id="progress-bar-2" value="76"
-                    max="116"></progress>
-                </div> 
+                        max="116"></progress>
+                </div>
                 <label class="progress-description" for="progress-bar-2">76%</label>
             </article>
             <article class="area-charts-section">
@@ -318,14 +326,17 @@
             <article class="line-chart-section">
                 <table class="line-chart-wrap">
                     <thead class="line-chart__head">
-                        <th class="line-chart__anchor">500</th>
-                        <th class="line-chart__anchor">400</th>
-                        <th class="line-chart__anchor">300</th>
-                        <th class="line-chart__anchor">200</th>
-                        <th class="line-chart__anchor">100</th>
+                        <tr>
+                            <th class="line-chart__anchor">500</th>
+                            <th class="line-chart__anchor">400</th>
+                            <th class="line-chart__anchor">300</th>
+                            <th class="line-chart__anchor">200</th>
+                            <th class="line-chart__anchor">100</th>
+                        </tr>
                     </thead>
                     <tbody class="line-chart">
                         <tr class="line-chart__line">
+                            <td class="line-chart__cell"></td>
                             <td class="line-chart__cell"></td>
                             <td class="line-chart__cell"></td>
                             <td class="line-chart__cell"></td>
@@ -344,8 +355,9 @@
                             <td class="line-chart__cell"></td>
                             <td class="line-chart__cell">
                                 <h3 class="line-chart__peak-value">425</h3>
-                                <span class="line-chart__circle line-chart__circle--white" data-displacement="8"></span>
+                                <span class="line-chart__circle line-chart__circle--white" data-displacement="38"></span>
                             </td>
+                            <td class="line-chart__cell"></td>
                             <td class="line-chart__cell"></td>
                             <td class="line-chart__cell"></td>
                             <td class="line-chart__cell"></td>
@@ -360,19 +372,20 @@
                             <td class="line-chart__cell"></td>
                             <td class="line-chart__cell"></td>
                             <td class="line-chart__cell">
-                                <span class="line-chart__circle" data-displacement="70"></span>
+                                <span class="line-chart__circle" data-displacement="67"></span>
                             </td>
                             <td class="line-chart__cell"></td>
                             <td class="line-chart__cell">
-                                <span class="line-chart__circle" data-displacement="53"></span>
+                                <span class="line-chart__circle" data-displacement="45"></span>
                             </td>
+                            <td class="line-chart__cell"></td>
                             <td class="line-chart__cell"></td>
                         </tr>
                         <tr class="line-chart__line">
-                            <td class="line-chart__cell">
-                                <span class="line-chart__circle" data-displacement="25"></span>
-                            </td>
                             <td class="line-chart__cell"></td>
+                            <td class="line-chart__cell">
+                                <span class="line-chart__circle" data-displacement="50"></span>
+                            </td>
                             <td class="line-chart__cell">
                                 <span class="line-chart__circle" data-displacement="0"></span>
                             </td>
@@ -383,8 +396,10 @@
                             <td class="line-chart__cell"></td>
                             <td class="line-chart__cell"></td>
                             <td class="line-chart__cell"></td>
+                            <td class="line-chart__cell"></td>
                         </tr>
                         <tr class="line-chart__line">
+                            <td class="line-chart__cell"></td>
                             <td class="line-chart__cell"></td>
                             <td class="line-chart__cell"></td>
                             <td class="line-chart__cell"></td>
@@ -398,6 +413,14 @@
                         </tr>
                     </tbody>
                 </table>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 382 138.7" class="line-chart-dashed-line">
+                    <path class="line-chart-dashed-line__path"
+                        d="M.5,138.6s39-142,68-138,35,60,61,64,60-35,60-35,26-16,40,1,31,68,66,67,42-45,56-53,30-15,30-10" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 377.4 143.1" class="line-chart-red-line">
+                    <path class="line-chart-red-line__path"
+                        d="M.3,142.9s20-51,29-46,26,38,37,35,19-69,32-60,27,34,40,17,33-96,53-88,45,70,56,73,28-16,38-31,19-18,23-16,19,16,35,43,34,29,34,29" />
+                </svg>
             </article>
         </section>
     </main>
