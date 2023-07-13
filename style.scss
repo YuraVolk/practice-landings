@@ -125,6 +125,12 @@ $backgroundViolet: #574aa6;
     }
 }
 
+@mixin hideText {
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
 html {
     font-size: 16px;
 }
@@ -483,7 +489,6 @@ body {
     padding: 4vh 0 0 4vw;
     border-top-left-radius: 12px;
     background: linear-gradient(to bottom right, $backgroundInnerLeft, $backgroundInnerRight);
-    transform: perspective(150px);
     overflow: hidden;
 
     > * {
@@ -1028,27 +1033,27 @@ body {
     padding-bottom: 2.2rem;
 }
 
+@-webkit-keyframes areaChartSlideIn {
+    from {
+        -webkit-clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+    }
+
+    to {
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    }
+}
+
+@keyframes areaChartSlideIn {
+    from {
+        clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+    }
+
+    to {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    }
+}
+
 .area-chart {
-    @-webkit-keyframes areaChartSlideIn {
-        from {
-            -webkit-clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
-        }
-
-        to {
-            -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-        }
-    }
-
-    @keyframes areaChartSlideIn {
-        from {
-            clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
-        }
-
-        to {
-            clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-        }
-    }
-
     &-wrap {
         display: flex;
         place-content: center center;
@@ -1071,11 +1076,9 @@ body {
     animation: 1.5s cubic-bezier(1, 0.1, 0.165, 1) areaChartSlideIn;
 
     &-section {
+        @include hideText;
         position: relative;
         flex: var(--length) 1 0;
-        text-indent: 100%;
-        white-space: nowrap;
-        overflow: hidden;
         -webkit-clip-path: polygon(
             0% calc(100% * (1 - var(--start)) + 3px),
             100% calc(100% * (1 - var(--end)) + 3px),
@@ -1153,8 +1156,137 @@ body {
     }
 }
 
-.combined-area-chart-section {
-    grid-area: combined-area-chart;
+.combined-area-chart {
+    &-section {
+        grid-area: combined-area-chart;
+    }
+
+    &-wrap {
+        position: relative;
+        width: 100%;
+        max-width: 17vw;
+        height: 10vw;
+        margin: 3vw auto 0 auto;
+    }
+
+    &__caption {
+        position: absolute;
+        top: -1rem;
+        right: 0.25rem;
+        font-size: 0.45rem;
+        text-align: right;
+        color: $contentMain;
+    }
+
+    &__head {
+        position: absolute;
+        top: -0.4rem;
+        left: -0.5rem;
+        bottom: 0;
+        width: 10%;
+
+        & > tr {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+    }
+
+    &__anchor {
+        position: relative;
+        flex: 0 1 0;
+        font: 400 0.3rem/2.5 Arial, sans-serif;
+        color: $primaryActive;
+
+        &::before {
+            position: absolute;
+            left: 1.5rem;
+            bottom: 0.5rem;
+            width: 866%;
+            height: 0.5px;
+            background-color: rgba($primaryActive, 0.5);
+            content: "";
+        }
+    }
+   
+    position: relative;
+    display: flex;
+    place-content: stretch;
+    width: 90%;
+    height: 8vw;
+    margin-left: auto;
+    animation: 1.5s cubic-bezier(1, 0.1, 0.165, 1) areaChartSlideIn;
+
+    &::before {
+        position: absolute;
+        top: -3%;
+        left: 60%;
+        bottom: 0;
+        transform: scaleX(2.5);
+        z-index: 1;
+        width: 1px;
+        height: 105%;
+        border-right: 0.1px dashed $primaryActive;
+        opacity: 0.4;
+        content: "";
+    }
+
+    &::after {
+        position: absolute;
+        top: 41%;
+        left: calc(60%);
+        transform: translateX(-26%);
+        z-index: 2;
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 50%;
+        background-color: #fc2d59;
+        outline: 3px solid #1a2954;
+        content: "";
+    }
+    
+    &__line {
+        position: relative;
+        flex-grow: var(--length);
+    }
+
+    &__line:last-child &__section {
+        border-radius: 0;
+    }
+
+    &__section {
+        @include hideText;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        border-top-left-radius: 100vh;
+        border-top-right-radius: 100vh;
+        clip-path: polygon(
+            0% calc(100% * (1 - var(--start))),
+            100% calc(100% * (1 - var(--end))),
+            100% 100%,
+            0% 100%
+        );
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+
+        &:first-child {
+            background-image: linear-gradient(to top, rgba($transparentRed, 0.5), $secondRed 27.5%);
+        }
+
+        &:last-child {
+            background-image: linear-gradient(to bottom, $secondBlue 80%, $violetSecondary 90%);
+            opacity: 0.9;
+        }
+    }
+
+    @for $i from 1 through 6 {
+        &__line &__section:nth-child(#{$i}) {
+            left: $i * -0.4px;
+        }
+    }
 }
 
 .line-chart-section {
