@@ -133,6 +133,32 @@ $backgroundViolet: #574aa6;
 
 html {
     font-size: 16px;
+
+    $startValue: 1050px;
+    $counter: 16px;
+    @while ($startValue < 1800px) {
+        @media (min-width: $startValue) {
+            font-size: $counter;
+        }
+
+        $counter: $counter + 1px;
+        $startValue: $startValue + 50px;
+    }
+
+    $startValue: 800px;
+    $counter: 16px;
+    @while ($startValue > 400px) {
+        @media (max-width: $startValue) {
+            font-size: $counter;
+        }
+
+        $counter: $counter - 0.25px;
+        $startValue: $startValue - 50px;
+    }
+
+    @media (max-width: 370px) {
+        font-size: 12.5px;
+    }
 }
 
 body {
@@ -158,6 +184,10 @@ body {
     border-radius: 16px;
     box-shadow: 19px 19px 38px rgba(#222, 0.4),
         -19px -19px 38px rgba(#222, 0.35);
+
+    @media (max-width: 800px) {
+        overflow-y: scroll;
+    }
 }
 
 .header {
@@ -171,6 +201,7 @@ body {
     }
 
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 6.5vw;
     flex: 1 1 100%;
@@ -328,6 +359,10 @@ body {
     font-size: 0.6rem;
     background: linear-gradient(to bottom, $backgroundPrimary, $backgroundTertiaryRight 3.5%);
 
+    @media (max-width: 800px) {
+       flex: 1 0 100%;
+    }
+
     &__heading {
         margin: 2.15vw 0 0 0;
         color: $contentMain;
@@ -391,6 +426,11 @@ body {
         &-wrap {
             width: 100%;
             margin: 5.3vh 0 0;
+
+            @media (max-width: 800px) {
+               width: 25%;
+               margin: 5.3vh auto 0 auto;
+            }
         }
 
         &__caption {
@@ -478,6 +518,7 @@ body {
     display: grid;
     grid-template-columns: 33% 30% 37%;
     grid-template-rows: 23.5% 22.5% 17% 7.5% 29.5%;
+    grid-auto-rows: 0;
     grid-template-areas: "todo-list todo-list todo-list"
         "pie-charts settings histograms"
         "area-charts settings progress-bars"
@@ -490,6 +531,11 @@ body {
     border-top-left-radius: 12px;
     background: linear-gradient(to bottom right, $backgroundInnerLeft, $backgroundInnerRight);
     overflow: hidden;
+
+    @media (max-width: 570px) {
+        padding: 0.5vh 0 0 0.5vw;
+        grid-template-rows: 27.5% 26.5% 16% 18.5% 10.5%;
+    }
 
     > * {
         z-index: 2;
@@ -648,6 +694,10 @@ body {
         gap: 2.6vw;
         grid-area: pie-charts;
         padding-right: 2.95vw;
+
+        @media (max-width: 570px) {
+            grid-template-columns: 100%;
+        }
     }
 
     &-wrap {
@@ -736,12 +786,20 @@ body {
         margin: 0;
         font-size: 1.48vw;
         color: $primaryActive;
+
+        @media (max-width: 800px) {
+            transform: translate(calc(-100% + 0.5px), 150%);
+        }
     }
 
     &__description {
         margin-top: 2.15vw;
         font-size: 0.87vw;
         color: $primaryActive;
+
+        @media (max-height: 685px) {
+            margin-top: 1vw;
+        }
     }
 }
 
@@ -749,6 +807,10 @@ body {
     &-section {
         display: grid;
         grid-area: settings;
+
+        @media (max-width: 570px) {
+            align-self: center;
+        }
     }
     
     display: flex;
@@ -760,6 +822,10 @@ body {
     background: linear-gradient(to bottom right, $backgroundTertiaryLeft, $backgroundTertiaryRight);
     box-shadow:  4px 4px 9px #17192f,
              -4px -4px 9px #373d73;
+
+    @media (max-width: 570px) {
+        height: min-content;
+    }
 
     &-checkbox {
         &-wrap {
@@ -784,6 +850,7 @@ body {
         &__fake-input {
             position: relative;
             grid-row: span 2;
+            align-self: center;
             width: 1.375rem;
             height: 0.7rem;
             border-radius: 0.6rem;
@@ -836,6 +903,12 @@ body {
             font-size: 0.5rem;
             text-transform: uppercase;
             color: $primaryActive;
+            white-space: nowrap;
+
+            @media (max-width: 570px) {
+                font-size: 0.4rem;
+                text-align: right;
+            }
         }
 
         &__description {
@@ -843,6 +916,11 @@ body {
             align-self: end;
             font-size: 0.49rem;
             color: $contentMain;
+
+            @media (max-width: 570px) {
+                font-size: 0.35rem;
+                text-align: right;
+            }
         }
     }
 }
@@ -964,6 +1042,12 @@ body {
     gap: 0.5rem 10%;
     grid-area: progress-bars;
     align-self: center;
+
+    @media (max-height: 685px) {
+        grid-row-start: area-charts;
+        grid-column-start: area-charts;
+        grid-column-end: 1;
+    }
 }
 
 .progress-bar {
@@ -1030,7 +1114,20 @@ body {
     grid-template-columns: 88%;
     grid-area: area-charts;
     gap: 1.4rem;
-    padding-bottom: 2.2rem;
+    padding-top: 2.2rem;
+    height: 70%;
+
+    @media (max-height: 685px) {
+        padding-top: 0;
+        grid-row-end: line-chart;
+        grid-row-start: progress-bars;
+        grid-column-start: progress-bars;
+        grid-column-end: line-chart;
+    }
+
+    @media (max-width: 800px) {
+        align-self: center;
+    }
 }
 
 @-webkit-keyframes areaChartSlideIn {
@@ -1159,6 +1256,7 @@ body {
 .combined-area-chart {
     &-section {
         grid-area: combined-area-chart;
+        align-self: center;
     }
 
     &-wrap {
@@ -1195,7 +1293,7 @@ body {
     &__anchor {
         position: relative;
         flex: 0 1 0;
-        font: 400 0.3rem/2.75 Arial, sans-serif;
+        font: 400 0.3rem/1.54vw Arial, sans-serif;
         color: $primaryActive;
 
         &::before {
@@ -1307,6 +1405,14 @@ body {
     &-section {
         position: relative;
         grid-area: line-chart;
+        align-self: center;
+
+        @media (max-height: 685px) {
+            display: grid;
+            grid-row-end: area-charts 2;
+            grid-column-start: area-charts;
+            grid-column-end: 1;
+        }
     }
 
     &__head {
@@ -1320,7 +1426,7 @@ body {
     }
 
     &__anchor {
-        font: 400 0.4rem/2.75 Arial, sans-serif;
+        font: 400 0.4rem/2.08vw Arial, sans-serif;
         color: $primaryActive;
     }
 
@@ -1329,6 +1435,7 @@ body {
         border-collapse: collapse;
         border-spacing: 0;
         border: 1.5px solid transparent;
+        aspect-ratio: 2/1;
     }
 
     &__cell {
@@ -1398,7 +1505,7 @@ body {
     &__line:nth-child(2) &__cell:nth-child(3),
     &__line:nth-child(2) &__cell:nth-child(7),
     &__line:nth-child(3) &__cell:nth-child(5) {
-        @include fixedBorder(30%);
+        @include fixedBorder(40%);
     }
 
     &__line:nth-child(2) &__cell:nth-child(4),
@@ -1406,7 +1513,8 @@ body {
         @include fixedBorder(50%);
     }
 
-    &__line:nth-child(3) &__cell:nth-child(6) {
+    &__line:nth-child(3) &__cell:nth-child(6),
+    &__line:nth-child(4) &__cell:nth-child(9) {
         @include fixedBorder(75%);
     }
 
@@ -1414,14 +1522,12 @@ body {
         @include fixedBorder(10%);
     }
 
-    &__line:nth-child(4) &__cell:nth-child(9) {
-        @include fixedBorder(60%);
-    }
+
 
     &-dashed-line {
         position: absolute;
-        top: 17%;
-        left: 8%;
+        top: 2.72vw;
+        left: 2.02vw;
         width: 78%;
 
         &__path {
