@@ -1,4 +1,28 @@
 @font-face {
+    font-family: Quodlibet;
+    src: url("./fonts/QuodlibetSans-Light.woff2") format("woff2"),
+        url("/fonts/QuodlibetSans-Light.woff") format("woff");
+    font-display: swap;
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Quodlibet;
+    src: url("./fonts/QuodlibetSans-Regular.woff2") format("woff2"),
+        url("/fonts/QuodlibetSans-Regular.woff") format("woff");
+    font-display: swap;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Quodlibet;
+    src: url("./fonts/QuodlibetSans-Bold.woff2") format("woff2"),
+        url("/fonts/QuodlibetSans-Bold.woff") format("woff");
+    font-display: swap;
+    font-weight: 700;
+}
+
+@font-face {
     font-family: Icons;
     src: url("fonts/icomoon.eot?2zn7mb");
     src: url("fonts/icomoon.eot?2zn7mb#iefix") format("embedded-opentype"),
