@@ -1,0 +1,69 @@
+@font-face {
+    font-family: Icons;
+    src: url("fonts/icomoon.eot?2zn7mb");
+    src: url("fonts/icomoon.eot?2zn7mb#iefix") format("embedded-opentype"),
+        url("fonts/icomoon.ttf?2zn7mb") format("truetype"),
+        url("fonts/icomoon.woff?2zn7mb") format("woff"),
+        url("fonts/icomoon.svg?2zn7mb#icomoon") format("svg");
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+%font-icon {
+    font-family: Icons !important;
+    speak: never;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+%icon-microsoft::before {
+    @extend %font-icon;
+    content: "\1fa9f";
+}
+
+%icon-baidu::before {
+    @extend %font-icon;
+    content: "\1f43e";
+}
+
+%icon-ibm::before {
+    @extend %font-icon;
+    content: "\1f5c2";
+}
+
+%icon-world::before {
+    @extend %font-icon;
+    content: "\1f310";
+}
+
+%icon-google-plus::before {
+    @extend %font-icon;
+    content: "\1f50e";
+}
+
+%icon-facebook::before {
+    @extend %font-icon;
+    content: "\1f3e2";
+}
+
+%icon-twitter::before {
+    @extend %font-icon;
+    content: "\1f424";
+}
+
+%icon-sina-weibo::before {
+    @extend %font-icon;
+    content: "\1f3e6";
+}
+
+%icon-youtube::before {
+    @extend %font-icon;
+    content: "\1f4fc";
+}
