@@ -52,11 +52,6 @@
     content: "\1fa9f";
 }
 
-%icon-baidu::before {
-    @extend %font-icon;
-    content: "\1f43e";
-}
-
 %icon-ibm::before {
     @extend %font-icon;
     content: "\1f5c2";
@@ -80,11 +75,6 @@
 %icon-twitter::before {
     @extend %font-icon;
     content: "\1f424";
-}
-
-%icon-sina-weibo::before {
-    @extend %font-icon;
-    content: "\1f3e6";
 }
 
 %icon-youtube::before {
