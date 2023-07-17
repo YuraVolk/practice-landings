@@ -1,3 +1,12 @@
+@use "sass:math";
+
+$primaryActive: #4659cd;
+$secondaryActive: #5e73ff;
+$tertiaryActive: #b3d1ed;
+$primaryGray: #5c5c5c;
+$primaryYellow: #f6cc2c;
+$white: #fff;
+
 @font-face {
     font-family: Quodlibet;
     src: url("./fonts/QuodlibetSans-Light.woff2") format("woff2"),
@@ -23,6 +32,13 @@
 }
 
 @font-face {
+    font-family: "Leto Sans";
+    src: url("./fonts/LetoSansCondensed-Bold.woff2") format("woff2")
+        url("./fonts/LetoSansCondensed-Bold.woff") format("woff2");
+    font-display: swap;
+}
+
+@font-face {
     font-family: Icons;
     src: url("fonts/icomoon.eot?2zn7mb");
     src: url("fonts/icomoon.eot?2zn7mb#iefix") format("embedded-opentype"),
@@ -32,6 +48,14 @@
     font-weight: normal;
     font-style: normal;
     font-display: block;
+}
+
+@function getViewportWidth($targetWidth, $baseWidth: 1300px) {
+    @if ($targetWidth >= $baseWidth) {
+        @error "Target width should be less than base width";
+    }
+
+    @return math.div($targetWidth * 100vw, $baseWidth);
 }
 
 %font-icon {
@@ -80,4 +104,160 @@
 %icon-youtube::before {
     @extend %font-icon;
     content: "\1f4fc";
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Quodlibet, sans-serif;
+}
+
+.button {
+    padding: getViewportWidth(12px) getViewportWidth(19.5px);
+    border: none;
+    border-radius: getViewportWidth(21.5px);
+    font-size: getViewportWidth(17.5px);
+
+    &--purple {
+        background-color: #828efe;
+    }
+}
+
+.header {
+    position: relative;
+    width: 100%;
+    height: getViewportWidth(595px);
+    background-color: #4657cb;
+    clip-path: url(#headerCurve);
+
+    > * {
+        position: relative;
+        z-index: 1;
+    }
+
+    &::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: getViewportWidth(70px);
+        box-shadow: 3px 3px 6px rgba(#000, 0.2);
+        content: "";
+    }
+
+    &::after {
+        position: absolute;
+        top: getViewportWidth(70px);
+        left: 50%;
+        transform: translateX(-50%);
+        width: getViewportWidth(1200px);
+        height: getViewportWidth(400px);
+        background-image: url("./img/background.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        box-shadow: 0 0 1.5vw 1.5vw #4657cb inset;
+        content: "";
+    }
+
+    &-navigation {
+        &-wrap {
+            width: 100%;
+            background-color: $white;
+        }
+
+        position: relative;
+        display: flex;
+        align-items: center;
+        width: getViewportWidth(945px);
+        height: getViewportWidth(70px);
+        margin: 2px auto 0 auto;
+       
+        &__logotype {
+            flex-grow: 1;
+            font: 700 getViewportWidth(22px) "Leto Sans", sans-serif;
+            color: $primaryActive;
+            text-transform: uppercase;
+
+            &--yellow {
+                color: $primaryYellow;
+            }
+        }
+
+        &__link {
+            padding: getViewportWidth(30.5px) getViewportWidth(14.5px) getViewportWidth(22.5px) getViewportWidth(14.5px);
+            font-size: getViewportWidth(14px);
+            color: $primaryGray;
+            text-decoration: none;
+
+            &--active {
+                background-color: $secondaryActive;
+                color: $white;
+            }
+        }
+        
+        &__settings {
+            display: flex;
+            justify-content: flex-end;
+            flex-grow: 1;
+        }
+
+        &__setting {
+            width: getViewportWidth(40px);
+            padding: getViewportWidth(6px);
+            border: getViewportWidth(2px) solid $tertiaryActive;
+            border-radius: getViewportWidth(4.5px);
+            font-size: getViewportWidth(12px);
+            background-color: transparent;
+
+            &:first-child {
+                border-right: none;
+            }
+            
+            &:last-child {
+                position: relative;
+                left: getViewportWidth(-3px);
+                box-sizing: border-box;
+            }
+
+            &--active {
+                border-color: $primaryActive;
+                background-color: $primaryActive;
+                color: $white;
+            }
+        }
+    }
+
+    &__image {
+        position: absolute;
+        top: calc(getViewportWidth(90px) + 2px);
+        right: getViewportWidth(225px);
+        z-index: 1;
+        width: getViewportWidth(510px);
+        height: getViewportWidth(445px);
+        filter: drop-shadow(-2.5mm 2mm 2mm rgba(#000, 0.2));
+    }
+
+    &-visual-circles ~ * {
+        margin-left: getViewportWidth(285px);
+        font-weight: 400;
+        color: $white;
+    }
+
+    &__subheading {
+        margin-top: getViewportWidth(76px);
+        margin-bottom: getViewportWidth(24.5px);
+        font-size: getViewportWidth(17.5px);
+    }
+
+    &__heading {
+        margin-top: 0;
+        margin-bottom: getViewportWidth(32px);
+    }
+
+    &__description {
+        margin-top: 0;
+        margin-bottom: getViewportWidth(36.5px);
+        max-width: getViewportWidth(210px);
+        font-size: getViewportWidth(16px);
+    }
 }

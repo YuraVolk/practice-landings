@@ -10,20 +10,23 @@
 </head>
 
 <body>
+    <img class="header__image" alt="" src="./img/header-image.png">
     <header class="header">
-        <nav class="header-navigation">
-            <span class="header-navigation__logotype">
-                <span class="header-navigation__logotype--yellow">Y</span>ou <span
-                    class="header-navigation__logotype--yellow">L</span>ogo
-            </span>
-            <a href="#" class="header-navigation__link header-navigation__link--active" lang="zh">关于我们</a>
-            <a href="#" class="header-navigation__link" lang="zh">联络我们</a>
-            <a href="#" class="header-navigation__link" lang="zh">公司篇介</a>
-            <a href="#" class="header-navigation__link" lang="zh">了解更多</a>
-            <a href="#" class="header-navigation__link" lang="zh">般务团队</a>
-            <div class="header-navigation__settings" lang="zh">
-                <button class="header-navigation__setting">简化</button>
-                <button class="header-navigation__setting">传统</button>
+        <nav class="header-navigation-wrap">
+            <div class="header-navigation">
+                <span class="header-navigation__logotype">
+                    <span class="header-navigation__logotype--yellow">Y</span>ou <span
+                        class="header-navigation__logotype--yellow">L</span>ogo
+                </span>
+                <a href="#" class="header-navigation__link header-navigation__link--active" lang="zh">关于我们</a>
+                <a href="#" class="header-navigation__link" lang="zh">联络我们</a>
+                <a href="#" class="header-navigation__link" lang="zh">公司篇介</a>
+                <a href="#" class="header-navigation__link" lang="zh">了解更多</a>
+                <a href="#" class="header-navigation__link" lang="zh">般务团队</a>
+                <div class="header-navigation__settings" lang="zh">
+                    <button class="header-navigation__setting">简化</button>
+                    <button class="header-navigation__setting header-navigation__setting--active">传统</button>
+                </div>
             </div>
         </nav>
         <div class="header-visual-circles">
@@ -89,7 +92,6 @@
             <span class="header-visual-circle--white"></span>
             <span class="header-visual-circle--blue"></span>
         </div>
-        <img class="header__image" alt="" src="./img/header-image.png">
         <h2 class="header__subheading" lang="zh">公司篇介</h2>
         <h1 class="header__heading" lang="zh">商业信息管理数据管理</h1>
         <p class="header__description">
@@ -193,6 +195,13 @@
             <span class="footer__icon footer__icon--google-plus"></span>
         </section>
     </footer>
+    <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0">
+        <defs>
+            <clipPath id="headerCurve" clipPathUnits="objectBoundingBox">
+                <path d="M1,0.667 V0 H0 v0.667 c0,0,0.091,0.111,0.545,0.111 c0,0,0,0,0,0 c0.273,0,0.364,0.111,0.455,0.222 V0.667" />
+            </clipPath>
+        </defs>
+    </svg>      
 </body>
 
 </html>
