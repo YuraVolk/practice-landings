@@ -130,9 +130,9 @@ body {
     background-color: #4657cb;
     clip-path: url(#headerCurve);
 
-    > * {
+    > :not(.header-visual-circles) {
         position: relative;
-        z-index: 1;
+        z-index: 2;
     }
 
     &::before {
@@ -140,8 +140,9 @@ body {
         top: 0;
         left: 0;
         right: 0;
+        z-index: 2;
         height: getViewportWidth(70px);
-        box-shadow: 3px 3px 6px rgba(#000, 0.2);
+        box-shadow: 5px 5px 12px rgba(#000, 0.25);
         content: "";
     }
 
@@ -235,6 +236,93 @@ body {
         width: getViewportWidth(510px);
         height: getViewportWidth(445px);
         filter: drop-shadow(-2.5mm 2mm 2mm rgba(#000, 0.2));
+    }
+
+    &-visual-circles {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        overflow: hidden;
+        z-index: 1;
+        display: flex;
+        gap: getViewportWidth(11px);
+        pointer-events: none;
+
+        &__row {
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            gap: getViewportWidth(5px);
+            margin-top: getViewportWidth(80px);
+        }
+
+        &__row:first-child {
+            padding-top: getViewportWidth(26.5px);
+            margin-left: getViewportWidth(75px);
+        }
+
+        &__row:nth-child(2) {
+            margin-right: getViewportWidth(36.5px);
+            padding-top: getViewportWidth(3.5px);
+        }
+
+        &__row:nth-child(3) {
+            position: absolute;
+            top: getViewportWidth(210px);
+            left: getViewportWidth(95.5px);
+            margin-top: 0;
+        }
+
+        > span {
+            position: absolute;
+            display: block;
+            border-radius: 50%;
+        }
+    }
+
+    &-visual-circle {
+        display: block;
+        flex: 0 0 getViewportWidth(7px);
+        width: getViewportWidth(7px);
+        height: getViewportWidth(7px);
+        border-radius: 50%;
+        background-color: #6981da;
+
+        &--blue {
+            background-color: #3b48b8;
+
+            &:not(:last-child) {
+                top: getViewportWidth(-153px);
+                left: getViewportWidth(27px);
+                width: getViewportWidth(290px);
+                height: getViewportWidth(290px);
+            }
+
+            &:last-child {
+                top: getViewportWidth(55px);
+                left: getViewportWidth(1135px);
+                width: getViewportWidth(265px);
+                height: getViewportWidth(265px);
+            }
+        }
+
+        &--border {
+            top: getViewportWidth(320px);
+            left: getViewportWidth(35px);
+            width: getViewportWidth(145px);
+            height: getViewportWidth(145px);
+            border: getViewportWidth(20px) solid #5467ce;
+        }
+
+        &--white {
+            top: getViewportWidth(5px);
+            right: getViewportWidth(222px);
+            width: getViewportWidth(130px);
+            height: getViewportWidth(130px);
+            background-color: #5276cc;
+        }
     }
 
     &-visual-circles ~ * {
