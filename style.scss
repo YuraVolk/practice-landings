@@ -50,6 +50,29 @@ $white: #fff;
     font-display: block;
 }
 
+@mixin fadingBackground {
+    position: relative;
+    background-color: #4657cb;
+
+    > :not(.header-visual-circles) {
+        position: relative;
+        z-index: 2;
+    }
+
+    &::after {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: getViewportWidth(1200px);
+        height: getViewportWidth(400px);
+        background-image: url("./img/background.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        box-shadow: 0 0 1.5vw 1.5vw #4657cb inset;
+        content: "";
+    }
+}
+
 @function getViewportWidth($targetWidth, $baseWidth: 1300px) {
     @if ($targetWidth >= $baseWidth) {
         @error "Target width should be less than base width";
@@ -129,16 +152,12 @@ body {
 }
 
 .header {
+    @include fadingBackground;
     position: relative;
     width: 100%;
     height: getViewportWidth(595px);
     background-color: #4657cb;
     clip-path: url(#headerCurve);
-
-    > :not(.header-visual-circles) {
-        position: relative;
-        z-index: 2;
-    }
 
     &::before {
         position: absolute;
@@ -152,17 +171,7 @@ body {
     }
 
     &::after {
-        position: absolute;
         top: getViewportWidth(70px);
-        left: 50%;
-        transform: translateX(-50%);
-        width: getViewportWidth(1200px);
-        height: getViewportWidth(400px);
-        background-image: url("./img/background.png");
-        background-size: cover;
-        background-repeat: no-repeat;
-        box-shadow: 0 0 1.5vw 1.5vw #4657cb inset;
-        content: "";
     }
 
     &-navigation {
@@ -390,6 +399,67 @@ body {
             margin-top: 0;
             margin-bottom: getViewportWidth(44px);
             font: 600 unquote("#{getViewportWidth(15px)}/2") Qudolibet, sans-serif;
+        }
+    }
+}
+
+.advantages-section {
+    @include fadingBackground;
+    padding-top: getViewportWidth(60px);
+    padding-bottom: getViewportWidth(64px);
+    color: $white;
+    overflow: hidden;
+
+    &::after {
+        top: 0;
+    }
+
+    > * {
+        width: getViewportWidth(730px);
+        margin: 0 auto;
+    }
+
+    &__heading {
+        margin-bottom: getViewportWidth(32px);
+        font-size: getViewportWidth(33px);
+    }
+}
+
+.advantages {
+    display: flex;
+    gap: getViewportWidth(15px);
+    padding: 0;
+
+    &-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: getViewportWidth(18px);
+        flex: 1 1 0;
+        width: 0;
+        height: getViewportWidth(171px);
+        padding: getViewportWidth(23px) 0;
+        box-sizing: border-box;
+        aspect-ratio: 1/1;
+        background-color: $primaryActive;
+        box-shadow: getViewportWidth(6px) getViewportWidth(6px) getViewportWidth(12px) rgba($color: #000000, $alpha: 0.1),
+             getViewportWidth(-6px) getViewportWidth(-6px) getViewportWidth(12px) rgba($color: #000000, $alpha: 0.1);
+
+        &__image {
+            width: getViewportWidth(43.5px);
+            height: getViewportWidth(43.5px);
+            padding: getViewportWidth(12px);
+            border: getViewportWidth(3px) #9ba1dc solid;
+            border-radius: 50%;
+            background-color: $white;
+            outline: #a4b1e5 4px solid;
+        }
+
+        &__heading {
+            margin: 0;
+            font-size: getViewportWidth(18px);
+            font-weight: 400;
+            letter-spacing: 1px;
         }
     }
 }
