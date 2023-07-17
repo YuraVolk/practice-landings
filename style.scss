@@ -33,7 +33,7 @@ $white: #fff;
 
 @font-face {
     font-family: "Leto Sans";
-    src: url("./fonts/LetoSansCondensed-Bold.woff2") format("woff2")
+    src: url("./fonts/LetoSansCondensed-Bold.woff2") format("woff2"),
         url("./fonts/LetoSansCondensed-Bold.woff") format("woff2");
     font-display: swap;
 }
@@ -120,6 +120,11 @@ body {
 
     &--purple {
         background-color: #828efe;
+    }
+
+    &--blue {
+        background-color: #316dfb;
+        color: $white;
     }
 }
 
@@ -340,6 +345,7 @@ body {
     &__heading {
         margin-top: 0;
         margin-bottom: getViewportWidth(32px);
+        font-size: getViewportWidth(33px);
     }
 
     &__description {
@@ -347,5 +353,43 @@ body {
         margin-bottom: getViewportWidth(36.5px);
         max-width: getViewportWidth(210px);
         font-size: getViewportWidth(16px);
+    }
+}
+
+.head-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: getViewportWidth(86px);
+    margin-bottom: getViewportWidth(88px);
+
+    &-article {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        width: getViewportWidth(710px);
+
+        &__image {
+            position: relative;
+            top: getViewportWidth(-38px);
+            width: getViewportWidth(367px);
+            height: getViewportWidth(320px);
+        }
+
+        &__description {
+            width: getViewportWidth(285px);
+        }
+
+        &__heading {
+            margin-top: getViewportWidth(40px);
+            margin-bottom: getViewportWidth(20px);
+            font: 700 getViewportWidth(30.5px) "Leto Sans", sans-serif;
+        }
+
+        &__teaser {
+            margin-top: 0;
+            margin-bottom: getViewportWidth(44px);
+            font: 600 unquote("#{getViewportWidth(15px)}/2") Qudolibet, sans-serif;
+        }
     }
 }
