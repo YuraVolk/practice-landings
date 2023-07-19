@@ -133,6 +133,10 @@ body {
     margin: 0;
     padding: 0;
     font-family: Quodlibet, sans-serif;
+
+    > svg {
+        position: absolute;
+    }
 }
 
 .button {
@@ -529,6 +533,126 @@ body {
                 left: getViewportWidth($left * 2px);
             }
             $counter: $counter + 1;
+        }
+    }
+}
+
+footer {
+    overflow: hidden;
+    background-color: #f5f6fa;
+}
+
+.partners-section {
+    position: relative;
+    height: getViewportWidth(30px);
+}
+
+.partners-list {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%, 50%);
+    display: flex;
+    align-items: center;
+    gap: getViewportWidth(25px);
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+
+    &-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &__logo {
+            width: getViewportWidth(40px);
+            height: getViewportWidth(16px);
+        }
+
+        &__icon {
+            color: #b7b8bc;
+
+            &--microsoft {
+                @extend %icon-microsoft;
+                font-size: getViewportWidth(11px);
+                
+                &::before {
+                    position: relative;
+                    top: getViewportWidth(0.5px);
+                    margin-right: getViewportWidth(2px);
+                }
+            }
+
+            &--ibm {
+                @extend %icon-ibm;
+                font-size: getViewportWidth(20px);
+                line-height: 0;
+            }
+        }
+    }
+}
+
+.footer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    height: getViewportWidth(116px);
+    background-color: #ddf0ff;
+    clip-path: url(#footerCurve);
+
+    &-inner {
+        display: flex;
+        width: getViewportWidth(475px);
+        margin-bottom: getViewportWidth(20px);
+    }
+
+    &__mark {
+        flex-grow: 1;
+        font-size: getViewportWidth(8px);
+        font-weight: 700;
+        letter-spacing: -1px;
+        color: #000;
+    }
+
+    &-navigation {
+        display: flex;
+        align-items: center;
+        gap: getViewportWidth(13px);
+        font-size: getViewportWidth(6px);
+
+        &__link {
+            font-weight: bold;
+            text-decoration: none;
+            color: darken(#b7b8bc, 20);
+        }
+    }
+
+    &__icons {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: getViewportWidth(6px);
+        flex-grow: 1;
+    }
+
+    &__icon {
+        font-size: getViewportWidth(9px);
+        color: #000;
+
+        &--twitter {
+            @extend %icon-twitter;
+        }
+
+        &--facebook {
+            @extend %icon-facebook;
+        }
+
+        &--youtube {
+            @extend %icon-youtube;
+        }
+
+        &--google-plus {
+            @extend %icon-google-plus;
         }
     }
 }
