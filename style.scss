@@ -1,0 +1,525 @@
+@use "sass:math";
+
+$primaryWhite: #fdf9fb;
+$secondaryWhite: rgba($primaryWhite, 0.8);
+$primaryOrange: #fc633a;
+$primaryDark: #1a1a1a;
+$secondaryDark: #787878;
+$backgroundSecondary: #f0f4fd;
+
+@font-face {
+    font-family: Quodlibet;
+    src: url("./fonts/QuodlibetSans-Light.woff2") format("woff2"),
+        url("/fonts/QuodlibetSans-Light.woff") format("woff");
+    font-display: swap;
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Quodlibet;
+    src: url("./fonts/QuodlibetSans-Regular.woff2") format("woff2"),
+        url("/fonts/QuodlibetSans-Regular.woff") format("woff");
+    font-display: swap;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Quodlibet;
+    src: url("./fonts/QuodlibetSans-Bold.woff2") format("woff2"),
+        url("/fonts/QuodlibetSans-Bold.woff") format("woff");
+    font-display: swap;
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: "Leto Sans";
+    src: url("./fonts/LetoSansCondensed-Bold.woff2") format("woff2"),
+        url("./fonts/LetoSansCondensed-Bold.woff") format("woff2");
+    font-display: swap;
+}
+
+@function getViewportWidth($targetWidth, $baseWidth: 1300px) {
+    @if ($targetWidth >= $baseWidth) {
+        @error "Target width should be less than base width";
+    }
+
+    @return math.div($targetWidth * 100vw, $baseWidth);
+}
+
+@mixin placeBackgroundBehind {
+    position: absolute;
+    z-index: -1;
+    pointer-events: none;
+}
+
+@mixin navigation {
+    &-navigation {
+        display: flex;
+        align-items: center;
+        gap: getViewportWidth(30px);
+        width: getViewportWidth(950px);
+
+        &__logo {
+            flex-grow: 1;
+            margin-left: getViewportWidth(12px);
+            font-weight: 500;
+            font-size: getViewportWidth(26px);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: $primaryWhite;
+        }
+
+        &__link {
+            font-size: getViewportWidth(14px);
+            text-decoration: none;
+            color: $secondaryWhite;
+        }
+    }
+}
+
+body {
+    margin: 0;
+    border-top: #f9ba70 solid getViewportWidth(6px);
+    padding: 0;
+    font-family: Quodlibet, sans-serif;
+
+    & > svg {
+        position: absolute;
+    }
+}
+
+body {
+    background-color: #f3f3f3;
+}
+
+button {
+    cursor: pointer;
+}
+
+.button {
+    border: getViewportWidth(2px) solid $secondaryWhite;
+    border-radius: getViewportWidth(32px);
+    padding: getViewportWidth(8px) getViewportWidth(18px);
+    font-size: getViewportWidth(14px);
+    line-height: 1.3;
+    background-color: transparent;
+    color: $secondaryWhite;
+}
+
+.header {
+    @include navigation;
+    position: relative;
+    width: 100%;
+    height: getViewportWidth(830px);
+    padding-top: getViewportWidth(18px);
+    clip-path: url(#headerCurve);
+    background-color: $primaryOrange;
+    color: $primaryWhite;
+    overflow: hidden;
+
+    & > :not(.button ~ *) {
+        margin-left: getViewportWidth(180px);
+    }
+
+    &__subheading {
+        font-weight: 300;
+        font-size: getViewportWidth(15px);
+        margin: 0 0 getViewportWidth(20px) 0;
+        color: $secondaryWhite;
+
+        &:first-of-type {
+            margin-top: getViewportWidth(265px);
+        }
+    }
+
+    &__heading {
+        font-weight: 400;
+        font-size: getViewportWidth(32px);
+        font-family: "Leto Sans";
+        margin: 0 0 getViewportWidth(14px) 0;
+    }
+
+    &__description {
+        max-width: getViewportWidth(360px);
+        margin: 0 0 getViewportWidth(40px) 0;
+        font-size: getViewportWidth(16px);
+        font-weight: 300;
+        color: $secondaryWhite;
+    }
+
+    &__image {
+        @include placeBackgroundBehind;
+        top: getViewportWidth(80px);
+        left: getViewportWidth(170px);
+        width: 100vw - getViewportWidth(170px);
+        height: getViewportWidth(637px);
+    }
+
+    &-visuals {
+        @include placeBackgroundBehind;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        &__lines {
+            position: absolute;
+            width: getViewportWidth(25px);
+            height: getViewportWidth(2px);
+            background-color: $primaryWhite;
+
+            &::before {
+                position: absolute;
+                top: getViewportWidth(-12px);
+                left: getViewportWidth(-16px);
+                width: getViewportWidth(85px);
+                height: getViewportWidth(2px);
+                background-color: $primaryWhite;
+                content: "";
+            }
+
+            &::after {
+                position: absolute;
+                bottom: getViewportWidth(-12px);
+                left: getViewportWidth(-17.5px);
+                width: getViewportWidth(60px);
+                height: getViewportWidth(2px);
+                background-color: $primaryWhite;
+                content: "";
+            }
+        }
+
+        $placements: (152: 112, 675: 73, 1140: 133, 656: 676, 18: 600, 1188: 640);
+        $counter: 1;
+        @each $left, $top in $placements {
+            &__lines:nth-child(#{$counter}) {
+                top: getViewportWidth($top * 1px - 2px);
+                left: getViewportWidth($left * 1px - 2px);
+            }
+            $counter: $counter + 1;
+        }
+
+        &__lines:nth-child(even) {
+            transform: scaleX(-1);
+        }
+
+        &__lines:nth-child(odd),
+        &__lines:nth-child(odd)::before,
+        &__lines:nth-child(odd)::after {
+            height: 3px;
+        }
+    }
+
+    &-slides {
+        position: absolute;
+        right: 0;
+        left: 0;
+        bottom: getViewportWidth(76px);
+        display: flex;
+        justify-content: center;
+        gap: getViewportWidth(10px);
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+
+        &__button {
+            width: getViewportWidth(12px);
+            height: getViewportWidth(12px);
+            box-sizing: border-box;
+            border: 2px solid $secondaryWhite;
+            border-radius: 50%;
+
+            &--active {
+                background-color: $primaryWhite;
+            }
+        }
+    }
+}
+
+.header-subsection {
+    padding: getViewportWidth(78px) 0 getViewportWidth(110px) 0;
+
+    &-navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: getViewportWidth(925px);
+        margin: 0 auto;
+
+        &__link {
+            padding: getViewportWidth(21px) getViewportWidth(40px);
+            font-size: getViewportWidth(17px);
+            font-weight: 600;
+            color: $secondaryDark;
+            text-decoration: none;
+
+            &--active {
+                padding: getViewportWidth(19px) getViewportWidth(38px);
+                border: $primaryOrange 2px solid;
+                border-radius: getViewportWidth(9px);
+                color: $primaryOrange;
+            }
+        }
+    }
+}
+
+.about {
+    font-size: 0;
+    text-align: center;
+
+    &__heading {
+        margin: 0 auto;
+        font-size: getViewportWidth(27px);
+        font-family: "Leto Sans";
+        color: $primaryDark;
+    }
+
+    &__description {
+        font-size: getViewportWidth(16px);
+        margin: getViewportWidth(24px) auto getViewportWidth(36px) auto;
+        max-width: getViewportWidth(500px);
+        color: $secondaryDark;
+        text-align: center;
+    }
+
+    &-advantage {
+        display: inline-flex;
+        align-items: center;
+        gap: getViewportWidth(20px);
+        width: getViewportWidth(475px);
+        height: getViewportWidth(280px);
+        padding: 0 getViewportWidth(28px) 0 getViewportWidth(36px);
+        box-sizing: border-box;
+        text-align: left;
+        color: $primaryWhite;
+
+        &:first-of-type {
+            border-top-left-radius: getViewportWidth(8px);
+            border-bottom-left-radius: getViewportWidth(8px);
+        }
+
+        &:last-of-type {
+            border-top-right-radius: getViewportWidth(8px);
+            border-bottom-right-radius: getViewportWidth(8px);
+        }
+
+        &--blue {
+            background-color: #33304b;
+        }
+
+        &--orange {
+            background-color: $primaryOrange;
+        }
+
+        &__image {
+            width: getViewportWidth(180px);
+            height: getViewportWidth(180px);
+        }
+
+        &-wrap {
+            color: $secondaryWhite;
+        }
+
+        &__heading {
+            margin: 0;
+            font-size: getViewportWidth(13.5px);
+            font-weight: 400;
+        }
+
+        &__description {
+            font-size: getViewportWidth(15px);
+            margin: getViewportWidth(22px) 0 getViewportWidth(24px) 0;
+        }
+
+        .button {
+            font-size: getViewportWidth(12px);
+        }
+    }
+}
+
+.insights {
+    clip-path: url(#insightsCurve);
+    margin-top: 27px;
+    padding: getViewportWidth(148px) 0 getViewportWidth(128px);
+    background-color: $backgroundSecondary;
+
+    &-list {
+        display: flex;
+        gap: getViewportWidth(45px);
+        width: getViewportWidth(950px);
+        height: getViewportWidth(375px);
+        padding: 0;
+        margin: 0 auto;
+        list-style-type: none;
+
+        &-item {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            flex: 1 1 0;
+            height: getViewportWidth(300px);
+            padding: getViewportWidth(32px) getViewportWidth(32px) 0;
+            box-sizing: border-box;
+            border-radius: getViewportWidth(7px);
+            background-color: #fff;
+
+            &__icon-wrap {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                align-self: center;
+                width: getViewportWidth(64px);
+                height: getViewportWidth(64px);
+                border-radius: 50%;
+            }
+
+            &__icon {
+                width: getViewportWidth(50px);
+                height: getViewportWidth(40px);
+            }
+
+            &__heading {
+                margin: getViewportWidth(26px) 0 getViewportWidth(18px) 0;
+                font-size: getViewportWidth(13.5px);
+                font-weight: 400;
+                letter-spacing: -1px;
+            }
+
+            &__description {
+                margin: 0;
+                font-size: getViewportWidth(16px);
+            }
+
+            &--active {
+                align-self: flex-end;
+                background-color: $primaryOrange;
+                border: #fd6640 solid getViewportWidth(1.5px);
+                color: $secondaryWhite;
+            }
+
+            &--active &__icon-wrap {
+                background-color: $primaryWhite;
+                border: getViewportWidth(2px) $primaryOrange solid;
+                outline: rgba($primaryWhite, 0.33) getViewportWidth(2px) solid;
+            }
+
+            &--active &__heading {
+                margin-top: calc(getViewportWidth(26px) - getViewportWidth(2px));
+            }
+        }
+    }
+}
+
+.contacts {
+    position: relative;
+    height: getViewportWidth(500px);
+
+    &::before {
+        @include placeBackgroundBehind;
+        top: -4%;
+        left: 0;
+        right: 0;
+        height: 54%;
+        background-color: $backgroundSecondary;
+        clip-path: url(#headerCurve);
+        content: "";
+    }
+
+    &__image {
+        @include placeBackgroundBehind;
+        top: 0;
+        right: getViewportWidth(150px);
+        width: getViewportWidth(462px);
+        height: getViewportWidth(462px);
+    }
+
+    &__heading {
+        font-family: "Leto Sans";
+        font-size: getViewportWidth(30px);
+        margin: 0 0 getViewportWidth(30px) getViewportWidth(200px);
+        color: $primaryDark;
+    }
+
+    &__description {
+        margin: 0 0 getViewportWidth(66px) getViewportWidth(200px);
+        font-size: getViewportWidth(15px);
+        max-width: getViewportWidth(490px);
+        color: $secondaryDark;
+    }
+
+    &-form {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        row-gap: getViewportWidth(8px);
+        width: getViewportWidth(480px);
+        padding: getViewportWidth(22px) getViewportWidth(50px) getViewportWidth(28px) getViewportWidth(50px);
+        margin: 0 0 0 getViewportWidth(175px);
+        box-sizing: border-box;
+        background-color: #fff;
+        border-radius: getViewportWidth(7px);
+
+        &__label:first-child {
+            flex: 1 0 getViewportWidth(380px);
+        }
+
+        &__label:not(:first-child) {
+            width: getViewportWidth(180px);
+        }
+
+        &__text {
+            display: block;
+            line-height: 2;
+            font-size: getViewportWidth(18px);
+            color: #dedede;
+        }
+
+        &__input {
+            width: 100%;
+            height: getViewportWidth(45px);
+            padding: 0;
+            border: 1px solid #ebebeb;
+            background-color: #e9e9e9;
+            box-sizing: border-box;
+        }
+
+        &__label:first-child &__input {
+            height: getViewportWidth(60px);
+        }
+    }
+}
+
+.partners {
+    padding: getViewportWidth(70px) 0 getViewportWidth(44px) 0;
+    background-color: #f5f6fa;
+
+    &-list {
+        display: flex;
+        justify-content: center;
+        list-style-type: none;
+        gap: getViewportWidth(50px);
+        margin: 0;
+        padding: 0;
+
+        &-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &__logo {
+                width: getViewportWidth(65px);
+                height: getViewportWidth(28px);
+            }
+        }
+    }
+}
+
+.footer {
+    @include navigation;
+    padding: getViewportWidth(40px) 0;
+    background-color: $primaryOrange;
+
+    &-navigation {
+        margin: 0 auto;
+    }
+}
