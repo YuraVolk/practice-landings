@@ -1,10 +1,10 @@
 @use "sass:math";
 
 $primaryGreen: #2aea9d;
-$primaryWhite: #e9e9e9;
-$secondaryWhite: rgba(#bababa, 0.8);
+$primaryWhite: #e2e2e2;
+$secondaryWhite: rgba(#fff, 0.8);
 $primaryDark: #3a3a3a;
-$secondaryDark: #7e7e7e;
+$secondaryDark: #898989;
 
 @font-face {
     font-family: Quodlibet;
@@ -38,7 +38,7 @@ $secondaryDark: #7e7e7e;
 }
 
 @function getViewportWidth($targetWidth, $baseWidth: 1300px) {
-    @if ($targetWidth >= $baseWidth) {
+    @if ($targetWidth >=$baseWidth) {
         @error "Target width should be less than base width";
     }
 
@@ -58,11 +58,12 @@ $secondaryDark: #7e7e7e;
             flex-grow: 1;
             font: 700 getViewportWidth(20px) "Leto Sans", sans-serif;
             text-transform: uppercase;
+            text-align: left;
             color: $colorPrimary;
         }
 
         &__link {
-            padding: getViewportWidth(6px) getViewportWidth(20px);   
+            padding: getViewportWidth(6px) getViewportWidth(20px);
             font-size: getViewportWidth(15px);
             color: $colorSecondary;
             text-decoration: none;
@@ -76,13 +77,138 @@ $secondaryDark: #7e7e7e;
     }
 }
 
+@mixin backgroundImage($url) {
+    background-image: url($url);
+    background-position: center;
+    background-size: cover;
+}
+
+@mixin placeLogotype($scale) {
+    &__logo {
+        position: absolute;
+        top: getViewportWidth(198px * $scale);
+        left: 74.05% * $scale;
+        transform: translateX(-100%);
+        display: block;
+        width: getViewportWidth(705px * $scale);
+    }
+
+    &__heading {
+        position: relative;
+        font-size: getViewportWidth(44px * $scale);
+        margin-top: getViewportWidth(325px * $scale);
+        margin-bottom: getViewportWidth(20px * $scale);
+        text-transform: uppercase;
+        letter-spacing: getViewportWidth(12px * $scale);
+        z-index: 1;
+        font-family: "Leto Sans";
+       
+        &--subtext {
+            position: relative;
+            left: getViewportWidth(-8px * $scale);
+        }
+    }
+}
+
 body {
     padding: 0;
     margin: 0;
     font-family: Quodlibet, sans-serif;
 }
 
+button {
+    cursor: pointer;
+}
+
 .header {
+    @include backgroundImage("./img/header-image.jpg");
     @include navigation($primaryWhite, $primaryWhite);
-    padding: getViewportWidth(38px) 0 getViewportWidth(190px) 0;
+    @include placeLogotype($scale: 1);
+    position: relative;
+    padding: getViewportWidth(32px) 0 getViewportWidth(190px) 0;
+    color: $primaryWhite;
+
+    & > * {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+
+    &__paragraph {
+        margin-top: 0;
+        margin-bottom: getViewportWidth(100px);
+        max-width: getViewportWidth(515px);
+        font-size: getViewportWidth(14px);
+        color: $secondaryWhite;
+    }
+
+    &-slides {
+        display: flex;
+        justify-content: center;
+        gap: getViewportWidth(17px);
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+
+        &__button {
+            width: getViewportWidth(12px);
+            height: getViewportWidth(12px);
+            box-sizing: border-box;
+            border: 2px solid $primaryWhite;
+            border-radius: 50%;
+            cursor: pointer;
+
+            &--active {
+                border-color: $primaryGreen;
+                background-color: $primaryGreen;
+            }
+        }
+    }
+
+    &-search {
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translate(-50%, 50%);
+
+        &::before {
+            position: absolute;
+            top: 50%;
+            right: getViewportWidth(32px);
+            transform: translateY(-60%);
+            width: getViewportWidth(28px);
+            height: getViewportWidth(28px);
+            box-sizing: border-box;
+            border: $primaryWhite getViewportWidth(3px) solid;
+            border-radius: 50%;
+            content: "";
+        }
+
+        &::after {
+            position: absolute;
+            top: getViewportWidth(35px);
+            right: getViewportWidth(32px);
+            transform: rotate(-45deg);
+            width: getViewportWidth(3px);
+            height: getViewportWidth(8px);
+            background-color: $primaryWhite;
+            content: "";
+        }
+
+        &__input {
+            width: getViewportWidth(335px);
+            box-sizing: border-box;
+            margin: 0;
+            padding: getViewportWidth(19px);
+            border: 2px solid $primaryWhite;
+            border-radius: 100vw;
+            appearance: none;
+
+            &::placeholder {
+                font-family: inherit;
+                font-size: getViewportWidth(12px);
+                color: $primaryWhite;
+            }
+        }
+    }
 }
