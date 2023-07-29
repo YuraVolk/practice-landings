@@ -83,12 +83,16 @@ $secondaryDark: #898989;
     background-size: cover;
 }
 
-@mixin placeLogotype($scale) {
+@mixin placeLogotype($scale, $scaleTop: 1) {
+    position: relative;
+    text-align: center;
+    
     &__logo {
         position: absolute;
-        top: getViewportWidth(198px * $scale);
-        left: 74.05% * $scale;
-        transform: translateX(-100%);
+        top: getViewportWidth(198px * $scaleTop);
+        $resultLeft: 19.5% * $scale;
+        left: 50%;
+        transform: translateX(-55.7%);
         display: block;
         width: getViewportWidth(705px * $scale);
     }
@@ -96,12 +100,13 @@ $secondaryDark: #898989;
     &__heading {
         position: relative;
         font-size: getViewportWidth(44px * $scale);
-        margin-top: getViewportWidth(325px * $scale);
-        margin-bottom: getViewportWidth(20px * $scale);
+        margin-top: getViewportWidth(325px * $scaleTop);
+        margin-bottom: getViewportWidth(20px);
         text-transform: uppercase;
         letter-spacing: getViewportWidth(12px * $scale);
         z-index: 1;
         font-family: "Leto Sans";
+        color: #fff;
        
         &--subtext {
             position: relative;
@@ -110,28 +115,46 @@ $secondaryDark: #898989;
     }
 }
 
+@mixin borderCircle($size) {
+    top: 50%;
+    width: $size;
+    height: $size;
+    box-sizing: border-box;
+    border-color: inherit;
+    border-style: solid;
+    border-width: getViewportWidth(2.5px);
+    border-radius: 50%;
+}
+
 body {
     padding: 0;
     margin: 0;
     font-family: Quodlibet, sans-serif;
 }
 
-button {
+.button {
     cursor: pointer;
+    color: $primaryWhite;
+
+    &--white {
+        border: 2px solid $primaryWhite;
+        border-radius: 100vw;
+        padding: getViewportWidth(4px) getViewportWidth(30px);
+        font-size: getViewportWidth(11.5px);
+        background-color: transparent;
+    }
 }
 
 .header {
     @include backgroundImage("./img/header-image.jpg");
     @include navigation($primaryWhite, $primaryWhite);
     @include placeLogotype($scale: 1);
-    position: relative;
     padding: getViewportWidth(32px) 0 getViewportWidth(190px) 0;
     color: $primaryWhite;
 
     & > * {
         margin-left: auto;
         margin-right: auto;
-        text-align: center;
     }
 
     &__paragraph {
@@ -151,11 +174,7 @@ button {
         list-style-type: none;
 
         &__button {
-            width: getViewportWidth(12px);
-            height: getViewportWidth(12px);
-            box-sizing: border-box;
-            border: 2px solid $primaryWhite;
-            border-radius: 50%;
+            @include borderCircle(getViewportWidth(12px));
             cursor: pointer;
 
             &--active {
@@ -170,17 +189,13 @@ button {
         left: 50%;
         bottom: 0;
         transform: translate(-50%, 50%);
+        z-index: 1;
 
         &::before {
+            @include borderCircle(getViewportWidth(28px));
             position: absolute;
-            top: 50%;
             right: getViewportWidth(32px);
             transform: translateY(-60%);
-            width: getViewportWidth(28px);
-            height: getViewportWidth(28px);
-            box-sizing: border-box;
-            border: $primaryWhite getViewportWidth(3px) solid;
-            border-radius: 50%;
             content: "";
         }
 
@@ -209,6 +224,131 @@ button {
                 font-size: getViewportWidth(12px);
                 color: $primaryWhite;
             }
+        }
+    }
+}
+
+.featured-trips {
+    text-align: center;
+    padding-bottom: getViewportWidth(115px);
+
+    & > * {
+        width: getViewportWidth(1100px);
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    &__line-vertical {
+        display: block;
+        width: getViewportWidth(3.2px);
+        height: getViewportWidth(85px);
+        background-color: $primaryWhite;
+    }
+
+    &__line-horizontal {
+        position: relative;
+        display: block;
+        height: getViewportWidth(2.5px);
+        background-color: $primaryWhite;
+        color: $primaryWhite;
+
+        &::before {
+            @include borderCircle(getViewportWidth(15px));
+            position: absolute;
+            left: 0;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            content: "";
+        }
+
+        &::after {
+            @include borderCircle(getViewportWidth(15px));
+            position: absolute;
+            right: 0;
+            transform: translate(50%, -50%);
+            background-color: #fff;
+            content: "";
+        }
+    }
+
+    &__heading {
+        font-size: getViewportWidth(24px);
+        margin-top: getViewportWidth(35px);
+        margin-bottom: getViewportWidth(12.5px);
+        color: $primaryDark;
+        text-transform: uppercase;
+    }
+
+    &__description {
+        margin-top: 0;
+        margin-bottom: getViewportWidth(30px);
+        font-size: getViewportWidth(12.5px);
+        color: $secondaryDark;
+    }
+
+    &-carousel {
+        @include placeLogotype($scale: 0.65, $scaleTop: 0.5);
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: getViewportWidth(33.5px);
+
+        &__button {
+            position: relative;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+
+            &::before {
+                position: absolute;
+                top: 0;
+                left: 0;
+                transform: translateY(-100%) rotate(45deg);
+                width: getViewportWidth(2px);
+                height: getViewportWidth(15px);
+                background-color: $secondaryDark;
+                border-radius: getViewportWidth(2px);
+                content: "";
+            }
+
+            &::after {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                transform: translateY(66%) rotate(-45deg);
+                width: getViewportWidth(2px);
+                height: getViewportWidth(15px);
+                background-color: $secondaryDark;
+                border-radius: getViewportWidth(2px);
+                content: "";
+            }
+
+            &--left {
+                transform: scaleX(1);
+            }
+
+            &--right {
+                transform: scaleX(-1);
+            }
+        }
+
+        &__wrap {
+            @include backgroundImage("./img/header-section-image.png");
+            color: $primaryWhite;
+            flex-grow: 1;
+            background-position-y: bottom;
+            padding-bottom: getViewportWidth(35px);
+        }
+
+        &__logo {
+            margin-top: -5.5%;
+        }
+
+        &__paragraph {
+            max-width: getViewportWidth(525px);
+            margin: 0 auto getViewportWidth(35px);
+            font-size: getViewportWidth(12px);
+            color: $secondaryWhite;
         }
     }
 }
