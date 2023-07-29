@@ -126,6 +126,17 @@ $secondaryDark: #898989;
     border-radius: 50%;
 }
 
+@mixin limitMaximumWidth($width: null) {
+    & > * {
+        @if ($width) {
+            width: getViewportWidth($width);
+        }
+
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
 body {
     padding: 0;
     margin: 0;
@@ -143,19 +154,88 @@ body {
         font-size: getViewportWidth(11.5px);
         background-color: transparent;
     }
+
+    &--green {
+        border: none;
+        font-size: getViewportWidth(14.5px);
+        border-radius: getViewportWidth(6px);
+        background-color: $primaryGreen;
+        padding: getViewportWidth(12px) 0;
+    }
+}
+
+.separator {
+    position: relative;
+    display: block;
+    height: getViewportWidth(2.5px);
+    background-color: $primaryWhite;
+    color: $primaryWhite;
+
+    &::before {
+        @include borderCircle(getViewportWidth(15px));
+        position: absolute;
+        left: 0;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        content: "";
+    }
+
+    &::after {
+        @include borderCircle(getViewportWidth(15px));
+        position: absolute;
+        right: 0;
+        transform: translate(50%, -50%);
+        background-color: #fff;
+        content: "";
+    }
+}
+
+.carousel-button {
+    position: relative;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+
+    &::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translateY(-100%) rotate(45deg);
+        width: getViewportWidth(2px);
+        height: getViewportWidth(15px);
+        background-color: $secondaryDark;
+        border-radius: getViewportWidth(2px);
+        content: "";
+    }
+
+    &::after {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        transform: translateY(66%) rotate(-45deg);
+        width: getViewportWidth(2px);
+        height: getViewportWidth(15px);
+        background-color: $secondaryDark;
+        border-radius: getViewportWidth(2px);
+        content: "";
+    }
+
+    &--left {
+        transform: scaleX(1);
+    }
+
+    &--right {
+        transform: scaleX(-1);
+    }
 }
 
 .header {
     @include backgroundImage("./img/header-image.jpg");
     @include navigation($primaryWhite, $primaryWhite);
     @include placeLogotype($scale: 1);
+    @include limitMaximumWidth;
     padding: getViewportWidth(32px) 0 getViewportWidth(190px) 0;
     color: $primaryWhite;
-
-    & > * {
-        margin-left: auto;
-        margin-right: auto;
-    }
 
     &__paragraph {
         margin-top: 0;
@@ -229,46 +309,15 @@ body {
 }
 
 .featured-trips {
+    @include limitMaximumWidth(1100px);
     text-align: center;
     padding-bottom: getViewportWidth(115px);
-
-    & > * {
-        width: getViewportWidth(1100px);
-        margin-left: auto;
-        margin-right: auto;
-    }
 
     &__line-vertical {
         display: block;
         width: getViewportWidth(3.2px);
         height: getViewportWidth(85px);
         background-color: $primaryWhite;
-    }
-
-    &__line-horizontal {
-        position: relative;
-        display: block;
-        height: getViewportWidth(2.5px);
-        background-color: $primaryWhite;
-        color: $primaryWhite;
-
-        &::before {
-            @include borderCircle(getViewportWidth(15px));
-            position: absolute;
-            left: 0;
-            transform: translate(-50%, -50%);
-            background-color: #fff;
-            content: "";
-        }
-
-        &::after {
-            @include borderCircle(getViewportWidth(15px));
-            position: absolute;
-            right: 0;
-            transform: translate(50%, -50%);
-            background-color: #fff;
-            content: "";
-        }
     }
 
     &__heading {
@@ -293,45 +342,6 @@ body {
         align-items: center;
         gap: getViewportWidth(33.5px);
 
-        &__button {
-            position: relative;
-            border: none;
-            padding: 0;
-            cursor: pointer;
-
-            &::before {
-                position: absolute;
-                top: 0;
-                left: 0;
-                transform: translateY(-100%) rotate(45deg);
-                width: getViewportWidth(2px);
-                height: getViewportWidth(15px);
-                background-color: $secondaryDark;
-                border-radius: getViewportWidth(2px);
-                content: "";
-            }
-
-            &::after {
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                transform: translateY(66%) rotate(-45deg);
-                width: getViewportWidth(2px);
-                height: getViewportWidth(15px);
-                background-color: $secondaryDark;
-                border-radius: getViewportWidth(2px);
-                content: "";
-            }
-
-            &--left {
-                transform: scaleX(1);
-            }
-
-            &--right {
-                transform: scaleX(-1);
-            }
-        }
-
         &__wrap {
             @include backgroundImage("./img/header-section-image.png");
             color: $primaryWhite;
@@ -351,4 +361,171 @@ body {
             color: $secondaryWhite;
         }
     }
+}
+
+.upcoming-trips {
+    @include limitMaximumWidth(1130px);
+
+    &-headline {
+        display: grid;
+        grid-template-columns: getViewportWidth(84px) 78% 14%;
+        grid-template-rows: getViewportWidth(26px) getViewportWidth(21px) getViewportWidth(22px);
+        column-gap: getViewportWidth(6px);
+        margin-bottom: getViewportWidth(44px);
+
+        &__image {
+            width: getViewportWidth(84px);
+            height: getViewportWidth(74px);
+            grid-row: span 3;
+        }
+
+        &__heading {
+            position: relative;
+            left: getViewportWidth(-26px);
+            align-self: end;
+            grid-row: span 2;
+            margin: 0;
+            font-size: getViewportWidth(30px);
+            color: $primaryDark;
+        }
+
+        &__description {
+            align-self: end;
+            grid-column: 2;
+            margin: 0;
+            font-size: getViewportWidth(14px);
+            color: $secondaryDark;
+        }
+
+        .button {
+            grid-column: 3;
+            grid-row-start: 2;
+            grid-row-end: 4;
+        }
+    }
+
+    &-controls {
+        display: flex;
+        justify-content: center;
+        gap: getViewportWidth(560px);
+        margin-bottom: getViewportWidth(55px);
+
+        .carousel-button--right {
+            right: getViewportWidth(-25px);
+        }
+    }
+
+    .separator {
+        margin-bottom: getViewportWidth(25px);
+    }
+
+    &-gallery {
+        display: flex;
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        overflow: hidden;
+
+        &-wrap {
+            position: relative;
+            min-width: 100%;
+        }
+
+        &-item {
+            position: relative;
+            max-width: getViewportWidth(280px);
+            height: getViewportWidth(250px);
+
+            &::before {
+                @include backgroundImage("./img/eye-icon.png");
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 1;
+                width: getViewportWidth(55px);
+                height: getViewportWidth(44px);
+                opacity: 0;
+                cursor: pointer;
+                content: "";
+            }
+
+            &:first-child, &:last-child {
+                max-width: getViewportWidth(160px);
+            }
+
+            &--active {
+                max-width: getViewportWidth(430px);
+                height: getViewportWidth(300px);
+
+                &::before {
+                    opacity: 1;
+                }
+            }
+
+            &--active &__image {
+                filter: brightness(0.9);
+            }
+
+            &__image {
+                max-width: inherit;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+
+    &-showcase {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        row-gap: getViewportWidth(20px);
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        min-width: 100%;
+        margin-bottom: getViewportWidth(55px);
+
+        &-item {
+            position: relative;
+            width: 295px;
+            height: 400px;
+            cursor: pointer;
+
+            &__image {
+                width: inherit;
+                height: inherit;
+                object-fit: cover;
+            }
+
+            &::before {
+                position: absolute;
+                top: 50%;
+                left: 0;
+                transform: translateY(-50%);
+                width: 100%;
+                text-align: center;
+                font-size: 28px;
+                font-weight: 700;
+                color: #fff;
+                filter: drop-shadow(0px 0px 6px #000);
+                content: "Upcoming Trips";
+            }
+        }
+    }
+}
+
+.map-section {
+    height: getViewportWidth(475px);
+
+    &__map {
+        width: 100%;
+        height: inherit;
+        object-fit: cover;
+    }
+}
+
+.footer {
+    @include navigation($primaryDark, $secondaryDark);
+    padding: getViewportWidth(12px) 0 getViewportWidth(8px) 0;
 }
