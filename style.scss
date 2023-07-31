@@ -1,0 +1,80 @@
+@font-face {
+    font-family: Latinaires;
+    font-weight: 400;
+    font-style: normal;
+    font-variant: normal;
+    src: url("./fonts/LatinairesPro-Regular.woff2") format("woff2"),
+        url("./fonts/LatinairesPro-Regular.woff") format("woff");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Latinaires;
+    font-weight: 500;
+    font-style: normal;
+    font-variant: normal;
+    src: url("./fonts/LatinairesProSC-Regular.woff2") format("woff2"),
+        url("./fonts/LatinairesProSC-Regular.woff") format("woff");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Icons;
+    src: url('fonts/icomoon.eot?46zzh5');
+    src: url('fonts/icomoon.eot?46zzh5#iefix') format('embedded-opentype'),
+        url('fonts/icomoon.ttf?46zzh5') format('truetype'),
+        url('fonts/icomoon.woff?46zzh5') format('woff'),
+        url('fonts/icomoon.svg?46zzh5#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+%font-icon {
+    font-family: 'icomoon' !important;
+    speak: never;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-clipboard::before {
+    @extend %font-icon;
+    content: "\1f4cb";
+}
+
+.icon-atom::before {
+    @extend %font-icon;
+    content: "\269b";
+}
+
+.icon-label::before {
+    @extend %font-icon;
+    content: "\1f3f7";
+}
+
+.icon-briefcase::before {
+    @extend %font-icon;
+    content: "\1f4bc";
+}
+
+.icon-circle-right::before {
+    @extend %font-icon;
+    content: "\21aa";
+}
+
+.icon-droplet::before {
+    @extend %font-icon;
+    content: "\1f4a7";
+}
+
+.icon-heart::before {
+    @extend %font-icon;
+    content: "\2764";
+}
+
+
