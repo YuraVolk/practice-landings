@@ -101,3 +101,769 @@
 
     @return math.div($targetWidth * 100vw, $baseWidth);
 }
+
+@function textStroke($stroke, $color, $step: 0.3px) {
+    $shadow: ();
+    $from: $stroke * -1;
+
+    @for $i from $from through $stroke {
+        @for $j from $from through $stroke {
+            $shadow: append($shadow, $i * $step $j * $step 0 $color, comma);
+        }
+    }
+
+    @return $shadow;
+}
+
+@mixin aliasedTextStroke($stroke, $color, $step: 0.3px) {
+    @media (min-width: 880px) {
+        text-shadow: textStroke($stroke, $color, $step);
+        filter: blur(0.1px);
+    }
+
+    color: $color; 
+}
+
+@mixin slideButton($size, $activeColor) {
+    width: obtainViewportWidth($size);
+    height: obtainViewportWidth($size);
+    border-radius: 50%;
+    background-color: #646464;
+    cursor: pointer;
+    filter: drop-shadow(0 0 math.div($size, 3) #000) drop-shadow(0 0 math.div($size, 3) #000);
+
+    &--active {
+        filter: drop-shadow(0 0 math.div($size, 3) $activeColor) 
+            drop-shadow(0 0 math.div($size, 3) $activeColor)
+            drop-shadow(0 0 math.div($size, 3) $activeColor); 
+        background-color: #b5bdbf;
+    }
+}
+
+@mixin subheading {
+    @include aliasedTextStroke($stroke: 2, $color: #000, $step: 0.35px);
+    position: relative;
+    font-size: obtainViewportWidth(18px);
+    font-weight: 500;
+    color: #bebebe;
+    margin-top: 0;
+    margin-bottom: obtainViewportWidth(10px);
+
+    &--orange {
+        color: #e66e10;
+    }
+}
+
+@mixin featuresHeader($vertical) {
+    @if ($vertical) {
+        @include aliasedTextStroke($stroke: 2, $color: rgba(#000, 0.7), $step: 0.7px);
+        position: relative;
+        margin: 0;
+        font-size: obtainViewportWidth(26px);
+        color: #fff;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+
+        &::after {
+            position: absolute;
+            bottom: obtainViewportWidth(-18px);
+            left: 50%;
+            transform: translateX(-50%);
+            width: obtainViewportWidth(25px);
+            height: obtainViewportWidth(3px);
+            background-color: #f85908;
+            content: "";
+        }
+    } @else {
+        &__heading {
+            @extend %icon-headphones;
+            @include aliasedTextStroke($stroke: 4, $color: rgba(#000, 0.7), $step: 0.55px);
+            display: flex;
+            align-items: flex-start;
+            font-size: obtainViewportWidth(30px);
+            color: #fff;
+            margin: obtainViewportWidth(34px) 0;
+            text-transform: uppercase;
+
+            &::before {
+                font-size: obtainViewportWidth(40px);
+                margin-right: obtainViewportWidth(18px);
+            }
+
+            &::after {
+                position: absolute;
+                bottom: obtainViewportWidth(-6px);
+                left: obtainViewportWidth(70px);
+                transform: translateX(-50%);
+                width: obtainViewportWidth(25px);
+                height: obtainViewportWidth(3px);
+                background-color: #f85908;
+                content: "";
+            }
+        }
+
+        &__paragraph {
+            @include aliasedTextStroke($stroke: 2, $color: rgba(#000, 0.7));
+            margin: 0 0 obtainViewportWidth(31px) 0;
+            font-size: obtainViewportWidth(12px);
+            color: #d5d5d5;
+            line-height: 1.5;
+        }
+    }
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Latinaires, sans-serif;
+}
+
+button {
+    cursor: pointer;
+}
+
+.button {
+    padding: obtainViewportWidth(4px) obtainViewportWidth(9px);
+    filter: drop-shadow(0 0 4px #000);
+
+    &--white {
+        border: obtainViewportWidth(2px) solid #fff;
+        background-color: transparent;
+        color: #fff;
+        border-radius: obtainViewportWidth(3px);
+    }
+
+    &--orange {
+        padding: obtainViewportWidth(2px) obtainViewportWidth(8px);
+        background-color: #f85908;
+        border: obtainViewportWidth(2px) solid #e66e10;
+        border-radius: obtainViewportWidth(3px);
+        color: #fff;
+        font-size: obtainViewportWidth(10px);
+    }
+}
+
+.header {
+    position: relative;
+    background-color: #131313;
+    padding-bottom: obtainViewportWidth(42px);
+
+    & > * {
+        z-index: 1;
+    }
+
+    &-navigation {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        padding: obtainViewportWidth(14.5px) 0;
+        background-color: #0e0e0e;
+        color: #fff;
+
+        &-inner {
+            display: flex;
+            align-items: center;
+            gap: obtainViewportWidth(16px);
+            width: obtainViewportWidth(950px);
+        }
+
+        &__logo {
+            @include aliasedTextStroke($stroke: 5, $color: #000, $step: 0.55px);
+            flex-grow: 1;
+            font-size: obtainViewportWidth(17.5px);
+            font-weight: 700;
+            text-transform: uppercase;
+            color: inherit;
+        }
+
+        &__link {
+            @include aliasedTextStroke($stroke: 2, $color: #000, $step: 0.225px);
+            font-size: obtainViewportWidth(15px);
+            text-decoration: none;
+            color: #4d4d4d;
+            padding-bottom: obtainViewportWidth(2px);
+
+            &--active {
+                color: #fff;
+                border-bottom: obtainViewportWidth(1.5px) solid #fff;
+            }
+
+            &:nth-child(3) {
+                margin-right: obtainViewportWidth(14px);
+            }
+        }
+
+        &-social {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: inherit;
+            flex-grow: 1;
+
+            &__button {
+                @include aliasedTextStroke($stroke: 5, $color: #000, $step: 0.55px);
+                width: obtainViewportWidth(16px);
+                height: obtainViewportWidth(16px);
+                font-size: obtainViewportWidth(16px);
+                background-color: transparent;
+                padding: 0;
+                border: none;
+                color: inherit;
+
+                &--instagram {
+                    @extend %icon-instagram;
+                }
+
+                &--sina {
+                    @extend %icon-sina-weibo;
+                }
+
+                &--rss {
+                    @extend %icon-connection;
+                }
+            }
+        }
+    }
+
+    &-slides {
+        position: absolute;
+        top: obtainViewportWidth(113px);
+        right: obtainViewportWidth(232px);
+        display: flex;
+        flex-direction: column;
+        gap: obtainViewportWidth(11px);
+        list-style-type: none;
+
+        &__button {
+            @include slideButton($size: 8px, $activeColor: #300800);
+        }
+    }
+
+    &::before {
+        position: absolute;
+        top: obtainViewportWidth(50px);
+        left: obtainViewportWidth(264px);
+        width: obtainViewportWidth(675px);
+        height: obtainViewportWidth(440px);
+        background-image: url("./img/header-image.png");
+        background-size: cover;
+        background-position: center;
+        content: "";
+    }
+
+    &__heading {
+        @include aliasedTextStroke($stroke: 2, $color: #000, $step: 0.85px);
+        position: relative;
+        text-shadow: textStroke($stroke: 3, $color: rgba(#000, 0.05), $step: obtainViewportWidth(0.55px));
+        margin: obtainViewportWidth(270px) 0 obtainViewportWidth(54px) obtainViewportWidth(210px);
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-weight: 100;
+        font-size: obtainViewportWidth(44px);
+        letter-spacing: obtainViewportWidth(55px);
+        color: #fff;
+
+        & ~ * {
+            margin-left: obtainViewportWidth(445px);  
+        }
+    }
+
+    &__subheading {
+        @include subheading;
+    }
+
+    &__description {
+        @include aliasedTextStroke($stroke: 2, $color: #000, $step: 0.55px);
+        margin-top: 0;
+        margin-bottom: obtainViewportWidth(28px);
+        font-size: obtainViewportWidth(11.25px);
+        color: #bebebe;
+    }
+}
+
+.about {
+    display: flex;
+    justify-content: center;
+    gap: obtainViewportWidth(250px);
+    background-color: #1f1f1f;
+    padding: obtainViewportWidth(73px) 0 obtainViewportWidth(43px) 0;
+    
+    &-figure {
+        position: relative;
+        width: obtainViewportWidth(382px);
+        height: obtainViewportWidth(382px);
+
+        &__image {
+            width: inherit;
+            height: inherit;
+            object-fit: cover;
+        }
+
+        &-description {
+            position: absolute;
+            top: obtainViewportWidth(70px);
+            left: obtainViewportWidth(270px);
+            width: obtainViewportWidth(333px);
+            height: obtainViewportWidth(177px);
+            padding: obtainViewportWidth(42px) obtainViewportWidth(21px) obtainViewportWidth(13px) obtainViewportWidth(11px);
+            box-sizing: border-box;
+            box-shadow: 2px 2px 6px rgba(#000, 0.2);
+            background-color: #292929;
+
+            &__heading {
+                @include subheading;
+            }
+
+            &__paragraph {
+                @include aliasedTextStroke($stroke: 3, $color: #000);
+                margin: obtainViewportWidth(20px) 0 obtainViewportWidth(9px);
+                max-width: obtainViewportWidth(240px);
+                font: 400 #{"#{obtainViewportWidth(11px)}/1.5"} Latinaires, sans-serif;
+                color: #fff;
+            }
+
+            &__button {
+                @extend %icon-arrow-right;
+                display: block;
+                margin-left: auto;
+                border: none;
+                background-color: transparent;
+                padding: 0;
+                font-size: obtainViewportWidth(15px);
+                filter: drop-shadow(0 0 3px #000);
+                color: #fff;;
+            }
+        }
+    }
+
+    &-info {
+        position: relative;
+
+        &__heading {
+            @include aliasedTextStroke($stroke: 3, $color: rgba(#000, 0.7), $step: 0.6px);
+            position: absolute;
+            top: obtainViewportWidth(60px);
+            left: 0;
+            color: #fff;
+            width: obtainViewportWidth(135px);
+            height: obtainViewportWidth(40px);
+            font-size: obtainViewportWidth(46px);
+            font-weight: 400;
+            margin: 0;
+            transform: rotate(90deg);
+            letter-spacing: obtainViewportWidth(5px);
+        }
+
+        &__number {
+            @include aliasedTextStroke($stroke: 2, $color: rgba(#000, 0.7), $step: 0.7px);
+            position: relative;
+            margin-top: obtainViewportWidth(62px);
+            margin-bottom: obtainViewportWidth(195px);
+            font-size: obtainViewportWidth(27px);
+            color: #fff;
+            font-weight: 500;
+            letter-spacing: 2px;
+
+            &::before {
+                position: absolute;
+                left: obtainViewportWidth(19.5px + 5px);
+                bottom: obtainViewportWidth(-12px);
+                transform: translate(-100%, 100%);
+                width: obtainViewportWidth(12px);
+                height: obtainViewportWidth(12px);
+                background-color: #fff;
+                border-radius: 50%;
+                border: #302f1c obtainViewportWidth(5px) solid;
+                content: "";
+            }
+
+            &::after {
+                position: absolute;
+                left: obtainViewportWidth(12.5px);
+                bottom: obtainViewportWidth(-24px);
+                z-index: -1;
+                transform: translateY(100%);
+                width: obtainViewportWidth(2px);
+                height: obtainViewportWidth(134px);
+                background: linear-gradient(to bottom, rgba(#fff, 0.7), rgba(#fff, 0));
+                content: "";
+            }
+        }
+
+        &__image {
+            width: obtainViewportWidth(106px);
+            height: obtainViewportWidth(106px);
+            object-fit: cover;
+        }
+
+        &__button {
+            position: absolute;
+            left: obtainViewportWidth(-65px);
+            bottom: obtainViewportWidth(22px);
+            width: obtainViewportWidth(106px);
+            height: obtainViewportWidth(43px);
+            padding: 0;
+            border: none;
+            background-color: #3f3f3f;
+            filter: drop-shadow(0 0 2px rgba(#000, 0.5));
+            overflow: hidden;
+
+            &::before {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) scaleY(0.5);
+                width: 0;
+                height: 0;
+                border-color: transparent transparent transparent #d5d5d5;
+                border-style: solid;
+                border-width: obtainViewportWidth(19px) 0 obtainViewportWidth(19px) obtainViewportWidth(19px);
+                filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 1px #fff)  drop-shadow(0 0 3px #000);
+                content: "";
+            }
+        }
+    }
+}
+
+.features {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: obtainViewportWidth(54px) 0 obtainViewportWidth(50px);
+    background-color: #272727;
+    color: #737373;
+
+    &__heading {
+        @include featuresHeader($vertical: true);
+    }
+
+    &__paragraph {
+        @include aliasedTextStroke($stroke: 2, $color: rgba(#000, 0.7), $step: 0.35px);
+        color: #fff;
+        max-width: obtainViewportWidth(435px);
+        text-align: center;
+        font-size: obtainViewportWidth(13px);
+        line-height: 1.5;
+        margin: obtainViewportWidth(24px) 0 obtainViewportWidth(28px) 0;
+    }
+
+    &-list {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: obtainViewportWidth(131px);
+
+        &-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+
+            &__icon {
+                @include aliasedTextStroke($stroke: 2, $color: rgba(#000, 0.7), $step: 0.2px);
+                color: inherit;
+                position: relative;
+                width: obtainViewportWidth(28px);
+                height: obtainViewportWidth(28px);
+                font-size: obtainViewportWidth(18px);
+                line-height: 1.3;
+                cursor: pointer;
+                transition: all 0.3s ease;
+
+                &:hover {
+                    color: #f85908;
+
+                    &::after {
+                        border-color: #f85908;
+                    }
+                }
+    
+                &::after {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    width: obtainViewportWidth(28px);
+                    height: obtainViewportWidth(28px);
+                    border: obtainViewportWidth(2px) solid #737373;
+                    border-radius: 50%;
+                    content: "";
+                }
+                
+                &--phone {
+                    @extend %icon-phone1;
+                }
+    
+                &--chat {
+                    @extend %icon-bubble;
+                }
+    
+                &--message {
+                    @extend %icon-mail;
+                }
+    
+                &--official-user {
+                    @extend %icon-user-tie;
+                }
+    
+                &--user {
+                    @extend %icon-user;
+                }
+            }
+    
+            &__heading {
+                @include aliasedTextStroke($stroke: 2, $color: rgba(#000, 0.7), $step: 0.1px);
+                color: inherit;
+                margin: obtainViewportWidth(12px) 0 0 0;
+                font-size: obtainViewportWidth(15px);
+                font-weight: 700;
+                letter-spacing: 2.5px;
+            }
+    
+            &__label {
+                margin: 0;
+                font-size: obtainViewportWidth(9px);
+                line-height: 1.3;
+                color: #737373;
+            }
+        }
+    }
+}
+
+.sales {
+    display: flex;
+    align-items: center;
+    background-color: #1f1f1f;  
+    padding: obtainViewportWidth(42px) 0 obtainViewportWidth(72px) obtainViewportWidth(175px);
+    gap: obtainViewportWidth(47px);
+    overflow: hidden;
+
+    &-description {
+        @include featuresHeader($vertical: false);
+        width: 0;
+        flex: 0 0 obtainViewportWidth(252px);
+    }
+
+    &-slider {
+        display: flex;
+        align-items: center;
+        gap: obtainViewportWidth(70px);
+        flex-grow: 1;
+        padding: obtainViewportWidth(20px) 0 0 obtainViewportWidth(40px);
+        background-color: #272727;
+
+        &__button {
+            position: relative;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+        
+            &::before {
+                position: absolute;
+                top: 0;
+                left: 0;
+                transform: translateY(-100%) rotate(45deg);
+                width: obtainViewportWidth(2px);
+                height: obtainViewportWidth(20px);
+                background-color: #fff;
+                border-radius: obtainViewportWidth(2px);
+                content: "";
+            }
+        
+            &::after {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                transform: translateY(66%) rotate(-45deg);
+                width: obtainViewportWidth(2px);
+                height: obtainViewportWidth(20px);
+                background-color: #fff;
+                border-radius: obtainViewportWidth(2px);
+                content: "";
+            }        
+        }
+
+        &-list {
+            display: flex;
+            align-items: center;
+            list-style-type: none;
+            gap: obtainViewportWidth(18px);
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+
+            &-item {
+                background-color: #494949;
+                padding-bottom: obtainViewportWidth(12px);
+                cursor: pointer;
+                transition: all 0.3s ease;
+
+                &__heading {
+                    @include aliasedTextStroke($stroke: 2, $color: rgba(#000, 0.7));
+                    position: relative;
+                    font-size: obtainViewportWidth(16px);
+                    color: #fff;
+                    text-transform: uppercase;
+                    margin: obtainViewportWidth(4px) 0 obtainViewportWidth(8px) obtainViewportWidth(10px);
+                    transition: all 0.3s ease;
+
+                    &::before {
+                        position: absolute;
+                        bottom: obtainViewportWidth(-6px);
+                        left: 0;
+                        width: obtainViewportWidth(28px);
+                        height: obtainViewportWidth(2px);
+                        background-color: #f85908;
+                        transition: all 0.3s ease;
+                        content: "";
+                    }
+                }
+
+                &:hover {
+                    background-color: #f85908;
+                }
+
+                &:hover &__heading {
+                    text-shadow: none;
+
+                    &::before {
+                        background-color: #fff;
+                    }
+                }
+
+                &__image {
+                    height: obtainViewportWidth(175px);
+                    width: obtainViewportWidth(263px);
+                    object-fit: cover;
+                    background-color: #fff;
+                    box-shadow: 2px 0 5px -2px #000, -2px 0 5px -2px #000;
+                }
+    
+                &__description {
+                    font-size: obtainViewportWidth(10px);
+                    margin: 0 0 0 obtainViewportWidth(10px);
+                    color: #909090;
+                }
+            }
+        }
+    }
+}
+
+.showcase {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: obtainViewportWidth(60px) 0 obtainViewportWidth(20px) obtainViewportWidth(30px);
+    background-color: #272727;
+
+    &__image {
+        width: obtainViewportWidth(616px);
+        height: obtainViewportWidth(393px);
+    }
+
+    &-description {
+        @include featuresHeader($vertical: false);
+
+        &__paragraph {
+            max-width: obtainViewportWidth(360px);
+        }
+    }
+
+    &-slides {
+        position: absolute;
+        bottom: obtainViewportWidth(20px);
+        right: obtainViewportWidth(200px);
+        display: flex;
+        gap: obtainViewportWidth(15px);
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+
+        &__button {
+            @include slideButton($activeColor: #303030, $size: 10px);
+            background-color: transparent;
+            border: obtainViewportWidth(2px) solid #fff;
+        }
+    }
+}
+
+.map-section {
+    @include featuresHeader($vertical: false);
+    padding-top: obtainViewportWidth(55px);
+    text-align: center;
+    background-color: #1f1f1f;
+
+    &__heading {
+        @include featuresHeader($vertical: true);
+        display: block;
+        z-index: 1;
+        margin-bottom: obtainViewportWidth(40px);
+
+        &::before {
+            white-space: pre;
+            content: "\1f3a7 \a\a";
+        }
+    }
+}
+
+.map {
+    position: relative;
+    width: obtainViewportWidth(865px);
+    height: obtainViewportWidth(575px);
+    margin: 0 auto;
+
+    &__image {
+        width: inherit;
+        height: inherit;
+    }
+
+    $coordinates: (95: 285, 119: 377, 190: 148, 295: 177, 300: 555, 348: 125, 363: 526, 550: 556, 633: 124, 772: 308);
+
+    &__location {
+        position: absolute;
+        width: obtainViewportWidth(14px);
+        height: obtainViewportWidth(14px);
+        box-sizing: border-box;
+        background-color: #fff;
+        border-radius: 50%;
+
+        &--labeled {
+            border: obtainViewportWidth(4px) solid #fff;
+            background-color: #909090;
+
+            &::before {
+                position: absolute;
+                top: obtainViewportWidth(-40px);
+                left: 50%;
+                transform: translateX(-50%);
+                padding: obtainViewportWidth(2.5px) obtainViewportWidth(24px) obtainViewportWidth(5px) obtainViewportWidth(24px);
+                border: obtainViewportWidth(3px) solid #000;
+                background-color: #fff;
+                color: #606060;
+                font-size: obtainViewportWidth(13px);
+                border-radius: obtainViewportWidth(11px);
+                content: "FEATURES";
+            }
+
+            &::after {
+                position: absolute;
+                top: obtainViewportWidth(-16px);
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 1;
+                width: obtainViewportWidth(3px);
+                height: obtainViewportWidth(12px);
+                background-color: #4c4c4c;
+                content: "";
+            }
+        }
+
+        $counter: 1;
+        @each $left, $top in $coordinates {
+            &:nth-child(#{$counter}) {
+                top: obtainViewportWidth($top * 1px);
+                left: obtainViewportWidth($left * 1px);
+            }
+            $counter: $counter + 1;
+        }
+    }
+}
