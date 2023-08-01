@@ -1,0 +1,569 @@
+@use "sass:math";
+
+@font-face {
+    font-family: Latinaires;
+    font-weight: 400;
+    font-style: normal;
+    font-variant: normal;
+    src: url("./fonts/LatinairesPro-Regular.woff2") format("woff2"),
+        url("./fonts/LatinairesPro-Regular.woff") format("woff");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Latinaires;
+    font-weight: 500;
+    font-style: normal;
+    font-variant: normal;
+    src: url("./fonts/LatinairesProSC-Regular.woff2") format("woff2"),
+        url("./fonts/LatinairesProSC-Regular.woff") format("woff");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Icons;
+    src: url('./fonts/icomoon.eot?e3ow6l');
+    src: url('./fonts/icomoon.eot?e3ow6l#iefix') format('embedded-opentype'),
+        url('./fonts/icomoon.ttf?e3ow6l') format('truetype'),
+        url('./fonts/icomoon.woff?e3ow6l') format('woff'),
+        url('./fonts/icomoon.svg?e3ow6l#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+%font-icon {
+    font-family: Icons !important;
+    speak: never;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@function obtainViewportWidth($targetWidth, $baseWidth: 1300px) {
+    @if ($targetWidth >= $baseWidth) {
+        @error "Target width should be less than base width";
+    }
+
+    @return math.div($targetWidth * 100vw, $baseWidth);
+}
+
+@function textStroke($stroke, $color, $step: 0.3px) {
+    $shadow: ();
+    $from: $stroke * -1;
+
+    @for $i from $from through $stroke {
+        @for $j from $from through $stroke {
+            $shadow: append($shadow, $i * $step $j * $step 0 $color, comma);
+        }
+    }
+
+    @return $shadow;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid #080539;
+    font-family: Latinaires;
+}
+
+%icon-arrow-up::before {
+    @extend %font-icon;
+    content: "\1f5a2";
+}
+
+%icon-phone::before {
+    @extend %font-icon;
+    content: "\1f57e";
+}
+
+%icon-google-plus::before {
+    @extend %font-icon;
+    content: "\ea8b";
+}
+
+%icon-hangouts::before {
+    @extend %font-icon;
+    content: "\ea8e";
+}
+
+%icon-facebook::before {
+    @extend %font-icon;
+    content: "\ea90";
+}
+
+%icon-telegram::before {
+    @extend %font-icon;
+    content: "\ea95";
+}
+
+$skewDeg: 168deg;
+
+.header {
+    padding-bottom: obtainViewportWidth(360px);
+    transform: skewY($skewDeg * -1);
+
+    &::before {
+        position: absolute;
+        top: obtainViewportWidth(-83px);
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url("./img/header-image.png");
+        background-position: center;
+        background-size: cover;
+        content: "";
+    }
+
+    & > * {
+        transform: skewY($skewDeg);
+    }
+   
+    &-navigation {
+        position: relative;
+        top: -1px;
+        background-color: #10134a;
+
+        &-inner {
+            display: flex;
+            align-items: center;
+            width: obtainViewportWidth(950px);
+            margin: 0 auto;
+        }
+
+        &__logo {
+            font-size: obtainViewportWidth(21px);
+            color: #3fd5fd;
+            text-transform: uppercase;
+            flex-grow: 1;
+        }
+
+        &__text {
+            padding: obtainViewportWidth(27px) obtainViewportWidth(15px) obtainViewportWidth(20px);
+            color: #fff;
+            text-decoration: none;
+            font-size: obtainViewportWidth(13.5px);
+
+            &--active {
+                background-color: #28b1dd;
+            }
+        }
+
+        &__settings {
+            display: flex;
+            justify-content: flex-end;
+            flex-grow: 1;
+        }
+
+        &__setting {
+            border-top-style: solid;
+            border-top-width: obtainViewportWidth(3px);
+            padding: obtainViewportWidth(3px) obtainViewportWidth(6px);
+            background-color: transparent;
+            color: #fff;
+            font-size: obtainViewportWidth(13px);
+
+            &:first-child {
+                border-top-color: #0c3266;
+                border-left: obtainViewportWidth(3px) solid #0c3266;
+                border-bottom: obtainViewportWidth(3px) solid #0c3266;
+                border-right: none;
+                border-top-left-radius: obtainViewportWidth(8px);
+                border-bottom-left-radius: obtainViewportWidth(8px);
+            }
+
+            &:last-child {
+                border-color: #3f47bd;
+                border-style: solid;
+                border-right: obtainViewportWidth(3px) solid #3f47bd;
+                border-bottom: obtainViewportWidth(3px) solid #3f47bd;
+                border-left: obtainViewportWidth(3px) solid #3f47bd;
+                border-top-right-radius: obtainViewportWidth(8px);
+                border-bottom-right-radius: obtainViewportWidth(8px);
+                background-color: #3540c0;
+            }
+        }
+    }
+
+    &__heading {
+        width: obtainViewportWidth(470px);
+        padding: obtainViewportWidth(40px) obtainViewportWidth(55px) obtainViewportWidth(55px);
+        font-size: obtainViewportWidth(72px);
+        line-height: 1;
+        color: #fff;
+        border: obtainViewportWidth(2.5px) solid #fff;
+        margin: obtainViewportWidth(182px) auto obtainViewportWidth(7px);
+        text-shadow: textStroke($stroke: 2, $color: rgba(#000, 0.2), $step: 0.55px);
+    }
+
+    &__subheading {
+        font-size: obtainViewportWidth(28px);
+        color: #fff;
+        margin: 0;
+        text-align: center;
+        text-transform: uppercase;
+        text-shadow: textStroke($stroke: 3, $color: #000);
+    }
+}
+
+main {
+    background-color: #f6f6f6;
+}
+
+.intro {
+    position: relative;
+    padding: obtainViewportWidth(24px) 0 obtainViewportWidth(180px) 0;
+    transform: skewY($skewDeg * -1);
+    overflow: hidden;
+    background-color: #fff;
+
+    &::before {
+        position: absolute;
+        left: 0;
+        bottom: obtainViewportWidth(-70px);
+        transform: skewY($skewDeg);
+        width: obtainViewportWidth(650px);
+        height: obtainViewportWidth(712px);
+        background-image: url("./img/section-image.jpg");
+        background-position: center;
+        background-size: cover;
+        content: "";
+    }
+
+    & > * {
+        transform: skewY($skewDeg);
+    }
+
+    &__number {
+        display: block;
+        font-weight: 700;
+        transform: skewY($skewDeg) translateY(-50%);
+        font-size: obtainViewportWidth(80px);
+        color: #dedede;
+        margin-left: obtainViewportWidth(579px);
+        letter-spacing: obtainViewportWidth(10px);
+    }
+
+    &__heading {
+        text-transform: uppercase;
+        font-size: obtainViewportWidth(28px);
+        margin: obtainViewportWidth(67px) 0 obtainViewportWidth(94px) obtainViewportWidth(645px);
+    }
+
+    &-advantages {
+        display: flex;
+        flex-direction: column;
+        gap: obtainViewportWidth(40px);
+        margin: 0 0 0 obtainViewportWidth(660px);;
+        padding: 0;
+        list-style-type: none;
+
+        &-item {
+            display: flex;
+            align-items: center;
+            gap: obtainViewportWidth(16px);
+
+            &__image {
+                width: obtainViewportWidth(100px);
+            }
+
+            &__description {
+                max-width: obtainViewportWidth(260px);
+                font: 700 #{"#{obtainViewportWidth(15px)}/2"} Latinaires, sans-serif;
+            }
+        }
+    }
+}
+
+.statistics {
+    position: relative;
+    
+    &__number {
+        display: block;
+        font-weight: 700;
+        font-size: obtainViewportWidth(80px);
+        letter-spacing: obtainViewportWidth(10px);
+        text-transform: uppercase;
+        margin: 0 0 obtainViewportWidth(21px) obtainViewportWidth(140px);
+        color: #fff;
+    }
+
+    &__heading {
+        text-transform: uppercase;
+        font-size: obtainViewportWidth(28px);
+        margin: 0 0 obtainViewportWidth(20px) obtainViewportWidth(175px);
+    }
+
+    &__paragraph {
+        max-width: obtainViewportWidth(320px);
+        font-size: obtainViewportWidth(12.5px);
+        font-weight: 700;
+        margin: 0 0 0 obtainViewportWidth(175px);
+        line-height: 1;
+
+
+        &:last-of-type {
+            max-width: obtainViewportWidth(400px);
+        }
+    }
+
+    &__chart {
+        width: obtainViewportWidth(374px);
+        height: obtainViewportWidth(264px);
+        margin: obtainViewportWidth(20px) 0 obtainViewportWidth(30px) obtainViewportWidth(140px);
+    }
+
+    &__map {
+        position: absolute;
+        width: obtainViewportWidth(678px);
+        height: obtainViewportWidth(425px);
+        top: obtainViewportWidth(125px);
+        right: obtainViewportWidth(80px);
+    }
+}
+
+.partners {
+    padding: obtainViewportWidth(70px) 0 obtainViewportWidth(44px) 0;
+
+    &-list {
+        display: flex;
+        justify-content: center;
+        list-style-type: none;
+        gap: obtainViewportWidth(50px);
+        margin: 0;
+        padding: 0;
+
+        &-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &__logo {
+                width: obtainViewportWidth(65px);
+                height: obtainViewportWidth(28px);
+            }
+        }
+    }
+}
+
+.office {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: obtainViewportWidth(24px);
+    padding: obtainViewportWidth(70px) 0 obtainViewportWidth(80px);
+    color: #fff;
+    text-align: center;
+    background-image: url("./img/footer-image.jpg");
+    background-position: center;
+    background-size: cover;
+
+    &__heading {
+        font-size: obtainViewportWidth(27px);
+        text-transform: uppercase;
+        margin: 0;
+    }
+
+    &__description {
+        font-size: obtainViewportWidth(14px);
+        margin: 0 0 obtainViewportWidth(12px) 0;
+    }
+
+    &__button {
+        padding: obtainViewportWidth(15px) obtainViewportWidth(33px);
+        border-radius: obtainViewportWidth(10px);
+        background-color: #fff;
+        color: #5d9bb2;
+        font-size: obtainViewportWidth(11px);
+        font-weight: 700;
+        border: none;
+        cursor: pointer;
+    }
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-top: obtainViewportWidth(30px);
+    padding-bottom: obtainViewportWidth(22px);
+    background-color: #f6f6f6;
+    color: #878787;
+
+    > * {
+        max-width: obtainViewportWidth(950px);
+    }
+
+    &-separator {
+        width: 100%;
+        height: 1px;
+        margin-top: 0.9rem;
+        margin-bottom: 0.7rem;
+        border: none;
+        background-color: rgba(#878787, 0.5);
+    }
+
+    &-icons {
+        display: flex;
+        justify-content: center;
+        gap: 0.75rem;
+        margin: 0 0 1.15rem 0;
+        padding: 0;
+        list-style-type: none;
+        cursor: pointer;
+    }
+
+    &-icon {
+        position: relative;
+        width: 1rem;
+        height: 1rem;
+        border-radius: 50%;
+        background-color: #878787;
+
+        &::before {
+            position: absolute;
+            top: 21%;
+            left: 18%;
+            font-size: 0.625rem;
+            color: #f6f6f6;
+        }
+
+        &:first-child {
+            @extend %icon-facebook;
+        }
+
+        &:nth-child(2) {
+            @extend %icon-google-plus;
+        }
+
+        &:nth-child(3) {
+            @extend %icon-hangouts;
+        }
+
+        &:last-child {
+            @extend %icon-telegram;
+        }
+    }
+}
+
+.phone-number {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1.2;
+    padding-left: obtainViewportWidth(45px);
+
+    &__header {
+        font-size: 0.72rem;
+        color: rgba(#878787, 0.5);
+        letter-spacing: -1px;
+    }
+
+    &__number {
+        font-size: 0.72rem;
+    }
+
+    &::before {
+        @extend %icon-phone;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-45%);
+        font-size: obtainViewportWidth(36.5px);
+        -webkit-text-stroke: 1px #878787;
+        color: transparent;
+
+        @supports not (-webkit-text-stroke: 1px #878787) {
+            text-shadow: 0 0 0.5px #878787;
+        }
+    }
+}
+
+.contact-links {
+    display: flex;
+    justify-content: space-between;
+    width: obtainViewportWidth(570px);
+
+    &__text {
+        font-size: obtainViewportWidth(11.6px);
+        letter-spacing: 1px;
+    }
+}
+
+.contacts-section {
+    display: flex;
+    align-items: center;
+    width: obtainViewportWidth(570px);
+
+    @media (max-width: 700px) {
+        width: 100%;
+    }
+}
+
+.qr-code {
+    width: obtainViewportWidth(87.5px);
+    height: obtainViewportWidth(87.5px);
+    
+    &:first-of-type {
+        margin-right: 0.75rem;
+    }
+}
+
+.contacts-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-grow: 1;
+}
+
+@mixin footerButton($color) {
+    position: relative;
+    border: 1px solid lighten($color: $color, $amount: 1);
+    border-radius: 3px;
+    padding: obtainViewportWidth(4px) obtainViewportWidth(12px);
+    font-size: obtainViewportWidth(14px);
+    background-color: $color;
+    color: #fff;
+}
+
+.contact-us-button {
+    @include footerButton(#029ae6);
+
+    &::before {
+        position: relative;
+        top: 50%;
+        transform: translateY(15%);
+        display: inline-block;
+        width: 0.92rem;
+        height: 0.92rem;
+        margin-right: 0.4rem;
+        border: 2px solid #e0e0e0;
+        border-radius: 50%;
+        box-sizing: border-box;
+        content: "";
+    }
+
+    &::after {
+        position: absolute;
+        top: 50%;
+        left: calc((0.235rem * 3) + 2px);
+        transform: translateY(-50%);
+        width: calc(0.92rem - 2px);
+        height: 1.5px;
+        background-color: #f6f6f6;
+        content: "";
+    }
+}
+
+.go-up-button {
+    @include footerButton(#f04b1e);
+    @extend %icon-arrow-up;
+    align-self: stretch;
+}
