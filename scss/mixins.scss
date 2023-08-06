@@ -1,0 +1,96 @@
+@use "sass:string";
+@use "sass:selector";
+@use "sass:list";
+@use "sass:math";
+
+@function _splitString($str, $separators) {
+    $result: ();
+    $splitters: ();
+    $current-word: '';
+
+    @for $i from 1 through string.length($str) {
+        $char: string.slice($str, $i, $i);
+        $matched-separator: false;
+        $isBreak: false;
+
+        @each $separator in $separators {
+            @if ($isBreak == false) {
+                $separator-length: string.length($separator);
+
+                @if string.slice($str, $i, $i + $separator-length - 1) == $separator {
+                    $matched-separator: true;
+                    $splitters: list.append($splitters, $separator, comma);
+
+                    @if $current-word != '' {
+                        $result: list.append($result, $current-word, comma);
+                        $current-word: '';
+                    }
+
+                    $i: $i + $separator-length - 1;
+                    $isBreak: true;
+                }
+            }
+        }
+
+        @if not $matched-separator {
+            $current-word: #{$current-word}#{$char};
+        }
+    }
+
+    @if $current-word != '' {
+        $result: list.append($result, $current-word, comma);
+    }
+
+    @return ($result, $splitters);
+}
+
+@function _reverse($list) {
+    $result: ();
+
+    @for $i from list.length($list) * -1 through -1 {
+        $result: list.append($result, list.nth($list, math.abs($i)));
+    }
+
+    @return $result;
+}
+
+@function _removeNesting($selector, $levels) {
+    $result: '';
+
+    @if $levels == 0 {
+        @return $selector;
+    } @else {
+        $results: _splitString(string.quote(#{$selector}), (" ", "-", "__"));
+        $parts: _reverse(list.nth($results, 1));
+        $separators: _reverse(list.nth($results, 2));
+
+        @for $i from 1 through list.length($parts) {
+            $part: list.nth($parts, $i);
+
+            @if $i > $levels {
+                @if (string.length($result) == 0) {
+                    $result: "#{$part}";
+                } @else {
+                    $result: "#{$part}#{list.nth($separators, $i - 1)}#{$result}";
+                }
+            }
+        }
+
+        @return #{string.slice(string.quote(#{$result}), 1)};
+    }
+}
+
+@mixin liftUp($levels, $modifier) {
+    $result: _removeNesting(&, $levels);
+    @if ($result == "." or $result == "#") {
+        @error "Erroneous selector generated on level lifting #{$levels} with base selector #{&}";
+    } @else {
+        @if (selector.is-superselector("*", "*#{$result}") or selector.unify($result, "*") != null) {
+            @at-root #{selector.nest("#{$result}#{$modifier}", &)} {
+                @content;
+            }
+        } @else {
+            @debug "Potentially erroneous selector generated on level lifting #{$levels} with base selector #{&}";
+        }
+    }
+}
