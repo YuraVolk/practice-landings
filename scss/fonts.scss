@@ -61,6 +61,7 @@
 
 @font-face {
     font-family: "Rainbow Land";
+    font-display: swap;
     font-weight: 600;
     src: url("../fonts/Rainbow Land/RainbowLand-gxlq1.woff2") format("woff2"),
         url("../fonts/Rainbow Land/RainbowLand-gxlq1.woff") format("woff"),
@@ -69,8 +70,16 @@
 
 @font-face {
     font-family: "Rainbow Land";
+    font-display: swap;
     font-weight: 800;
     src: url("../fonts/Rainbow Land/RainbowLandLine-owXrd.woff2") format("woff2"),
         url("../fonts/Rainbow Land/RainbowLandLine-owXrd.woff") format("woff"),
         url("../fonts/Rainbow Land/RainbowLandLine-owXrd.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: Helsky;
+    src: url("../fonts/Helsky/HelskyRegular-ywEe2.woff2") format("woff2"),
+        url("../fonts/Helsky/HelskyRegular-ywEe2.woff") format("woff"),
+        url("../fonts/Helsky/HelskyRegular-ywEe2.ttf") format("truetype");
 }

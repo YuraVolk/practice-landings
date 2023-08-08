@@ -1,0 +1,7 @@
+@use "./table.scss";
+
+@mixin subsection {
+    &-subsection {
+        @include table.table;
+    }
+}

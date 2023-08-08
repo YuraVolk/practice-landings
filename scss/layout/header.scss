@@ -1,11 +1,12 @@
 @use "../components/header/navigation.scss";
 @use "../components/header/overlay-form.scss";
+@use "../components/header/subsection.scss";
 @use "../mixins.scss";
 
 .header {
     @include navigation.navigation;
     @include overlay-form.overlayForm;
+    @include subsection.subsection;
     @include mixins.placeBackground("../../img/header-image.png");
     background-position-y: top;
-
 }
