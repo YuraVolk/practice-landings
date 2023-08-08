@@ -6,8 +6,7 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
-    <link rel="stylesheet" href="./scss/mixins.scss">
-    <script src="./vendor/css-regions/cssregions.min.js"></script>
+    <link rel="stylesheet" href="./scss/entry.scss">
 </head>
 
 <body>
@@ -20,7 +19,6 @@
             </div>
             <ul class="header-navigation-links">
                 <li class="header-navigation-link header-navigation-link--active">
-                    <span class="header-navigaiton-link__arrow"></span>
                     <a href="#" class="header-navigation-link__text">About</a>
                 </li>
                 <li class="header-navigation-link">
@@ -55,34 +53,38 @@
                 </li>
             </ul>
         </nav>
-        <section class="header-overlay">
-            <nav class="header-overlay-navigation" aria-label="secondary">
-                <a href="#" class="header-overlay-navigation__link">Pre-eminent works</a>
-                <a href="#" class="header-overlay-navigation__link">Our activity</a>
-                <a href="#" class="header-overlay-navigation__link">News</a>
-                <a href="#" class="header-overlay-navigation__link">Our activity</a>
-                <a href="#" class="header-overlay-navigation__link">Learn more about</a>
-            </nav>
-            <form class="header-overlay-form">
-                <h2 class="header-overlay-form__heading">Us about</h2>
-                <p class="header-overlay-form__description">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Deleniti doloribus iste, perspiciatis
-                    cupiditate maxime fugit earum! Quia vero architecto similique! Tenetur doloremque voluptas nihil
-                    quidem quae magnam ab voluptatibus fugiat!
-                </p>
-                <input class="header-overlay-form__input" type="email">
-                <h3 class="header-overlay-form__subheading">Community Checklist</h3>
-                <ul class="header-overlay-form-list">
-                    <li class="header-overlay-form-list-item">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    </li>
-                    <li class="header-overlay-form-list-item">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    </li>
-                    <li class="header-overlay-form-list-item">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    </li>
-                </ul>
-                <div class="header-overlay-form__visual-background"></div>
-            </form>
-        </section>
+        <div class="header__inner">
+            <section class="header-overlay">
+                <nav class="header-overlay-navigation" aria-label="secondary">
+                    <a href="#" class="header-overlay-navigation__link">Pre-eminent works</a>
+                    <a href="#" class="header-overlay-navigation__link">Our activity</a>
+                    <a href="#" class="header-overlay-navigation__link">News</a>
+                    <a href="#" class="header-overlay-navigation__link">Learn more about</a>
+                </nav>
+                <form class="header-overlay-form">
+                    <h2 class="header-overlay-form__heading">Us about</h2>
+                    <p class="header-overlay-form__description">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                        Deleniti doloribus iste, perspiciatis
+                        cupiditate maxime fugit earum! Quia vero architecto similique! Tenetur doloremque voluptas nihil
+                        quidem quae magnam ab voluptatibus fugiat!
+                    </p>
+                    <input class="header-overlay-form__input" type="email" placeholder="Email">
+                
+                    <ul class="header-overlay-form-list">
+                        <li class="header-overlay-form-list-item">
+                            <h3 class="header-overlay-form__subheading">Community Checklist</h3>
+                        </li>
+                        <li class="header-overlay-form-list-item">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                        </li>
+                        <li class="header-overlay-form-list-item">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                        </li>
+                        <li class="header-overlay-form-list-item">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                        </li>
+                    </ul>
+                    <div class="header-overlay-form__visual-background"></div>
+                </form>
+            </section>
+        </div>
     </header>
     <main>
         <section class="header-subsection">
@@ -124,6 +126,7 @@
             </p>
         </section>
     </main>
+    <script src="./vendor/css-regions/cssregions.min.js" type="module"></script>
 </body>
 
 </html>

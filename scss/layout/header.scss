@@ -1,2 +1,203 @@
 @use "../components/navigation.scss";
+@use "../mixins.scss";
 
+.header {
+    @include navigation.navigation;
+    @include mixins.placeBackground("../../img/header-image.png");
+    background-position-y: top;
+
+    &__inner {
+        position: relative;
+        height: mixins.obtainViewportWidth(415px);
+        min-height: 247px;
+    }
+
+    &-overlay {
+        @include mixins.placeBackground("../../img/navigation-image.png");
+        position: absolute;
+        top: 0;
+        transform: rotate(165deg) scale(-1, -1);
+        left: mixins.obtainViewportWidth(-50px);
+        display: flex;
+        flex-direction: column;
+        width: mixins.obtainViewportWidth(525px);
+        height: mixins.obtainViewportWidth(440px);
+        padding-top: mixins.obtainViewportWidth(35px);
+        background-position-y: top;
+        mask-image: linear-gradient(rgba(0, 0, 0, 1), transparent);
+        -webkit-mask-image: linear-gradient(-257deg, rgba(0, 0, 0, 1) 60%, transparent 95%, transparent 95%, transparent 150%);
+        mask-size: 300% 100%;
+        -webkit-mask-size: 300% 100%;
+        mask-position: right;
+        -webkit-mask-position: right;
+        box-shadow: inset 2px 2px #f6e7ca;
+        opacity: 1;
+        transition: all 0.6s ease-in-out;
+
+        @media (max-width: 700px) {
+            width: initial;
+            height: initial;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            transform: none;
+        }
+
+        &:hover,
+        &:focus-within {
+            mask-position: left;
+            -webkit-mask-position: left;
+            opacity: 0.85;
+        }
+
+        &-navigation {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: mixins.obtainViewportWidth(365px);
+            gap: mixins.obtainViewportWidth(20px);
+            align-self: flex-end;
+            padding-right: mixins.obtainViewportWidth(23px);
+
+            @media (max-width: 700px) {
+                padding-left: 5px;
+                max-width: initial;
+                align-self: center;
+            }
+       
+            &__link {
+                border-bottom: 2px solid transparent;
+                font: 700 mixins.obtainViewportWidth(5px) Spring, sans-serif;
+                text-decoration: none;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                color: #000;
+                transition: all 0.4s 0.2s ease-in-out;
+
+                @media (max-width: 700px) {
+                    font-size: 7px;
+                }
+
+                &:first-child {
+                    margin-right: mixins.obtainViewportWidth(40px);
+                }
+
+                &:last-child {
+                    margin-left: mixins.obtainViewportWidth(40px);
+                }
+
+                @include mixins.liftUp($levels: 2, $modifiers: (":hover", ":focus-within")) {
+                    font-size: mixins.obtainViewportWidth(7px);
+                    border-color: #000;
+
+                    @media (max-width: 700px) {
+                        font-size: 9px;
+                    }
+                }
+            }
+        }
+
+        &-form {
+            position: relative;
+            transform: translateX(50%) scaleX(-1);
+            margin-top: mixins.obtainViewportWidth(35px);
+            padding: mixins.obtainViewportWidth(32px) 0 mixins.obtainViewportWidth(32px) mixins.obtainViewportWidth(27px);
+            width: mixins.obtainViewportWidth(180px);
+            height: mixins.obtainViewportWidth(180px);
+            box-sizing: border-box;
+            border-radius: mixins.obtainViewportWidth(22px);
+            align-self: center;
+            perspective: mixins.obtainViewportWidth(50px);
+            background-color: #f7e6ca;
+            transition: all 0.4s 0.2s ease-in-out;
+
+            @include mixins.liftUp($levels: 1, $modifiers: (":hover", ":focus-within")) {
+                transform: translateX(55%);
+            }
+
+            @media (max-width: 700px) {
+                align-self: flex-start;
+                width: 200px;
+                height: 200px;
+                transform: none;
+
+                *:not(#\#) {
+                    width: initial;
+                    max-width: initial;
+                    font-size: 9.3px;
+                }
+            }
+
+            &__heading {
+                margin: 0;
+                font: 700 small-caps mixins.obtainViewportWidth(12px) Spring, sans-serif;
+                letter-spacing: 3px;
+            }
+
+            &__description {
+                margin: mixins.obtainViewportWidth(7px) 0;
+                max-width: mixins.obtainViewportWidth(100px);
+                font-size: mixins.obtainViewportWidth(7px);
+                font-family: Brusly, sans-serif;
+            }
+
+            &__input {
+                width: mixins.obtainViewportWidth(100px);
+                padding: mixins.obtainViewportWidth(2px);
+                border-color: rgba(0, 0, 0, 0.25);
+                border-radius: mixins.obtainViewportWidth(2px);
+                margin: 0;
+
+                &::placeholder {
+                    color: rgba(0, 0, 0, 0.25);
+                    font-family: Brusly, sans-serif;
+                    font-size: mixins.obtainViewportWidth(8px);
+                    text-transform: lowercase;
+                }
+            }
+
+            &-list {
+                border-top: rgba(0, 0, 0, 0.33) solid 1px;
+                margin: mixins.obtainViewportWidth(5px) 0 0;
+                padding: mixins.obtainViewportWidth(5px) 0 0;
+                width: mixins.obtainViewportWidth(133px);
+                list-style-type: none;
+
+                &-item {
+                    font-family: Brusly, sans-serif;
+                    font-size: mixins.obtainViewportWidth(6px);
+                    line-height: 1.5;
+                    text-transform: lowercase;
+                }
+            }
+
+            &__subheading {
+                margin: 0;
+                font: 700 small-caps mixins.obtainViewportWidth(8px) Spring, sans-serif;
+                letter-spacing: 1px;
+            }
+
+            &::before {
+                position: absolute;
+                top: mixins.obtainViewportWidth(6px);
+                left: mixins.obtainViewportWidth(-105px);
+                z-index: -1;
+                display: block;
+                width: mixins.obtainViewportWidth(180px);
+                height: mixins.obtainViewportWidth(170px);
+                background: linear-gradient(to right, #f7a383 0%, #f7a383 61.5%, #f7e6ca 61.5%, #f7e6ca 100%);
+                border-radius: mixins.obtainViewportWidth(22px);
+                content: "";
+            }
+
+            &::after {
+                position: absolute;
+                top: mixins.obtainViewportWidth(40px);
+                left: mixins.obtainViewportWidth(-64px);
+                width: mixins.obtainViewportWidth(70px);
+                height: mixins.obtainViewportWidth(4px);
+                background-color: rgba(0, 0, 0, 0.85);
+                content: "";
+            }
+        }
+    }
+}

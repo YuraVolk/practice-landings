@@ -80,17 +80,46 @@
     }
 }
 
-@mixin liftUp($levels, $modifier) {
-    $result: _removeNesting(&, $levels);
-    @if ($result == "." or $result == "#") {
-        @error "Erroneous selector generated on level lifting #{$levels} with base selector #{&}";
-    } @else {
-        @if (selector.is-superselector("*", "*#{$result}") or selector.unify($result, "*") != null) {
-            @at-root #{selector.nest("#{$result}#{$modifier}", &)} {
-                @content;
-            }
+@mixin liftUp($levels, $modifiers) {
+    @each $modifier in $modifiers {
+        $result: _removeNesting(&, $levels);
+        @if ($result == "." or $result == "#") {
+            @error "Erroneous selector generated on level lifting #{$levels} with base selector #{&}";
         } @else {
-            @debug "Potentially erroneous selector generated on level lifting #{$levels} with base selector #{&}";
+            @if (selector.is-superselector("*", "*#{$result}") or selector.unify($result, "*") != null) {
+                @at-root #{selector.nest("#{$result}#{$modifier}", &)} {
+                    @content;
+                }
+            } @else {
+                @debug "Potentially erroneous selector generated on level lifting #{$levels} with base selector #{&}";
+            }
         }
     }
+}
+
+@function obtainViewportWidth($targetWidth, $baseWidth: 1013px) {
+    @if ($targetWidth >= $baseWidth) {
+        @error "Target width should be less than base width";
+    }
+
+    @return math.div($targetWidth * 100vw, $baseWidth);
+}
+
+@function textStroke($stroke, $color, $step: 0.3px) {
+    $shadow: ();
+    $from: $stroke * -1;
+
+    @for $i from $from through $stroke {
+        @for $j from $from through $stroke {
+            $shadow: append($shadow, $i * $step $j * $step 0 $color, comma);
+        }
+    }
+
+    @return $shadow;
+}
+
+@mixin placeBackground($url) {
+    background-image: url($url);
+    background-position: center;
+    background-size: cover;
 }

@@ -1,2 +1,15 @@
 @use "./fonts.scss";
 @use "./layout/header.scss";
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.screen-reader-only {
+    position: absolute;
+    top: -100vw;
+    left: -100vw;
+    display: none;
+    clip: rect(0 0 0 0);
+}
