@@ -7,6 +7,6 @@
     @include navigation.navigation;
     @include overlay-form.overlayForm;
     @include subsection.subsection;
-    @include mixins.placeBackground("../../img/header-image.png");
+    @include mixins.placeBackground("/img/header-image.png");
     background-position-y: top;
 }
