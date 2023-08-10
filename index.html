@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 
 <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
+    <script>document.documentElement.classList.remove("no-js");</script>
+    <script src="./vendor/modernizr-custom.js"></script>
     <link rel="stylesheet" href="./scss/entry.scss">
 </head>
 
@@ -115,7 +117,11 @@
                 </p>
             </div>
             <figure class="header-subsection-table">
-                <img src="./img/table-image.png" alt="A fairy sitting on a table" class="header-subsection-table__image">
+                <picture class="header-subsection-table__image">
+                    <source srcset="./img/table-image.webp" type="image/webp" />
+                    <source srcset="./img/table-image.png" type="image/png" />
+                    <img src="./img/table-image.png" alt="A fairy sitting on a table" class="header-subsection-table__image">
+                </picture>
                 <ul class="header-subsection-table__heading-list">
                     <li class="header-subsection-table__heading-item">About</li>
                     <li class="header-subsection-table__heading-item header-subsection-table__heading-item--empty"></li>

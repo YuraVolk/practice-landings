@@ -25,7 +25,7 @@
 
     &-overlay {
         @include _positionAbsolute($width: 525px, $height: 440px, $left: -50px);
-        @include mixins.placeBackground("/img/navigation-image.png");
+        @include mixins.placeBackground("/img/navigation-image", "png");
         transform: rotate(165deg) scale(-1, -1);
         display: flex;
         flex-direction: column;

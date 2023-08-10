@@ -118,8 +118,18 @@
     @return $shadow;
 }
 
-@mixin placeBackground($url) {
-    background-image: url($url);
+@mixin placeBackground($url, $format) {
     background-position: center;
     background-size: cover;
+        
+    @at-root {
+        #{selector.nest(".webp", &)} {
+            background-image: url("#{$url}.webp");
+        }
+        
+        #{selector.nest(".no-webp", &)},
+        #{selector.nest(".no-js", &)}{
+            background-image: url("#{$url}.#{$format}");
+        }
+    }
 }
