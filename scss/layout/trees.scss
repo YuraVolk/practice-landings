@@ -1,0 +1,13 @@
+@use "../mixins.scss";
+
+.trees-section {
+    @include mixins.placeBackground("/img/trees-image", "jpg");
+    padding-top: 24px;
+
+    &-navigation {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 24px;
+    }
+}
