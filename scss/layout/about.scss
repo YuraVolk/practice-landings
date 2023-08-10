@@ -1,0 +1,21 @@
+@use "sass:list";
+@use "../mixins.scss";
+
+@function _obtainViewportWidthBulk($widths) {
+    $result: ();
+    @each $width in $widths {
+        $result: list.append($result, mixins.obtainViewportWidth($width));
+    }
+
+    @return $result;
+}
+
+.about {
+    display: grid;
+    grid-template-columns: _obtainViewportWidthBulk(
+        75px 63px 15px 48px 37px 23px 32px 25px 27.5px 15.5px 10.5px 28px 38px 11.5px 42px 35px 9.5px 9px 22.5px 33px 28px 9px 27px 11.5px
+        18px 7px 61px 12px 36.5px 33px 53px) auto;
+    grid-template-rows: _obtainViewportWidthBulk(
+        117.07px 4.5px 9px 71.5px 61.5px 36.75px 50px 7.5px 16.5px 24px 12px 12.5px 28px 31.5px 7px 25.5px 12.68px 46.57px 15.25px 47.5px
+        42.5px 58.75px 15px 81px 45.5px 7px 26.93px 20.07px 58.5px 9px 16.07px);
+}
