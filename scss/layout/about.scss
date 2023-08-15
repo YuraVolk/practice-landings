@@ -92,33 +92,60 @@
 
     &-box {
         position: relative;
+        pointer-events: none;
 
         &__heading {
             margin: 0;
-            font-size: 21px;
+            font-size: 23px;
             font-family: Brusly;
             text-transform: uppercase;
             color: rgba(#000, 0.33);
 
-            @include mixins.liftUp($levels: 1, $modifiers: ("--1")) {
+            @include mixins.liftUp($levels: 1, $modifiers: ("--1", "--13", "--14", "--16", "--20")) {
+                margin-top: 35%;
                 text-align: center;
+            }
+
+            @include mixins.liftUp($levels: 1, $modifiers: ("--5")) {
+                margin-top: mixins.obtainViewportWidth(6px);
+                font-size: 16px;
+                writing-mode: vertical-lr;
+            }
+
+            @include mixins.liftUp($levels: 1, $modifiers: ("--14", "--16")) {
+                margin-top: 100%;
+            }
+
+            @include mixins.liftUp($levels: 1, $modifiers: ("--16")) {
+                font-family: "Rainbow Land";
             }
         }
 
         &__paragraph {
             font-family: Brusly;
+            font-size: 15px;
             margin: 0;
             color: transparent;
             transition: all 0.4s ease-in-out;
-
-            @include mixins.liftUp($levels: 1, $modifiers: ("--1")) {
+ 
+            @include mixins.liftUp($levels: 1, $modifiers: ("--1", "--13", "--14", "--16", "--20")) {
+                font-size: 13px;
                 text-align: center;
             }
         }
 
+        &__link {
+            font-family: "Frest Style";
+            font-size: 11px;
+            text-transform: uppercase;
+            color: transparent;
+            transition: all 0.4s ease-in-out;
+        }
+
         &--content {
+            pointer-events: all;
             scrollbar-gutter: stable;
-            scrollbar-width: none;
+            scrollbar-color: var(--thumbOpacity) transparent;
             overflow-y: scroll;
             overflow-y: overlay;
             background-clip: revert;
@@ -143,7 +170,7 @@
             }
 
             &::-webkit-scrollbar {
-                width: 6.5px;
+                width: 10px;
                 background: transparent url("img/transparent.png") repeat-y;
             }
 
@@ -154,12 +181,16 @@
             }
         }
 
-        &--content:focus-within &__paragraph, &--content:hover &__paragraph {
+        &--content:focus-within &__paragraph, 
+        &--content:hover &__paragraph,
+        &--content:focus-within &__link, 
+        &--content:hover &__link {
             color: rgba(#000, 0.45);
-            scrollbar-width: 6px;
         }
 
         &--1 {
+            display: flex;
+            flex-direction: column;
             grid-area: r-1 / g-1 / r-5 / g-3;
             background: linear-gradient(to right, #b5f197 16%, #58a74b);
             direction: rtl;
@@ -176,6 +207,7 @@
         }
 
         &--3 {
+            z-index: 1;
             border-bottom-right-radius: 2px;
             grid-area: r-1 / g-6 / r-7 / g-13;
             background: linear-gradient(to top right, #8fcc92, #a0daa1);
@@ -247,6 +279,8 @@
         }
 
         &--14 {
+            display: flex;
+            flex-direction: column;
             grid-area: r-5 / g-1 / r-10 / g-2;
             border-top-right-radius: 1px;
             background: linear-gradient(to right, #fbe3bf, #fae6c1);
@@ -289,14 +323,22 @@
         }
 
         &--20 {
-            z-index: -1;
             grid-area: r-5 / g-12 / r-9 / g-15;
             justify-self: flex-end;
             align-self: center;
             width: 80%;
             height: 75%;
+            padding-bottom: 25%;
             background: linear-gradient(to right, #d4a880 70%, #b38f68);
             background-size: 105%;
+
+            &::before {
+                display: block;
+                width: 30%;
+                height: 75%;
+                float: left;
+                content: "";
+            }
         }
 
         &--21 {
@@ -305,11 +347,31 @@
             align-self: center;
             width: 99%;
             height: 97.5%;
+            padding: 5%;
+            box-sizing: border-box;
             border-top-left-radius: 3px;
             border-top-right-radius: 3px;
             border-bottom-right-radius: 2.5% 100%;
             background: linear-gradient(to right, transparent 51%, #d7e9b3 51%, #d7e9b3 52%, transparent 52%, transparent),
                 linear-gradient(to bottom, #e6f5c6, #e6f5c6 48.5%, #ccdea9 48.5%, #e1f3ba 50%, #e0f3b1 50%, #daf2ac);
+            direction: rtl;
+
+            &::before {
+                display: block;
+                width: 55%;
+                height: 275%;
+                float: right;
+                content: "";
+
+                // 19% polygon causes infinite loop bug in some Chromium browsers because of complex text flow issues, 23% works fine
+                @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
+                    shape-outside: polygon(0 23%, 100% 23%, 100% 100%, 0 100%);
+                }
+
+                @-moz-document url-prefix() {
+                    shape-outside: polygon(0 19%, 100% 19%, 100% 100%, 0 100%);
+                }
+            }
         }
 
         &--22 {
