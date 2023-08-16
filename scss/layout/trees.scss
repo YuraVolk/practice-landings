@@ -1,5 +1,5 @@
 @use "sass:math";
-@use "../mixins.scss";
+@use "../config/mixins.scss";
 
 .trees-section {
     @include mixins.placeBackground("/img/trees-image", "jpg");

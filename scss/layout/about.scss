@@ -1,7 +1,7 @@
 @use "sass:list";
 @use "sass:meta";
 @use "sass:string";
-@use "../mixins.scss";
+@use "../config/mixins.scss";
 
 @function _obtainViewportWidthBulk($widths) {
     $result: ();
@@ -357,20 +357,11 @@
             direction: rtl;
 
             &::before {
-                display: block;
                 width: 55%;
-                height: 275%;
+                height: 550px;
                 float: right;
+                shape-outside: polygon(0 24%, 100% 24%, 100% 100%, 0 100%);
                 content: "";
-
-                // 19% polygon causes infinite loop bug in some Chromium browsers because of complex text flow issues, 23% works fine
-                @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-                    shape-outside: polygon(0 23%, 100% 23%, 100% 100%, 0 100%);
-                }
-
-                @-moz-document url-prefix() {
-                    shape-outside: polygon(0 19%, 100% 19%, 100% 100%, 0 100%);
-                }
             }
         }
 

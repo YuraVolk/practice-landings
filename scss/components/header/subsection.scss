@@ -1,6 +1,6 @@
 @use "sass:string";
 @use "./table.scss";
-@use "../../mixins.scss";
+@use "../../config/mixins.scss";
 
 @mixin subsection {
     $id: string.unique-id();

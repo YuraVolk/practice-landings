@@ -1,4 +1,4 @@
-@use "../../mixins.scss";
+@use "../../config/mixins.scss";
 
 @mixin _positionAbsolute($width, $height, $top: 0, $left: 0) {
     position: absolute;

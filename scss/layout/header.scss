@@ -1,7 +1,7 @@
 @use "../components/header/navigation.scss";
 @use "../components/header/overlay-form.scss";
 @use "../components/header/subsection.scss";
-@use "../mixins.scss";
+@use "../config/mixins.scss";
 
 .header {
     @include navigation.navigation;
