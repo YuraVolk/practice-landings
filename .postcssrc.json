@@ -1,0 +1,5 @@
+{
+	"plugins": {
+		"@csstools/postcss-cascade-layers": {}
+	}
+}

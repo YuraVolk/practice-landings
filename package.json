@@ -9,6 +9,8 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@csstools/postcss-cascade-layers": "^4.0.0",
+    "postcss": "^8.4.28",
     "sass": "^1.63.6",
     "vite": "^4.3.9"
   }

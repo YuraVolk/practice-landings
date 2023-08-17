@@ -1,6 +1,8 @@
-.trees-iframe {
-    display: block;
-    border: none;
-    width: 100%;
-    height: auto;
+@layer desktop {
+    .trees-iframe {
+        display: block;
+        border: none;
+        width: 100%;
+        height: auto;
+    }    
 }
