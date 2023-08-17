@@ -96,13 +96,13 @@
 
         &__heading {
             margin: 0;
-            font-size: 18px;
+            font-size: 17px;
             font-family: Brusly;
             text-transform: uppercase;
             color: rgba(#000, 0.33);
 
             &--white {
-                font-size: 16px;
+                font-size: 15px;
                 letter-spacing: 1px;
                 color: rgba(#fff, 0.66);
 
@@ -116,7 +116,8 @@
             }
 
             @include mixins.liftUp($levels: 1, $modifiers: ("--1", "--13", "--14", "--16", "--20", "--25", "--30", "--37", "--40", 
-                "--43", "--47", "--48", "--49", "--50", "--54", "--56", "--57", "--61")) {
+                "--43", "--47", "--48", "--49", "--50", "--54", "--56", "--57", "--61", "--64", "--66", "--70", "--71", "--75",
+                "--88", "--93", "--97")) {
                 margin-top: 35%;
                 text-align: center;
             }
@@ -127,7 +128,16 @@
                 writing-mode: vertical-lr;
             }
 
-            @include mixins.liftUp($levels: 1, $modifiers: ("--14", "--16", "--43")) {
+            @include mixins.liftUp($levels: 1, $modifiers: ("--65", "--69", "--76", "--91")) {
+                text-align: center;
+            }
+
+            @include mixins.liftUp($levels: 1, $modifiers: ("--65")) {
+                font-size: 15px;
+                line-height: 1.2;
+            }
+
+            @include mixins.liftUp($levels: 1, $modifiers: ("--14", "--16", "--43", "--71", "--88")) {
                 margin-top: 100%;
             }
 
@@ -178,6 +188,11 @@
                 line-height: 1.25;
                 transform: scale(0.75);
             }
+
+            @include mixins.liftUp($levels: 1, $modifiers: ("--76")) {
+                margin-top: 20%;
+                font-size: 23px;
+            }
         }
 
         &__paragraph {
@@ -190,7 +205,8 @@
             padding: 0 7px;
  
             @include mixins.liftUp($levels: 1, $modifiers: ("--1", "--13", "--14", "--16", "--20", "--30", "--37", "--40", 
-                "--43", "--47", "--48", "--49", "--50", "--54", "--56", "--57", "--61", "--62")) {
+                "--43", "--47", "--48", "--49", "--50", "--54", "--56", "--57", "--61", "--62", "--65", "--66", "--69", "--70",
+                "--71", "--75", "--76", "--88", "--93", "--97")) {
                 font-size: 13px;
                 text-align: center;
             }
@@ -221,6 +237,15 @@
             & > * {
                 transform: scaleY(-1);
             }
+        }
+
+        &__subheading {
+            margin-right: 80%;
+            font-size: 15px;
+            font-family: Brusly;
+            text-transform: uppercase;
+            writing-mode: vertical-rl;
+            color: rgba(#000, 0.33);
         }
 
         &--content {
@@ -593,6 +618,7 @@
         }
 
         &--37 {
+            z-index: 1;
             grid-area: r-14 / g-5 / r-21 / g-10;
             width: 95%;
             height: 92.5%;
@@ -809,6 +835,7 @@
         }
 
         &--61 {
+            z-index: 1;
             grid-area: r-20 / g-1 / r-23 / g-2;
             background: radial-gradient(at left, #0ca83c, #079634);
             box-shadow: inset 2px 2px 4px rgba($color: #000, $alpha: 0.25),
@@ -830,25 +857,45 @@
         }
 
         &--64 {
-            z-index: -1;
             grid-area: r-20 / g-5 / r-24 / g-10;
             width: 95%;
             height: 127.5%;
+            box-sizing: border-box;
+            padding-top: 33%;
             border-top: 1px solid #a2e69b;
             border-bottom-left-radius: 4px;
             outline: 1px solid #7dcd6a;
             background: linear-gradient(to bottom, #8dd69c, #8cd68e 50%, #72b474 50%, #72b474 51%, transparent 51%, transparent),
                 linear-gradient(to right, transparent 33%, #72b474 33%, #72b474 34%, transparent 34%, transparent),
                 linear-gradient(to bottom, transparent 51%, #8bd49a 51%, #87d18c);
+            direction: rtl;
+
+            &::before {
+                display: block;
+                width: 70%;
+                height: mixins.obtainViewportWidth(155px);
+                float: right;
+                content: "";
+            }
         }
 
         &--65 {
             z-index: 1;
+            box-sizing: border-box;
+            padding-top: 10%;
             grid-area: r-23 / g-7 / r-28 / g-12;
             border-radius: 4px;
             background: linear-gradient(to bottom, transparent 60%, #a8cb7c 60%, #a8cb7c 61%, transparent 61%, transparent),
                 linear-gradient(to bottom left, #cef5ac, #d2f0a6);
             box-shadow: _obtainViewportWidthBulk(-8px 12px 16px) rgba($color: #000, $alpha: 0.15);
+
+            &::before {
+                display: block;
+                width: 35%;
+                height: mixins.obtainViewportWidth(220px);
+                float: right;
+                content: "";
+            }
         }
 
         &--66 {
@@ -875,6 +922,8 @@
         }
 
         &--69 {
+            box-sizing: border-box;
+            padding: 15% 0 0 25%;
             grid-area: r-19 / g-29 / r-22 / g-32;
             border-bottom-left-radius: 2px;
             background: radial-gradient(at bottom left, #5cb367, #377c4c);
@@ -890,8 +939,9 @@
         }
 
         &--71 {
-            z-index: -1;
             grid-area: r-22 / g-1 / r-26 / g-2;
+            box-sizing: border-box;
+            padding-top: 80%;
             height: 110%;
             background: linear-gradient(to bottom right, #fac7aa, #efae8f);
             box-shadow: inset -2px -2px 3px rgba(0, 0, 0, 0.15);
@@ -1042,7 +1092,12 @@
             width: 107.5%;
             border-top-left-radius: 2px;
             border-top-right-radius: 4px;
+            box-sizing: border-box;
+            padding-top: 30%;
             background: linear-gradient(to right, #caf2b2, #c6f2a9);
+            column-count: 2;
+            column-gap: 3px;
+            column-rule: 1.5px solid #b1df8d;
 
             &::before {
                 position: absolute;
@@ -1093,6 +1148,8 @@
         }
 
         &--97 {
+            box-sizing: border-box;
+            padding-top: 20%;
             grid-area: r-31 / g-5 / -1 / g-8;
             border-top-left-radius: 4px;
             border-top-right-radius: 2px;
