@@ -145,7 +145,7 @@
         &--content {
             pointer-events: all;
             scrollbar-gutter: stable;
-            scrollbar-color: var(--thumbOpacity) transparent;
+            scrollbar-color: #222 transparent;
             overflow-y: scroll;
             overflow-y: overlay;
             background-clip: revert;
@@ -356,11 +356,19 @@
                 linear-gradient(to bottom, #e6f5c6, #e6f5c6 48.5%, #ccdea9 48.5%, #e1f3ba 50%, #e0f3b1 50%, #daf2ac);
             direction: rtl;
 
+            & > :only-child {
+                transform: scaleY(-1);
+
+                & > * {
+                    transform: scaleY(-1);
+                }
+            }
+
             &::before {
+                display: block;
                 width: 55%;
-                height: 550px;
-                float: right;
-                shape-outside: polygon(0 24%, 100% 24%, 100% 100%, 0 100%);
+                height: mixins.obtainViewportWidth(100px);
+                float: right;   
                 content: "";
             }
         }
