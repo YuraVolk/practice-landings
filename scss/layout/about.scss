@@ -272,12 +272,12 @@
             &::-webkit-scrollbar-track {
                 -webkit-box-shadow: none;
                 border-radius: 4px;
-                background: transparent url("img/transparent.png") repeat-y;
+                background: transparent url("/img/transparent.png") repeat-y;
             }
 
             &::-webkit-scrollbar {
                 width: 10px;
-                background: transparent url("img/transparent.png") repeat-y;
+                background: transparent url("/img/transparent.png") repeat-y;
             }
 
             &::-webkit-scrollbar-thumb {
