@@ -27,46 +27,6 @@
     initial-value: transparent;
 }
 
-@-webkit-keyframes fadeIn {
-    from {
-        --thumbOpacity: transparent;
-    }
-
-    to {
-        --thumbOpacity: #222;
-    }
-}
-
-@keyframes fadeIn {
-    from {
-        --thumbOpacity: transparent;
-    }
-
-    to {
-        --thumbOpacity: #222;
-    }
-}
-
-@-webkit-keyframes fadeOut {
-    from {
-        --thumbOpacity: #222;
-    }
-
-    to {
-        --thumbOpacity: transparent;
-    }
-}
-
-@keyframes fadeOut {
-    from {
-        --thumbOpacity: #222;
-    }
-
-    to {
-        --thumbOpacity: transparent;
-    }
-}
-
 @function _obtainGridTemplateRows($threshold: 0) {
     @return _obtainViewportWidthBulk(
         [r-1] 73.56px [r-2] 37.51px [r-3] 4.5px [r-4] 9px [r-5] 71.5px [r-6] 16.49px [r-7] 45.01px [r-8] 36.75px [r-9] 50px [r-10] 7.5px 
@@ -76,6 +36,46 @@
 }
 
 @layer desktop {
+    @-webkit-keyframes fadeIn {
+        from {
+            --thumbOpacity: transparent;
+        }
+    
+        to {
+            --thumbOpacity: #222;
+        }
+    }
+    
+    @keyframes fadeIn {
+        from {
+            --thumbOpacity: transparent;
+        }
+    
+        to {
+            --thumbOpacity: #222;
+        }
+    }
+    
+    @-webkit-keyframes fadeOut {
+        from {
+            --thumbOpacity: #222;
+        }
+    
+        to {
+            --thumbOpacity: transparent;
+        }
+    }
+    
+    @keyframes fadeOut {
+        from {
+            --thumbOpacity: #222;
+        }
+    
+        to {
+            --thumbOpacity: transparent;
+        }
+    }
+
     .about {
         position: relative;
         display: grid;
