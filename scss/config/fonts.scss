@@ -45,7 +45,7 @@
     font-display: swap;
     font-style: normal;
     ascent-override: 50%;
-    src:  url("../fonts/Brusly/BruslyNameDemoSanserif-d9Ol7.ttf") format("truetype");
+    src: url("../fonts/Brusly/BruslyNameDemoSanserif-d9Ol7.ttf") format("truetype");
 }
 
 @font-face {
@@ -81,4 +81,9 @@
     src: url("../fonts/Helsky/HelskyRegular-ywEe2.woff2") format("woff2"),
         url("../fonts/Helsky/HelskyRegular-ywEe2.woff") format("woff"),
         url("../fonts/Helsky/HelskyRegular-ywEe2.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: Belgrano;
+    src: url("../fonts/Belgrano/Belgrano-Regular.ttf") format("truetype");
 }

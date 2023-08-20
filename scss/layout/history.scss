@@ -5,24 +5,40 @@
         width: calc(100vw - (100vw - 100%));
         height: 100vw;
         aspect-ratio: 1 / 1;
-        padding-left: mixins.obtainViewportWidth(5px);
         box-sizing: border-box;
 
         &-content {
             flow-into: historyRegion;
-            font-family: Brusly, sans-serif;
+            font-family: Belgrano, sans-serif;
 
             &__paragraph {
-                font-size: mixins.obtainViewportWidth(12px);
-                margin: 4px 0;
+                font-size: mixins.obtainViewportWidth(8px);
+                margin: mixins.obtainViewportWidth(4px) 0;
+                letter-spacing: -1px;
+
+                @include mixins.liftUp($levels: 2, $modifiers: ("-regions--top")) {
+                    color: #473623;
+
+                    &:first-of-type {
+                        padding-right: 5%;
+                    }
+
+                    &:nth-of-type(2) {
+                        padding-right: 7.5%;
+                    }
+                }
             }
         }
 
         &-regions {
             &--top {
                 display: flex;
+                gap: mixins.obtainViewportWidth(3px);
                 width: mixins.obtainViewportWidth(440px);
-                margin-top: mixins.obtainViewportWidth(28px);
+                padding-top: mixins.obtainViewportWidth(28px);
+                padding-left: mixins.obtainViewportWidth(5px);
+                background: radial-gradient(circle at 30% -100%, #d2b07a, transparent),
+                    linear-gradient(to bottom, #c8a26a, #b68b4f);
             }
         }
 
@@ -33,10 +49,18 @@
                 display: block !important;
 
                 @include mixins.liftUp($levels: 1, $modifiers: ("--topmost")) {
-                    width: 50%;
+                    width: 80%;
                     height: 100%;
                     float: right;
                     shape-outside: polygon(100% 24%, 76% 32%, 48% 46%, 27% 59%, 13% 75%, 0 100%, 100% 100%);
+                }
+
+                @include mixins.liftUp($levels: 1, $modifiers: ("--top")) {
+                    margin-top: mixins.obtainViewportWidth(-30px); 
+                    width: 100%;
+                    height: 100%;
+                    float: right;
+                    shape-outside: polygon(0 83%, 15% 68%, 33% 56%, 53% 42%, 76% 26%, 96% 18%, 99% 11%, 100% 0%, 100% 99%);
                 }
             }
 
@@ -57,9 +81,16 @@
             &--top {
                 flex: 2 1 0;
                 height: mixins.obtainViewportWidth(225px);
+
+                &::before {
+                    display: block;
+                    content: "";
+                    width: 5%;
+                    height: 30%;
+                    shape-outside: polygon(0 0, 100% 0, 16% 100%, 0% 100%);
+                    float: left;
+                }
             }
         }
-
-
     }
 }
