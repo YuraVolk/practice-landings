@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
@@ -16,7 +17,14 @@
         style.appendChild(document.createTextNode(styles));
     </script>
 </head>
+
 <body>
+    <svg>
+        <clipPath id="history-clip-topmost" clipPathUnits="objectBoundingBox">
+            <path
+                d="M0,1 l0.333,-0.222 c0.2,-0.111,0.267,-0.278,0.267,-0.444 A0.3,0.5,0,0,0,0.5,0 H0.9 A0.566,0.944,0,0,1,1,0.333 a0.133,0.222,0,0,1,-0.033,0.167 s-0.033,0.222,0,0.222 H0.866 A3,5,0,0,0,0,1" />
+        </clipPath>
+    </svg>
     <section class="history">
         <div class="history-regions history-regions--top">
             <div class="history-region history-region--topmost">
@@ -24,6 +32,9 @@
             </div>
             <div class="history-region history-region--top">
                 <div class="history-region__float"></div>
+            </div>
+            <div class="history-region-wrap history-region-wrap--top-absolute">
+                <div class="history-region"></div>
             </div>
         </div>
         <div class="history-region" style="display: none"></div>
@@ -284,4 +295,5 @@
     </section>
     <script src="/js/vendor/css-regions/cssregions.min.js" type="module"></script>
 </body>
+
 </html>

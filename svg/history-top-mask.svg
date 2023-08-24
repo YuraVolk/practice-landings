@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 3 1.8">
+  <defs>
+    <style>
+      .e2c85641-8b77-4f5a-9921-ad7ab6e643c1 {
+        mask: url(#4059ceef-a120-40bb-bf93-e6db4ce2b57c);
+      }
+
+      .\36 83ede0f-8e66-4c63-8e7b-9c1690a61d7c {
+        fill: #fff;
+      }
+
+      .cb5a87cd-d0df-4b89-8659-93130c48ae02 {
+        filter: url(#86901b69-6377-43ed-ba8d-7880e9e7a6e6);
+      }
+    </style>
+    <filter id="86901b69-6377-43ed-ba8d-7880e9e7a6e6" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feColorMatrix values="-1 0 0 0 1 0 -1 0 0 1 0 0 -1 0 1 0 0 0 1 0"/>
+    </filter>
+    <mask id="4059ceef-a120-40bb-bf93-e6db4ce2b57c" x="-2.75" y="-2.56" width="8" height="7" maskUnits="userSpaceOnUse">
+      <g class="cb5a87cd-d0df-4b89-8659-93130c48ae02">
+        <image width="8" height="7" transform="translate(-2.7 -2.6)" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAHCAIAAAC6O5sJAAAACXBIWXMAAAsSAAALEgHS3X78AAAAIklEQVQIW2NgoAj8////////EDYTsiiyIkY0UUZGRgYyAQBjRwv7Bx8sEAAAAABJRU5ErkJggg=="/>
+      </g>
+    </mask>
+  </defs>
+  <g id="5d8f9bed-d573-4682-a70f-394265272de8" data-name="Слой 2">
+    <g id="90ef8702-0a38-4eb9-9700-124d12ff8985" data-name="cfa9541e-7173-4a22-a3c3-cee2ba466642">
+      <g>
+        <path d="M0,1.8l1-.4c.6-.2.8-.5.8-.8A.9.9,0,0,0,1.5,0H2.7A1.7,1.7,0,0,1,3,.6a.4.4,0,0,1-.1.3s-.1.4,0,.4H2.6A9.2,9.2,0,0,0,0,1.8Z"/>
+        <g class="e2c85641-8b77-4f5a-9921-ad7ab6e643c1">
+          <path class="683ede0f-8e66-4c63-8e7b-9c1690a61d7c" d="M0,1.8l1-.4c.6-.2.8-.5.8-.8A.9.9,0,0,0,1.5,0H2.7A1.7,1.7,0,0,1,3,.6a.4.4,0,0,1-.1.3s-.1.4,0,.4H2.6A9.2,9.2,0,0,0,0,1.8Z"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
