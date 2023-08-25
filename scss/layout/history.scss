@@ -1,4 +1,29 @@
+@use "sass:math";
 @use "../config/mixins.scss";
+
+@mixin _rotatedText($letters, $angle, $angleOffset, $fontSize, $radius) {
+    position: relative;
+    font-size: $fontSize;
+    font-family: Sketches, sans-serif;
+
+    &-char {
+        $width: $fontSize - math.div($fontSize, 4);
+
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform-origin: bottom center;
+        width: $width;
+        height: $width * $radius;
+    }
+
+    $anglePerChar: math.div($angle, $angleOffset);
+    @for $i from 1 through $letters {
+        &-char:nth-child(#{$i}) {
+            transform: rotate($angleOffset + $anglePerChar * $i);
+        }
+    }
+}
 
 @layer desktop {
     body>svg {
