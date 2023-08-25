@@ -22,13 +22,15 @@
 
                 @include mixins.liftUp($levels: 2, $modifiers: ("-regions--top")) {
                     color: #473623;
+                }
 
-                    &:first-of-type {
-                        padding-right: 5%;
+                @include mixins.liftUp($levels: 2, $modifiers: ("-region--top")) {
+                    &:first-of-type, &:nth-of-type(2) {
+                        padding-right: 15%;
                     }
 
-                    &:nth-of-type(2) {
-                        padding-right: 7.5%;
+                    &:not(:first-of-type, :nth-of-type(2)) {
+                        padding-right: 40.5%;
                     }
                 }
             }
@@ -40,7 +42,7 @@
             &--top {
                 display: flex;
                 gap: mixins.obtainViewportWidth(3px);
-                width: mixins.obtainViewportWidth(440px);
+                width: mixins.obtainViewportWidth(477px);
                 padding-top: mixins.obtainViewportWidth(28px);
                 padding-left: mixins.obtainViewportWidth(5px);
                 background: radial-gradient(circle at 30% -100%, #d2b07a, transparent),
@@ -52,12 +54,13 @@
                     height: mixins.obtainViewportWidth(170px);
                     top: 0;
                     right: 0;
-                    transform: translateX(25%) scaleY(1.75);
+                    transform: translateX(-22%) scale(1.5, 2);
                     z-index: 1;
-                    background: linear-gradient(140deg, #1e150f, #573b22);
-                 
-                    -webkit-mask-image: url("/svg/history-top-mask.svg");
-                    mask-image: url("/svg/history-top-mask.svg");
+                    background: linear-gradient(to left, #251a11, #7d5f36);
+                    mix-blend-mode: soft-light;
+                    -webkit-mask-image: url("/svg/history-top-mask-01.svg");
+                    mask-image: url("/svg/history-top-mask-01.svg");
+                    pointer-events: none;
                     content: '';
                 }
             }
@@ -82,6 +85,13 @@
                     height: 100%;
                     float: right;
                     shape-outside: polygon(0 83%, 15% 68%, 33% 56%, 53% 42%, 76% 26%, 96% 18%, 99% 11%, 100% 0%, 100% 99%);
+                }
+
+                @include mixins.liftUp($levels: 1, $modifiers: ("-wrap--top-absolute")) {
+                    width: 32%;
+                    height: calc(100% + mixins.obtainViewportWidth(64px));
+                    float: right;
+                    shape-outside: polygon(68% 0%, 87% 16%, 100% 36%, 84% 52%, 86% 67%, 0 69%, 0 100%, 100% 100%, 100% 0);
                 }
             }
 
@@ -115,20 +125,35 @@
 
             &-wrap--top-absolute {
                 position: absolute;
-                top: mixins.obtainViewportWidth(28px);
-                right: mixins.obtainViewportWidth(-145px);
+                top: 0;
+                right: mixins.obtainViewportWidth(-115px);
                 z-index: 1;
                 width: mixins.obtainViewportWidth(285px);
-                height: mixins.obtainViewportWidth(170px);
-                filter: drop-shadow(mixins.obtainViewportWidth(-80px) 0px mixins.obtainViewportWidth(18px) rgba(#3f2b18, 0.25)) drop-shadow(mixins.obtainViewportWidth(-100px) mixins.obtainViewportWidth(-20px) mixins.obtainViewportWidth(18px) rgba(#3f2b18, 0.25));
+                height: mixins.obtainViewportWidth(170px + 28px);
+                filter: drop-shadow(mixins.obtainViewportWidth(-80px) 0px mixins.obtainViewportWidth(18px) rgba(#3f2b18, 0.5)) 
+                    drop-shadow(mixins.obtainViewportWidth(-100px) mixins.obtainViewportWidth(-20px) mixins.obtainViewportWidth(18px) rgba(#3f2b18, 0.25))
+                    drop-shadow(mixins.obtainViewportWidth(-80px) mixins.obtainViewportWidth(-70px) mixins.obtainViewportWidth(18px) rgba(#1f170e, 0.5))
+                    drop-shadow(mixins.obtainViewportWidth(-20px) 0 0 rgba(#5d3f20, 0.5));
             }
 
             &-wrap--top-absolute & {
                 width: inherit;
                 height: inherit;
+                box-sizing: border-box;
+                padding-top: 1%;
+                padding-bottom: mixins.obtainViewportWidth(64px);
                 clip-path: url(#history-clip-topmost);
                 background: radial-gradient(circle at 50% -30%, #e9d8b9, transparent),
                     linear-gradient(to bottom left, #dfc493, #c68e3a 50%);
+                
+                &::before {
+                    display: block;
+                    content: "";
+                    width: 65%;
+                    height: calc(100% + mixins.obtainViewportWidth(64px));
+                    float: left;
+                    shape-outside: polygon(11% 100%, 47% 88%, 80% 75%, 98% 48%, 97% 17%, 86% 0, 0% 0%, 0% 100%);
+                }
             }
         }
     }
