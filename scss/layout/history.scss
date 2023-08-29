@@ -1,12 +1,16 @@
 @use "sass:math";
 @use "../config/mixins.scss";
 
-@mixin _rotatedText($letters, $angle, $angleOffset, $fontSize, $radius) {
+@mixin _rotatedText($angle, $angleOffset, $fontSize, $radius, $angleStart: 0, $customClass: null, $letterLimit: 100) {
     position: relative;
     font-size: $fontSize;
     font-family: Sketches, sans-serif;
 
-    &-char {
+    @if ($customClass == null) {
+        $customClass: "&-char";
+    }
+
+    #{$customClass} {
         $width: $fontSize - math.div($fontSize, 4);
 
         position: absolute;
@@ -18,9 +22,9 @@
     }
 
     $anglePerChar: math.div($angle, $angleOffset);
-    @for $i from 1 through $letters {
-        &-char:nth-child(#{$i}) {
-            transform: rotate($angleOffset + $anglePerChar * $i);
+    @for $i from 1 through $letterLimit {
+        #{$customClass}:nth-child(#{$i}) {
+            transform: rotate($angleStart + $angleOffset + $anglePerChar * $i);
         }
     }
 }
@@ -334,7 +338,7 @@
                 &::before {
                     width: 100%;
                     height: 100%;
-                    shape-margin: mixins.obtainViewportWidth(8px);
+                    shape-margin: mixins.obtainViewportWidth(32px);
                     shape-outside: polygon(7% 0%, 11% 9%, 7% 25%, 3% 37%, 9% 51%, 31% 61%, 58% 74%, 81% 85%, 99% 96%, 100% 100%, 0% 100%, 0% 0%);
                     content: "";
                 }
@@ -431,5 +435,68 @@
                 }
             }
         }
+
+        &-spiral__text {
+            $current: &;
+
+            @include mixins.liftUp($levels: 1, $modifiers: "-first") {
+                margin: mixins.obtainViewportWidth(40px) 0 0 mixins.obtainViewportWidth(400px);
+                opacity: 0.5;
+               
+                &:first-of-type {
+                    @include _rotatedText(
+                        $angle: 5deg, 
+                        $angleOffset: 2deg, 
+                        $fontSize: mixins.obtainViewportWidth(16px), 
+                        $radius: 35,
+                        $angleStart: 35deg,
+                        $customClass: "#{$current}-char",
+                        $letterLimit: 43
+                    );
+                }
+                
+                &:last-of-type {
+                    @include _rotatedText(
+                        $angle: 5deg, 
+                        $angleOffset: 2deg, 
+                        $fontSize: mixins.obtainViewportWidth(16px), 
+                        $radius: 37,
+                        $angleStart: 15deg,
+                        $customClass: "#{$current}-char",
+                        $letterLimit: 43
+                    );
+                }
+            }
+        }
+
+        &-spiral-first {
+            &-wrap {
+                position: absolute;
+                top: mixins.obtainViewportWidth(105px);
+                left: mixins.obtainViewportWidth(40px);
+                width: mixins.obtainViewportWidth(841px);
+                height: mixins.obtainViewportWidth(714px);
+                z-index: 1;
+                filter: drop-shadow(
+                    mixins.obtainViewportWidth(-4px) 
+                    mixins.obtainViewportWidth(2px) 
+                    mixins.obtainViewportWidth(4px) rgba(#51371b, 0.75)
+                ) drop-shadow(
+                    mixins.obtainViewportWidth(8px) 
+                    mixins.obtainViewportWidth(-2px) 
+                    mixins.obtainViewportWidth(4px) rgba(#b0a080, 0.25)
+                );
+                clip-path: polygon(0% 76%, 3% 75%, 25% 100%, 100% 100%, 100% 0%, 0% 0%);
+            }
+            
+            width: inherit;
+            height: inherit;
+            clip-path: url(#history-clip-spiral-first);
+            background: linear-gradient(to right, #b68b4f 2%, #8c6432 4%, #75522c 7%, #bc945c, #eadec6 50%);
+            pointer-events: none;
+        }
     }
 }
+
+
+// 931 * 754
