@@ -248,7 +248,7 @@
                     }
                     
                     &:last-of-type {
-                        width: 25%;
+                        width: 45%;
                         height: 60%;
                         shape-outside: polygon(54% 0, 84% 31%, 110% 53%, 134% 70%, 174% 100%, 0% 100%, 0% 0%);
                         float: left;
@@ -293,21 +293,41 @@
             &__outline {
                 display: block !important;
                 position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                transform: translate(2%, 1%);
                 z-index: 1;
-                filter: drop-shadow(mixins.obtainViewportWidth(-6px) 0px mixins.obtainViewportWidth(7px) rgba(#664727, 0.8));
-                opacity: 0.8;
                 pointer-events: none;
 
                 &-inner {
                     width: 100%;
                     height: 100%;
-                    clip-path: url(#history-clip-topmost-outline);
-                    background: linear-gradient(to bottom, #885c2d, #c68e3f);
+                }
+
+                @include mixins.liftUp($levels: 1, $modifiers: ("-wrap--top-absolute")) {
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    transform: translate(2%, 1%);
+                    filter: drop-shadow(mixins.obtainViewportWidth(-6px) 0px mixins.obtainViewportWidth(7px) rgba(#664727, 0.8));
+                    opacity: 0.8;
+
+                    &-inner {
+                        clip-path: url(#history-clip-topmost-outline);
+                        background: linear-gradient(to bottom, #885c2d, #c68e3f);
+                    }
+                }
+
+                @include mixins.liftUp($levels: 1, $modifiers: ("-wrap--bottom")) {
+                    left: 0;
+                    bottom: 0;
+                    transform: translateX(-66%);
+                    width: mixins.obtainViewportWidth(122px);
+                    height: mixins.obtainViewportWidth(199px);
+                    filter: drop-shadow(mixins.obtainViewportWidth(30px) 0px mixins.obtainViewportWidth(17.5px) rgba(#624221, 0.8));
+                    
+                    &-inner {
+                        clip-path: url(#history-clip-bottommost-outline);
+                        background: linear-gradient(to bottom, #f5e6cd, #f0e1c1);
+                    }
                 }
             }
 
@@ -467,6 +487,21 @@
                     );
                 }
             }
+
+            @include mixins.liftUp($levels: 2, $modifiers: ("-region-wrap--bottom")) {
+                height: 100%;
+                transform: translate(50%, -50%) scaleX(-1);
+                opacity: 0.5;
+
+                @include _rotatedText(
+                    $angle: 5deg, 
+                    $angleOffset: 1deg, 
+                    $fontSize: mixins.obtainViewportWidth(16px), 
+                    $radius: 13,
+                    $angleStart: 65deg,
+                    $letterLimit: 18
+                );
+            }
         }
 
         &-spiral-first {
@@ -497,6 +532,3 @@
         }
     }
 }
-
-
-// 931 * 754

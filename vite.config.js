@@ -6,7 +6,8 @@ export default defineConfig({
         rollupOptions: {
             input: {
                 app: resolve(__dirname, "index.html"),
-                treesIframe: resolve(__dirname, "iframeTrees.html")
+                treesIframe: resolve(__dirname, "modules/iframeTrees.html"),
+                historyIframe: resolve(__dirname, "modules/iframeHistory.html")
             }
         }
     }
