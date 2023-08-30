@@ -456,79 +456,140 @@
             }
         }
 
-        &-spiral__text {
-            $current: &;
+        &-spiral {
+            pointer-events: none;
 
-            @include mixins.liftUp($levels: 1, $modifiers: "-first") {
-                margin: mixins.obtainViewportWidth(40px) 0 0 mixins.obtainViewportWidth(400px);
-                opacity: 0.5;
-               
-                &:first-of-type {
-                    @include _rotatedText(
-                        $angle: 5deg, 
-                        $angleOffset: 2deg, 
-                        $fontSize: mixins.obtainViewportWidth(16px), 
-                        $radius: 35,
-                        $angleStart: 35deg,
-                        $customClass: "#{$current}-char",
-                        $letterLimit: 43
+            &-first {
+                &-wrap {
+                    position: absolute;
+                    top: mixins.obtainViewportWidth(105px);
+                    left: mixins.obtainViewportWidth(40px);
+                    width: mixins.obtainViewportWidth(841px);
+                    height: mixins.obtainViewportWidth(714px);
+                    z-index: 1;
+                    filter: drop-shadow(
+                        mixins.obtainViewportWidth(-4px) 
+                        mixins.obtainViewportWidth(2px) 
+                        mixins.obtainViewportWidth(4px) rgba(#51371b, 0.75)
+                    ) drop-shadow(
+                        mixins.obtainViewportWidth(8px) 
+                        mixins.obtainViewportWidth(-2px) 
+                        mixins.obtainViewportWidth(4px) rgba(#b0a080, 0.25)
                     );
                 }
                 
-                &:last-of-type {
+                width: inherit;
+                height: inherit;
+                clip-path: url(#history-clip-spiral-first);
+                background: linear-gradient(to right, #b68b4f 2%, #8c6432 4%, #75522c 7%, #bc945c, #eadec6 50%);
+            }
+
+            &-second {
+                position: absolute;
+                top: mixins.obtainViewportWidth(310px);
+                left: mixins.obtainViewportWidth(216px);
+                width: mixins.obtainViewportWidth(540px);
+                height: mixins.obtainViewportWidth(427px);
+                z-index: 1;
+                clip-path: url(#history-clip-spiral-second);
+                background: linear-gradient(to bottom, #f8eedb, #e4d4b8 95%);
+            }
+
+            &__text {
+                $current: &;
+
+                @include mixins.liftUp($levels: 1, $modifiers: "-first") {
+                    margin: mixins.obtainViewportWidth(40px) 0 0 mixins.obtainViewportWidth(400px);
+                    opacity: 0.5;
+                   
+                    &:first-of-type {
+                        @include _rotatedText(
+                            $angle: 5deg, 
+                            $angleOffset: 2deg, 
+                            $fontSize: mixins.obtainViewportWidth(16px), 
+                            $radius: 35,
+                            $angleStart: 35deg,
+                            $customClass: "#{$current}-char",
+                            $letterLimit: 43
+                        );
+                    }
+                    
+                    &:last-of-type {
+                        @include _rotatedText(
+                            $angle: 5deg, 
+                            $angleOffset: 2deg, 
+                            $fontSize: mixins.obtainViewportWidth(16px), 
+                            $radius: 37,
+                            $angleStart: 15deg,
+                            $customClass: "#{$current}-char",
+                            $letterLimit: 43
+                        );
+                    }
+                }
+
+                @include mixins.liftUp($levels: 1, $modifiers: "-second") {
+                    opacity: 0.2;
+
+                    &:first-child {
+                        transform: scaleX(-1) translateX(40%);
+
+                        @include _rotatedText(
+                            $angle: 5deg, 
+                            $angleOffset: 2deg, 
+                            $fontSize: mixins.obtainViewportWidth(40px), 
+                            $radius: 11,
+                            $angleStart: 45deg,
+                            $customClass: "#{$current}-char",
+                            $letterLimit: 20
+                        );
+                    }
+
+                    &:nth-child(2) {
+                        top: mixins.obtainViewportWidth(-60px);
+                        transform: scaleX(-1) translateX(40%);
+
+                        @include _rotatedText(
+                            $angle: 5deg, 
+                            $angleOffset: 2deg, 
+                            $fontSize: mixins.obtainViewportWidth(40px), 
+                            $radius: 14,
+                            $angleStart: 1deg,
+                            $customClass: "#{$current}-char",
+                            $letterLimit: 15
+                        );
+                    }
+                    
+                    &:last-child {
+                        top: mixins.obtainViewportWidth(-60px);
+                        transform: translateX(40%);
+
+                        @include _rotatedText(
+                            $angle: 5deg, 
+                            $angleOffset: 2deg, 
+                            $fontSize: mixins.obtainViewportWidth(40px), 
+                            $radius: 14,
+                            $angleStart: 1deg,
+                            $customClass: "#{$current}-char",
+                            $letterLimit: 21
+                        );
+                    }
+                }
+    
+                @include mixins.liftUp($levels: 2, $modifiers: ("-region-wrap--bottom")) {
+                    height: 100%;
+                    transform: translate(50%, -50%) scaleX(-1);
+                    opacity: 0.5;
+    
                     @include _rotatedText(
                         $angle: 5deg, 
-                        $angleOffset: 2deg, 
+                        $angleOffset: 1deg, 
                         $fontSize: mixins.obtainViewportWidth(16px), 
-                        $radius: 37,
-                        $angleStart: 15deg,
-                        $customClass: "#{$current}-char",
-                        $letterLimit: 43
+                        $radius: 13,
+                        $angleStart: 65deg,
+                        $letterLimit: 18
                     );
                 }
             }
-
-            @include mixins.liftUp($levels: 2, $modifiers: ("-region-wrap--bottom")) {
-                height: 100%;
-                transform: translate(50%, -50%) scaleX(-1);
-                opacity: 0.5;
-
-                @include _rotatedText(
-                    $angle: 5deg, 
-                    $angleOffset: 1deg, 
-                    $fontSize: mixins.obtainViewportWidth(16px), 
-                    $radius: 13,
-                    $angleStart: 65deg,
-                    $letterLimit: 18
-                );
-            }
-        }
-
-        &-spiral-first {
-            &-wrap {
-                position: absolute;
-                top: mixins.obtainViewportWidth(105px);
-                left: mixins.obtainViewportWidth(40px);
-                width: mixins.obtainViewportWidth(841px);
-                height: mixins.obtainViewportWidth(714px);
-                z-index: 1;
-                filter: drop-shadow(
-                    mixins.obtainViewportWidth(-4px) 
-                    mixins.obtainViewportWidth(2px) 
-                    mixins.obtainViewportWidth(4px) rgba(#51371b, 0.75)
-                ) drop-shadow(
-                    mixins.obtainViewportWidth(8px) 
-                    mixins.obtainViewportWidth(-2px) 
-                    mixins.obtainViewportWidth(4px) rgba(#b0a080, 0.25)
-                );
-                clip-path: polygon(0% 76%, 3% 75%, 25% 100%, 100% 100%, 100% 0%, 0% 0%);
-            }
-            
-            width: inherit;
-            height: inherit;
-            clip-path: url(#history-clip-spiral-first);
-            background: linear-gradient(to right, #b68b4f 2%, #8c6432 4%, #75522c 7%, #bc945c, #eadec6 50%);
-            pointer-events: none;
         }
     }
 }
