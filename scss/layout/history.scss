@@ -449,6 +449,7 @@
                 &::before {
                     width: 85%;
                     height: 60%;
+                    shape-margin: mixins.obtainViewportWidth(8px);
                     shape-outside: polygon(100% 92%, 85% 95%, 68% 93%, 45% 85%, 28% 77%, 5% 63%, 0% 55%, 0% 0%, 100% 0%);
                     float: right;
                     content: "";
@@ -463,10 +464,11 @@
                 &-wrap {
                     position: absolute;
                     top: mixins.obtainViewportWidth(105px);
-                    left: mixins.obtainViewportWidth(40px);
+                    left: mixins.obtainViewportWidth(45px);
                     width: mixins.obtainViewportWidth(841px);
-                    height: mixins.obtainViewportWidth(714px);
-                    z-index: 1;
+                    height: mixins.obtainViewportWidth(690px);
+                    z-index: 3;
+
                     filter: drop-shadow(
                         mixins.obtainViewportWidth(-4px) 
                         mixins.obtainViewportWidth(2px) 
@@ -475,6 +477,14 @@
                         mixins.obtainViewportWidth(8px) 
                         mixins.obtainViewportWidth(-2px) 
                         mixins.obtainViewportWidth(4px) rgba(#b0a080, 0.25)
+                    ) drop-shadow(
+                        0
+                        mixins.obtainViewportWidth(4px)
+                        mixins.obtainViewportWidth(4px) rgba(#242415, 0.33)
+                    ) drop-shadow(
+                        0
+                        mixins.obtainViewportWidth(4px)
+                        mixins.obtainViewportWidth(16px) rgba(#242415, 0.33)
                     );
                 }
                 
@@ -486,13 +496,81 @@
 
             &-second {
                 position: absolute;
-                top: mixins.obtainViewportWidth(310px);
-                left: mixins.obtainViewportWidth(216px);
-                width: mixins.obtainViewportWidth(540px);
-                height: mixins.obtainViewportWidth(427px);
-                z-index: 1;
+                top: mixins.obtainViewportWidth(330px);
+                left: mixins.obtainViewportWidth(226px);
+                width: mixins.obtainViewportWidth(510px);
+                height: mixins.obtainViewportWidth(445px);
+                z-index: 4;
                 clip-path: url(#history-clip-spiral-second);
                 background: linear-gradient(to bottom, #f8eedb, #e4d4b8 95%);
+            }
+
+            &-third {
+                &-wrap {
+                    position: absolute;
+                    top: mixins.obtainViewportWidth(295px);
+                    left: mixins.obtainViewportWidth(226px);
+                    width: mixins.obtainViewportWidth(510px);
+                    height: mixins.obtainViewportWidth(445px);
+                    z-index: 3;
+                    mask-image: linear-gradient(to bottom, #000,transparent 50%, transparent);
+                    -webkit-mask-image: linear-gradient(to bottom, #000, transparent 50%, transparent);
+
+                    &::before {
+                        position: absolute;
+                        top: mixins.obtainViewportWidth(12px);
+                        left: 0;
+                        width: inherit;
+                        height: inherit;
+                        clip-path: url(#history-clip-spiral-second);
+                        background: linear-gradient(to bottom, #ce943a, #824e24);
+                        content: "";
+                    }
+
+                    &::after {
+                        position: absolute;
+                        top: mixins.obtainViewportWidth(23px);
+                        left: 0;
+                        width: inherit;
+                        height: inherit;
+                        clip-path: url(#history-clip-spiral-second);
+                        background: linear-gradient(to bottom, #d3963e, #824e24);
+                        content: "";
+                    }
+                }
+          
+                width: inherit;
+                height: inherit;
+                clip-path: url(#history-clip-spiral-second);
+                background: linear-gradient(to bottom, rgba(171, 134, 79, 1), #ce943a);
+            }
+
+            &-primary {
+                &-wrap {
+                    position: absolute;
+                    top: mixins.obtainViewportWidth(172px);
+                    left: mixins.obtainViewportWidth(75px);
+                    width: mixins.obtainViewportWidth(804px);
+                    height: mixins.obtainViewportWidth(718px);
+                    z-index: 2;
+                    filter: drop-shadow(0 mixins.obtainViewportWidth(4px) mixins.obtainViewportWidth(4px) #ae9b8c);
+                }
+
+                width: inherit;
+                height: inherit;
+                clip-path: url(#history-clip-spiral-primary);
+                mask-image: linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1) 70%, transparent 90%);
+                -webkit-mask-image: linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1) 70%, transparent 90%);
+                background:
+                    linear-gradient(140deg, #997040 25%, rgba(#cb8f3d, 0.33), transparent 35%),
+                    linear-gradient(120deg, #997040 25%, rgba(#cb8f3d, 0.5), transparent 35%),
+                    radial-gradient(circle at 73% 73%, #ab8350, transparent 20%),
+                    radial-gradient(circle at 71% 71%, #ab8350, transparent 20%),
+                    radial-gradient(circle at 75% 69%, #ab8350, transparent 15%),
+                    radial-gradient(circle at 69% 75%, rgba(#ab8350, 0.5), transparent 15%),
+                    radial-gradient(circle at 67% 75%, #ab8350, transparent 15%),
+                    radial-gradient(circle at 64% 75%, rgba(#ab8350, 0.25), transparent 15%),
+                    radial-gradient(at center, #816934, #865932, #e2b971, #473220 60%, #704e29);
             }
 
             &__text {
