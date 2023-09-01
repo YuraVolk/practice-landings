@@ -41,6 +41,7 @@
         box-sizing: border-box;
         overflow: hidden;
         font-size: 0;
+        isolation: isolate;
 
         &-content {
             flow-into: historyRegion;
