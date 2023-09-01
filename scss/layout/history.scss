@@ -464,8 +464,8 @@
             &-text-primary {
                 position: absolute;
                 top: mixins.obtainViewportWidth(162px);
-                left: mixins.obtainViewportWidth(128px);
-                width: mixins.obtainViewportWidth(712px);
+                left: mixins.obtainViewportWidth(108px);
+                width: mixins.obtainViewportWidth(732px);
                 height: mixins.obtainViewportWidth(448px);
                 z-index: 3;
                 mix-blend-mode: hard-light;
@@ -593,7 +593,7 @@
                     margin: mixins.obtainViewportWidth(40px) 0 0 mixins.obtainViewportWidth(400px);
                     opacity: 0.5;
                    
-                    &:first-of-type {
+                    &:first-child {
                         @include _rotatedText(
                             $angle: 5deg, 
                             $angleOffset: 2deg, 
@@ -604,8 +604,8 @@
                             $letterLimit: 43
                         );
                     }
-                    
-                    &:last-of-type {
+
+                    &:last-child {
                         @include _rotatedText(
                             $angle: 5deg, 
                             $angleOffset: 2deg, 
@@ -645,6 +645,28 @@
                             #{$current}-char:nth-child(#{$i}) {
                                 left: mixins.obtainViewportWidth((($lastLetterSize - 1) * 2px) * ($lastLetterSize - $i));
                             }
+                        }
+                    }
+
+                    &:nth-child(2) {
+                        @include _rotatedText(
+                            $angle: 5deg, 
+                            $angleOffset: 3deg, 
+                            $fontSize: mixins.obtainViewportWidth(8px), 
+                            $radius: 5,
+                            $angleStart: 10deg,
+                            $customClass: "#{$current}-char",
+                            $letterLimit: 86
+                        );
+
+                        position: absolute;
+                        top: mixins.obtainViewportWidth(255px);
+                        left: mixins.obtainViewportWidth(430px);
+                        margin: 0;
+                        color: #1b181a;
+
+                        #{$current}-char {
+                            white-space: nowrap;
                         }
                     }
 
