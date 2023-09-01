@@ -460,6 +460,16 @@
         &-spiral {
             pointer-events: none;
 
+            &-text-primary {
+                position: absolute;
+                top: mixins.obtainViewportWidth(162px);
+                left: mixins.obtainViewportWidth(128px);
+                width: mixins.obtainViewportWidth(712px);
+                height: mixins.obtainViewportWidth(448px);
+                z-index: 3;
+                mix-blend-mode: hard-light;
+            }
+
             &-first {
                 &-wrap {
                     position: absolute;
@@ -569,8 +579,10 @@
                     radial-gradient(circle at 75% 69%, #ab8350, transparent 15%),
                     radial-gradient(circle at 69% 75%, rgba(#ab8350, 0.5), transparent 15%),
                     radial-gradient(circle at 67% 75%, #ab8350, transparent 15%),
+                    radial-gradient(circle at 62% 77%, #ab8350, transparent 15%),
+                    radial-gradient(circle at 60% 77%, #ab8350, transparent 15%),
                     radial-gradient(circle at 64% 75%, rgba(#ab8350, 0.25), transparent 15%),
-                    radial-gradient(at center, #816934, #865932, #e2b971, #473220 60%, #704e29);
+                    radial-gradient(at center, #816934, #865932, #e2b971, #070604 63%);
             }
 
             &__text {
@@ -602,6 +614,65 @@
                             $customClass: "#{$current}-char",
                             $letterLimit: 43
                         );
+                    }
+                }
+
+                @include mixins.liftUp($levels: 1, $modifiers: "-primary") {
+                    &:first-child {
+                        @include _rotatedText(
+                            $angle: 5deg, 
+                            $angleOffset: 0.5grad, 
+                            $fontSize: mixins.obtainViewportWidth(92px), 
+                            $radius: 5.1,
+                            $angleStart: 0deg,
+                            $customClass: "#{$current}-char",
+                            $letterLimit: 18
+                        );
+
+                        position: absolute;
+                        top: mixins.obtainViewportWidth(485px);
+                        left: mixins.obtainViewportWidth(730px);
+                        margin: 0;
+                        transform: scaleX(-1) rotate(-105deg);
+                        transform-origin: center;
+                        font-family: Undertown;
+                        color: rgba($color: #4d3e23, $alpha: 0.5);
+                        mix-blend-mode: darken;
+
+                        $lastLetterSize: 9;
+                        @for $i from 1 through $lastLetterSize {
+                            #{$current}-char:nth-child(#{$i}) {
+                                left: mixins.obtainViewportWidth((($lastLetterSize - 1) * 2px) * ($lastLetterSize - $i));
+                            }
+                        }
+                    }
+
+                    &:last-child {
+                        @include _rotatedText(
+                            $angle: 5deg, 
+                            $angleOffset: 0.5grad, 
+                            $fontSize: mixins.obtainViewportWidth(92px), 
+                            $radius: 4.75,
+                            $angleStart: 0deg,
+                            $customClass: "#{$current}-char",
+                            $letterLimit: 18
+                        );
+
+                        position: absolute;
+                        top: mixins.obtainViewportWidth(505px);
+                        left: mixins.obtainViewportWidth(730px);
+                        margin: 0;
+                        transform: scaleX(-1) rotate(-105deg);
+                        transform-origin: center;
+                        font-family: Undertown;
+                        color: rgba($color: #4d3e23, $alpha: 0.5);
+                        mix-blend-mode: color-dodge;
+
+                        @for $i from 1 through 5 {
+                            #{$current}-char:nth-child(#{$i}) {
+                                opacity: 0.2 + math.div($i, 10);
+                            }
+                        }
                     }
                 }
 
