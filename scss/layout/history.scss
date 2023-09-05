@@ -86,6 +86,14 @@
                         transform: scaleY(0.9);
                     }
                 }
+
+                @include mixins.liftUp($levels: 2, $modifiers: ("-region--spiral-second")) {
+                    font-size: mixins.obtainViewportWidth(6px) !important;
+                    line-height: 1;
+                    margin: 0;
+                    color: #b7966e;
+                    mix-blend-mode: darken;
+                }
             }
         }
 
@@ -255,6 +263,21 @@
                         width: 45%;
                         height: 60%;
                         shape-outside: polygon(54% 0, 84% 31%, 110% 53%, 134% 70%, 174% 100%, 0% 100%, 0% 0%);
+                        float: left;
+                    }
+                }
+
+                @include mixins.liftUp($levels: 1, $modifiers: ("--spiral-second")) {
+                    &:first-of-type {
+                        width: 70%;
+                        height: 80%;
+                        shape-outside: polygon(13% 0%, 7% 9%, 4% 33%, 4% 57%, 10% 75%, 21% 100%, 100% 100%, 100% 0%);
+                    }
+
+                    &:last-of-type {
+                        width: 15%;
+                        height: 80%;
+                        margin-left: 10%;
                         float: left;
                     }
                 }
@@ -459,6 +482,23 @@
                     content: "";
                 }
             }
+
+            &--spiral-second {
+                position: relative;
+                top: mixins.obtainViewportWidth(100px);
+                width: mixins.obtainViewportWidth(480px);
+                height: mixins.obtainViewportWidth(270px);
+                word-break: break-all;
+                font-size: mixins.obtainViewportWidth(5px);
+
+                &::before {
+                    width: 15%;
+                    height: 20%;
+                    margin-left: 25%;
+                    shape-outside: polygon(100% 0, 100% 31%, 53% 56%, 30% 100%, 0% 100%, 0% 0%);
+                    content: "";
+                }
+            }
         }
 
         &-spiral {
@@ -520,13 +560,15 @@
 
             &-second {
                 position: absolute;
-                top: mixins.obtainViewportWidth(330px);
+                top: mixins.obtainViewportWidth(335px);
                 left: mixins.obtainViewportWidth(226px);
                 width: mixins.obtainViewportWidth(510px);
-                height: mixins.obtainViewportWidth(445px);
+                height: mixins.obtainViewportWidth(545px);
                 z-index: 4;
                 clip-path: url(#history-clip-spiral-second);
-                background: linear-gradient(to bottom, #f8eedb, #e4d4b8 95%);
+                background: radial-gradient(circle at 50% 25%, #483421, #dbbe8c 25%, transparent 40%),
+                    radial-gradient(circle at 35% 46%, #dbbe8c, transparent 15%),
+                    linear-gradient(to bottom, #f8eedb, #e4d4b8 95%);
             }
 
             &-third {
@@ -607,7 +649,7 @@
                     margin: mixins.obtainViewportWidth(40px) 0 0 mixins.obtainViewportWidth(400px);
                     opacity: 0.5;
                    
-                    &:first-child {
+                    &:first-of-type {
                         @include _rotatedText(
                             $angle: 5deg, 
                             $angleOffset: 2deg, 
@@ -619,7 +661,7 @@
                         );
                     }
 
-                    &:last-child {
+                    &:last-of-type {
                         @include _rotatedText(
                             $angle: 5deg, 
                             $angleOffset: 2deg, 
@@ -633,7 +675,7 @@
                 }
 
                 @include mixins.liftUp($levels: 1, $modifiers: "-primary") {
-                    &:first-child {
+                    &:first-of-type {
                         @include _rotatedText(
                             $angle: 5deg, 
                             $angleOffset: 0.5grad, 
@@ -662,7 +704,7 @@
                         }
                     }
 
-                    &:nth-child(2) {
+                    &:nth-of-type(2) {
                         @include _rotatedText(
                             $angle: 5deg, 
                             $angleOffset: 3deg, 
@@ -690,7 +732,7 @@
                         }
                     }
 
-                    &:last-child {
+                    &:last-of-type {
                         @include _rotatedText(
                             $angle: 5deg, 
                             $angleOffset: 0.5grad, 
@@ -722,7 +764,7 @@
                 @include mixins.liftUp($levels: 1, $modifiers: "-second") {
                     opacity: 0.2;
 
-                    &:first-child {
+                    &:first-of-type {
                         transform: scaleX(-1) translateX(40%);
 
                         @include _rotatedText(
@@ -736,7 +778,7 @@
                         );
                     }
 
-                    &:nth-child(2) {
+                    &:nth-of-type(2) {
                         top: mixins.obtainViewportWidth(-60px);
                         transform: scaleX(-1) translateX(40%);
 
@@ -751,7 +793,7 @@
                         );
                     }
                     
-                    &:last-child {
+                    &:last-of-type {
                         top: mixins.obtainViewportWidth(-60px);
                         transform: translateX(40%);
 
