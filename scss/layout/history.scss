@@ -528,19 +528,14 @@
                 &-wrap {
                     position: absolute;
                     top: mixins.obtainViewportWidth(105px);
-                    left: mixins.obtainViewportWidth(45px);
-                    width: mixins.obtainViewportWidth(841px);
-                    height: mixins.obtainViewportWidth(690px);
-                    z-index: 3;
+                    width: mixins.obtainViewportWidth(890px);
+                    height: mixins.obtainViewportWidth(865px);
+                    z-index: 4;
 
                     filter: drop-shadow(
                         mixins.obtainViewportWidth(-4px) 
                         mixins.obtainViewportWidth(2px) 
                         mixins.obtainViewportWidth(4px) rgba(#51371b, 0.75)
-                    ) drop-shadow(
-                        mixins.obtainViewportWidth(8px) 
-                        mixins.obtainViewportWidth(-2px) 
-                        mixins.obtainViewportWidth(4px) rgba(#b0a080, 0.25)
                     ) drop-shadow(
                         0
                         mixins.obtainViewportWidth(4px)
@@ -549,6 +544,10 @@
                         0
                         mixins.obtainViewportWidth(4px)
                         mixins.obtainViewportWidth(16px) rgba(#242415, 0.33)
+                    ) drop-shadow(
+                        mixins.obtainViewportWidth(28px)
+                        0
+                        mixins.obtainViewportWidth(16px) rgba(#242415, 0.75)
                     );
                 }
                 
