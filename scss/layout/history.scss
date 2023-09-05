@@ -57,7 +57,10 @@
                 }
 
                 @include mixins.liftUp($levels: 2, $modifiers: ("-regions--bottom-left")) {
-                    color: #3b1a0e;
+                    background: linear-gradient(to bottom right, #412619, #5b3f2e);
+                    color: transparent;
+                    -webkit-background-clip: text;
+                    background-clip: text;
                     transform: translateY(0px);
                 }
 
@@ -104,7 +107,7 @@
                 padding-top: mixins.obtainViewportWidth($topRegionPaddingTop);
                 padding-left: mixins.obtainViewportWidth($topRegionPaddingLeft);
                 background: radial-gradient(circle at 30% -100%, #d2b07a, transparent),
-                    linear-gradient(to bottom, #c8a26a, #b68b4f);
+                    linear-gradient(to bottom, #c8a26a, #836138);
 
                 &::before {
                     position: absolute;
@@ -172,7 +175,7 @@
                     left: 0;
                     bottom: 0;
                     width: 110%;
-                    background: linear-gradient(to top, #c8a26a, #b68b4f);
+                    background: linear-gradient(to top, #885d2e, #836138);
                     content: "";
                 }
             }
@@ -471,6 +474,16 @@
                 mix-blend-mode: hard-light;
             }
 
+            &-text-secondary {
+                position: absolute;
+                top: mixins.obtainViewportWidth(363px);
+                left: mixins.obtainViewportWidth(275px);
+                width: mixins.obtainViewportWidth(430px);
+                height: mixins.obtainViewportWidth(300px);
+                z-index: 3;
+                mix-blend-mode: multiply;
+            }
+
             &-first {
                 &-wrap {
                     position: absolute;
@@ -561,6 +574,7 @@
                     position: absolute;
                     top: mixins.obtainViewportWidth(172px);
                     left: mixins.obtainViewportWidth(75px);
+                    overflow: hidden;
                     width: mixins.obtainViewportWidth(804px);
                     height: mixins.obtainViewportWidth(718px);
                     z-index: 2;
@@ -667,6 +681,12 @@
 
                         #{$current}-char {
                             white-space: nowrap;
+
+                            @for $i from 1 through 18 {
+                                &:nth-child(#{$i}) {
+                                    text-indent: mixins.obtainViewportWidth(240px);
+                                }
+                            }
                         }
                     }
 
