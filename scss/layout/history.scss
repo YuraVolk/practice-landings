@@ -520,6 +520,16 @@
         &-spiral {
             pointer-events: none;
 
+            &-end {
+                position: absolute;
+                top: mixins.obtainViewportWidth(482px);
+                left: mixins.obtainViewportWidth(408px);
+                width: mixins.obtainViewportWidth(232px);
+                height: mixins.obtainViewportWidth(228px);
+                mask-image: linear-gradient(to top, #000 80%, transparent);
+                -webkit-mask-image: linear-gradient(to top, #000 80%, transparent);
+            }
+
             &-text-primary {
                 position: absolute;
                 top: mixins.obtainViewportWidth(162px);
