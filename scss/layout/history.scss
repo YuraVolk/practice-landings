@@ -87,7 +87,7 @@
                     }
                 }
 
-                @include mixins.liftUp($levels: 2, $modifiers: ("-region--spiral-second")) {
+                @include mixins.liftUp($levels: 2, $modifiers: ("-region--spiral-second", "-region--last")) {
                     font-size: mixins.obtainViewportWidth(6px) !important;
                     line-height: 1;
                     margin: 0;
@@ -203,6 +203,7 @@
 
         &-region {
             flow-from: historyRegion;
+            region-fragment: break;
             text-align: justify;
 
             &::before {
@@ -501,6 +502,19 @@
                     content: "";
                 }
             }
+
+            &--last {
+                position: absolute;
+                top: mixins.obtainViewportWidth(452px);
+                left: mixins.obtainViewportWidth(360px);
+                width: mixins.obtainViewportWidth(192px);
+                height: mixins.obtainViewportWidth(237px);
+                background: radial-gradient(at top left, #efd4a3, #b08a53);
+                z-index: 5;
+                clip-path: url(#history-clip-closing-inner);
+                mix-blend-mode: lighten;
+                overflow: hidden;
+            }
         }
 
         &-spiral {
@@ -633,6 +647,30 @@
                     );
                     mask-image: linear-gradient(to top, #000 92%, transparent);
                     -webkit-mask-image: linear-gradient(to top, #000 92%, transparent);
+
+                    &::before {
+                        position: absolute;
+                        top: mixins.obtainViewportWidth(102px);
+                        left: mixins.obtainViewportWidth(74px);
+                        width: mixins.obtainViewportWidth(192px);
+                        height: mixins.obtainViewportWidth(267px);
+                        background: linear-gradient(to top, #f6e8cd, #f2e0ba, #e3bc79, #442b1b);
+                        z-index: -1;
+                        clip-path: url(#history-clip-closing-first);
+                        content: "";
+                    }
+
+                    &::after {
+                        position: absolute;
+                        top: mixins.obtainViewportWidth(42px);
+                        left: mixins.obtainViewportWidth(18px);
+                        width: mixins.obtainViewportWidth(242px);
+                        height: mixins.obtainViewportWidth(327px);
+                        background: linear-gradient(to top, #c18938, #dcb250);
+                        z-index: -2;
+                        clip-path: url(#history-clip-closing-second);
+                        content: "";
+                    }
                 }
 
                 width: inherit;
