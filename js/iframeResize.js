@@ -5,5 +5,5 @@ window.resizeTreesSectionIframe = (object) => {
 };
 
 window.addEventListener("resize", () => {
-    window.resizeTreesSectionIframe(document.querySelector(".trees-iframe"));
+    [...document.querySelectorAll(".section-iframe")].forEach(object => window.resizeTreesSectionIframe(object));
 });
