@@ -108,6 +108,7 @@
             align-items: flex-start;
             flex-basis: mixins.obtainViewportWidth(365px);
             padding-left: mixins.obtainViewportWidth(35px);
+            padding-block: mixins.obtainViewportWidth(35px);
 
             &__title {
                 font: small-caps string.unquote("250%/0.75") Spring, sans-serif;
@@ -123,6 +124,12 @@
 
             @media (max-width: 350px) {
                 transform: rotate(-90deg);
+            }
+
+            @media (max-width: 300px) {
+                flex-grow: 0.5;
+                writing-mode: vertical-rl;
+                transform: none;
             }
         }
     }
