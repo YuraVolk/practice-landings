@@ -107,8 +107,8 @@
             flex-direction: column;
             align-items: flex-start;
             flex-basis: mixins.obtainViewportWidth(365px);
-            padding-left: mixins.obtainViewportWidth(35px);
-            padding-block: mixins.obtainViewportWidth(35px);
+            padding-block: 8px;
+            padding-inline-start: mixins.obtainViewportWidth(35px);
 
             &__title {
                 font: small-caps string.unquote("250%/0.75") Spring, sans-serif;
