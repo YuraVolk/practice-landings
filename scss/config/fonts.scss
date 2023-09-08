@@ -88,3 +88,12 @@
     font-display: swap;
     src: url("../fonts/Belgrano/Belgrano-Regular.ttf") format("truetype");
 }
+
+@font-face {
+    font-family: Naomi;
+    font-display: swap;
+    font-style: italic;
+    src: url("../fonts/Naomi/Naomi.woff2") format("woff2"),
+    url("../fonts/Naomi/Naomi.woff") format("woff"),
+    url("../fonts/Naomi/Naomi.ttf") format("truetype");
+}
