@@ -16,7 +16,7 @@
     margin: 0;
     mask-image: linear-gradient(to left, transparent, rgb(0 0 0) 1.5%, rgb(0 0 0) 98%, transparent),
         linear-gradient(to left, transparent, rgb(0 0 0) 1.5%, rgb(0 0 0) 98%, transparent),
-        linear-gradient(to bottom, transparent, rgb(0 0 0) 1.5%, rgb(0 0 0) 98%, transparent);;
+        linear-gradient(to bottom, transparent, rgb(0 0 0) 1.5%, rgb(0 0 0) 98%, transparent);
     mask-composite: subtract;
 
     @media (max-width: 475px) { 
