@@ -8,7 +8,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "stylelint **/*.scss",
+    "lint": "stylelint \"**/*.scss\"",
     "lintFix": "stylelint **/*.scss --fix"
   },
   "devDependencies": {
