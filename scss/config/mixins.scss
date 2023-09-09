@@ -80,19 +80,23 @@
     }
 }
 
-@mixin liftUp($levels, $modifiers) {
+@mixin liftUp($levels, $modifiers, $reverseNestingOrder: false) {
     @each $modifier in $modifiers {
         $result: _removeNesting(&, $levels);
         @if ($result == "." or $result == "#") {
             @error "Erroneous selector generated on level lifting #{$levels} with base selector #{&}";
-        } @else {
-            @if (selector.is-superselector("*", "*#{$result}") or selector.unify($result, "*") != null) {
-                @at-root #{selector.nest("#{$result}#{$modifier}", &)} {
+        } @else if (selector.is-superselector("*", "*#{$result}") or selector.unify($result, "*") != null) {
+            @if ($reverseNestingOrder) {
+                @at-root #{selector.nest(&, "#{$result}#{$modifier}")} {
                     @content;
                 }
             } @else {
-                @debug "Potentially erroneous selector generated on level lifting #{$levels} with base selector #{&}";
+                @at-root #{selector.nest("#{$result}#{$modifier}", &)} {
+                    @content;
+                }
             }
+        } @else {
+            @debug "Potentially erroneous selector generated on level lifting #{$levels} with base selector #{&}";
         }
     }
 }
