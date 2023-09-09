@@ -2,7 +2,8 @@
 @use "../config/mixins.scss";
 
 .trees-section {
-    @include mixins.placeBackground("/img/trees-image", "jpg");
+    @include mixins.place-background("/img/trees-image", "jpg");
+
     padding: 24px 0 26px;
 
     &-navigation {
@@ -16,7 +17,7 @@
             font-family: "Rainbow Land", sans-serif;
             font-size: 22px;
             color: #fff;
-            text-shadow: mixins.textStroke($stroke: 3, $color: rgba(#224131, 0.1), $step: 0.6px);
+            text-shadow: mixins.text-stroke($stroke: 3, $color: rgba(#224131, 0.1), $step: 0.6px);
             text-decoration: none;
         }
     }
@@ -32,7 +33,7 @@
         flex-wrap: wrap;
         justify-content: space-between;
         row-gap: 170px;
-        padding: 32px mixins.obtainViewportWidth(25px) 0;
+        padding: 32px mixins.obtain-viewport-width(25px) 0;
     }
 
     &-left-regions, 
@@ -54,7 +55,7 @@
         gap: 20px;
         list-style-type: none;
         margin: 0;
-        padding: 8px mixins.obtainViewportWidth(78px) 30px;
+        padding: 8px mixins.obtain-viewport-width(78px) 30px;
         box-sizing: border-box;
         text-align: center;
         background-color: #acb06c;
@@ -64,7 +65,7 @@
             flex: 1 1 0;
             border-top-left-radius: 15px;
             border-top-right-radius: 15px;
-            height: calc(400px - math.div(mixins.obtainViewportWidth(230px), 2));
+            height: calc(400px - math.div(mixins.obtain-viewport-width(230px), 2));
             background: linear-gradient(to bottom, #f0ebc1 0%, #f0ebc1 75%, #acb06c 100%);
 
             &--large {
@@ -106,10 +107,7 @@
             margin-top: 130px;
             padding: 7% 7% 5% 10%;
             background-color: #f2edc3;
-            border-top-left-radius: 53% 50%;
-            border-top-right-radius: 38% 53%;
-            border-bottom-right-radius: 48% 50%;
-            border-bottom-left-radius: 63% 50%;
+            border-radius: 53% 50% 38% 53% 48% 50% 63% 50%;
             box-shadow: 5px 5px 10px #c8c190, -5px -5px 10px #ffffd0;
         }
 

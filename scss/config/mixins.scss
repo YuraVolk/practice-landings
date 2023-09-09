@@ -3,7 +3,7 @@
 @use "sass:list";
 @use "sass:math";
 
-@function _splitString($str, $separators) {
+@function split-string($str, $separators) {
     $result: ();
     $splitters: ();
     $current-word: '';
@@ -11,10 +11,10 @@
     @for $i from 1 through string.length($str) {
         $char: string.slice($str, $i, $i);
         $matched-separator: false;
-        $isBreak: false;
+        $is-break: false;
 
         @each $separator in $separators {
-            @if ($isBreak == false) {
+            @if $is-break == false {
                 $separator-length: string.length($separator);
 
                 @if string.slice($str, $i, $i + $separator-length - 1) == $separator {
@@ -27,7 +27,7 @@
                     }
 
                     $i: $i + $separator-length - 1;
-                    $isBreak: true;
+                    $is-break: true;
                 }
             }
         }
@@ -44,7 +44,7 @@
     @return ($result, $splitters);
 }
 
-@function _reverse($list) {
+@function reverse($list) {
     $result: ();
 
     @for $i from list.length($list) * -1 through -1 {
@@ -54,21 +54,21 @@
     @return $result;
 }
 
-@function _removeNesting($selector, $levels) {
+@function remove-nesting($selector, $levels) {
     $result: '';
 
     @if $levels == 0 {
         @return $selector;
     } @else {
-        $results: _splitString(string.quote(#{$selector}), (" ", "-", "__"));
-        $parts: _reverse(list.nth($results, 1));
-        $separators: _reverse(list.nth($results, 2));
+        $results: split-string(string.quote(#{$selector}), (" ", "-", "__"));
+        $parts: reverse(list.nth($results, 1));
+        $separators: reverse(list.nth($results, 2));
 
         @for $i from 1 through list.length($parts) {
             $part: list.nth($parts, $i);
 
             @if $i > $levels {
-                @if (string.length($result) == 0) {
+                @if  string.length($result) == 0 {
                     $result: "#{$part}";
                 } @else {
                     $result: "#{$part}#{list.nth($separators, $i - 1)}#{$result}";
@@ -80,13 +80,13 @@
     }
 }
 
-@mixin liftUp($levels, $modifiers, $reverseNestingOrder: false) {
+@mixin lift-up($levels, $modifiers, $reverseNestingOrder: false) {
     @each $modifier in $modifiers {
-        $result: _removeNesting(&, $levels);
-        @if ($result == "." or $result == "#") {
+        $result: remove-nesting(&, $levels);
+        @if  $result == "." or $result == "#" {
             @error "Erroneous selector generated on level lifting #{$levels} with base selector #{&}";
-        } @else if (selector.is-superselector("*", "*#{$result}") or selector.unify($result, "*") != null) {
-            @if ($reverseNestingOrder) {
+        } @else if selector.is-superselector("*", "*#{$result}") or selector.unify($result, "*") != null {
+            @if  $reverseNestingOrder {
                 @at-root #{selector.nest(&, "#{$result}#{$modifier}")} {
                     @content;
                 }
@@ -101,28 +101,28 @@
     }
 }
 
-@function obtainViewportWidth($targetWidth, $baseWidth: 1013px) {
-    @if ($targetWidth >= $baseWidth) {
+@function obtain-viewport-width($targetWidth, $baseWidth: 1013px) {
+    @if  $targetWidth >= $baseWidth {
         @error "Target width should be less than base width";
     }
 
     @return math.div($targetWidth * 100vw, $baseWidth);
 }
 
-@function textStroke($stroke, $color, $step: 0.3px) {
+@function text-stroke($stroke, $color, $step: 0.3px) {
     $shadow: ();
     $from: $stroke * -1;
 
     @for $i from $from through $stroke {
         @for $j from $from through $stroke {
-            $shadow: append($shadow, $i * $step $j * $step 0 $color, comma);
+            $shadow: list.append($shadow, $i * $step $j * $step 0 $color, comma);
         }
     }
 
     @return $shadow;
 }
 
-@mixin placeBackground($url, $format) {
+@mixin place-background($url, $format) {
     background-position: center;
     background-size: cover;
         
@@ -138,7 +138,7 @@
     }
 }
 
-@mixin squareViewportWidth {
+@mixin square-viewport-width {
     width: calc(100vw - (100vw - 100%));
     height: 100vw;
     aspect-ratio: 1 / 1;

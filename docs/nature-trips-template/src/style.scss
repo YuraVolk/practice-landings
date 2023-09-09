@@ -38,7 +38,7 @@ $secondaryDark: #898989;
 }
 
 @function getViewportWidth($targetWidth, $baseWidth: 1300px) {
-    @if ($targetWidth >=$baseWidth) {
+    @if  $targetWidth >=$baseWidth {
         @error "Target width should be less than base width";
     }
 
@@ -50,21 +50,21 @@ $secondaryDark: #898989;
         display: flex;
         align-items: center;
         flex-wrap: wrap;
-        gap: getViewportWidth(5px);
-        width: getViewportWidth(1155px);
+        gap: getviewportwidth(5px);
+        width: getviewportwidth(1155px);
         margin: 0 auto;
 
         &__logo {
             flex-grow: 1;
-            font: 700 getViewportWidth(20px) "Leto Sans", sans-serif;
+            font: 700 getviewportwidth(20px) "Leto Sans", sans-serif;
             text-transform: uppercase;
             text-align: left;
             color: $colorPrimary;
         }
 
         &__link {
-            padding: getViewportWidth(6px) getViewportWidth(20px);
-            font-size: getViewportWidth(15px);
+            padding: getviewportwidth(6px) getviewportwidth(20px);
+            font-size: getviewportwidth(15px);
             color: $colorSecondary;
             text-decoration: none;
 
@@ -89,28 +89,30 @@ $secondaryDark: #898989;
     
     &__logo {
         position: absolute;
-        top: getViewportWidth(198px * $scaleTop);
+        top: getviewportwidth(198px * $scaleTop);
+
         $resultLeft: 19.5% * $scale;
+
         left: 50%;
         transform: translateX(-55.7%);
         display: block;
-        width: getViewportWidth(705px * $scale);
+        width: getviewportwidth(705px * $scale);
     }
 
     &__heading {
         position: relative;
-        font-size: getViewportWidth(44px * $scale);
-        margin-top: getViewportWidth(325px * $scaleTop);
-        margin-bottom: getViewportWidth(20px);
+        font-size: getviewportwidth(44px * $scale);
+        margin-top: getviewportwidth(325px * $scaleTop);
+        margin-bottom: getviewportwidth(20px);
         text-transform: uppercase;
-        letter-spacing: getViewportWidth(12px * $scale);
+        letter-spacing: getviewportwidth(12px * $scale);
         z-index: 1;
         font-family: "Leto Sans";
         color: #fff;
        
         &--subtext {
             position: relative;
-            left: getViewportWidth(-8px * $scale);
+            left: getviewportwidth(-8px * $scale);
         }
     }
 }
@@ -122,14 +124,14 @@ $secondaryDark: #898989;
     box-sizing: border-box;
     border-color: inherit;
     border-style: solid;
-    border-width: getViewportWidth(2.5px);
+    border-width: getviewportwidth(2.5px);
     border-radius: 50%;
 }
 
 @mixin limitMaximumWidth($width: null) {
     & > * {
-        @if ($width) {
-            width: getViewportWidth($width);
+        @if  $width {
+            width: getviewportwidth($width);
         }
 
         margin-left: auto;
@@ -150,29 +152,30 @@ body {
     &--white {
         border: 2px solid $primaryWhite;
         border-radius: 100vw;
-        padding: getViewportWidth(4px) getViewportWidth(30px);
-        font-size: getViewportWidth(11.5px);
+        padding: getviewportwidth(4px) getviewportwidth(30px);
+        font-size: getviewportwidth(11.5px);
         background-color: transparent;
     }
 
     &--green {
         border: none;
-        font-size: getViewportWidth(14.5px);
-        border-radius: getViewportWidth(6px);
+        font-size: getviewportwidth(14.5px);
+        border-radius: getviewportwidth(6px);
         background-color: $primaryGreen;
-        padding: getViewportWidth(12px) 0;
+        padding: getviewportwidth(12px) 0;
     }
 }
 
 .separator {
     position: relative;
     display: block;
-    height: getViewportWidth(2.5px);
+    height: getviewportwidth(2.5px);
     background-color: $primaryWhite;
     color: $primaryWhite;
 
     &::before {
         @include borderCircle(getViewportWidth(15px));
+
         position: absolute;
         left: 0;
         transform: translate(-50%, -50%);
@@ -182,6 +185,7 @@ body {
 
     &::after {
         @include borderCircle(getViewportWidth(15px));
+
         position: absolute;
         right: 0;
         transform: translate(50%, -50%);
@@ -201,10 +205,10 @@ body {
         top: 0;
         left: 0;
         transform: translateY(-100%) rotate(45deg);
-        width: getViewportWidth(2px);
-        height: getViewportWidth(15px);
+        width: getviewportwidth(2px);
+        height: getviewportwidth(15px);
         background-color: $secondaryDark;
-        border-radius: getViewportWidth(2px);
+        border-radius: getviewportwidth(2px);
         content: "";
     }
 
@@ -213,10 +217,10 @@ body {
         bottom: 0;
         left: 0;
         transform: translateY(66%) rotate(-45deg);
-        width: getViewportWidth(2px);
-        height: getViewportWidth(15px);
+        width: getviewportwidth(2px);
+        height: getviewportwidth(15px);
         background-color: $secondaryDark;
-        border-radius: getViewportWidth(2px);
+        border-radius: getviewportwidth(2px);
         content: "";
     }
 
@@ -234,27 +238,29 @@ body {
     @include navigation($primaryWhite, $primaryWhite);
     @include placeLogotype($scale: 1);
     @include limitMaximumWidth;
-    padding: getViewportWidth(32px) 0 getViewportWidth(190px) 0;
+
+    padding: getviewportwidth(32px) 0 getviewportwidth(190px) 0;
     color: $primaryWhite;
 
     &__paragraph {
         margin-top: 0;
-        margin-bottom: getViewportWidth(100px);
-        max-width: getViewportWidth(515px);
-        font-size: getViewportWidth(14px);
+        margin-bottom: getviewportwidth(100px);
+        max-width: getviewportwidth(515px);
+        font-size: getviewportwidth(14px);
         color: $secondaryWhite;
     }
 
     &-slides {
         display: flex;
         justify-content: center;
-        gap: getViewportWidth(17px);
+        gap: getviewportwidth(17px);
         margin: 0;
         padding: 0;
         list-style-type: none;
 
         &__button {
             @include borderCircle(getViewportWidth(12px));
+
             cursor: pointer;
 
             &--active {
@@ -273,35 +279,36 @@ body {
 
         &::before {
             @include borderCircle(getViewportWidth(28px));
+
             position: absolute;
-            right: getViewportWidth(32px);
+            right: getviewportwidth(32px);
             transform: translateY(-60%);
             content: "";
         }
 
         &::after {
             position: absolute;
-            top: getViewportWidth(35px);
-            right: getViewportWidth(32px);
+            top: getviewportwidth(35px);
+            right: getviewportwidth(32px);
             transform: rotate(-45deg);
-            width: getViewportWidth(3px);
-            height: getViewportWidth(8px);
+            width: getviewportwidth(3px);
+            height: getviewportwidth(8px);
             background-color: $primaryWhite;
             content: "";
         }
 
         &__input {
-            width: getViewportWidth(335px);
+            width: getviewportwidth(335px);
             box-sizing: border-box;
             margin: 0;
-            padding: getViewportWidth(19px);
+            padding: getviewportwidth(19px);
             border: 2px solid $primaryWhite;
             border-radius: 100vw;
             appearance: none;
 
             &::placeholder {
                 font-family: inherit;
-                font-size: getViewportWidth(12px);
+                font-size: getviewportwidth(12px);
                 color: $primaryWhite;
             }
         }
@@ -310,44 +317,47 @@ body {
 
 .featured-trips {
     @include limitMaximumWidth(1100px);
+
     text-align: center;
-    padding-bottom: getViewportWidth(115px);
+    padding-bottom: getviewportwidth(115px);
 
     &__line-vertical {
         display: block;
-        width: getViewportWidth(3.2px);
-        height: getViewportWidth(85px);
+        width: getviewportwidth(3.2px);
+        height: getviewportwidth(85px);
         background-color: $primaryWhite;
     }
 
     &__heading {
-        font-size: getViewportWidth(24px);
-        margin-top: getViewportWidth(35px);
-        margin-bottom: getViewportWidth(12.5px);
+        font-size: getviewportwidth(24px);
+        margin-top: getviewportwidth(35px);
+        margin-bottom: getviewportwidth(12.5px);
         color: $primaryDark;
         text-transform: uppercase;
     }
 
     &__description {
         margin-top: 0;
-        margin-bottom: getViewportWidth(30px);
-        font-size: getViewportWidth(12.5px);
+        margin-bottom: getviewportwidth(30px);
+        font-size: getviewportwidth(12.5px);
         color: $secondaryDark;
     }
 
     &-carousel {
         @include placeLogotype($scale: 0.65, $scaleTop: 0.5);
+
         position: relative;
         display: flex;
         align-items: center;
-        gap: getViewportWidth(33.5px);
+        gap: getviewportwidth(33.5px);
 
         &__wrap {
             @include backgroundImage("./img/header-section-image.png");
+
             color: $primaryWhite;
             flex-grow: 1;
             background-position-y: bottom;
-            padding-bottom: getViewportWidth(35px);
+            padding-bottom: getviewportwidth(35px);
         }
 
         &__logo {
@@ -355,9 +365,9 @@ body {
         }
 
         &__paragraph {
-            max-width: getViewportWidth(525px);
-            margin: 0 auto getViewportWidth(35px);
-            font-size: getViewportWidth(12px);
+            max-width: getviewportwidth(525px);
+            margin: 0 auto getviewportwidth(35px);
+            font-size: getviewportwidth(12px);
             color: $secondaryWhite;
         }
     }
@@ -368,24 +378,24 @@ body {
 
     &-headline {
         display: grid;
-        grid-template-columns: getViewportWidth(84px) 78% 14%;
-        grid-template-rows: getViewportWidth(26px) getViewportWidth(21px) getViewportWidth(22px);
-        column-gap: getViewportWidth(6px);
-        margin-bottom: getViewportWidth(44px);
+        grid-template-columns: getviewportwidth(84px) 78% 14%;
+        grid-template-rows: getviewportwidth(26px) getviewportwidth(21px) getviewportwidth(22px);
+        column-gap: getviewportwidth(6px);
+        margin-bottom: getviewportwidth(44px);
 
         &__image {
-            width: getViewportWidth(84px);
-            height: getViewportWidth(74px);
+            width: getviewportwidth(84px);
+            height: getviewportwidth(74px);
             grid-row: span 3;
         }
 
         &__heading {
             position: relative;
-            left: getViewportWidth(-26px);
+            left: getviewportwidth(-26px);
             align-self: end;
             grid-row: span 2;
             margin: 0;
-            font-size: getViewportWidth(30px);
+            font-size: getviewportwidth(30px);
             color: $primaryDark;
         }
 
@@ -393,30 +403,29 @@ body {
             align-self: end;
             grid-column: 2;
             margin: 0;
-            font-size: getViewportWidth(14px);
+            font-size: getviewportwidth(14px);
             color: $secondaryDark;
         }
 
         .button {
             grid-column: 3;
-            grid-row-start: 2;
-            grid-row-end: 4;
+            grid-row: 2 / 4;
         }
     }
 
     &-controls {
         display: flex;
         justify-content: center;
-        gap: getViewportWidth(560px);
-        margin-bottom: getViewportWidth(55px);
+        gap: getviewportwidth(560px);
+        margin-bottom: getviewportwidth(55px);
 
         .carousel-button--right {
-            right: getViewportWidth(-25px);
+            right: getviewportwidth(-25px);
         }
     }
 
     .separator {
-        margin-bottom: getViewportWidth(25px);
+        margin-bottom: getviewportwidth(25px);
     }
 
     &-gallery {
@@ -433,30 +442,31 @@ body {
 
         &-item {
             position: relative;
-            max-width: getViewportWidth(280px);
-            height: getViewportWidth(250px);
+            max-width: getviewportwidth(280px);
+            height: getviewportwidth(250px);
 
             &::before {
                 @include backgroundImage("./img/eye-icon.png");
+
                 position: absolute;
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
                 z-index: 1;
-                width: getViewportWidth(55px);
-                height: getViewportWidth(44px);
+                width: getviewportwidth(55px);
+                height: getviewportwidth(44px);
                 opacity: 0;
                 cursor: pointer;
                 content: "";
             }
 
             &:first-child, &:last-child {
-                max-width: getViewportWidth(160px);
+                max-width: getviewportwidth(160px);
             }
 
             &--active {
-                max-width: getViewportWidth(430px);
-                height: getViewportWidth(300px);
+                max-width: getviewportwidth(430px);
+                height: getviewportwidth(300px);
 
                 &::before {
                     opacity: 1;
@@ -479,12 +489,12 @@ body {
         display: flex;
         justify-content: space-around;
         flex-wrap: wrap;
-        row-gap: getViewportWidth(20px);
+        row-gap: getviewportwidth(20px);
         list-style-type: none;
         margin: 0;
         padding: 0;
         min-width: 100%;
-        margin-bottom: getViewportWidth(55px);
+        margin-bottom: getviewportwidth(55px);
 
         &-item {
             position: relative;
@@ -508,7 +518,7 @@ body {
                 font-size: 28px;
                 font-weight: 700;
                 color: #fff;
-                filter: drop-shadow(0px 0px 6px #000);
+                filter: drop-shadow(0 0 6px #000);
                 content: "Upcoming Trips";
             }
         }
@@ -516,7 +526,7 @@ body {
 }
 
 .map-section {
-    height: getViewportWidth(475px);
+    height: getviewportwidth(475px);
 
     &__map {
         width: 100%;
@@ -527,5 +537,6 @@ body {
 
 .footer {
     @include navigation($primaryDark, $secondaryDark);
-    padding: getViewportWidth(12px) 0 getViewportWidth(8px) 0;
+
+    padding: getviewportwidth(12px) 0 getviewportwidth(8px) 0;
 }

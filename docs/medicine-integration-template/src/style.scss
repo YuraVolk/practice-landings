@@ -62,45 +62,53 @@ $green: #22e9bc;
 
 %icon-clipboard::before {
     @extend %font-icon;
+
     content: "\1f4cb";
 }
 
 %icon-atom::before {
     @extend %font-icon;
+
     content: "\269b";
 }
 
 %icon-label::before {
     @extend %font-icon;
+
     content: "\1f3f7";
 }
 
 %icon-briefcase::before {
     @extend %font-icon;
+
     content: "\1f4bc";
 }
 
 %icon-circle-right::before {
     @extend %font-icon;
+
     content: "\21aa";
 }
 
 %icon-droplet::before {
     @extend %font-icon;
+
     content: "\1f4a7";
 }
 
 %icon-heart::before {
     @extend %font-icon;
+
     content: "\2764";
 }
 
 %icon-plus::before {
     @extend %font-icon;
+
     content: "\2795";
 }
 
-@function textStroke($stroke, $color, $step: 0.3px) {
+@function text-stroke($stroke, $color, $step: 0.3px) {
     $shadow: ();
     $from: $stroke * -1;
 
@@ -113,8 +121,8 @@ $green: #22e9bc;
     @return $shadow;
 }
 
-@function obtainViewportWidth($targetWidth, $baseWidth: 1300px) {
-    @if ($targetWidth >= $baseWidth) {
+@function obtain-viewport-width($targetWidth, $baseWidth: 1300px) {
+    @if  $targetWidth >= $baseWidth {
         @error "Target width should be less than base width";
     }
 
@@ -127,7 +135,7 @@ $green: #22e9bc;
     }
 }
 
-@mixin placeBackground($url) {
+@mixin place-background($url) {
     background-image: url($url);
     background-size: cover;
     background-position: center;
@@ -175,15 +183,16 @@ button {
 }
 
 .button + .button {
-    margin-left: obtainViewportWidth(17px);
+    margin-left: obtain-viewport-width(17px);
 }
 
 .header {
-    @include placeBackground("./img/header-image.png");
-    padding: obtainViewportWidth(10px) 0 100px 0;
+    @include place-background("./img/header-image.png");
+
+    padding: obtain-viewport-width(10px) 0 100px 0;
 
     & > :not(:first-child, :last-child) {
-        margin-left: obtainViewportWidth(230px);
+        margin-left: obtain-viewport-width(230px);
     }
 
     &-navigation {
@@ -191,8 +200,8 @@ button {
         flex-wrap: wrap;
         align-items: center;
         gap: 20px;
-        width: obtainViewportWidth(950px);
-        margin: 0 auto obtainViewportWidth(130px) auto;
+        width: obtain-viewport-width(950px);
+        margin: 0 auto obtain-viewport-width(130px) auto;
 
         &__logo {
             flex-grow: 1;
@@ -200,18 +209,18 @@ button {
             font-size: 18px;
             text-transform: uppercase;
             color: $primaryWhite;
-            text-shadow: textStroke($stroke: 5, $color: #000);
+            text-shadow: text-stroke($stroke: 5, $color: #000);
         }
 
         &__link {
             font-size: 15.5px;
             color: $primaryWhite;
             text-decoration: none;
-            text-shadow: textStroke($stroke: 3, $color: #000);
+            text-shadow: text-stroke($stroke: 3, $color: #000);
 
             &--active {
-                margin-left: obtainViewportWidth(95px);
-                padding: 2px 9px 5px 9px;
+                margin-left: obtain-viewport-width(95px);
+                padding: 2px 9px 5px;
                 border-radius: 3px;
                 border: 2px solid $primaryWhite;
             }
@@ -219,7 +228,7 @@ button {
     }
 
     &__heading {
-        max-width: obtainViewportWidth(515px);
+        max-width: obtain-viewport-width(515px);
         margin: 0;
         font-size: 40px;
         font-weight: 500;
@@ -231,11 +240,11 @@ button {
     }
 
     &__paragraph {
-        margin: obtainViewportWidth(17px) 0 obtainViewportWidth(30px) 0;
+        margin: obtain-viewport-width(17px) 0 obtain-viewport-width(30px) 0;
         font-size: 13px;
-        max-width: obtainViewportWidth(515px);
+        max-width: obtain-viewport-width(515px);
         color: $secondaryWhite;
-        text-shadow: textStroke($stroke: 1, $color: #000);
+        text-shadow: text-stroke($stroke: 1, $color: #000);
     }
 
     .button {
@@ -249,7 +258,7 @@ button {
     justify-content: center;
     flex-wrap: wrap;
     gap: 105px;
-    padding: obtainViewportWidth(85px) 0 obtainViewportWidth(45px) 0;
+    padding: obtain-viewport-width(85px) 0 obtain-viewport-width(45px) 0;
 
     &-item {
         display: flex;
@@ -278,10 +287,10 @@ button {
 
         &__heading {
             font-size: 16px;
-            text-shadow: textStroke($stroke: 2, $color: $darkGray, $step: 0.15px);
+            text-shadow: text-stroke($stroke: 2, $color: $darkGray, $step: 0.15px);
             font-weight: 400;
             color: $black;
-            margin: 40px 0 12px 0;
+            margin: 40px 0 12px;
         }
 
         &__paragraph {
@@ -289,12 +298,13 @@ button {
             color: $gray;
             margin: 0;
             text-transform: uppercase;
-            text-shadow: textStroke($stroke: 1, $color: $gray, $step: 0.15px);
+            text-shadow: text-stroke($stroke: 1, $color: $gray, $step: 0.15px);
             font-weight: 500;
         }
 
         &__button {
             @extend %icon-plus;
+
             box-sizing: border-box;
             width: 37px;
             height: 37px;
@@ -316,13 +326,14 @@ button {
 }
 
 .advantages {
-    @include placeBackground("./img/advantages-image.png");
+    @include place-background("./img/advantages-image.png");
+
     padding: 45px 0;
 
     &__heading {
         display: block;
         width: 90px;
-        margin: 0 auto 20px auto;
+        margin: 0 auto 20px;
         font-size: 18.5px;
         padding-bottom: 6px;
         color: $primaryWhite;
@@ -374,19 +385,22 @@ button {
 
                 @include selectIconById($string: &, $prefix: "reactive") {
                     @extend %icon-atom;
-                    text-shadow: textStroke($stroke: 1, $color: $secondaryOrange, $step: 0.01px);
+
+                    text-shadow: text-stroke($stroke: 1, $color: $secondaryOrange, $step: 0.01px);
                 }
 
                 @include selectIconById($string: &, $prefix: "label") {
                     @extend %icon-label;
+
                     color: $primaryWhite;
-                    text-shadow: textStroke($stroke: 5, $color: $primaryOrange, $step: 0.5px);
+                    text-shadow: text-stroke($stroke: 5, $color: $primaryOrange, $step: 0.5px);
                     transform: scaleX(-1);
                 }
 
                 @include selectIconById($string: &, $prefix: "clipboard") {
                     @extend %icon-clipboard;
-                    text-shadow: textStroke($stroke: 1, $color: $secondaryOrange, $step: 0.01px);
+
+                    text-shadow: text-stroke($stroke: 1, $color: $secondaryOrange, $step: 0.01px);
                 }
             }
 
@@ -402,12 +416,12 @@ button {
 
 .timeline-section {
     position: relative;
-    padding: 50px 0 130px 0;
+    padding: 50px 0 130px;
 
     &__heading {
         display: block;
         width: 90px;
-        margin: 0 auto 92px auto;
+        margin: 0 auto 92px;
         font-size: 19px;
         padding-bottom: 7px;
         color: $black;
@@ -418,15 +432,15 @@ button {
 
 .timeline {
     display: grid;
-    grid-template-columns: obtainViewportWidth(340px) 55px 68px obtainViewportWidth(250px);
+    grid-template-columns: obtain-viewport-width(340px) 55px 68px obtain-viewport-width(250px);
     grid-template-rows: 100px 85px 143px 55px;
-    width: obtainViewportWidth(800px);
+    width: obtain-viewport-width(800px);
     margin: 0 auto;
     padding: 0;
     list-style-type: none;
 
     @media (max-width: 1030px) {
-        grid-template-columns: obtainViewportWidth(340px) 55px 0 obtainViewportWidth(250px);
+        grid-template-columns: obtain-viewport-width(340px) 55px 0 obtain-viewport-width(250px);
     }
 
     &-item {
@@ -564,15 +578,15 @@ button {
             content: "";
 
             @media (max-width: 900px) {
-                width: obtainViewportWidth(124px);
+                width: obtain-viewport-width(124px);
             }
 
             @media (max-width: 720px) {
-                width: obtainViewportWidth(164px);
+                width: obtain-viewport-width(164px);
             }
 
             @media (max-width: 600px) {
-                width: obtainViewportWidth(210px);
+                width: obtain-viewport-width(210px);
             }
         }
 
@@ -662,12 +676,12 @@ button {
 .contacts {
     position: relative;
     bottom: -3px;
-    padding: 50px 0 65px 0;
+    padding: 50px 0 65px;
     background-color: #eaeaea;
-    clip-path: url(#contactsCurve);
+    clip-path: url("#contactsCurve");
 
     > * {
-        margin-left: obtainViewportWidth(215px);
+        margin-left: obtain-viewport-width(215px);
     }
 
     &__heading {
@@ -675,7 +689,7 @@ button {
         margin-top: 0;
         margin-bottom: 17px;
         color: $black;
-        text-shadow: textStroke($stroke: 5, $color: $primaryWhite);
+        text-shadow: text-stroke($stroke: 5, $color: $primaryWhite);
     }
 
     &-form {
@@ -683,15 +697,15 @@ button {
         align-items: flex-start;
         flex-wrap: wrap;
         row-gap: 20px;
-        width: obtainViewportWidth(855px);
+        width: obtain-viewport-width(855px);
 
         &__paragraph {
             margin: 0 auto 0 0;
             color: color.scale($color: $primaryBlue, $blackness: 33%);
-            text-shadow: textStroke($stroke: 5, $color: $primaryWhite);
+            text-shadow: text-stroke($stroke: 5, $color: $primaryWhite);
             text-transform: uppercase;
             font: 700 15px/1.25 Latinaires, sans-serif;
-            max-width: obtainViewportWidth(500px);
+            max-width: obtain-viewport-width(500px);
         }
 
         .button--blue {
@@ -721,6 +735,7 @@ button {
 
         &__icon {
             @extend %icon-circle-right;
+
             width: 24px;
             height: 24px;
             border-radius: 50%;
@@ -762,13 +777,13 @@ button {
     flex-wrap: wrap;
     gap: 80px;
     background-color: $dark;
-    padding: obtainViewportWidth(43px) 0 obtainViewportWidth(52px) 0;
+    padding: obtain-viewport-width(43px) 0 obtain-viewport-width(52px) 0;
 }
 
 .testimonial {
     position: relative;
     width: 255px;
-    padding: 16px 0 37px 0;
+    padding: 16px 0 37px;
 
     &::before {
         position: absolute;
@@ -812,15 +827,15 @@ button {
         margin: 15px 0 0;
         color: $secondaryWhite;
         text-transform: uppercase;
-        text-shadow: textStroke($stroke: 3, $color: #000);
+        text-shadow: text-stroke($stroke: 3, $color: #000);
     }
 }
 
 .footer {
     display: grid;
     padding-top: 11px;
-    grid-template-rows: repeat(3, obtainViewportWidth(38px));
-    grid-template-columns: auto obtainViewportWidth(125px) obtainViewportWidth(50px) obtainViewportWidth(50px) obtainViewportWidth(125px) auto;
+    grid-template-rows: repeat(3, obtain-viewport-width(38px));
+    grid-template-columns: auto obtain-viewport-width(125px) obtain-viewport-width(50px) obtain-viewport-width(50px) obtain-viewport-width(125px) auto;
     grid-template-areas: ". . logo logo . ."
         ". phone-1 phone-1 phone-2 phone-2 ."
         ". location location location location .";
@@ -830,10 +845,10 @@ button {
     &__logo {
         grid-area: logo;
         align-self: center;
-        font-size: obtainViewportWidth(19px);
+        font-size: obtain-viewport-width(19px);
         font-weight: 700;
         color: $primaryWhite;
-        text-shadow: textStroke($stroke: 3, $color: #000, $step: 0.8px);
+        text-shadow: text-stroke($stroke: 3, $color: #000, $step: 0.8px);
         text-transform: uppercase;
     }
 }
@@ -841,14 +856,14 @@ button {
 .phone-number {
     align-self: center;
     color: $secondaryWhite;
-    font-size: obtainViewportWidth(11px);
+    font-size: obtain-viewport-width(11px);
 
     &__header {
-        text-shadow: textStroke($stroke: 3, $color: #000, $step: 0.5px);
+        text-shadow: text-stroke($stroke: 3, $color: #000, $step: 0.5px);
     }
 
     &__number {
-        text-shadow: textStroke($stroke: 3, $color: #000, $step: 0.4px);
+        text-shadow: text-stroke($stroke: 3, $color: #000, $step: 0.4px);
     }
 
     &:first-of-type {
@@ -863,13 +878,13 @@ button {
 .location {
     grid-area: location;
     color: $darkGray;
-    font-size: obtainViewportWidth(10px);
+    font-size: obtain-viewport-width(10px);
 
     &__header {
-        text-shadow: textStroke($stroke: 1, $color: #000);
+        text-shadow: text-stroke($stroke: 1, $color: #000);
     }
 
     &__number {
-        text-shadow: textStroke($stroke: 3, $color: #000, $step: 0.4px);
+        text-shadow: text-stroke($stroke: 3, $color: #000, $step: 0.4px);
     }
 }

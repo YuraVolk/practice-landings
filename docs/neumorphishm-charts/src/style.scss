@@ -56,58 +56,67 @@ $backgroundViolet: #574aa6;
     font-variant: normal;
     text-transform: none;
     line-height: 1;
-
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
 %icon-notifications-outline::before {
     @extend %font-icon;
+
     content: "\1f514";
 }
 
 %icon-notebook-list::before {
     @extend %font-icon;
+
     content: "\1f4dd";
 }
 
 %icon-notebook::before {
     @extend %font-icon;
+
     content: "\1f4d2";
 }
 
 %icon-book::before {
     @extend %font-icon;
+
     content: "\1f4d9";
 }
 
 %icon-lock::before {
     @extend %font-icon;
+
     content: "\1f512";
 }
 
 %icon-shield::before {
     @extend %font-icon;
+
     content: "\1f6e1";
 }
 
 %icon-home::before {
     @extend %font-icon;
+
     content: "\1f3e0";
 }
 
 %icon-coin-dollar::before {
     @extend %font-icon;
+
     content: "\1f4b2";
 }
 
 %icon-search::before {
     @extend %font-icon;
+
     content: "\1f50e";
 }
 
 %icon-cog::before {
     @extend %font-icon;
+
     content: "\2699";
 }
 
@@ -120,7 +129,7 @@ $backgroundViolet: #574aa6;
     top: 50%;
     left: 50%;
 
-    @if ($defaultTransform) {
+    @if  $defaultTransform {
         transform: translate(-50%, -50%);
     }
 }
@@ -136,7 +145,7 @@ html {
 
     $startValue: 1050px;
     $counter: 16px;
-    @while ($startValue < 1800px) {
+    @while  $startValue < 1800px {
         @media (min-width: $startValue) {
             font-size: $counter;
         }
@@ -147,7 +156,7 @@ html {
 
     $startValue: 800px;
     $counter: 16px;
-    @while ($startValue > 400px) {
+    @while  $startValue > 400px {
         @media (max-width: $startValue) {
             font-size: $counter;
         }
@@ -178,7 +187,6 @@ body {
     width: 90vw;
     height: 92.5vh;
     padding-top: 16px;
-    border-radius: 1.5vh;
     overflow: hidden;
     background: linear-gradient(to bottom right, $backgroundPrimary, $backgroundInnerRight);
     border-radius: 16px;
@@ -196,7 +204,7 @@ body {
         width: 1.55rem;
         height: 1.55rem;
         border-radius: 50%;
-        box-shadow: 3px 2px 5px rgba(0, 0, 0, 0.85),
+        box-shadow: 3px 2px 5px rgb(0 0 0 / 85%),
              -2px -2px 5px rgba($primaryActive, 0.2);
     }
 
@@ -215,10 +223,12 @@ body {
 
         &__image {
             @include headerButton;
+
             background: linear-gradient(to bottom right, $firstRed, $secondRed);
 
             &::before {
                 @include centralizeAbsolute;
+
                 font-size: 0.875rem;
                 font-weight: 600;
                 color: $primaryActive;
@@ -269,11 +279,13 @@ body {
         
         &__search-icon {
             @extend %icon-search;
+
             font-size: 1.125rem;
         }
 
         &__notifications {
             @extend %icon-notifications-outline;
+
             position: relative;
             font-size: 1.125rem;
 
@@ -281,7 +293,7 @@ body {
                 position: absolute;
                 top: 0;
                 transform: translate(-45%, -33%);
-                padding: 0.225rem 0.2515rem 0.18rem 0.2515rem;
+                padding: 0.225rem 0.2515rem 0.18rem;
                 border-radius: 50%;
                 font-size: 0.6rem;
                 line-height: 0.7;
@@ -292,6 +304,7 @@ body {
 
         &__avatar {
             @include headerButton;
+
             position: relative;
             margin-right: 1.125rem;
             background: linear-gradient(to bottom right, $violetPrimary, $violetSecondary);
@@ -299,6 +312,7 @@ body {
 
             svg|svg {
                 @include centralizeAbsolute($defaultTransform: false);
+
                 transform: translate(-55%, -36%) scale(1.6);
             }
 
@@ -312,7 +326,7 @@ body {
             }
 
             svg|g.body {
-                fill: url(#person-gradient) #26204c;
+                fill: url("#person-gradient") #26204c;
             }
         }
 
@@ -364,7 +378,7 @@ body {
     }
 
     &__heading {
-        margin: 2.15vw 0 0 0;
+        margin: 2.15vw 0 0;
         color: $contentMain;
         font-size: inherit;
         font-weight: 700;
@@ -429,7 +443,7 @@ body {
 
             @media (max-width: 800px) {
                width: 25%;
-               margin: 5.3vh auto 0 auto;
+               margin: 5.3vh auto 0;
             }
         }
 
@@ -443,6 +457,7 @@ body {
 
         &__circle {
             @include centralizeAbsolute($defaultTransform: false);
+
             transform: translate(-50%, -60%);
             width: calc(53% + 1px);
             height: 53%;
@@ -466,7 +481,6 @@ body {
                 width: 12.5%;
                 height: 12.5%;
                 background: linear-gradient(to right, $firstRed, $secondRed);
-                -webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
                 clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
                 content: "";
             }
@@ -500,15 +514,14 @@ body {
 
         &__upper-indicator {
             @include centralizeAbsolute($defaultTransform: false);
+
             transform: translate(-50%, -60%);
             z-index: 1;
             width: 64%;
             height: 63%;
             border-radius: 50%;
             background: linear-gradient(to right, $firstRed, $secondRed);
-            -webkit-mask-image: radial-gradient(circle at center, transparent 59.1269%, white 60.1269%);
             mask-image: radial-gradient(circle at center, transparent 84.1269%, white 85.1269%);
-            -webkit-clip-path: polygon(0 0, 100% 0, 100% 25%, 87% 33%, 13% 33%, 0% 25%);
             clip-path: polygon(0 0, 100% 0, 100% 25%, 87% 33%, 13% 33%, 0% 25%);
         }
     }
@@ -516,14 +529,8 @@ body {
 
 .main {
     display: grid;
-    grid-template-columns: 33% 30% 37%;
-    grid-template-rows: 23.5% 22.5% 17% 7.5% 29.5%;
+    grid-template: "todo-list todo-list todo-list" 23.5% "pie-charts settings histograms" 22.5% "area-charts settings progress-bars" 17% "area-charts combined-area-chart line-chart" 7.5% "area-charts combined-area-chart line-chart" 29.5% / 33% 30% 37%;
     grid-auto-rows: 0;
-    grid-template-areas: "todo-list todo-list todo-list"
-        "pie-charts settings histograms"
-        "area-charts settings progress-bars"
-        "area-charts combined-area-chart line-chart"
-        "area-charts combined-area-chart line-chart";
     height: 77.7vh;
     position: relative;
     flex: 1 0 0;
@@ -545,23 +552,15 @@ body {
         position: absolute;
         width: 160%;
         height: 100%;
-        top: 0;
-        left: -3%;
-        right: 0;
-        bottom: 0;
+        inset: 0 0 0 -3%;
         border-top-left-radius: inherit;
         transform-origin: left center 0;
         box-shadow: inset 4vw 4vh 0 #0d143b;
-        -webkit-clip-path: polygon(100% 0, 15% 16%, 1% 18%, 0 11%, 0 0);
         clip-path: polygon(100% 0, 65% 76%, 1% 88%, 0 71%, 0 0);
         mask-size: 100vw 100vh;
-        -webkit-mask-size: 100vw 100vh;
         mask-image: -webkit-gradient(linear, center bottom, center top,
-                color-stop(0.00, rgba(0, 0, 0, 0)),
-                color-stop(1.00, rgba(0, 0, 0, 1)));
-        -webkit-mask-image: -webkit-gradient(linear, center bottom, center top,
-                color-stop(0.00, rgba(0, 0, 0, 0)),
-                color-stop(1.00, rgba(0, 0, 0, 1)));
+                color-stop(0.00, rgb(0 0 0 / 0%)),
+                color-stop(1.00, rgb(0 0 0 / 100%)));
                 filter: blur(calc((3.55vw + 2.526vh) / 4));
         content: "";
     }
@@ -590,10 +589,7 @@ body {
 
     &::before {
         position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
+        inset: 0;
         transform-origin: left center 0;
         transform: rotateY(9deg);
         border-radius: 0.65rem;
@@ -603,10 +599,7 @@ body {
 
     &::after {
         position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
+        inset: 0;
         transform-origin: right center 0;
         transform: rotateY(-9deg);
         border-radius: 0.65rem;
@@ -676,9 +669,9 @@ body {
 }
 
 .pie-chart {
-    @-webkit-keyframes pieChartFill {
+    @keyframes pieChartFill {
         from {
-            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
         }
     }
 
@@ -730,15 +723,10 @@ body {
     border-top-right-radius: 100vh;
     border: 1.4vw solid transparent;
     border-bottom: 0;
-    
-    -webkit-mask: 
-       linear-gradient(#fff 0 0) content-box, 
-       linear-gradient(#fff 0 0);
     mask: linear-gradient(#fff 0 0) content-box, 
        linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
+    mask-composite: xor;
     mask-composite: exclude;
-    -webkit-clip-path: polygon(0 0, 100% 0, 100% 99%, 0 99%);
     clip-path: polygon(0 0, 100% 0, 100% 99%, 0 99%);
 
     &-wrap--red & {
@@ -797,7 +785,7 @@ body {
         font-size: 0.87vw;
         color: $primaryActive;
 
-        @media (max-height: 685px) {
+        @media (height <= 685px) {
             margin-top: 1vw;
         }
     }
@@ -926,7 +914,7 @@ body {
 }
 
 .histogram {
-    @-webkit-keyframes histogramFill {
+    @keyframes histogramFill {
         from {
             flex-basis: 0;
         }
@@ -1043,15 +1031,14 @@ body {
     grid-area: progress-bars;
     align-self: center;
 
-    @media (max-height: 685px) {
+    @media (height <= 685px) {
         grid-row-start: area-charts;
-        grid-column-start: area-charts;
-        grid-column-end: 1;
+        grid-column: area-charts / 1;
     }
 }
 
 .progress-bar {
-    @-webkit-keyframes progressbarFill {
+    @keyframes progressbarFill {
         from {
             width: 0;
         }
@@ -1117,12 +1104,9 @@ body {
     padding-top: 2.2rem;
     height: 70%;
 
-    @media (max-height: 685px) {
+    @media (height <= 685px) {
         padding-top: 0;
-        grid-row-end: line-chart;
-        grid-row-start: progress-bars;
-        grid-column-start: progress-bars;
-        grid-column-end: line-chart;
+        grid-row: progress-bars / line-chart;
     }
 
     @media (max-width: 800px) {
@@ -1130,13 +1114,13 @@ body {
     }
 }
 
-@-webkit-keyframes areaChartSlideIn {
+@keyframes areaChartSlideIn {
     from {
-        -webkit-clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+        clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
     }
 
     to {
-        -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
     }
 }
 
@@ -1174,14 +1158,9 @@ body {
 
     &-section {
         @include hideText;
+
         position: relative;
         flex: var(--length) 1 0;
-        -webkit-clip-path: polygon(
-            0% calc(100% * (1 - var(--start)) + 3px),
-            100% calc(100% * (1 - var(--end)) + 3px),
-            100% 100%,
-            0% 100%
-        );
         clip-path: polygon(
             0% calc(100% * (1 - var(--start)) + 3px),
             100% calc(100% * (1 - var(--end)) + 3px),
@@ -1196,12 +1175,6 @@ body {
             left: 0;
             width: 100%;
             height: 100%;
-            -webkit-clip-path: polygon(
-                0% calc(100% * (1 - var(--start))),
-                100% calc(100% * (1 - var(--end))),
-                100% calc(100% * (1 - var(--end)) + 5px),
-                0% calc(100% * (1 - var(--start)) + 5px)
-            );
             clip-path: polygon(
                 0% calc(100% * (1 - var(--start))),
                 100% calc(100% * (1 - var(--end))),
@@ -1264,7 +1237,7 @@ body {
         width: 100%;
         max-width: 17vw;
         height: 10vw;
-        margin: 3vw auto 0 auto;
+        margin: 3vw auto 0;
     }
 
     &__caption {
@@ -1354,11 +1327,9 @@ body {
 
     &__section {
         @include hideText;
+
         position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
+        inset: 0;
         border-top-left-radius: 100vh;
         border-top-right-radius: 100vh;
         clip-path: polygon(
@@ -1407,11 +1378,10 @@ body {
         grid-area: line-chart;
         align-self: center;
 
-        @media (max-height: 685px) {
+        @media (height <= 685px) {
             display: grid;
             grid-row-end: area-charts 2;
-            grid-column-start: area-charts;
-            grid-column-end: 1;
+            grid-column: area-charts / 1;
         }
     }
 

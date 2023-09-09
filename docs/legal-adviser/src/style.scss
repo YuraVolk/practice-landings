@@ -4,13 +4,12 @@
 $white: #fff;
 $lightGray: #e0e0e0;
 $primaryDarkGray: #acacac;
-$secondaryDarkGray: #555555;
+$secondaryDarkGray: #555;
 $primaryActive: #304771;
 $secondaryActive: #283b63;
 $tertiaryActive: #1d3051;
 $primaryActiveLight: #8bb0f7;
 $primaryYellow: #c7ab47;
-
 $headerSubsectionHeight: 11.92vw;
 
 @font-face {
@@ -53,92 +52,107 @@ $headerSubsectionHeight: 11.92vw;
     font-variant: normal;
     text-transform: none;
     line-height: 1;
-
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
 %icon-arrow-up::before {
     @extend %font-icon;
+
     content: "\1f5a2";
 }
 
 %icon-phone::before {
     @extend %font-icon;
+
     content: "\1f57e";
 }
 
 %icon-contact::before {
     @extend %font-icon;
+
     content: "\1f57e";
 }
 
 %icon-message::before {
     @extend %font-icon;
+
     content: "\1f5e9";
 }
 
 %icon-uniF125::before {
     @extend %font-icon;
+
     content: "\1f582";
 }
 
 %icon-pushpin::before {
     @extend %font-icon;
+
     content: "\1f4cd";
 }
 
 %icon-phone3::before {
     @extend %font-icon;
+
     content: "\1f57f";
 }
 
 %icon-phone1::before {
     @extend %font-icon;
+
     content: "\1f580";
 }
 
 %icon-envelop::before {
     @extend %font-icon;
+
     content: "\1f4e9";
 }
 
 %icon-user::before {
     @extend %font-icon;
+
     content: "\1f466";
 }
 
 %icon-user-tie::before {
     @extend %font-icon;
+
     content: "\1f482";
 }
 
 %icon-google-plus::before {
     @extend %font-icon;
+
     content: "\ea8b";
 }
 
 %icon-hangouts::before {
     @extend %font-icon;
+
     content: "\ea8e";
 }
 
 %icon-facebook::before {
     @extend %font-icon;
+
     content: "\ea90";
 }
 
 %icon-telegram::before {
     @extend %font-icon;
+
     content: "\ea95";
 }
 
 %icon-search::before {
     @extend %font-icon;
+
     content: "\1f5d0";
 }
 
-@function textStroke($stroke, $color, $step: 0.3px) {
+@function text-stroke($stroke, $color, $step: 0.3px) {
     $shadow: ();
     $from: $stroke * -1;
 
@@ -151,17 +165,17 @@ $headerSubsectionHeight: 11.92vw;
     @return $shadow;
 }
 
-@function obtainViewportWidth($targetWidth, $baseWidth: 1300px) {
-    @if ($targetWidth >= $baseWidth) {
+@function obtain-viewport-width($targetWidth, $baseWidth: 1300px) {
+    @if  $targetWidth >= $baseWidth {
         @error "Target width should be less than base width";
     }
 
     @return math.div($targetWidth * 100vw, $baseWidth);
 }
 
-@mixin aliasedTextStroke($stroke, $color, $step: 0.3px) {
+@mixin aliasedtext-stroke($stroke, $color, $step: 0.3px) {
     @media (min-width: 880px) {
-        text-shadow: textStroke($stroke, $color, $step);
+        text-shadow: text-stroke($stroke, $color, $step);
         filter: blur(0.1px);
     }
 
@@ -204,7 +218,7 @@ body {
     font-family: Latinaires;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
+    text-rendering: optimizelegibility;
 
     * {
         -webkit-font-smoothing: inherit;
@@ -255,6 +269,7 @@ button {
 
 .header {
     @include centralizeItems;
+
     position: relative;
     padding-bottom: 14.23vw;
     background-image: url("./img/header-image.jpg");
@@ -268,7 +283,7 @@ button {
         margin-bottom: 1rem;
         font-size: 38px;
         font-weight: 400;
-        text-shadow: textStroke($stroke: 2, $color: $white, $step: 0.01px);
+        text-shadow: text-stroke($stroke: 2, $color: $white, $step: 0.01px);
         line-height: 1.1;
         letter-spacing: 4px;
         text-transform: uppercase;
@@ -300,6 +315,7 @@ button {
 
         &-block {
             @include centralizeItems;
+
             flex: 1 0 math.div(100%, 3);
             padding-top: 1.25rem;
             font-size: 0.625rem;
@@ -333,8 +349,7 @@ button {
                 background-image: url("./img/header-icon.png");
                 background-position: -100% 0;
                 background-size: 2.25rem 2.875rem;
-                -webkit-filter: blur(0.3px) drop-shadow(2.25rem 0px $primaryYellow);
-                filter: blur(0.3px) drop-shadow(2.25rem 0px $primaryYellow);
+                filter: blur(0.3px) drop-shadow(2.25rem 0 $primaryYellow);
             }
         }
 
@@ -353,6 +368,7 @@ button {
 
 .navigation {
     @include centralizeItems;
+
     gap: 0.75rem;
     width: 100%;
     padding-top: 2rem;
@@ -431,6 +447,7 @@ button {
 
             &-wrap {
                 @extend %icon-search;
+
                 position: relative;
 
                 &::before {
@@ -441,7 +458,6 @@ button {
                     font-size: calc(1rem - 1px);
                     background: linear-gradient(to bottom right, $primaryDarkGray 70%, $secondaryDarkGray 50%);
                     background-clip: text;
-                    -webkit-background-clip: text;
                     -webkit-text-fill-color: transparent;
                 }
             }
@@ -452,7 +468,8 @@ button {
         align-items: flex-end;
 
         &__logo {
-            @include aliasedTextStroke($stroke: 1, $color: $primaryYellow);
+            @include aliasedtext-stroke($stroke: 1, $color: $primaryYellow);
+
             margin-bottom: 8px;
             font: 500 24px/24px Latinaires, sans-serif;
             letter-spacing: 1px;
@@ -506,7 +523,7 @@ button {
             &--active {
                 padding-bottom: 4px;
                 border-bottom: 0.188rem solid $primaryActiveLight;
-                text-shadow: textStroke($stroke: 1, $color: $primaryActiveLight);
+                text-shadow: text-stroke($stroke: 1, $color: $primaryActiveLight);
             }
 
             &:not(:last-of-type) {
@@ -518,6 +535,7 @@ button {
 
 .header-subsection {
     @include centralizeItems;
+
     position: relative;
     padding-top: math.div($headerSubsectionHeight, 2) + 6.3vw;
     overflow-x: hidden;
@@ -527,7 +545,7 @@ button {
         margin-bottom: 0.5rem;
         font-size: 1.2rem;
         font-weight: 300;
-        text-shadow: textStroke($stroke: 3, $color: $secondaryActive, $step: 0.02px);
+        text-shadow: text-stroke($stroke: 3, $color: $secondaryActive, $step: 0.02px);
         color: $secondaryActive;
     }
 
@@ -591,12 +609,14 @@ button {
 
 .ceo-section {
     @include centralizeItems;
+
     padding-bottom: 2rem;
     background-image: url("./img/section-2-image.jpg");
     background-size: cover;
 
     &__heading {
-        @include aliasedTextStroke($stroke: 1, $color: $white, $step: 0.01px);
+        @include aliasedtext-stroke($stroke: 1, $color: $white, $step: 0.01px);
+
         margin-top: 3rem;
         margin-bottom: 1.625rem;
         font-weight: 400;
@@ -616,6 +636,7 @@ button {
 
 .partnership-section {
     @include centralizeItems;
+
     padding-top: 5.4vw;
     overflow-x: hidden;
 }
@@ -632,6 +653,7 @@ button {
 
     &-item {
         @include centralizeItems;
+
         padding-top: 4.45vw;
         padding-bottom: 2.85vw;
         transition: all 0.4s ease-in-out;
@@ -656,13 +678,10 @@ button {
                 top: 50%;
                 left: 50%;
                 transform-origin: 53% 51%;
-
                 width: 6.75rem;
                 height: 6.75rem;
                 border: 2.5px solid $primaryActiveLight;
                 border-radius: 50%;
-
-                -webkit-clip-path: polygon(66% 10%, 66% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0%, 33% 0%, 33% 10%);
                 clip-path: polygon(66% 10%, 66% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0%, 33% 0%, 33% 10%);
                 transition: all 0.4s ease-in-out;
                 content: "";
@@ -747,7 +766,8 @@ button {
         }
 
         &__heading {
-            @include aliasedTextStroke($stroke: 1, $color: $primaryYellow, $step: 0.01px);
+            @include aliasedtext-stroke($stroke: 1, $color: $primaryYellow, $step: 0.01px);
+
             margin-top: 0;
             margin-bottom: 0.875rem;
             transform: scaleY(1.25);
@@ -758,11 +778,12 @@ button {
         }
 
         &:hover &__heading {
-            @include aliasedTextStroke($stroke: 1, $color: $white, $step: 0.01px);
+            @include aliasedtext-stroke($stroke: 1, $color: $white, $step: 0.01px);
         }
 
         &__description {
-            @include aliasedTextStroke($stroke: 1, $color: rgba(#000, 0.2), $step: 0.01px);
+            @include aliasedtext-stroke($stroke: 1, $color: rgba(#000, 0.2), $step: 0.01px);
+
             max-width: 7.5vw;
             font: small-caps 500 0.625rem/1.5 Latinaires, sans-serif;
             text-align: center;
@@ -794,8 +815,8 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: obtainViewportWidth(131px);
-    padding: obtainViewportWidth(77.5px) obtainViewportWidth(150px) obtainViewportWidth(42px) obtainViewportWidth(150px);
+    gap: obtain-viewport-width(131px);
+    padding: obtain-viewport-width(77.5px) obtain-viewport-width(150px) obtain-viewport-width(42px) obtain-viewport-width(150px);
     color: $white;
 
     @media (max-width: 400px) {
@@ -824,6 +845,7 @@ button {
    
     &-item {
         @include centralizeItems;
+
         text-align: center;
 
         &__icon {
@@ -884,13 +906,14 @@ button {
 
 .our-team-section {
     @include centralizeItems;
-    padding-top: obtainViewportWidth(45px);
+
+    padding-top: obtain-viewport-width(45px);
 }
 
 .our-team {
     display: flex;
     gap: 1.125rem;
-    width: obtainViewportWidth(850px);
+    width: obtain-viewport-width(850px);
     padding: 0;
     margin-top: 0;
     margin-bottom: 2.375rem;
@@ -940,7 +963,6 @@ button {
                 background-image: url("./img/section-showcase-image-2.png");
                 background-size: 100% 100%;
                 background-repeat: no-repeat;
-
                 content: "";
             }
         }
@@ -1021,14 +1043,15 @@ button {
 
 .footer {
     @include centralizeItems;
+
     width: 100%;
-    padding-top: obtainViewportWidth(30px);
-    padding-bottom: obtainViewportWidth(22px);
+    padding-top: obtain-viewport-width(30px);
+    padding-bottom: obtain-viewport-width(22px);
     background-color: $tertiaryActive;
     color: $lightGray;
 
     > * {
-        max-width: obtainViewportWidth(950px);
+        max-width: obtain-viewport-width(950px);
     }
 
     &-separator {
@@ -1044,7 +1067,7 @@ button {
         display: flex;
         justify-content: center;
         gap: 0.75rem;
-        margin: 0 0 1.15rem 0;
+        margin: 0 0 1.15rem;
         padding: 0;
         list-style-type: none;
         cursor: pointer;
@@ -1086,7 +1109,7 @@ button {
 .contact-links {
     display: flex;
     justify-content: space-between;
-    width: obtainViewportWidth(570px);
+    width: obtain-viewport-width(570px);
 
     &__text {
         font-size: 0.725rem;
@@ -1097,7 +1120,7 @@ button {
 .contacts-section {
     display: flex;
     align-items: center;
-    width: obtainViewportWidth(570px);
+    width: obtain-viewport-width(570px);
 
     @media (max-width: 700px) {
         width: 100%;
@@ -1105,8 +1128,8 @@ button {
 }
 
 .qr-code {
-    width: obtainViewportWidth(87.5px);
-    height: obtainViewportWidth(87.5px);
+    width: obtain-viewport-width(87.5px);
+    height: obtain-viewport-width(87.5px);
     
     &:first-of-type {
         margin-right: 0.75rem;
@@ -1118,7 +1141,7 @@ button {
     display: flex;
     flex-direction: column;
     flex-grow: 1.2;
-    padding-left: obtainViewportWidth(45px);
+    padding-left: obtain-viewport-width(45px);
 
     &__header {
         font-size: 0.72rem;
@@ -1132,11 +1155,12 @@ button {
 
     &::before {
         @extend %icon-phone;
+
         position: absolute;
         top: 50%;
         left: 0;
         transform: translateY(-45%);
-        font-size: obtainViewportWidth(36.5px);
+        font-size: obtain-viewport-width(36.5px);
         -webkit-text-stroke: 1px $lightGray;
         color: transparent;
 
@@ -1195,5 +1219,6 @@ button {
 .go-up-button {
     @include footerButton(#f04b1e);
     @extend %icon-arrow-up;
+
     align-self: stretch;
 }

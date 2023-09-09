@@ -4,55 +4,58 @@
 
 @layer desktop {
     .footer {
-        @include mixins.placeBackground("/img/footer-background", "jpg");
+        @include mixins.place-background("/img/footer-background", "jpg");
 
         @media (max-width: 851px) {
-            padding: mixins.obtainViewportWidth(50px) 0;
+            padding: mixins.obtain-viewport-width(50px) 0;
         }
 
         &-inner {
-            @include mixins.squareViewportWidth;
+            @include mixins.square-viewport-width;
+
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: mixins.obtainViewportWidth(245px) mixins.obtainViewportWidth(20px) 0 0;
+            padding: mixins.obtain-viewport-width(245px) mixins.obtain-viewport-width(20px) 0 0;
             box-sizing: border-box;
             text-align: center;
 
             @media (max-width: 851px) {
                 width: 80%;
                 margin: 0 auto;
-                padding: 0;
                 background: #eeedde;
                 padding: 15px;
                 aspect-ratio: initial;
                 height: initial;
+
     
-                $edgeSize: mixins.obtainViewportWidth(30px);
+                $edge-size: mixins.obtain-viewport-width(30px);
+
                 clip-path: polygon(
-                    $edgeSize 0, calc(100% - $edgeSize) 0, 
-                    100%  $edgeSize, 100% calc(100% -  $edgeSize), 
-                    calc(100% -  $edgeSize) 100%, 
-                    $edgeSize 100%, 0 calc(100% -  $edgeSize), 0 $edgeSize
+                    $edge-size 0, calc(100% - $edge-size) 0, 
+                    100%  $edge-size, 100% calc(100% - $edge-size), 
+                    calc(100% - $edge-size) 100%, 
+                    $edge-size 100%, 0 calc(100% - $edge-size), 0 $edge-size
                 );
+
     
-                $edgeSizeSecondary: mixins.obtainViewportWidth(27.5px);
-                $edgeSizeHalfNegative: math.div($edgeSize, -2);
-                $edgeSizeHalf: math.div($edgeSize, 2);
-                $mask:
-                    linear-gradient(#000 0 0) center/#{calc(100% - $edgeSize)} calc(100% - $edgeSize) no-repeat,
-                    radial-gradient(circle farthest-side,#0000 98%,#000) 0 #{$edgeSizeHalfNegative}/$edgeSizeSecondary $edgeSize round no-repeat,
-                    radial-gradient(circle farthest-side,#0000 98%,#000) 0 #{calc(100% + $edgeSizeHalf)}/$edgeSizeSecondary $edgeSize round no-repeat,
-                    radial-gradient(circle farthest-side,#0000 98%,#000) #{$edgeSizeHalfNegative 0}/#{$edgeSize $edgeSizeSecondary} no-repeat round,
-                    radial-gradient(circle farthest-side,#0000 98%,#000) #{calc(100% + $edgeSizeHalf) 0}/$edgeSize $edgeSizeSecondary no-repeat round;
-                -webkit-mask: $mask;
+                $edge-size-secondary: mixins.obtain-viewport-width(27.5px);
+                $edge-size-half-negative: math.div($edge-size, -2);
+                $edge-size-half: math.div($edge-size, 2);
+
+                mask: 
+                    linear-gradient(#000 0 0) center/#{calc(100% - $edge-size)} calc(100% - $edge-size) no-repeat,
+                    radial-gradient(circle farthest-side,#0000 98%,#000) 0 #{$edge-size-half-negative}/$edge-size-secondary $edge-size round no-repeat,
+                    radial-gradient(circle farthest-side,#0000 98%,#000) 0 #{calc(100% + $edge-size-half)}/$edge-size-secondary $edge-size round no-repeat,
+                    radial-gradient(circle farthest-side,#0000 98%,#000) #{$edge-size-half-negative 0}/#{$edge-size $edge-size-secondary} no-repeat round,
+                    radial-gradient(circle farthest-side,#0000 98%,#000) #{calc(100% + $edge-size-half) 0}/$edge-size $edge-size-secondary no-repeat round;
             }
         }
 
         &__image {
-            font: string.unquote("#{mixins.obtainViewportWidth(28px)}/0.5") Naomi;
+            font: string.unquote("#{mixins.obtain-viewport-width(28px)}/0.5") Naomi, cursive;
             color: transparent;
-            text-shadow: mixins.textStroke($stroke: 1, $color: #6a8460, $step: 0.01px);
+            text-shadow: mixins.text-stroke($stroke: 1, $color: #6a8460, $step: 0.01px);
             transform: translateX(-50%) skewX(40deg);
 
             @supports (-webkit-text-stroke: #6a8460 0.05vw) {
@@ -63,14 +66,13 @@
 
         &__heading {
             width: 100%;
-            font-family: Naomi;
-            font-size: mixins.obtainViewportWidth(28px);
+            font-family: Naomi, cursive;
+            font-size: mixins.obtain-viewport-width(28px);
             color: transparent;
             margin: 0;
             mix-blend-mode: darken;
             background: linear-gradient(to right, #435725, #7d8e6e);
             background-clip: text;
-            -webkit-background-clip: text;
 
             @media (max-width: 851px) {
                 font-size: 28px;
@@ -78,10 +80,10 @@
         }
 
         &__subheading {
-            margin: mixins.obtainViewportWidth(7.5px) 0 mixins.obtainViewportWidth(12px);
-            font: small-caps mixins.obtainViewportWidth(22px) Brusly;
+            margin: mixins.obtain-viewport-width(7.5px) 0 mixins.obtain-viewport-width(12px);
+            font: small-caps mixins.obtain-viewport-width(22px) Brusly;
             color: #749060;
-            letter-spacing: mixins.obtainViewportWidth(1px);
+            letter-spacing: mixins.obtain-viewport-width(1px);
 
             @media (max-width: 851px) {
                 font-size: 22px;
@@ -90,7 +92,7 @@
 
         &__small-heading {
             margin: 0;
-            font: italic string.unquote("#{mixins.obtainViewportWidth(8px)}/0.1") Brusly;
+            font: italic string.unquote("#{mixins.obtain-viewport-width(8px)}/0.1") Brusly;
             color: #9da583;
 
             @media (max-width: 851px) {
@@ -99,9 +101,9 @@
         }
 
         &__paragraph {
-            font: string.unquote("#{mixins.obtainViewportWidth(7px)}/1.5") Brusly;
-            margin: mixins.obtainViewportWidth(22px) 0 mixins.obtainViewportWidth(12px);
-            max-width: mixins.obtainViewportWidth(300px);
+            font: string.unquote("#{mixins.obtain-viewport-width(7px)}/1.5") Brusly;
+            margin: mixins.obtain-viewport-width(22px) 0 mixins.obtain-viewport-width(12px);
+            max-width: mixins.obtain-viewport-width(300px);
             color: #a9b68a;
 
             @media (max-width: 851px) {
@@ -111,11 +113,11 @@
         }
 
         &__button {
-            padding: mixins.obtainViewportWidth(4px) mixins.obtainViewportWidth(14px);
+            padding: mixins.obtain-viewport-width(4px) mixins.obtain-viewport-width(14px);
             border: none;
-            border-radius: mixins.obtainViewportWidth(8px);
-            font-size: mixins.obtainViewportWidth(12px);
-            font-family: Brusly;
+            border-radius: mixins.obtain-viewport-width(8px);
+            font-size: mixins.obtain-viewport-width(12px);
+            font-family: Brusly, sans-serif;
             background-color: #7aa24f;
             color: #9abc7c;
             text-transform: lowercase;
@@ -127,11 +129,11 @@
 
         &-list {
             display: flex;
-            gap: mixins.obtainViewportWidth(20px);
-            margin: mixins.obtainViewportWidth(190px) 0 mixins.obtainViewportWidth(230px);
+            gap: mixins.obtain-viewport-width(20px);
+            margin: mixins.obtain-viewport-width(190px) 0 mixins.obtain-viewport-width(230px);
             padding: 0;
             list-style-type: none;
-            max-width: mixins.obtainViewportWidth(435px);
+            max-width: mixins.obtain-viewport-width(435px);
 
             @media (max-width: 851px) {
                 max-width: 75%;
@@ -154,7 +156,7 @@
                 }
 
                 &__heading {
-                    font: string.unquote("#{mixins.obtainViewportWidth(8px)}/1.33") Naomi;
+                    font: string.unquote("#{mixins.obtain-viewport-width(8px)}/1.33") Naomi, cursive;
                     color: #94bc71;
                     margin: 0;
 
@@ -164,8 +166,8 @@
                 }
 
                 &__paragraph {
-                    font-family: Brusly;
-                    font-size: mixins.obtainViewportWidth(6px);
+                    font-family: Brusly, sans-serif;
+                    font-size: mixins.obtain-viewport-width(6px);
                     color: #b9bbac;
 
                     @media (max-width: 851px) {
@@ -177,12 +179,12 @@
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    width: mixins.obtainViewportWidth(60px);
-                    padding: mixins.obtainViewportWidth(3px) 0;
+                    width: mixins.obtain-viewport-width(60px);
+                    padding: mixins.obtain-viewport-width(3px) 0;
                     border: none;
-                    border-radius: mixins.obtainViewportWidth(5.5px);
-                    font-size: mixins.obtainViewportWidth(4.5px);
-                    font-family: Brusly;
+                    border-radius: mixins.obtain-viewport-width(5.5px);
+                    font-size: mixins.obtain-viewport-width(4.5px);
+                    font-family: Brusly, sans-serif;
                     color: #b0ce99;
                     text-transform: lowercase;
 
@@ -190,11 +192,11 @@
                         font-size: 8px;
                     }
 
-                    @include mixins.liftUp($levels: 1, $modifiers: (":nth-child(odd)")) {
+                    @include mixins.lift-up($levels: 1, $modifiers: (":nth-child(odd)")) {
                         background-color: #60873e;
                     }
 
-                    @include mixins.liftUp($levels: 1, $modifiers: (":nth-child(even)")) {
+                    @include mixins.lift-up($levels: 1, $modifiers: (":nth-child(even)")) {
                         background-color: #699842;
                     }
                 }
@@ -202,9 +204,9 @@
         }
 
         &__credentials {
-            font-family: Brusly;
-            font-size: mixins.obtainViewportWidth(14px);
-            margin: 0 0 mixins.obtainViewportWidth(4px);
+            font-family: Brusly, sans-serif;
+            font-size: mixins.obtain-viewport-width(14px);
+            margin: 0 0 mixins.obtain-viewport-width(4px);
             color: #7d8c68;
 
             @media (max-width: 851px) {

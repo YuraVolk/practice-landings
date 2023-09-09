@@ -1,4 +1,4 @@
-$mainWhite: #ffffff;
+$mainWhite: #fff;
 $mainGray: #e6e6e6;
 $mainDark: #2c2c2c;
 $secondaryDark: #11130b;
@@ -51,7 +51,7 @@ $secondaryOrange: #e19608;
     background-size: calc(100% + 3px) 100%;
     background-position-x: -3px;
 
-    @media (max-width: 599px), (min-width: 1600px) {
+    @media (max-width: 599px), (width >= 1600px) {
         background-size: cover;
     }
 }
@@ -149,6 +149,7 @@ p {
 
 .header {
     @include backgroundPlacement("./img/header-background.jpg");
+
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -176,10 +177,8 @@ p {
         font-family: "Kyrial Sans Pro";
         font-weight: 100;
         background-color: $mainWhite;
-        background-clip: text;
         color: transparent;
-        -webkit-background-clip: text;
-        -moz-background-clip: text;
+        background-clip: text;
         opacity: 0.75;
     }
 
@@ -222,7 +221,7 @@ p {
                 }
 
                 &:first-child {
-                    background-color: rgba($color: #000000, $alpha: 0.5);
+                    background-color: rgba($color: #000, $alpha: 50%);
                     padding-bottom: 10.5px;
                     border-bottom: $mainOrange 2px solid;
 
@@ -274,8 +273,7 @@ p {
     z-index: 1;
     width: 63.5vw;
     height: calc(25vw + $extensionSizeCompact + $extensionSizeCompact);
-    
-    box-shadow: 6px 2px 2px rgba($color: $mainDark, $alpha: 0.2);
+    box-shadow: 6px 2px 2px rgba($color: $mainDark, $alpha: 20%);
 
     &--compact {
         top: -$extensionSize;
@@ -284,7 +282,7 @@ p {
     }
 
     &--compact &__section--description:first-of-type {
-        padding: 30px 20px 24px 20px;
+        padding: 30px 20px 24px;
 
         @media (max-width: 850px) { 
             padding: 6px;
@@ -384,6 +382,7 @@ p {
 
 .speciality-section {
     @include backgroundPlacement("./img/section-key-image.png");
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -476,7 +475,7 @@ p {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 7vw 0 3.3vw 0;
+    padding: 7vw 0 3.3vw;
     background-color: $mainGray;
     color: $black;
 

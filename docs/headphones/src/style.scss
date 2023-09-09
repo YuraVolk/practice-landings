@@ -46,63 +46,73 @@
 
 %icon-mail::before {
     @extend %font-icon;
+
     content: "\1f4e8";
 }
 
 %icon-headphones::before {
     @extend %font-icon;
+
     content: "\1f3a7";
 }
 
 %icon-connection::before {
     @extend %font-icon;
+
     content: "\1f4f6";
 }
 
 %icon-phone1::before {
     @extend %font-icon;
+
     content: "\1f4de";
 }
 
 %icon-bubble::before {
     @extend %font-icon;
+
     content: "\1f4ad";
 }
 
 %icon-user::before {
     @extend %font-icon;
+
     content: "\1f464";
 }
 
 %icon-user-tie::before {
     @extend %font-icon;
+
     content: "\1f482";
 }
 
 %icon-arrow-right::before {
     @extend %font-icon;
+
     content: "\27a1";
 }
 
 %icon-instagram::before {
     @extend %font-icon;
+
     content: "\1f4f7";
 }
 
 %icon-sina-weibo::before {
     @extend %font-icon;
+
     content: "\1f5cc";
 }
 
-@function obtainViewportWidth($targetWidth, $baseWidth: 1300px) {
-    @if ($targetWidth >= $baseWidth) {
+@function obtain-viewport-width($targetWidth, $baseWidth: 1300px) {
+    @if  $targetWidth >= $baseWidth {
         @error "Target width should be less than base width";
     }
 
     @return math.div($targetWidth * 100vw, $baseWidth);
 }
 
-@function textStroke($stroke, $color, $step: 0.3px) {
+@function text-stroke($stroke, $color, $step: 0.3px) {
     $shadow: ();
     $from: $stroke * -1;
 
@@ -115,9 +125,9 @@
     @return $shadow;
 }
 
-@mixin aliasedTextStroke($stroke, $color, $step: 0.3px) {
+@mixin aliasedtext-stroke($stroke, $color, $step: 0.3px) {
     @media (min-width: 880px) {
-        text-shadow: textStroke($stroke, $color, $step);
+        text-shadow: text-stroke($stroke, $color, $step);
         filter: blur(0.1px);
     }
 
@@ -125,8 +135,8 @@
 }
 
 @mixin slideButton($size, $activeColor) {
-    width: obtainViewportWidth($size);
-    height: obtainViewportWidth($size);
+    width: obtain-viewport-width($size);
+    height: obtain-viewport-width($size);
     border-radius: 50%;
     background-color: #646464;
     cursor: pointer;
@@ -141,13 +151,14 @@
 }
 
 @mixin subheading {
-    @include aliasedTextStroke($stroke: 2, $color: #000, $step: 0.35px);
+    @include aliasedtext-stroke($stroke: 2, $color: #000, $step: 0.35px);
+
     position: relative;
-    font-size: obtainViewportWidth(18px);
+    font-size: obtain-viewport-width(18px);
     font-weight: 500;
     color: #bebebe;
     margin-top: 0;
-    margin-bottom: obtainViewportWidth(10px);
+    margin-bottom: obtain-viewport-width(10px);
 
     &--orange {
         color: #e66e10;
@@ -155,57 +166,60 @@
 }
 
 @mixin featuresHeader($vertical) {
-    @if ($vertical) {
-        @include aliasedTextStroke($stroke: 2, $color: rgba(#000, 0.7), $step: 0.7px);
+    @if  $vertical {
+        @include aliasedtext-stroke($stroke: 2, $color: rgba(#000, 0.7), $step: 0.7px);
+
         position: relative;
         margin: 0;
-        font-size: obtainViewportWidth(26px);
+        font-size: obtain-viewport-width(26px);
         color: #fff;
         letter-spacing: 4px;
         text-transform: uppercase;
 
         &::after {
             position: absolute;
-            bottom: obtainViewportWidth(-18px);
+            bottom: obtain-viewport-width(-18px);
             left: 50%;
             transform: translateX(-50%);
-            width: obtainViewportWidth(25px);
-            height: obtainViewportWidth(3px);
+            width: obtain-viewport-width(25px);
+            height: obtain-viewport-width(3px);
             background-color: #f85908;
             content: "";
         }
     } @else {
         &__heading {
             @extend %icon-headphones;
-            @include aliasedTextStroke($stroke: 4, $color: rgba(#000, 0.7), $step: 0.55px);
+            @include aliasedtext-stroke($stroke: 4, $color: rgba(#000, 0.7), $step: 0.55px);
+
             display: flex;
             align-items: flex-start;
-            font-size: obtainViewportWidth(30px);
+            font-size: obtain-viewport-width(30px);
             color: #fff;
-            margin: obtainViewportWidth(34px) 0;
+            margin: obtain-viewport-width(34px) 0;
             text-transform: uppercase;
 
             &::before {
-                font-size: obtainViewportWidth(40px);
-                margin-right: obtainViewportWidth(18px);
+                font-size: obtain-viewport-width(40px);
+                margin-right: obtain-viewport-width(18px);
             }
 
             &::after {
                 position: absolute;
-                bottom: obtainViewportWidth(-6px);
-                left: obtainViewportWidth(70px);
+                bottom: obtain-viewport-width(-6px);
+                left: obtain-viewport-width(70px);
                 transform: translateX(-50%);
-                width: obtainViewportWidth(25px);
-                height: obtainViewportWidth(3px);
+                width: obtain-viewport-width(25px);
+                height: obtain-viewport-width(3px);
                 background-color: #f85908;
                 content: "";
             }
         }
 
         &__paragraph {
-            @include aliasedTextStroke($stroke: 2, $color: rgba(#000, 0.7));
-            margin: 0 0 obtainViewportWidth(31px) 0;
-            font-size: obtainViewportWidth(12px);
+            @include aliasedtext-stroke($stroke: 2, $color: rgba(#000, 0.7));
+
+            margin: 0 0 obtain-viewport-width(31px) 0;
+            font-size: obtain-viewport-width(12px);
             color: #d5d5d5;
             line-height: 1.5;
         }
@@ -223,30 +237,30 @@ button {
 }
 
 .button {
-    padding: obtainViewportWidth(4px) obtainViewportWidth(9px);
+    padding: obtain-viewport-width(4px) obtain-viewport-width(9px);
     filter: drop-shadow(0 0 4px #000);
 
     &--white {
-        border: obtainViewportWidth(2px) solid #fff;
+        border: obtain-viewport-width(2px) solid #fff;
         background-color: transparent;
         color: #fff;
-        border-radius: obtainViewportWidth(3px);
+        border-radius: obtain-viewport-width(3px);
     }
 
     &--orange {
-        padding: obtainViewportWidth(2px) obtainViewportWidth(8px);
+        padding: obtain-viewport-width(2px) obtain-viewport-width(8px);
         background-color: #f85908;
-        border: obtainViewportWidth(2px) solid #e66e10;
-        border-radius: obtainViewportWidth(3px);
+        border: obtain-viewport-width(2px) solid #e66e10;
+        border-radius: obtain-viewport-width(3px);
         color: #fff;
-        font-size: obtainViewportWidth(10px);
+        font-size: obtain-viewport-width(10px);
     }
 }
 
 .header {
     position: relative;
     background-color: #131313;
-    padding-bottom: obtainViewportWidth(42px);
+    padding-bottom: obtain-viewport-width(42px);
 
     & > * {
         z-index: 1;
@@ -256,40 +270,42 @@ button {
         position: relative;
         display: flex;
         justify-content: center;
-        padding: obtainViewportWidth(14.5px) 0;
+        padding: obtain-viewport-width(14.5px) 0;
         background-color: #0e0e0e;
         color: #fff;
 
         &-inner {
             display: flex;
             align-items: center;
-            gap: obtainViewportWidth(16px);
-            width: obtainViewportWidth(950px);
+            gap: obtain-viewport-width(16px);
+            width: obtain-viewport-width(950px);
         }
 
         &__logo {
-            @include aliasedTextStroke($stroke: 5, $color: #000, $step: 0.55px);
+            @include aliasedtext-stroke($stroke: 5, $color: #000, $step: 0.55px);
+
             flex-grow: 1;
-            font-size: obtainViewportWidth(17.5px);
+            font-size: obtain-viewport-width(17.5px);
             font-weight: 700;
             text-transform: uppercase;
             color: inherit;
         }
 
         &__link {
-            @include aliasedTextStroke($stroke: 2, $color: #000, $step: 0.225px);
-            font-size: obtainViewportWidth(15px);
+            @include aliasedtext-stroke($stroke: 2, $color: #000, $step: 0.225px);
+
+            font-size: obtain-viewport-width(15px);
             text-decoration: none;
             color: #4d4d4d;
-            padding-bottom: obtainViewportWidth(2px);
+            padding-bottom: obtain-viewport-width(2px);
 
             &--active {
                 color: #fff;
-                border-bottom: obtainViewportWidth(1.5px) solid #fff;
+                border-bottom: obtain-viewport-width(1.5px) solid #fff;
             }
 
             &:nth-child(3) {
-                margin-right: obtainViewportWidth(14px);
+                margin-right: obtain-viewport-width(14px);
             }
         }
 
@@ -301,10 +317,11 @@ button {
             flex-grow: 1;
 
             &__button {
-                @include aliasedTextStroke($stroke: 5, $color: #000, $step: 0.55px);
-                width: obtainViewportWidth(16px);
-                height: obtainViewportWidth(16px);
-                font-size: obtainViewportWidth(16px);
+                @include aliasedtext-stroke($stroke: 5, $color: #000, $step: 0.55px);
+
+                width: obtain-viewport-width(16px);
+                height: obtain-viewport-width(16px);
+                font-size: obtain-viewport-width(16px);
                 background-color: transparent;
                 padding: 0;
                 border: none;
@@ -327,11 +344,11 @@ button {
 
     &-slides {
         position: absolute;
-        top: obtainViewportWidth(113px);
-        right: obtainViewportWidth(232px);
+        top: obtain-viewport-width(113px);
+        right: obtain-viewport-width(232px);
         display: flex;
         flex-direction: column;
-        gap: obtainViewportWidth(11px);
+        gap: obtain-viewport-width(11px);
         list-style-type: none;
 
         &__button {
@@ -341,10 +358,10 @@ button {
 
     &::before {
         position: absolute;
-        top: obtainViewportWidth(50px);
-        left: obtainViewportWidth(264px);
-        width: obtainViewportWidth(675px);
-        height: obtainViewportWidth(440px);
+        top: obtain-viewport-width(50px);
+        left: obtain-viewport-width(264px);
+        width: obtain-viewport-width(675px);
+        height: obtain-viewport-width(440px);
         background-image: url("./img/header-image.png");
         background-size: cover;
         background-position: center;
@@ -352,18 +369,19 @@ button {
     }
 
     &__heading {
-        @include aliasedTextStroke($stroke: 2, $color: #000, $step: 0.85px);
+        @include aliasedtext-stroke($stroke: 2, $color: #000, $step: 0.85px);
+
         position: relative;
-        text-shadow: textStroke($stroke: 3, $color: rgba(#000, 0.05), $step: obtainViewportWidth(0.55px));
-        margin: obtainViewportWidth(270px) 0 obtainViewportWidth(54px) obtainViewportWidth(210px);
+        text-shadow: text-stroke($stroke: 3, $color: rgba(#000, 0.05), $step: obtain-viewport-width(0.55px));
+        margin: obtain-viewport-width(270px) 0 obtain-viewport-width(54px) obtain-viewport-width(210px);
         font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         font-weight: 100;
-        font-size: obtainViewportWidth(44px);
-        letter-spacing: obtainViewportWidth(55px);
+        font-size: obtain-viewport-width(44px);
+        letter-spacing: obtain-viewport-width(55px);
         color: #fff;
 
         & ~ * {
-            margin-left: obtainViewportWidth(445px);  
+            margin-left: obtain-viewport-width(445px);  
         }
     }
 
@@ -372,10 +390,11 @@ button {
     }
 
     &__description {
-        @include aliasedTextStroke($stroke: 2, $color: #000, $step: 0.55px);
+        @include aliasedtext-stroke($stroke: 2, $color: #000, $step: 0.55px);
+
         margin-top: 0;
-        margin-bottom: obtainViewportWidth(28px);
-        font-size: obtainViewportWidth(11.25px);
+        margin-bottom: obtain-viewport-width(28px);
+        font-size: obtain-viewport-width(11.25px);
         color: #bebebe;
     }
 }
@@ -383,14 +402,14 @@ button {
 .about {
     display: flex;
     justify-content: center;
-    gap: obtainViewportWidth(250px);
+    gap: obtain-viewport-width(250px);
     background-color: #1f1f1f;
-    padding: obtainViewportWidth(73px) 0 obtainViewportWidth(43px) 0;
+    padding: obtain-viewport-width(73px) 0 obtain-viewport-width(43px) 0;
     
     &-figure {
         position: relative;
-        width: obtainViewportWidth(382px);
-        height: obtainViewportWidth(382px);
+        width: obtain-viewport-width(382px);
+        height: obtain-viewport-width(382px);
 
         &__image {
             width: inherit;
@@ -400,11 +419,11 @@ button {
 
         &-description {
             position: absolute;
-            top: obtainViewportWidth(70px);
-            left: obtainViewportWidth(270px);
-            width: obtainViewportWidth(333px);
-            height: obtainViewportWidth(177px);
-            padding: obtainViewportWidth(42px) obtainViewportWidth(21px) obtainViewportWidth(13px) obtainViewportWidth(11px);
+            top: obtain-viewport-width(70px);
+            left: obtain-viewport-width(270px);
+            width: obtain-viewport-width(333px);
+            height: obtain-viewport-width(177px);
+            padding: obtain-viewport-width(42px) obtain-viewport-width(21px) obtain-viewport-width(13px) obtain-viewport-width(11px);
             box-sizing: border-box;
             box-shadow: 2px 2px 6px rgba(#000, 0.2);
             background-color: #292929;
@@ -414,21 +433,23 @@ button {
             }
 
             &__paragraph {
-                @include aliasedTextStroke($stroke: 3, $color: #000);
-                margin: obtainViewportWidth(20px) 0 obtainViewportWidth(9px);
-                max-width: obtainViewportWidth(240px);
-                font: 400 #{"#{obtainViewportWidth(11px)}/1.5"} Latinaires, sans-serif;
+                @include aliasedtext-stroke($stroke: 3, $color: #000);
+
+                margin: obtain-viewport-width(20px) 0 obtain-viewport-width(9px);
+                max-width: obtain-viewport-width(240px);
+                font: 400 #{"#{obtain-viewport-width(11px)}/1.5"} Latinaires, sans-serif;
                 color: #fff;
             }
 
             &__button {
                 @extend %icon-arrow-right;
+
                 display: block;
                 margin-left: auto;
                 border: none;
                 background-color: transparent;
                 padding: 0;
-                font-size: obtainViewportWidth(15px);
+                font-size: obtain-viewport-width(15px);
                 filter: drop-shadow(0 0 3px #000);
                 color: #fff;;
             }
@@ -439,68 +460,70 @@ button {
         position: relative;
 
         &__heading {
-            @include aliasedTextStroke($stroke: 3, $color: rgba(#000, 0.7), $step: 0.6px);
+            @include aliasedtext-stroke($stroke: 3, $color: rgba(#000, 0.7), $step: 0.6px);
+
             position: absolute;
-            top: obtainViewportWidth(60px);
+            top: obtain-viewport-width(60px);
             left: 0;
             color: #fff;
-            width: obtainViewportWidth(135px);
-            height: obtainViewportWidth(40px);
-            font-size: obtainViewportWidth(46px);
+            width: obtain-viewport-width(135px);
+            height: obtain-viewport-width(40px);
+            font-size: obtain-viewport-width(46px);
             font-weight: 400;
             margin: 0;
             transform: rotate(90deg);
-            letter-spacing: obtainViewportWidth(5px);
+            letter-spacing: obtain-viewport-width(5px);
         }
 
         &__number {
-            @include aliasedTextStroke($stroke: 2, $color: rgba(#000, 0.7), $step: 0.7px);
+            @include aliasedtext-stroke($stroke: 2, $color: rgba(#000, 0.7), $step: 0.7px);
+
             position: relative;
-            margin-top: obtainViewportWidth(62px);
-            margin-bottom: obtainViewportWidth(195px);
-            font-size: obtainViewportWidth(27px);
+            margin-top: obtain-viewport-width(62px);
+            margin-bottom: obtain-viewport-width(195px);
+            font-size: obtain-viewport-width(27px);
             color: #fff;
             font-weight: 500;
             letter-spacing: 2px;
 
             &::before {
                 position: absolute;
-                left: obtainViewportWidth(19.5px + 5px);
-                bottom: obtainViewportWidth(-12px);
+                left: obtain-viewport-width(19.5px + 5px);
+                bottom: obtain-viewport-width(-12px);
                 transform: translate(-100%, 100%);
-                width: obtainViewportWidth(12px);
-                height: obtainViewportWidth(12px);
+                width: obtain-viewport-width(12px);
+                height: obtain-viewport-width(12px);
                 background-color: #fff;
                 border-radius: 50%;
-                border: #302f1c obtainViewportWidth(5px) solid;
+                border: #302f1c obtain-viewport-width(5px) solid;
                 content: "";
             }
 
             &::after {
                 position: absolute;
-                left: obtainViewportWidth(12.5px);
-                bottom: obtainViewportWidth(-24px);
+                left: obtain-viewport-width(12.5px);
+                bottom: obtain-viewport-width(-24px);
                 z-index: -1;
                 transform: translateY(100%);
-                width: obtainViewportWidth(2px);
-                height: obtainViewportWidth(134px);
+                width: obtain-viewport-width(2px);
+                height: obtain-viewport-width(134px);
                 background: linear-gradient(to bottom, rgba(#fff, 0.7), rgba(#fff, 0));
                 content: "";
             }
         }
 
         &__image {
-            width: obtainViewportWidth(106px);
-            height: obtainViewportWidth(106px);
+            width: obtain-viewport-width(106px);
+            height: obtain-viewport-width(106px);
             object-fit: cover;
         }
 
         &__button {
             position: absolute;
-            left: obtainViewportWidth(-65px);
-            bottom: obtainViewportWidth(22px);
-            width: obtainViewportWidth(106px);
-            height: obtainViewportWidth(43px);
+            left: obtain-viewport-width(-65px);
+            bottom: obtain-viewport-width(22px);
+            width: obtain-viewport-width(106px);
+            height: obtain-viewport-width(43px);
             padding: 0;
             border: none;
             background-color: #3f3f3f;
@@ -516,7 +539,7 @@ button {
                 height: 0;
                 border-color: transparent transparent transparent #d5d5d5;
                 border-style: solid;
-                border-width: obtainViewportWidth(19px) 0 obtainViewportWidth(19px) obtainViewportWidth(19px);
+                border-width: obtain-viewport-width(19px) 0 obtain-viewport-width(19px) obtain-viewport-width(19px);
                 filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 1px #fff)  drop-shadow(0 0 3px #000);
                 content: "";
             }
@@ -528,7 +551,7 @@ button {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: obtainViewportWidth(54px) 0 obtainViewportWidth(50px);
+    padding: obtain-viewport-width(54px) 0 obtain-viewport-width(50px);
     background-color: #272727;
     color: #737373;
 
@@ -537,20 +560,21 @@ button {
     }
 
     &__paragraph {
-        @include aliasedTextStroke($stroke: 2, $color: rgba(#000, 0.7), $step: 0.35px);
+        @include aliasedtext-stroke($stroke: 2, $color: rgba(#000, 0.7), $step: 0.35px);
+
         color: #fff;
-        max-width: obtainViewportWidth(435px);
+        max-width: obtain-viewport-width(435px);
         text-align: center;
-        font-size: obtainViewportWidth(13px);
+        font-size: obtain-viewport-width(13px);
         line-height: 1.5;
-        margin: obtainViewportWidth(24px) 0 obtainViewportWidth(28px) 0;
+        margin: obtain-viewport-width(24px) 0 obtain-viewport-width(28px) 0;
     }
 
     &-list {
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: obtainViewportWidth(131px);
+        gap: obtain-viewport-width(131px);
 
         &-item {
             display: flex;
@@ -559,12 +583,13 @@ button {
             text-align: center;
 
             &__icon {
-                @include aliasedTextStroke($stroke: 2, $color: rgba(#000, 0.7), $step: 0.2px);
+                @include aliasedtext-stroke($stroke: 2, $color: rgba(#000, 0.7), $step: 0.2px);
+
                 color: inherit;
                 position: relative;
-                width: obtainViewportWidth(28px);
-                height: obtainViewportWidth(28px);
-                font-size: obtainViewportWidth(18px);
+                width: obtain-viewport-width(28px);
+                height: obtain-viewport-width(28px);
+                font-size: obtain-viewport-width(18px);
                 line-height: 1.3;
                 cursor: pointer;
                 transition: all 0.3s ease;
@@ -582,9 +607,9 @@ button {
                     top: 50%;
                     left: 50%;
                     transform: translate(-50%, -50%);
-                    width: obtainViewportWidth(28px);
-                    height: obtainViewportWidth(28px);
-                    border: obtainViewportWidth(2px) solid #737373;
+                    width: obtain-viewport-width(28px);
+                    height: obtain-viewport-width(28px);
+                    border: obtain-viewport-width(2px) solid #737373;
                     border-radius: 50%;
                     content: "";
                 }
@@ -611,17 +636,18 @@ button {
             }
     
             &__heading {
-                @include aliasedTextStroke($stroke: 2, $color: rgba(#000, 0.7), $step: 0.1px);
+                @include aliasedtext-stroke($stroke: 2, $color: rgba(#000, 0.7), $step: 0.1px);
+
                 color: inherit;
-                margin: obtainViewportWidth(12px) 0 0 0;
-                font-size: obtainViewportWidth(15px);
+                margin: obtain-viewport-width(12px) 0 0 0;
+                font-size: obtain-viewport-width(15px);
                 font-weight: 700;
                 letter-spacing: 2.5px;
             }
     
             &__label {
                 margin: 0;
-                font-size: obtainViewportWidth(9px);
+                font-size: obtain-viewport-width(9px);
                 line-height: 1.3;
                 color: #737373;
             }
@@ -633,22 +659,23 @@ button {
     display: flex;
     align-items: center;
     background-color: #1f1f1f;  
-    padding: obtainViewportWidth(42px) 0 obtainViewportWidth(72px) obtainViewportWidth(175px);
-    gap: obtainViewportWidth(47px);
+    padding: obtain-viewport-width(42px) 0 obtain-viewport-width(72px) obtain-viewport-width(175px);
+    gap: obtain-viewport-width(47px);
     overflow: hidden;
 
     &-description {
         @include featuresHeader($vertical: false);
+
         width: 0;
-        flex: 0 0 obtainViewportWidth(252px);
+        flex: 0 0 obtain-viewport-width(252px);
     }
 
     &-slider {
         display: flex;
         align-items: center;
-        gap: obtainViewportWidth(70px);
+        gap: obtain-viewport-width(70px);
         flex-grow: 1;
-        padding: obtainViewportWidth(20px) 0 0 obtainViewportWidth(40px);
+        padding: obtain-viewport-width(20px) 0 0 obtain-viewport-width(40px);
         background-color: #272727;
 
         &__button {
@@ -662,10 +689,10 @@ button {
                 top: 0;
                 left: 0;
                 transform: translateY(-100%) rotate(45deg);
-                width: obtainViewportWidth(2px);
-                height: obtainViewportWidth(20px);
+                width: obtain-viewport-width(2px);
+                height: obtain-viewport-width(20px);
                 background-color: #fff;
-                border-radius: obtainViewportWidth(2px);
+                border-radius: obtain-viewport-width(2px);
                 content: "";
             }
         
@@ -674,10 +701,10 @@ button {
                 bottom: 0;
                 left: 0;
                 transform: translateY(66%) rotate(-45deg);
-                width: obtainViewportWidth(2px);
-                height: obtainViewportWidth(20px);
+                width: obtain-viewport-width(2px);
+                height: obtain-viewport-width(20px);
                 background-color: #fff;
-                border-radius: obtainViewportWidth(2px);
+                border-radius: obtain-viewport-width(2px);
                 content: "";
             }        
         }
@@ -686,32 +713,33 @@ button {
             display: flex;
             align-items: center;
             list-style-type: none;
-            gap: obtainViewportWidth(18px);
+            gap: obtain-viewport-width(18px);
             overflow: hidden;
             margin: 0;
             padding: 0;
 
             &-item {
                 background-color: #494949;
-                padding-bottom: obtainViewportWidth(12px);
+                padding-bottom: obtain-viewport-width(12px);
                 cursor: pointer;
                 transition: all 0.3s ease;
 
                 &__heading {
-                    @include aliasedTextStroke($stroke: 2, $color: rgba(#000, 0.7));
+                    @include aliasedtext-stroke($stroke: 2, $color: rgba(#000, 0.7));
+
                     position: relative;
-                    font-size: obtainViewportWidth(16px);
+                    font-size: obtain-viewport-width(16px);
                     color: #fff;
                     text-transform: uppercase;
-                    margin: obtainViewportWidth(4px) 0 obtainViewportWidth(8px) obtainViewportWidth(10px);
+                    margin: obtain-viewport-width(4px) 0 obtain-viewport-width(8px) obtain-viewport-width(10px);
                     transition: all 0.3s ease;
 
                     &::before {
                         position: absolute;
-                        bottom: obtainViewportWidth(-6px);
+                        bottom: obtain-viewport-width(-6px);
                         left: 0;
-                        width: obtainViewportWidth(28px);
-                        height: obtainViewportWidth(2px);
+                        width: obtain-viewport-width(28px);
+                        height: obtain-viewport-width(2px);
                         background-color: #f85908;
                         transition: all 0.3s ease;
                         content: "";
@@ -731,16 +759,16 @@ button {
                 }
 
                 &__image {
-                    height: obtainViewportWidth(175px);
-                    width: obtainViewportWidth(263px);
+                    height: obtain-viewport-width(175px);
+                    width: obtain-viewport-width(263px);
                     object-fit: cover;
                     background-color: #fff;
                     box-shadow: 2px 0 5px -2px #000, -2px 0 5px -2px #000;
                 }
     
                 &__description {
-                    font-size: obtainViewportWidth(10px);
-                    margin: 0 0 0 obtainViewportWidth(10px);
+                    font-size: obtain-viewport-width(10px);
+                    margin: 0 0 0 obtain-viewport-width(10px);
                     color: #909090;
                 }
             }
@@ -752,51 +780,54 @@ button {
     position: relative;
     display: flex;
     align-items: center;
-    padding: obtainViewportWidth(60px) 0 obtainViewportWidth(20px) obtainViewportWidth(30px);
+    padding: obtain-viewport-width(60px) 0 obtain-viewport-width(20px) obtain-viewport-width(30px);
     background-color: #272727;
 
     &__image {
-        width: obtainViewportWidth(616px);
-        height: obtainViewportWidth(393px);
+        width: obtain-viewport-width(616px);
+        height: obtain-viewport-width(393px);
     }
 
     &-description {
         @include featuresHeader($vertical: false);
 
         &__paragraph {
-            max-width: obtainViewportWidth(360px);
+            max-width: obtain-viewport-width(360px);
         }
     }
 
     &-slides {
         position: absolute;
-        bottom: obtainViewportWidth(20px);
-        right: obtainViewportWidth(200px);
+        bottom: obtain-viewport-width(20px);
+        right: obtain-viewport-width(200px);
         display: flex;
-        gap: obtainViewportWidth(15px);
+        gap: obtain-viewport-width(15px);
         list-style-type: none;
         padding: 0;
         margin: 0;
 
         &__button {
             @include slideButton($activeColor: #303030, $size: 10px);
+
             background-color: transparent;
-            border: obtainViewportWidth(2px) solid #fff;
+            border: obtain-viewport-width(2px) solid #fff;
         }
     }
 }
 
 .map-section {
     @include featuresHeader($vertical: false);
-    padding-top: obtainViewportWidth(55px);
+
+    padding-top: obtain-viewport-width(55px);
     text-align: center;
     background-color: #1f1f1f;
 
     &__heading {
         @include featuresHeader($vertical: true);
+
         display: block;
         z-index: 1;
-        margin-bottom: obtainViewportWidth(40px);
+        margin-bottom: obtain-viewport-width(40px);
 
         &::before {
             white-space: pre;
@@ -807,8 +838,8 @@ button {
 
 .map {
     position: relative;
-    width: obtainViewportWidth(865px);
-    height: obtainViewportWidth(575px);
+    width: obtain-viewport-width(865px);
+    height: obtain-viewport-width(575px);
     margin: 0 auto;
 
     &__image {
@@ -820,38 +851,38 @@ button {
 
     &__location {
         position: absolute;
-        width: obtainViewportWidth(14px);
-        height: obtainViewportWidth(14px);
+        width: obtain-viewport-width(14px);
+        height: obtain-viewport-width(14px);
         box-sizing: border-box;
         background-color: #fff;
         border-radius: 50%;
 
         &--labeled {
-            border: obtainViewportWidth(4px) solid #fff;
+            border: obtain-viewport-width(4px) solid #fff;
             background-color: #909090;
 
             &::before {
                 position: absolute;
-                top: obtainViewportWidth(-40px);
+                top: obtain-viewport-width(-40px);
                 left: 50%;
                 transform: translateX(-50%);
-                padding: obtainViewportWidth(2.5px) obtainViewportWidth(24px) obtainViewportWidth(5px) obtainViewportWidth(24px);
-                border: obtainViewportWidth(3px) solid #000;
+                padding: obtain-viewport-width(2.5px) obtain-viewport-width(24px) obtain-viewport-width(5px) obtain-viewport-width(24px);
+                border: obtain-viewport-width(3px) solid #000;
                 background-color: #fff;
                 color: #606060;
-                font-size: obtainViewportWidth(13px);
-                border-radius: obtainViewportWidth(11px);
+                font-size: obtain-viewport-width(13px);
+                border-radius: obtain-viewport-width(11px);
                 content: "FEATURES";
             }
 
             &::after {
                 position: absolute;
-                top: obtainViewportWidth(-16px);
+                top: obtain-viewport-width(-16px);
                 left: 50%;
                 transform: translateX(-50%);
                 z-index: 1;
-                width: obtainViewportWidth(3px);
-                height: obtainViewportWidth(12px);
+                width: obtain-viewport-width(3px);
+                height: obtain-viewport-width(12px);
                 background-color: #4c4c4c;
                 content: "";
             }
@@ -860,9 +891,10 @@ button {
         $counter: 1;
         @each $left, $top in $coordinates {
             &:nth-child(#{$counter}) {
-                top: obtainViewportWidth($top * 1px);
-                left: obtainViewportWidth($left * 1px);
+                top: obtain-viewport-width($top * 1px);
+                left: obtain-viewport-width($left * 1px);
             }
+
             $counter: $counter + 1;
         }
     }

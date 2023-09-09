@@ -1,10 +1,10 @@
 @use "sass:math";
 @use "../../config/mixins.scss";
 
-@mixin _rotatedText($angle, $angleOffset, $fontSize, $radius, $angleStart: 0, $customClass: "&-char", $letterLimit: 100) {
+@mixin rotated-text($angle, $angleOffset, $fontSize, $radius, $angleStart: 0, $customClass: "&-char", $letterLimit: 100) {
     position: relative;
     font-size: $fontSize;
-    font-family: Sketches, sans-serif;
+    font-family: Sketches, fantasy;
 
     #{$customClass} {
         $width: $fontSize - math.div($fontSize, 4);
@@ -17,10 +17,10 @@
         height: $width * $radius;
     }
 
-    $anglePerChar: math.div($angle, $angleOffset);
+    $angle-per-char: math.div($angle, $angleOffset);
     @for $i from 1 through $letterLimit {
         #{$customClass}:nth-child(#{$i}) {
-            transform: rotate($angleStart + $angleOffset + $anglePerChar * $i);
+            transform: rotate($angleStart + $angleOffset + $angle-per-char * $i);
         }
     }
 }
@@ -28,32 +28,32 @@
 @layer desktop {
     @media (min-width: 761px) {
         .history {
-            @include mixins.squareViewportWidth;
+            @include mixins.square-viewport-width;
+
             font-size: 0;
             isolation: isolate;
     
             &-content {
-                flow-into: historyRegion;
+                flow-into: historyregion;
                 font-family: Belgrano, sans-serif;
     
                 &__paragraph {
-                    font-size: mixins.obtainViewportWidth(8px);
-                    margin: mixins.obtainViewportWidth(4px) 0;
-                    letter-spacing: mixins.obtainViewportWidth(-0.5px);
+                    font-size: mixins.obtain-viewport-width(8px);
+                    margin: mixins.obtain-viewport-width(4px) 0;
+                    letter-spacing: mixins.obtain-viewport-width(-0.5px);
     
-                    @include mixins.liftUp($levels: 2, $modifiers: ("-regions--top")) {
+                    @include mixins.lift-up($levels: 2, $modifiers: ("-regions--top")) {
                         color: #473623;
                     }
     
-                    @include mixins.liftUp($levels: 2, $modifiers: ("-regions--bottom-left")) {
+                    @include mixins.lift-up($levels: 2, $modifiers: ("-regions--bottom-left")) {
                         background: linear-gradient(to bottom right, #412619, #5b3f2e);
                         color: transparent;
-                        -webkit-background-clip: text;
                         background-clip: text;
-                        transform: translateY(0px);
+                        transform: translateY(0);
                     }
     
-                    @include mixins.liftUp($levels: 2, $modifiers: ("-region--top")) {
+                    @include mixins.lift-up($levels: 2, $modifiers: ("-region--top")) {
                         &:first-of-type,
                         &:nth-of-type(2) {
                             padding-right: 15%;
@@ -64,11 +64,11 @@
                         }
                     }
     
-                    @include mixins.liftUp($levels: 2, $modifiers: ("-region-wrap--bottom")) {
+                    @include mixins.lift-up($levels: 2, $modifiers: ("-region-wrap--bottom")) {
                         &:last-of-type {
                             widows: 1;
                             column-count: 3;
-                            column-gap: mixins.obtainViewportWidth(3px);
+                            column-gap: mixins.obtain-viewport-width(3px);
                             column-rule: 1px solid #a88059;
                             text-align: center;
                             direction: rtl;
@@ -76,8 +76,8 @@
                         }
                     }
     
-                    @include mixins.liftUp($levels: 2, $modifiers: ("-region--spiral-second", "-region--last")) {
-                        font-size: mixins.obtainViewportWidth(6px) !important;
+                    @include mixins.lift-up($levels: 2, $modifiers: ("-region--spiral-second", "-region--last")) {
+                        font-size: mixins.obtain-viewport-width(6px) !important;
                         line-height: 1;
                         margin: 0;
                         color: #b7966e;
@@ -85,13 +85,14 @@
                     }
                 }
             }
+
     
-            $topRegionWidth: 477px;
-            $topRegionPaddingLeft: 5px;
-            $topRegionHeight: 675px;
-            $topRegionPaddingTop: 28px;
+            $top-region-width: 477px;
+            $top-region-padding-left: 5px;
+            $top-region-height: 675px;
+            $top-region-padding-top: 28px;
     
-            $topSeparatorHeight: 170px;
+            $top-separator-height: 170px;
     
             &-regions {
                 position: relative;
@@ -99,24 +100,23 @@
                 &--top {
                     display: inline-flex;
                     vertical-align: top;
-                    gap: mixins.obtainViewportWidth(3px);
-                    width: mixins.obtainViewportWidth($topRegionWidth);
-                    padding-top: mixins.obtainViewportWidth($topRegionPaddingTop);
-                    padding-left: mixins.obtainViewportWidth($topRegionPaddingLeft);
+                    gap: mixins.obtain-viewport-width(3px);
+                    width: mixins.obtain-viewport-width($top-region-width);
+                    padding-top: mixins.obtain-viewport-width($top-region-padding-top);
+                    padding-left: mixins.obtain-viewport-width($top-region-padding-left);
                     background: radial-gradient(circle at 30% -100%, #d2b07a, transparent),
                         linear-gradient(to bottom, #c8a26a, #836138);
     
                     &::before {
                         position: absolute;
-                        width: mixins.obtainViewportWidth(285px);
-                        height: mixins.obtainViewportWidth($topSeparatorHeight);
+                        width: mixins.obtain-viewport-width(285px);
+                        height: mixins.obtain-viewport-width($top-separator-height);
                         top: 0;
                         right: 0;
                         transform: translateX(-22%) scale(1.5, 2);
                         z-index: 1;
                         background: linear-gradient(to left, #251a11, #7d5f36);
                         mix-blend-mode: soft-light;
-                        -webkit-mask-image: url("/svg/history-top-mask-01.svg");
                         mask-image: url("/svg/history-top-mask-01.svg");
                         pointer-events: none;
                         content: '';
@@ -127,10 +127,10 @@
                     $paddingLeft: 100px;
     
                     display: inline-flex;
-                    gap: mixins.obtainViewportWidth(7px);
-                    width: calc(100% - mixins.obtainViewportWidth($topRegionWidth + $topRegionPaddingLeft + $paddingLeft));
-                    padding-top: mixins.obtainViewportWidth($topRegionPaddingTop);
-                    padding-left: mixins.obtainViewportWidth($paddingLeft);
+                    gap: mixins.obtain-viewport-width(7px);
+                    width: calc(100% - mixins.obtain-viewport-width($top-region-width + $top-region-padding-left + $paddingLeft));
+                    padding-top: mixins.obtain-viewport-width($top-region-padding-top);
+                    padding-left: mixins.obtain-viewport-width($paddingLeft);
                     background: linear-gradient(to bottom, #edddbf, #e4d4b8);
                     color: #827263;
     
@@ -139,25 +139,26 @@
                         top: 0;
                         right: 0;
                         z-index: 1;
-                        width: mixins.obtainViewportWidth(280px);
-                        height: mixins.obtainViewportWidth(360px);
-                        clip-path: url(#history-clip-top-rightmost);
+                        width: mixins.obtain-viewport-width(280px);
+                        height: mixins.obtain-viewport-width(360px);
+                        clip-path: url("#history-clip-top-rightmost");
                         background: linear-gradient(to bottom left, #2e2214, #895e31 30%);
                         mix-blend-mode: multiply;
                         content: "";
                     }
                 }
+
     
-                $bottomPaddingLeft: 20.5px;
-                $bottomWidth: 335px;
+                $bottom-padding-left: 20.5px;
+                $bottom-width: 335px;
     
                 &--bottom-left {
                     display: inline-flex;
                     vertical-align: top;
-                    gap: mixins.obtainViewportWidth(5px);
-                    width: mixins.obtainViewportWidth(335px);
-                    height: calc(100% - mixins.obtainViewportWidth($topRegionHeight + $topRegionPaddingTop) + 1px);
-                    padding-left: mixins.obtainViewportWidth(20.5px);
+                    gap: mixins.obtain-viewport-width(5px);
+                    width: mixins.obtain-viewport-width(335px);
+                    height: calc(100% - mixins.obtain-viewport-width($top-region-height + $top-region-padding-top) + 1px);
+                    padding-left: mixins.obtain-viewport-width(20.5px);
                     float: left;       
                     margin-top: -1px;
                     color: #3b1a0e;
@@ -180,9 +181,9 @@
                 &--bottom {
                     display: inline-flex;
                     flex-direction: row-reverse;
-                    gap: mixins.obtainViewportWidth(6.5px);
-                    width: calc(100% - mixins.obtainViewportWidth($bottomWidth + $bottomPaddingLeft));
-                    height: calc(100% - mixins.obtainViewportWidth($topRegionHeight + $topRegionPaddingTop) + 1px);
+                    gap: mixins.obtain-viewport-width(6.5px);
+                    width: calc(100% - mixins.obtain-viewport-width($bottom-width + $bottom-padding-left));
+                    height: calc(100% - mixins.obtain-viewport-width($top-region-height + $top-region-padding-top) + 1px);
                     background: radial-gradient(at top, rgba(#ebd9bb, 0.5), transparent 70%),
                         radial-gradient(circle at 15% 100%, rgba(#a6773e, 0.25), transparent 35%),
                         linear-gradient(to bottom, #e4d4b8, #dcbd8a);
@@ -191,7 +192,7 @@
             }
     
             &-region {
-                flow-from: historyRegion;
+                flow-from: historyregion;
                 region-fragment: break;
                 text-align: justify;
     
@@ -199,16 +200,17 @@
                     display: block;
                     float: left;
                 }
+
     
-                $floatClass: "__float";
-                &#{$floatClass} {
+                $float-class: "__float";
+                &#{$float-class} {
                     display: block !important;
                     float: right;
                 }
     
                 &--topmost {
                     flex: 1.3 1 0;
-                    height: mixins.obtainViewportWidth($topRegionHeight);
+                    height: mixins.obtain-viewport-width($top-region-height);
     
                     &::before {
                         width: 10%;
@@ -217,7 +219,7 @@
                         content: "";
                     }
 
-                    @include mixins.liftUp($levels: 1, $modifiers: $floatClass, $reverseNestingOrder: true) {
+                    @include mixins.lift-up($levels: 1, $modifiers: $float-class, $reverseNestingOrder: true) {
                         width: 80%;
                         height: 100%;
                         shape-outside: polygon(100% 24%, 76% 32%, 48% 46%, 27% 59%, 13% 75%, 0 100%, 100% 100%);
@@ -226,7 +228,7 @@
     
                 &--top {
                     flex: 2 1 0;
-                    height: mixins.obtainViewportWidth(225px);
+                    height: mixins.obtain-viewport-width(225px);
     
                     &::before {
                         content: "";
@@ -235,8 +237,8 @@
                         shape-outside: polygon(0 0, 100% 0, 16% 100%, 0% 100%);
                     }
 
-                    @include mixins.liftUp($levels: 1, $modifiers: $floatClass, $reverseNestingOrder: true) {
-                        margin-top: mixins.obtainViewportWidth(-30px);
+                    @include mixins.lift-up($levels: 1, $modifiers: $float-class, $reverseNestingOrder: true) {
+                        margin-top: mixins.obtain-viewport-width(-30px);
                         width: 100%;
                         height: 120%;
                         shape-outside: polygon(0 59%, 14% 53%, 35% 45%, 49% 38%, 67% 26%, 80% 14%, 91% 4%, 100% 0, 100% 100%, 0% 100%);
@@ -246,15 +248,15 @@
                 &-wrap--top-absolute {
                     position: absolute;
                     top: 0;
-                    right: mixins.obtainViewportWidth(-115px);
+                    right: mixins.obtain-viewport-width(-115px);
                     z-index: 1;
-                    width: mixins.obtainViewportWidth(285px);
-                    height: mixins.obtainViewportWidth($topSeparatorHeight + $topRegionPaddingTop);
-                    filter: drop-shadow(mixins.obtainViewportWidth(-80px) 0px mixins.obtainViewportWidth(18px) rgba(#3f2b18, 0.5)) drop-shadow(mixins.obtainViewportWidth(-100px) mixins.obtainViewportWidth(-20px) mixins.obtainViewportWidth(18px) rgba(#3f2b18, 0.25)) drop-shadow(mixins.obtainViewportWidth(-80px) mixins.obtainViewportWidth(-70px) mixins.obtainViewportWidth(18px) rgba(#1f170e, 0.5)) drop-shadow(mixins.obtainViewportWidth(-20px) 0 0 rgba(#5d3f20, 0.5));
+                    width: mixins.obtain-viewport-width(285px);
+                    height: mixins.obtain-viewport-width($top-separator-height + $top-region-padding-top);
+                    filter: drop-shadow(mixins.obtain-viewport-width(-80px) 0 mixins.obtain-viewport-width(18px) rgba(#3f2b18, 0.5)) drop-shadow(mixins.obtain-viewport-width(-100px) mixins.obtain-viewport-width(-20px) mixins.obtain-viewport-width(18px) rgba(#3f2b18, 0.25)) drop-shadow(mixins.obtain-viewport-width(-80px) mixins.obtain-viewport-width(-70px) mixins.obtain-viewport-width(18px) rgba(#1f170e, 0.5)) drop-shadow(mixins.obtain-viewport-width(-20px) 0 0 rgba(#5d3f20, 0.5));
                 
-                    @include mixins.liftUp($levels: 3, $modifiers: $floatClass, $reverseNestingOrder: true) {
+                    @include mixins.lift-up($levels: 3, $modifiers: $float-class, $reverseNestingOrder: true) {
                         width: 32%;
-                        height: calc(100% + mixins.obtainViewportWidth(64px));
+                        height: calc(100% + mixins.obtain-viewport-width(64px));
                         shape-outside: polygon(45% 0%, 74% 15%, 88% 28%, 78% 44%, 49% 55%, 0 66%, 0% 100%, 100% 100%, 100% 0);
                     }
                 }
@@ -265,8 +267,8 @@
                     height: inherit;
                     box-sizing: border-box;
                     padding-top: 1%;
-                    padding-bottom: mixins.obtainViewportWidth(64px);
-                    clip-path: url(#history-clip-topmost);
+                    padding-bottom: mixins.obtain-viewport-width(64px);
+                    clip-path: url("#history-clip-topmost");
                     background: radial-gradient(circle at 50% -30%, #e9d8b9, transparent),
                         linear-gradient(to bottom left, #dfc493, #c68e3a 50%);
                     text-align: left;
@@ -274,7 +276,7 @@
                     &::before {
                         content: "";
                         width: 65%;
-                        height: calc(100% + mixins.obtainViewportWidth(64px));
+                        height: calc(100% + mixins.obtain-viewport-width(64px));
                         shape-outside: polygon(11% 100%, 47% 88%, 80% 75%, 98% 48%, 97% 17%, 86% 0, 0% 0%, 0% 100%);
                     }
                 }
@@ -290,31 +292,28 @@
                         height: 100%;
                     }
     
-                    @include mixins.liftUp($levels: 1, $modifiers: ("-wrap--top-absolute")) {
-                        top: 0;
-                        left: 0;
-                        right: 0;
-                        bottom: 0;
+                    @include mixins.lift-up($levels: 1, $modifiers: ("-wrap--top-absolute")) {
+                        inset: 0;
                         transform: translate(2%, 1%);
-                        filter: drop-shadow(mixins.obtainViewportWidth(-6px) 0px mixins.obtainViewportWidth(7px) rgba(#664727, 0.8));
+                        filter: drop-shadow(mixins.obtain-viewport-width(-6px) 0 mixins.obtain-viewport-width(7px) rgba(#664727, 0.8));
                         opacity: 0.8;
     
                         &-inner {
-                            clip-path: url(#history-clip-topmost-outline);
+                            clip-path: url("#history-clip-topmost-outline");
                             background: linear-gradient(to bottom, #885c2d, #c68e3f);
                         }
                     }
     
-                    @include mixins.liftUp($levels: 1, $modifiers: ("-wrap--bottom")) {
+                    @include mixins.lift-up($levels: 1, $modifiers: ("-wrap--bottom")) {
                         left: 0;
                         bottom: 0;
                         transform: translateX(-66%);
-                        width: mixins.obtainViewportWidth(122px);
-                        height: mixins.obtainViewportWidth(199px);
-                        filter: drop-shadow(mixins.obtainViewportWidth(30px) 0px mixins.obtainViewportWidth(17.5px) rgba(#624221, 0.8));
+                        width: mixins.obtain-viewport-width(122px);
+                        height: mixins.obtain-viewport-width(199px);
+                        filter: drop-shadow(mixins.obtain-viewport-width(30px) 0 mixins.obtain-viewport-width(17.5px) rgba(#624221, 0.8));
                         
                         &-inner {
-                            clip-path: url(#history-clip-bottommost-outline);
+                            clip-path: url("#history-clip-bottommost-outline");
                             background: linear-gradient(to bottom, #f5e6cd, #f0e1c1);
                         }
                     }
@@ -322,12 +321,12 @@
     
                 &--top-right {
                     flex: 1.3 1 0;
-                    height: mixins.obtainViewportWidth($topSeparatorHeight);
+                    height: mixins.obtain-viewport-width($top-separator-height);
     
                     &::before {
                         width: 100%;
                         height: 100%;
-                        shape-margin: mixins.obtainViewportWidth(32px);
+                        shape-margin: mixins.obtain-viewport-width(32px);
                         shape-outside: polygon(7% 0%, 11% 9%, 7% 25%, 3% 37%, 9% 51%, 31% 61%, 58% 74%, 81% 85%, 99% 96%, 100% 100%, 0% 100%, 0% 0%);
                         content: "";
                     }
@@ -335,7 +334,7 @@
     
                 &--top-rightmost {
                     flex: 2 1 0;
-                    height: mixins.obtainViewportWidth($topRegionHeight);
+                    height: mixins.obtain-viewport-width($top-region-height);
     
                     &::before {
                         width: 50%;
@@ -344,28 +343,28 @@
                         content: "";
                     }
 
-                    @include mixins.liftUp($levels: 2, $modifiers: $floatClass, $reverseNestingOrder: true) {
+                    @include mixins.lift-up($levels: 2, $modifiers: $float-class, $reverseNestingOrder: true) {
                         width: 40%;
                         height: 40%;
-                        shape-margin: mixins.obtainViewportWidth(6px);
+                        shape-margin: mixins.obtain-viewport-width(6px);
                         shape-outside: polygon(40% 0%, 47% 14%, 52% 25%, 29% 29%, 55% 31%, 51% 37%, 45% 41%, 59% 49%, 81% 57%, 93% 64%, 93% 83%, 79% 91%, 63% 97%, 60% 100%, 100% 100%, 100% 0%);
                     }
                 }
     
                 &--bottom-leftmost {
                     flex: 1.5 1 0;
-                    height: mixins.obtainViewportWidth(430px);
+                    height: mixins.obtain-viewport-width(430px);
                     transform: translateY(-28%);
     
                     &::before {
                         width: 50%;
                         height: 100%;
-                        shape-margin: mixins.obtainViewportWidth(16px);
+                        shape-margin: mixins.obtain-viewport-width(16px);
                         shape-outside: polygon(59% 0%, 44% 11%, 24% 22%, 14% 35%, 11% 46%, 0% 57%, 0% 0%);
                         content: "";
                     }
 
-                    @include mixins.liftUp($levels: 2, $modifiers: $floatClass, $reverseNestingOrder: true) {
+                    @include mixins.lift-up($levels: 2, $modifiers: $float-class, $reverseNestingOrder: true) {
                         width: 10%;
                         height: 100%;
                         shape-outside: polygon(23% 0%, 33% 10%, 51% 19%, 67% 28%, 84% 38%, 94% 46%, 95% 53%, 90% 59%, 74% 63%, 98% 69%, 95% 80%, 86% 91%, 80% 100%, 100% 100%, 100% 0%);
@@ -395,7 +394,7 @@
                         content: "";
                     }
 
-                    @include mixins.liftUp($levels: 2, $modifiers: $floatClass, $reverseNestingOrder: true) {
+                    @include mixins.lift-up($levels: 2, $modifiers: $float-class, $reverseNestingOrder: true) {
                         width: 30%;
                         height: 100%;
                         shape-outside: polygon(55% 0%, 43% 6%, 47% 15%, 47% 43%, 54% 61%, 55% 79%, 59% 92%, 57% 100%, 100% 100%, 100% 0%);
@@ -418,7 +417,7 @@
                     flex: 1.25 1 0;
                     z-index: 1;
 
-                    @include mixins.liftUp($levels: 2, $modifiers: $floatClass, $reverseNestingOrder: true) {
+                    @include mixins.lift-up($levels: 2, $modifiers: $float-class, $reverseNestingOrder: true) {
                         &:first-of-type {
                             width: 15%;
                             height: 60%;
@@ -435,24 +434,24 @@
                 }
     
                 &-wrap--bottom & {
-                    $paddingLeft: 70px;
+                    $padding-left: 70px;
     
                     position: absolute;
                     top: 0;
-                    left: mixins.obtainViewportWidth(-50px - $paddingLeft);
-                    width: mixins.obtainViewportWidth(245px + $paddingLeft);
+                    left: mixins.obtain-viewport-width(-50px - $padding-left);
+                    width: mixins.obtain-viewport-width(245px + $padding-left);
                     height: 100%;
                     background: radial-gradient(circle at 75% 100%, rgba(#a6773e, 0.25), transparent 35%),
                         linear-gradient(to bottom, #e4d4b8, #dcbd8a);
                     box-sizing: border-box;
-                    padding-left: mixins.obtainViewportWidth($paddingLeft);
+                    padding-left: mixins.obtain-viewport-width($padding-left);
                     word-break: break-all;
-                    clip-path: url(#history-clip-bottom);
+                    clip-path: url("#history-clip-bottom");
     
                     &::before {
                         width: 85%;
                         height: 60%;
-                        shape-margin: mixins.obtainViewportWidth(8px);
+                        shape-margin: mixins.obtain-viewport-width(8px);
                         shape-outside: polygon(100% 92%, 85% 95%, 68% 93%, 45% 85%, 28% 77%, 5% 63%, 0% 55%, 0% 0%, 100% 0%);
                         float: right;
                         content: "";
@@ -461,13 +460,13 @@
     
                 &--spiral-second {
                     position: relative;
-                    top: mixins.obtainViewportWidth(100px);
-                    width: mixins.obtainViewportWidth(480px);
-                    height: mixins.obtainViewportWidth(270px);
+                    top: mixins.obtain-viewport-width(100px);
+                    width: mixins.obtain-viewport-width(480px);
+                    height: mixins.obtain-viewport-width(270px);
                     word-break: break-all;
-                    font-size: mixins.obtainViewportWidth(5px);
+                    font-size: mixins.obtain-viewport-width(5px);
                     box-sizing: border-box;
-                    padding-left: mixins.obtainViewportWidth(100px);
+                    padding-left: mixins.obtain-viewport-width(100px);
     
                     &::before {
                         width: 15%;
@@ -477,7 +476,7 @@
                         content: "";
                     }
 
-                    @include mixins.liftUp($levels: 2, $modifiers: $floatClass, $reverseNestingOrder: true) {
+                    @include mixins.lift-up($levels: 2, $modifiers: $float-class, $reverseNestingOrder: true) {
                         &:first-of-type {
                             width: 70%;
                             height: 80%;
@@ -495,13 +494,13 @@
     
                 &--last {
                     position: absolute;
-                    top: mixins.obtainViewportWidth(452px);
-                    left: mixins.obtainViewportWidth(360px);
-                    width: mixins.obtainViewportWidth(192px);
-                    height: mixins.obtainViewportWidth(237px);
+                    top: mixins.obtain-viewport-width(452px);
+                    left: mixins.obtain-viewport-width(360px);
+                    width: mixins.obtain-viewport-width(192px);
+                    height: mixins.obtain-viewport-width(237px);
                     background: radial-gradient(at top left, #efd4a3, #b08a53);
                     z-index: 5;
-                    clip-path: url(#history-clip-closing-inner);
+                    clip-path: url("#history-clip-closing-inner");
                     mix-blend-mode: lighten;
                     overflow: hidden;
                 }
@@ -512,30 +511,29 @@
     
                 &-end {
                     position: absolute;
-                    top: mixins.obtainViewportWidth(482px);
-                    left: mixins.obtainViewportWidth(408px);
-                    width: mixins.obtainViewportWidth(232px);
-                    height: mixins.obtainViewportWidth(228px);
+                    top: mixins.obtain-viewport-width(482px);
+                    left: mixins.obtain-viewport-width(408px);
+                    width: mixins.obtain-viewport-width(232px);
+                    height: mixins.obtain-viewport-width(228px);
                     mask-image: linear-gradient(to top, #000 80%, transparent);
-                    -webkit-mask-image: linear-gradient(to top, #000 80%, transparent);
                 }
     
                 &-text-primary {
                     position: absolute;
-                    top: mixins.obtainViewportWidth(162px);
-                    left: mixins.obtainViewportWidth(108px);
-                    width: mixins.obtainViewportWidth(732px);
-                    height: mixins.obtainViewportWidth(448px);
+                    top: mixins.obtain-viewport-width(162px);
+                    left: mixins.obtain-viewport-width(108px);
+                    width: mixins.obtain-viewport-width(732px);
+                    height: mixins.obtain-viewport-width(448px);
                     z-index: 3;
                     mix-blend-mode: hard-light;
                 }
     
                 &-text-secondary {
                     position: absolute;
-                    top: mixins.obtainViewportWidth(363px);
-                    left: mixins.obtainViewportWidth(275px);
-                    width: mixins.obtainViewportWidth(430px);
-                    height: mixins.obtainViewportWidth(300px);
+                    top: mixins.obtain-viewport-width(363px);
+                    left: mixins.obtain-viewport-width(275px);
+                    width: mixins.obtain-viewport-width(430px);
+                    height: mixins.obtain-viewport-width(300px);
                     z-index: 3;
                     mix-blend-mode: multiply;
                 }
@@ -543,44 +541,43 @@
                 &-first {
                     &-wrap {
                         position: absolute;
-                        top: mixins.obtainViewportWidth(105px);
-                        width: mixins.obtainViewportWidth(890px);
-                        height: mixins.obtainViewportWidth(865px);
+                        top: mixins.obtain-viewport-width(105px);
+                        width: mixins.obtain-viewport-width(890px);
+                        height: mixins.obtain-viewport-width(865px);
                         z-index: 4;
-    
                         filter: drop-shadow(
-                            mixins.obtainViewportWidth(-4px) 
-                            mixins.obtainViewportWidth(2px) 
-                            mixins.obtainViewportWidth(4px) rgba(#51371b, 0.75)
+                            mixins.obtain-viewport-width(-4px) 
+                            mixins.obtain-viewport-width(2px) 
+                            mixins.obtain-viewport-width(4px) rgba(#51371b, 0.75)
                         ) drop-shadow(
                             0
-                            mixins.obtainViewportWidth(4px)
-                            mixins.obtainViewportWidth(4px) rgba(#242415, 0.33)
+                            mixins.obtain-viewport-width(4px)
+                            mixins.obtain-viewport-width(4px) rgba(#242415, 0.33)
                         ) drop-shadow(
                             0
-                            mixins.obtainViewportWidth(4px)
-                            mixins.obtainViewportWidth(16px) rgba(#242415, 0.33)
+                            mixins.obtain-viewport-width(4px)
+                            mixins.obtain-viewport-width(16px) rgba(#242415, 0.33)
                         ) drop-shadow(
-                            mixins.obtainViewportWidth(28px)
+                            mixins.obtain-viewport-width(28px)
                             0
-                            mixins.obtainViewportWidth(16px) rgba(#242415, 0.75)
+                            mixins.obtain-viewport-width(16px) rgba(#242415, 0.75)
                         );
                     }
                     
                     width: inherit;
                     height: inherit;
-                    clip-path: url(#history-clip-spiral-first);
+                    clip-path: url("#history-clip-spiral-first");
                     background: linear-gradient(to right, #b68b4f 2%, #8c6432 4%, #75522c 7%, #bc945c, #eadec6 50%);
                 }
     
                 &-second {
                     position: absolute;
-                    top: mixins.obtainViewportWidth(335px);
-                    left: mixins.obtainViewportWidth(226px);
-                    width: mixins.obtainViewportWidth(510px);
-                    height: mixins.obtainViewportWidth(545px);
+                    top: mixins.obtain-viewport-width(335px);
+                    left: mixins.obtain-viewport-width(226px);
+                    width: mixins.obtain-viewport-width(510px);
+                    height: mixins.obtain-viewport-width(545px);
                     z-index: 4;
-                    clip-path: url(#history-clip-spiral-second);
+                    clip-path: url("#history-clip-spiral-second");
                     background: radial-gradient(circle at 50% 25%, #483421, #dbbe8c 25%, transparent 40%),
                         radial-gradient(circle at 35% 46%, #dbbe8c, transparent 15%),
                         linear-gradient(to bottom, #f8eedb, #e4d4b8 95%);
@@ -589,32 +586,31 @@
                 &-third {
                     &-wrap {
                         position: absolute;
-                        top: mixins.obtainViewportWidth(295px);
-                        left: mixins.obtainViewportWidth(226px);
-                        width: mixins.obtainViewportWidth(510px);
-                        height: mixins.obtainViewportWidth(445px);
+                        top: mixins.obtain-viewport-width(295px);
+                        left: mixins.obtain-viewport-width(226px);
+                        width: mixins.obtain-viewport-width(510px);
+                        height: mixins.obtain-viewport-width(445px);
                         z-index: 3;
-                        mask-image: linear-gradient(to bottom, #000,transparent 50%, transparent);
-                        -webkit-mask-image: linear-gradient(to bottom, #000, transparent 50%, transparent);
+                        mask-image: linear-gradient(to bottom, #000, transparent 50%, transparent);
     
                         &::before {
                             position: absolute;
-                            top: mixins.obtainViewportWidth(12px);
+                            top: mixins.obtain-viewport-width(12px);
                             left: 0;
                             width: inherit;
                             height: inherit;
-                            clip-path: url(#history-clip-spiral-second);
+                            clip-path: url("#history-clip-spiral-second");
                             background: linear-gradient(to bottom, #ce943a, #824e24);
                             content: "";
                         }
     
                         &::after {
                             position: absolute;
-                            top: mixins.obtainViewportWidth(23px);
+                            top: mixins.obtain-viewport-width(23px);
                             left: 0;
                             width: inherit;
                             height: inherit;
-                            clip-path: url(#history-clip-spiral-second);
+                            clip-path: url("#history-clip-spiral-second");
                             background: linear-gradient(to bottom, #d3963e, #824e24);
                             content: "";
                         }
@@ -622,80 +618,78 @@
               
                     width: inherit;
                     height: inherit;
-                    clip-path: url(#history-clip-spiral-second);
-                    background: linear-gradient(to bottom, rgba(171, 134, 79, 1), #ce943a);
+                    clip-path: url("#history-clip-spiral-second");
+                    background: linear-gradient(to bottom, rgb(171 134 79 / 100%), #ce943a);
                 }
     
                 &-third-primary {
                     &-wrap {
                         position: absolute;
-                        top: mixins.obtainViewportWidth(398px);
-                        left: mixins.obtainViewportWidth(325px);
-                        width: mixins.obtainViewportWidth(422px);
-                        height: mixins.obtainViewportWidth(387px);
+                        top: mixins.obtain-viewport-width(398px);
+                        left: mixins.obtain-viewport-width(325px);
+                        width: mixins.obtain-viewport-width(422px);
+                        height: mixins.obtain-viewport-width(387px);
                         z-index: 5;
                         filter: drop-shadow(
-                            mixins.obtainViewportWidth(-8px)
+                            mixins.obtain-viewport-width(-8px)
                             0
-                            mixins.obtainViewportWidth(8px)
+                            mixins.obtain-viewport-width(8px)
                             #c7933a
                         ) drop-shadow(
-                            mixins.obtainViewportWidth(6px)
+                            mixins.obtain-viewport-width(6px)
                             0
-                            mixins.obtainViewportWidth(6px)
+                            mixins.obtain-viewport-width(6px)
                             rgba(#532118, 0.5)
                         );
                         mask-image: linear-gradient(to top, #000 92%, transparent);
-                        -webkit-mask-image: linear-gradient(to top, #000 92%, transparent);
     
                         &::before {
                             position: absolute;
-                            top: mixins.obtainViewportWidth(102px);
-                            left: mixins.obtainViewportWidth(74px);
-                            width: mixins.obtainViewportWidth(192px);
-                            height: mixins.obtainViewportWidth(267px);
+                            top: mixins.obtain-viewport-width(102px);
+                            left: mixins.obtain-viewport-width(74px);
+                            width: mixins.obtain-viewport-width(192px);
+                            height: mixins.obtain-viewport-width(267px);
                             background: linear-gradient(to top, #f6e8cd, #f2e0ba, #e3bc79, #442b1b);
                             z-index: -1;
-                            clip-path: url(#history-clip-closing-first);
+                            clip-path: url("#history-clip-closing-first");
                             content: "";
                         }
     
                         &::after {
                             position: absolute;
-                            top: mixins.obtainViewportWidth(42px);
-                            left: mixins.obtainViewportWidth(18px);
-                            width: mixins.obtainViewportWidth(242px);
-                            height: mixins.obtainViewportWidth(327px);
+                            top: mixins.obtain-viewport-width(42px);
+                            left: mixins.obtain-viewport-width(18px);
+                            width: mixins.obtain-viewport-width(242px);
+                            height: mixins.obtain-viewport-width(327px);
                             background: linear-gradient(to top, #c18938, #dcb250);
                             z-index: -2;
-                            clip-path: url(#history-clip-closing-second);
+                            clip-path: url("#history-clip-closing-second");
                             content: "";
                         }
                     }
     
                     width: inherit;
                     height: inherit;
-                    clip-path: url(#history-clip-spiral-third);
+                    clip-path: url("#history-clip-spiral-third");
                     background: linear-gradient(to right, #f8ead6, #f5ebd7, #d4ad72);
                 }
     
                 &-primary {
                     &-wrap {
                         position: absolute;
-                        top: mixins.obtainViewportWidth(172px);
-                        left: mixins.obtainViewportWidth(75px);
+                        top: mixins.obtain-viewport-width(172px);
+                        left: mixins.obtain-viewport-width(75px);
                         overflow: hidden;
-                        width: mixins.obtainViewportWidth(804px);
-                        height: mixins.obtainViewportWidth(718px);
+                        width: mixins.obtain-viewport-width(804px);
+                        height: mixins.obtain-viewport-width(718px);
                         z-index: 2;
-                        filter: drop-shadow(0 mixins.obtainViewportWidth(4px) mixins.obtainViewportWidth(4px) #ae9b8c);
+                        filter: drop-shadow(0 mixins.obtain-viewport-width(4px) mixins.obtain-viewport-width(4px) #ae9b8c);
                     }
     
                     width: inherit;
                     height: inherit;
-                    clip-path: url(#history-clip-spiral-primary);
-                    mask-image: linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1) 70%, transparent 90%);
-                    -webkit-mask-image: linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1) 70%, transparent 90%);
+                    clip-path: url("#history-clip-spiral-primary");
+                    mask-image: linear-gradient(to left, rgb(0 0 0 / 100%), rgb(0 0 0 / 100%) 70%, transparent 90%);
                     background:
                         linear-gradient(140deg, #997040 25%, rgba(#cb8f3d, 0.33), transparent 35%),
                         linear-gradient(120deg, #997040 25%, rgba(#cb8f3d, 0.5), transparent 35%),
@@ -713,15 +707,15 @@
                 &__text {
                     $current: &;
     
-                    @include mixins.liftUp($levels: 1, $modifiers: "-first") {
-                        margin: mixins.obtainViewportWidth(40px) 0 0 mixins.obtainViewportWidth(400px);
+                    @include mixins.lift-up($levels: 1, $modifiers: "-first") {
+                        margin: mixins.obtain-viewport-width(40px) 0 0 mixins.obtain-viewport-width(400px);
                         opacity: 0.5;
                        
                         &:first-of-type {
-                            @include _rotatedText(
+                            @include rotated-text(
                                 $angle: 5deg, 
                                 $angleOffset: 2deg, 
-                                $fontSize: mixins.obtainViewportWidth(16px), 
+                                $fontSize: mixins.obtain-viewport-width(16px), 
                                 $radius: 35,
                                 $angleStart: 35deg,
                                 $customClass: "#{$current}-char",
@@ -730,10 +724,10 @@
                         }
     
                         &:last-of-type {
-                            @include _rotatedText(
+                            @include rotated-text(
                                 $angle: 5deg, 
                                 $angleOffset: 2deg, 
-                                $fontSize: mixins.obtainViewportWidth(16px), 
+                                $fontSize: mixins.obtain-viewport-width(16px), 
                                 $radius: 37,
                                 $angleStart: 15deg,
                                 $customClass: "#{$current}-char",
@@ -742,12 +736,12 @@
                         }
                     }
     
-                    @include mixins.liftUp($levels: 1, $modifiers: "-primary") {
+                    @include mixins.lift-up($levels: 1, $modifiers: "-primary") {
                         &:first-of-type {
-                            @include _rotatedText(
+                            @include rotated-text(
                                 $angle: 5deg, 
                                 $angleOffset: 0.5grad, 
-                                $fontSize: mixins.obtainViewportWidth(92px), 
+                                $fontSize: mixins.obtain-viewport-width(92px), 
                                 $radius: 5.1,
                                 $angleStart: 0deg,
                                 $customClass: "#{$current}-char",
@@ -755,28 +749,29 @@
                             );
     
                             position: absolute;
-                            top: mixins.obtainViewportWidth(485px);
-                            left: mixins.obtainViewportWidth(730px);
+                            top: mixins.obtain-viewport-width(485px);
+                            left: mixins.obtain-viewport-width(730px);
                             margin: 0;
                             transform: scaleX(-1) rotate(-105deg);
                             transform-origin: center;
-                            font-family: Undertown;
-                            color: rgba($color: #4d3e23, $alpha: 0.5);
+                            font-family: Undertown, sans-serif;
+                            color: rgba($color: #4d3e23, $alpha: 50%);
                             mix-blend-mode: darken;
+
     
-                            $lastLetterSize: 9;
-                            @for $i from 1 through $lastLetterSize {
+                            $last-letter-size: 9;
+                            @for $i from 1 through $last-letter-size {
                                 #{$current}-char:nth-child(#{$i}) {
-                                    left: mixins.obtainViewportWidth((($lastLetterSize - 1) * 2px) * ($lastLetterSize - $i));
+                                    left: mixins.obtain-viewport-width((($last-letter-size - 1) * 2px) * ($last-letter-size - $i));
                                 }
                             }
                         }
     
                         &:nth-of-type(2) {
-                            @include _rotatedText(
+                            @include rotated-text(
                                 $angle: 5deg, 
                                 $angleOffset: 3deg, 
-                                $fontSize: mixins.obtainViewportWidth(8px), 
+                                $fontSize: mixins.obtain-viewport-width(8px), 
                                 $radius: 5,
                                 $angleStart: 10deg,
                                 $customClass: "#{$current}-char",
@@ -784,8 +779,8 @@
                             );
     
                             position: absolute;
-                            top: mixins.obtainViewportWidth(255px);
-                            left: mixins.obtainViewportWidth(430px);
+                            top: mixins.obtain-viewport-width(255px);
+                            left: mixins.obtain-viewport-width(430px);
                             margin: 0;
                             color: #1b181a;
     
@@ -794,17 +789,17 @@
     
                                 @for $i from 1 through 18 {
                                     &:nth-child(#{$i}) {
-                                        text-indent: mixins.obtainViewportWidth(240px);
+                                        text-indent: mixins.obtain-viewport-width(240px);
                                     }
                                 }
                             }
                         }
     
                         &:last-of-type {
-                            @include _rotatedText(
+                            @include rotated-text(
                                 $angle: 5deg, 
                                 $angleOffset: 0.5grad, 
-                                $fontSize: mixins.obtainViewportWidth(92px), 
+                                $fontSize: mixins.obtain-viewport-width(92px), 
                                 $radius: 4.75,
                                 $angleStart: 0deg,
                                 $customClass: "#{$current}-char",
@@ -812,13 +807,13 @@
                             );
     
                             position: absolute;
-                            top: mixins.obtainViewportWidth(505px);
-                            left: mixins.obtainViewportWidth(730px);
+                            top: mixins.obtain-viewport-width(505px);
+                            left: mixins.obtain-viewport-width(730px);
                             margin: 0;
                             transform: scaleX(-1) rotate(-105deg);
                             transform-origin: center;
-                            font-family: Undertown;
-                            color: rgba($color: #4d3e23, $alpha: 0.5);
+                            font-family: Undertown, sans-serif;
+                            color: rgba($color: #4d3e23, $alpha: 50%);
                             mix-blend-mode: color-dodge;
     
                             @for $i from 1 through 5 {
@@ -829,16 +824,16 @@
                         }
                     }
     
-                    @include mixins.liftUp($levels: 1, $modifiers: "-second") {
+                    @include mixins.lift-up($levels: 1, $modifiers: "-second") {
                         opacity: 0.2;
     
                         &:first-of-type {
                             transform: scaleX(-1) translateX(40%);
     
-                            @include _rotatedText(
+                            @include rotated-text(
                                 $angle: 5deg, 
                                 $angleOffset: 2deg, 
-                                $fontSize: mixins.obtainViewportWidth(40px), 
+                                $fontSize: mixins.obtain-viewport-width(40px), 
                                 $radius: 11,
                                 $angleStart: 45deg,
                                 $customClass: "#{$current}-char",
@@ -847,13 +842,13 @@
                         }
     
                         &:nth-of-type(2) {
-                            top: mixins.obtainViewportWidth(-60px);
+                            top: mixins.obtain-viewport-width(-60px);
                             transform: scaleX(-1) translateX(40%);
     
-                            @include _rotatedText(
+                            @include rotated-text(
                                 $angle: 5deg, 
                                 $angleOffset: 2deg, 
-                                $fontSize: mixins.obtainViewportWidth(40px), 
+                                $fontSize: mixins.obtain-viewport-width(40px), 
                                 $radius: 14,
                                 $angleStart: 1deg,
                                 $customClass: "#{$current}-char",
@@ -862,13 +857,13 @@
                         }
                         
                         &:last-of-type {
-                            top: mixins.obtainViewportWidth(-60px);
+                            top: mixins.obtain-viewport-width(-60px);
                             transform: translateX(40%);
     
-                            @include _rotatedText(
+                            @include rotated-text(
                                 $angle: 5deg, 
                                 $angleOffset: 2deg, 
-                                $fontSize: mixins.obtainViewportWidth(40px), 
+                                $fontSize: mixins.obtain-viewport-width(40px), 
                                 $radius: 14,
                                 $angleStart: 1deg,
                                 $customClass: "#{$current}-char",
@@ -877,15 +872,15 @@
                         }
                     }
         
-                    @include mixins.liftUp($levels: 2, $modifiers: ("-region-wrap--bottom")) {
+                    @include mixins.lift-up($levels: 2, $modifiers: ("-region-wrap--bottom")) {
                         height: 100%;
                         transform: translate(50%, -50%) scaleX(-1);
                         opacity: 0.5;
         
-                        @include _rotatedText(
+                        @include rotated-text(
                             $angle: 5deg, 
                             $angleOffset: 1deg, 
-                            $fontSize: mixins.obtainViewportWidth(16px), 
+                            $fontSize: mixins.obtain-viewport-width(16px), 
                             $radius: 13,
                             $angleStart: 65deg,
                             $letterLimit: 18

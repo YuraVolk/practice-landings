@@ -1,0 +1,15 @@
+{
+    "extends": [
+        "stylelint-config-standard-scss",
+        "stylelint-config-prettier-scss"
+    ],
+    "rules": {
+        "property-no-unknown": [
+            true,
+            {
+                "ignoreProperties": ["flow-into", "flow-from", "region-fragment"]
+            }
+        ],
+        "media-feature-range-notation": "prefix"
+    }
+}

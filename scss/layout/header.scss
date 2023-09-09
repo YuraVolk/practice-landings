@@ -6,9 +6,10 @@
 @layer desktop {
     .header {
         @include navigation.navigation;
-        @include overlay-form.overlayForm;
+        @include overlay-form.overlay-form;
         @include subsection.subsection;
-        @include mixins.placeBackground("/img/header-image", "png");
+        @include mixins.place-background("/img/header-image", "png");
+
         background-position-y: top;
     }
 }

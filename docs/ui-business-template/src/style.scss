@@ -63,8 +63,8 @@ $white: #fff;
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
-        width: getViewportWidth(1200px);
-        height: getViewportWidth(400px);
+        width: getviewportwidth(1200px);
+        height: getviewportwidth(400px);
         background-image: url("./img/background.png");
         background-size: cover;
         background-repeat: no-repeat;
@@ -74,7 +74,7 @@ $white: #fff;
 }
 
 @function getViewportWidth($targetWidth, $baseWidth: 1300px) {
-    @if ($targetWidth >= $baseWidth) {
+    @if  $targetWidth >= $baseWidth {
         @error "Target width should be less than base width";
     }
 
@@ -89,43 +89,49 @@ $white: #fff;
     font-variant: normal;
     text-transform: none;
     line-height: 1;
-
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
 %icon-microsoft::before {
     @extend %font-icon;
+
     content: "\1fa9f";
 }
 
 %icon-ibm::before {
     @extend %font-icon;
+
     content: "\1f5c2";
 }
 
 %icon-world::before {
     @extend %font-icon;
+
     content: "\1f310";
 }
 
 %icon-google-plus::before {
     @extend %font-icon;
+
     content: "\1f50e";
 }
 
 %icon-facebook::before {
     @extend %font-icon;
+
     content: "\1f3e2";
 }
 
 %icon-twitter::before {
     @extend %font-icon;
+
     content: "\1f424";
 }
 
 %icon-youtube::before {
     @extend %font-icon;
+
     content: "\1f4fc";
 }
 
@@ -140,10 +146,10 @@ body {
 }
 
 .button {
-    padding: getViewportWidth(12px) getViewportWidth(19.5px);
+    padding: getviewportwidth(12px) getviewportwidth(19.5px);
     border: none;
-    border-radius: getViewportWidth(21.5px);
-    font-size: getViewportWidth(17.5px);
+    border-radius: getviewportwidth(21.5px);
+    font-size: getviewportwidth(17.5px);
 
     &--purple {
         background-color: #828efe;
@@ -157,11 +163,12 @@ body {
 
 .header {
     @include fadingBackground;
+
     position: relative;
     width: 100%;
-    height: getViewportWidth(595px);
+    height: getviewportwidth(595px);
     background-color: #4657cb;
-    clip-path: url(#headerCurve);
+    clip-path: url("#headerCurve");
 
     &::before {
         position: absolute;
@@ -169,13 +176,13 @@ body {
         left: 0;
         right: 0;
         z-index: 2;
-        height: getViewportWidth(70px);
+        height: getviewportwidth(70px);
         box-shadow: 5px 5px 12px rgba(#000, 0.25);
         content: "";
     }
 
     &::after {
-        top: getViewportWidth(70px);
+        top: getviewportwidth(70px);
     }
 
     &-navigation {
@@ -187,13 +194,13 @@ body {
         position: relative;
         display: flex;
         align-items: center;
-        width: getViewportWidth(945px);
-        height: getViewportWidth(70px);
-        margin: 2px auto 0 auto;
+        width: getviewportwidth(945px);
+        height: getviewportwidth(70px);
+        margin: 2px auto 0;
        
         &__logotype {
             flex-grow: 1;
-            font: 700 getViewportWidth(22px) "Leto Sans", sans-serif;
+            font: 700 getviewportwidth(22px) "Leto Sans", sans-serif;
             color: $primaryActive;
             text-transform: uppercase;
 
@@ -203,8 +210,8 @@ body {
         }
 
         &__link {
-            padding: getViewportWidth(30.5px) getViewportWidth(14.5px) getViewportWidth(22.5px) getViewportWidth(14.5px);
-            font-size: getViewportWidth(14px);
+            padding: getviewportwidth(30.5px) getviewportwidth(14.5px) getviewportwidth(22.5px) getviewportwidth(14.5px);
+            font-size: getviewportwidth(14px);
             color: $primaryGray;
             text-decoration: none;
 
@@ -221,11 +228,11 @@ body {
         }
 
         &__setting {
-            width: getViewportWidth(40px);
-            padding: getViewportWidth(6px);
-            border: getViewportWidth(2px) solid $tertiaryActive;
-            border-radius: getViewportWidth(4.5px);
-            font-size: getViewportWidth(12px);
+            width: getviewportwidth(40px);
+            padding: getviewportwidth(6px);
+            border: getviewportwidth(2px) solid $tertiaryActive;
+            border-radius: getviewportwidth(4.5px);
+            font-size: getviewportwidth(12px);
             background-color: transparent;
 
             &:first-child {
@@ -234,7 +241,7 @@ body {
             
             &:last-child {
                 position: relative;
-                left: getViewportWidth(-3px);
+                left: getviewportwidth(-3px);
                 box-sizing: border-box;
             }
 
@@ -248,48 +255,45 @@ body {
 
     &__image {
         position: absolute;
-        top: calc(getViewportWidth(90px) + 2px);
-        right: getViewportWidth(225px);
+        top: calc(getviewportwidth(90px) + 2px);
+        right: getviewportwidth(225px);
         z-index: 1;
-        width: getViewportWidth(510px);
-        height: getViewportWidth(445px);
+        width: getviewportwidth(510px);
+        height: getviewportwidth(445px);
         filter: drop-shadow(-2.5mm 2mm 2mm rgba(#000, 0.2));
     }
 
     &-visual-circles {
         position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
+        inset: 0;
         overflow: hidden;
         z-index: 1;
         display: flex;
-        gap: getViewportWidth(11px);
+        gap: getviewportwidth(11px);
         pointer-events: none;
 
         &__row {
             z-index: 1;
             display: flex;
             flex-direction: column;
-            gap: getViewportWidth(5px);
-            margin-top: getViewportWidth(80px);
+            gap: getviewportwidth(5px);
+            margin-top: getviewportwidth(80px);
         }
 
         &__row:first-child {
-            padding-top: getViewportWidth(26.5px);
-            margin-left: getViewportWidth(75px);
+            padding-top: getviewportwidth(26.5px);
+            margin-left: getviewportwidth(75px);
         }
 
         &__row:nth-child(2) {
-            margin-right: getViewportWidth(36.5px);
-            padding-top: getViewportWidth(3.5px);
+            margin-right: getviewportwidth(36.5px);
+            padding-top: getviewportwidth(3.5px);
         }
 
         &__row:nth-child(3) {
             position: absolute;
-            top: getViewportWidth(210px);
-            left: getViewportWidth(95.5px);
+            top: getviewportwidth(210px);
+            left: getviewportwidth(95.5px);
             margin-top: 0;
         }
 
@@ -302,9 +306,9 @@ body {
 
     &-visual-circle {
         display: block;
-        flex: 0 0 getViewportWidth(7px);
-        width: getViewportWidth(7px);
-        height: getViewportWidth(7px);
+        flex: 0 0 getviewportwidth(7px);
+        width: getviewportwidth(7px);
+        height: getviewportwidth(7px);
         border-radius: 50%;
         background-color: #6981da;
 
@@ -312,60 +316,60 @@ body {
             background-color: #3b48b8;
 
             &:not(:last-child) {
-                top: getViewportWidth(-153px);
-                left: getViewportWidth(27px);
-                width: getViewportWidth(290px);
-                height: getViewportWidth(290px);
+                top: getviewportwidth(-153px);
+                left: getviewportwidth(27px);
+                width: getviewportwidth(290px);
+                height: getviewportwidth(290px);
             }
 
             &:last-child {
-                top: getViewportWidth(55px);
-                left: getViewportWidth(1135px);
-                width: getViewportWidth(265px);
-                height: getViewportWidth(265px);
+                top: getviewportwidth(55px);
+                left: getviewportwidth(1135px);
+                width: getviewportwidth(265px);
+                height: getviewportwidth(265px);
             }
         }
 
         &--border {
-            top: getViewportWidth(320px);
-            left: getViewportWidth(35px);
-            width: getViewportWidth(145px);
-            height: getViewportWidth(145px);
-            border: getViewportWidth(20px) solid #5467ce;
+            top: getviewportwidth(320px);
+            left: getviewportwidth(35px);
+            width: getviewportwidth(145px);
+            height: getviewportwidth(145px);
+            border: getviewportwidth(20px) solid #5467ce;
         }
 
         &--white {
-            top: getViewportWidth(5px);
-            right: getViewportWidth(222px);
-            width: getViewportWidth(130px);
-            height: getViewportWidth(130px);
+            top: getviewportwidth(5px);
+            right: getviewportwidth(222px);
+            width: getviewportwidth(130px);
+            height: getviewportwidth(130px);
             background-color: #5276cc;
         }
     }
 
     &-visual-circles ~ * {
-        margin-left: getViewportWidth(285px);
+        margin-left: getviewportwidth(285px);
         font-weight: 400;
         color: $white;
     }
 
     &__subheading {
-        margin-top: getViewportWidth(76px);
-        margin-bottom: getViewportWidth(24.5px);
-        font-size: getViewportWidth(17.5px);
+        margin-top: getviewportwidth(76px);
+        margin-bottom: getviewportwidth(24.5px);
+        font-size: getviewportwidth(17.5px);
     }
 
     &__heading {
         margin-top: 0;
-        margin-bottom: getViewportWidth(32px);
-        font-size: getViewportWidth(33px);
+        margin-bottom: getviewportwidth(32px);
+        font-size: getviewportwidth(33px);
     }
 
     &__description {
         margin-top: 0;
-        margin-bottom: getViewportWidth(36.5px);
-        max-width: getViewportWidth(210px);
-        font-size: getViewportWidth(16px);
+        margin-bottom: getviewportwidth(36.5px);
+        max-width: getviewportwidth(210px);
+        font-size: getviewportwidth(16px);
     }
 }
 
@@ -373,35 +377,35 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: getViewportWidth(86px);
-    margin-bottom: getViewportWidth(88px);
+    gap: getviewportwidth(86px);
+    margin-bottom: getviewportwidth(88px);
 
     &-article {
         display: flex;
         align-items: flex-start;
         justify-content: space-between;
-        width: getViewportWidth(710px);
+        width: getviewportwidth(710px);
 
         &__image {
             position: relative;
-            top: getViewportWidth(-38px);
-            width: getViewportWidth(367px);
-            height: getViewportWidth(320px);
+            top: getviewportwidth(-38px);
+            width: getviewportwidth(367px);
+            height: getviewportwidth(320px);
         }
 
         &__description {
-            width: getViewportWidth(285px);
+            width: getviewportwidth(285px);
         }
 
         &__heading {
-            margin-top: getViewportWidth(40px);
-            margin-bottom: getViewportWidth(20px);
-            font: 700 getViewportWidth(30.5px) "Leto Sans", sans-serif;
+            margin-top: getviewportwidth(40px);
+            margin-bottom: getviewportwidth(20px);
+            font: 700 getviewportwidth(30.5px) "Leto Sans", sans-serif;
         }
 
         &__teaser {
             margin-top: 0;
-            margin-bottom: getViewportWidth(44px);
+            margin-bottom: getviewportwidth(44px);
             font: 600 unquote("#{getViewportWidth(15px)}/2") Qudolibet, sans-serif;
         }
     }
@@ -409,8 +413,9 @@ body {
 
 .advantages-section {
     @include fadingBackground;
-    padding-top: getViewportWidth(60px);
-    padding-bottom: getViewportWidth(64px);
+
+    padding-top: getviewportwidth(60px);
+    padding-bottom: getviewportwidth(64px);
     color: $white;
     overflow: hidden;
 
@@ -419,41 +424,41 @@ body {
     }
 
     > * {
-        width: getViewportWidth(730px);
+        width: getviewportwidth(730px);
         margin: 0 auto;
     }
 
     &__heading {
-        margin-bottom: getViewportWidth(32px);
-        font-size: getViewportWidth(33px);
+        margin-bottom: getviewportwidth(32px);
+        font-size: getviewportwidth(33px);
     }
 }
 
 .advantages {
     display: flex;
-    gap: getViewportWidth(15px);
+    gap: getviewportwidth(15px);
     padding: 0;
 
     &-item {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: getViewportWidth(18px);
+        gap: getviewportwidth(18px);
         flex: 1 1 0;
         width: 0;
-        height: getViewportWidth(171px);
-        padding: getViewportWidth(23px) 0;
+        height: getviewportwidth(171px);
+        padding: getviewportwidth(23px) 0;
         box-sizing: border-box;
         aspect-ratio: 1/1;
         background-color: $primaryActive;
-        box-shadow: getViewportWidth(6px) getViewportWidth(6px) getViewportWidth(12px) rgba($color: #000000, $alpha: 0.1),
-             getViewportWidth(-6px) getViewportWidth(-6px) getViewportWidth(12px) rgba($color: #000000, $alpha: 0.1);
+        box-shadow: getviewportwidth(6px) getviewportwidth(6px) getviewportwidth(12px) rgba($color: #000, $alpha: 10%),
+             getviewportwidth(-6px) getviewportwidth(-6px) getviewportwidth(12px) rgba($color: #000, $alpha: 10%);
 
         &__image {
-            width: getViewportWidth(43.5px);
-            height: getViewportWidth(43.5px);
-            padding: getViewportWidth(12px);
-            border: getViewportWidth(3px) #9ba1dc solid;
+            width: getviewportwidth(43.5px);
+            height: getviewportwidth(43.5px);
+            padding: getviewportwidth(12px);
+            border: getviewportwidth(3px) #9ba1dc solid;
             border-radius: 50%;
             background-color: $white;
             outline: #a4b1e5 4px solid;
@@ -461,7 +466,7 @@ body {
 
         &__heading {
             margin: 0;
-            font-size: getViewportWidth(18px);
+            font-size: getviewportwidth(18px);
             font-weight: 300;
             letter-spacing: 1px;
         }
@@ -473,30 +478,30 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: getViewportWidth(64px);
-    padding-bottom: getViewportWidth(54px);
+    padding-top: getviewportwidth(64px);
+    padding-bottom: getviewportwidth(54px);
 
     &__heading {
         margin-top: 0;
-        margin-bottom: getViewportWidth(5px);
-        font-size: getViewportWidth(35px);
+        margin-bottom: getviewportwidth(5px);
+        font-size: getviewportwidth(35px);
     }
 
     &__subheading {
         margin-top: 0;
-        margin-bottom: getViewportWidth(36.5px);
-        font-size: getViewportWidth(17.5px);
+        margin-bottom: getviewportwidth(36.5px);
+        font-size: getviewportwidth(17.5px);
         color: #494949;
     }
 
     &__background-text {
         position: absolute;
-        top: getViewportWidth(70px);
+        top: getviewportwidth(70px);
         left: 50%;
         transform: translate(-50%, -20%);
         z-index: -1;
-        letter-spacing: getViewportWidth(10px);
-        font-size: getViewportWidth(116px);
+        letter-spacing: getviewportwidth(10px);
+        font-size: getviewportwidth(116px);
         font-weight: 700;
         text-transform: uppercase;
         color: #f2f2f2;
@@ -505,8 +510,8 @@ body {
 
 .map {
     position: relative;
-    width: getViewportWidth(870px);
-    height: getViewportWidth(455px);
+    width: getviewportwidth(870px);
+    height: getviewportwidth(455px);
     
     &__image {
         width: inherit;
@@ -515,23 +520,23 @@ body {
 
     &__circle {
         position: absolute;
-        width: getViewportWidth(8px);
-        height: getViewportWidth(8px);
+        width: getviewportwidth(8px);
+        height: getviewportwidth(8px);
         background-color: #22b2fb;
-        border: getViewportWidth(1px) solid #81d5ff;
+        border: getviewportwidth(1px) solid #81d5ff;
         border-radius: 50%;
 
         $coordinates: (
             40: 72, 62: 46, 80: 62, 91: 143, 115: 161, 145: 20, 220: 50, 341: 45,
             217: 101, 235: 137, 288: 50, 307: 70, 324: 28, 326: 40, 333: 55, 43: 82
         );
-
         $counter: 1;
         @each $left, $top in $coordinates {
             &:nth-child(#{$counter}) {
-                top: getViewportWidth($top * 2px);
-                left: getViewportWidth($left * 2px);
+                top: getviewportwidth($top * 2px);
+                left: getviewportwidth($left * 2px);
             }
+
             $counter: $counter + 1;
         }
     }
@@ -544,7 +549,7 @@ footer {
 
 .partners-section {
     position: relative;
-    height: getViewportWidth(30px);
+    height: getviewportwidth(30px);
 }
 
 .partners-list {
@@ -554,7 +559,7 @@ footer {
     transform: translate(-50%, 50%);
     display: flex;
     align-items: center;
-    gap: getViewportWidth(25px);
+    gap: getviewportwidth(25px);
     padding: 0;
     margin: 0;
     list-style-type: none;
@@ -565,8 +570,8 @@ footer {
         justify-content: center;
 
         &__logo {
-            width: getViewportWidth(40px);
-            height: getViewportWidth(16px);
+            width: getviewportwidth(40px);
+            height: getviewportwidth(16px);
         }
 
         &__icon {
@@ -574,18 +579,20 @@ footer {
 
             &--microsoft {
                 @extend %icon-microsoft;
-                font-size: getViewportWidth(11px);
+
+                font-size: getviewportwidth(11px);
                 
                 &::before {
                     position: relative;
-                    top: getViewportWidth(0.5px);
-                    margin-right: getViewportWidth(2px);
+                    top: getviewportwidth(0.5px);
+                    margin-right: getviewportwidth(2px);
                 }
             }
 
             &--ibm {
                 @extend %icon-ibm;
-                font-size: getViewportWidth(20px);
+
+                font-size: getviewportwidth(20px);
                 line-height: 0;
             }
         }
@@ -596,19 +603,19 @@ footer {
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    height: getViewportWidth(116px);
+    height: getviewportwidth(116px);
     background-color: #ddf0ff;
-    clip-path: url(#footerCurve);
+    clip-path: url("#footerCurve");
 
     &-inner {
         display: flex;
-        width: getViewportWidth(475px);
-        margin-bottom: getViewportWidth(20px);
+        width: getviewportwidth(475px);
+        margin-bottom: getviewportwidth(20px);
     }
 
     &__mark {
         flex-grow: 1;
-        font-size: getViewportWidth(8px);
+        font-size: getviewportwidth(8px);
         font-weight: 700;
         letter-spacing: -1px;
         color: #000;
@@ -617,8 +624,8 @@ footer {
     &-navigation {
         display: flex;
         align-items: center;
-        gap: getViewportWidth(13px);
-        font-size: getViewportWidth(6px);
+        gap: getviewportwidth(13px);
+        font-size: getviewportwidth(6px);
 
         &__link {
             font-weight: bold;
@@ -631,12 +638,12 @@ footer {
         display: flex;
         align-items: center;
         justify-content: flex-end;
-        gap: getViewportWidth(6px);
+        gap: getviewportwidth(6px);
         flex-grow: 1;
     }
 
     &__icon {
-        font-size: getViewportWidth(9px);
+        font-size: getviewportwidth(9px);
         color: #000;
 
         &--twitter {
