@@ -8,12 +8,14 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "stylelint \"**/*.scss\"",
-    "lintFix": "stylelint **/*.scss --fix"
+    "stylelint": "stylelint \"**/*.scss\"",
+    "stylelintFix": "stylelint **/*.scss --fix",
+    "lint": "mega-linter-runner"
   },
   "devDependencies": {
     "@csstools/postcss-cascade-layers": "^4.0.0",
     "autoprefixer": "^10.4.15",
+    "mega-linter-runner": "^7.3.0",
     "postcss": "^8.4.28",
     "prettier": "^3.0.3",
     "sass": "^1.63.6",
