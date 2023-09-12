@@ -1,0 +1,140 @@
+@use "sass:string";
+@use "./table.scss";
+@use "../../config/mixins.scss";
+
+@mixin subsection {
+	$id: string.unique-id();
+	@keyframes slideIn-#{$id} {
+		from {
+			transform: translate3d(0, 300px, 0);
+		}
+
+		to {
+			transform: translate3d(0, 0, 0);
+		}
+	}
+
+	@keyframes slideIn-#{$id} {
+		from {
+			transform: translate3d(0, 300px, 0);
+		}
+
+		to {
+			transform: translate3d(0, 0, 0);
+		}
+	}
+
+	&-subsection {
+		@include mixins.place-background("/img/header-subsection-image", "png");
+
+		position: relative;
+		overflow: hidden;
+		display: grid;
+		grid-template:
+			". . lead lead ." minmax(145px, auto)
+			". table table secondary ." 156px
+			". table table . ." auto
+			/ auto 190px 235px 230px auto;
+		gap: 30px 55px;
+		padding-top: 20px;
+		color: #0c0d08;
+		transition: all 0.6s ease-in-out;
+
+		@media (max-width: 850px) {
+			gap: 15px;
+		}
+
+		@media (max-width: 740px) {
+			grid-auto-rows: auto;
+			grid-template:
+				". . ." 70px
+				". lead ."
+				". secondary ."
+				". table ."
+				/ 5% 90% 5%;
+
+			& > * > * {
+				animation: slideIn-#{$id} 1s forwards;
+			}
+		}
+
+		@media (max-width: 475px) {
+			grid-template-areas:
+				". . ."
+				". lead ."
+				". secondary ."
+				"table table .";
+		}
+
+		&-table {
+			@include table.table;
+
+			grid-area: table;
+		}
+
+		&-lead-section {
+			grid-area: lead;
+		}
+
+		&-secondary-section {
+			grid-area: secondary;
+		}
+
+		&__heading {
+			margin: 0;
+			font-size: 22px;
+			font-family: Spring, fantasy;
+			text-shadow: mixins.text-stroke(
+				$stroke: 3,
+				$color: #fbecda,
+				$step: 0.6px
+			);
+		}
+
+		&__subheading {
+			margin: 0 0 6px;
+			font-family: "Frest Style", fantasy;
+			letter-spacing: 1px;
+			font-size: 18px;
+			text-shadow: mixins.text-stroke(
+				$stroke: 3,
+				$color: #fbecda,
+				$step: 0.6px
+			);
+		}
+
+		&__tertiary-heading {
+			margin: 18px 0 6px;
+			font-family: "Frest Style", fantasy;
+			letter-spacing: 1px;
+			font-size: 16.5px;
+			text-shadow: mixins.text-stroke(
+				$stroke: 3,
+				$color: #fbecda,
+				$step: 0.6px
+			);
+		}
+
+		&__description {
+			margin: 8px 0;
+			font-size: 13px;
+			font-family: Brusly, sans-serif;
+			text-shadow: mixins.text-stroke(
+				$stroke: 3,
+				$color: #fbecda,
+				$step: 0.6px
+			);
+
+			@media (max-width: 740px) {
+				max-width: 70%;
+			}
+		}
+
+		&__separator {
+			display: block;
+			font-size: 11px;
+			margin: 0 0 20px;
+			font-family: "KG Wake Me Up", fantasy;
+		}
+	}
+}

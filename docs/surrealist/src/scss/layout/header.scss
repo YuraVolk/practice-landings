@@ -1,0 +1,15 @@
+@use "../components/header/navigation.scss";
+@use "../components/header/overlay-form.scss";
+@use "../components/header/subsection.scss";
+@use "../config/mixins.scss";
+
+@layer desktop {
+	.header {
+		@include navigation.navigation;
+		@include overlay-form.overlay-form;
+		@include subsection.subsection;
+		@include mixins.place-background("/img/header-image", "png");
+
+		background-position-y: top;
+	}
+}
