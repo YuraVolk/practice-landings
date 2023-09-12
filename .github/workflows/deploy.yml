@@ -1,6 +1,6 @@
 name: Deploy Surge Websites
 
-on: [release]
+on: [release, workflow_dispatch]
 
 jobs:
   build:
