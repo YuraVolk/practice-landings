@@ -1,10 +1,10 @@
 @use "sass:math";
 
-$primaryGreen: #2aea9d;
-$primaryWhite: #e2e2e2;
-$secondaryWhite: rgba(#fff, 0.8);
-$primaryDark: #3a3a3a;
-$secondaryDark: #898989;
+$primary-green: #2aea9d;
+$primary-white: #e2e2e2;
+$secondary-white: rgba(#fff, 0.8);
+$primary-dark: #3a3a3a;
+$secondary-dark: #898989;
 
 @font-face {
     font-family: Quodlibet;
@@ -37,7 +37,7 @@ $secondaryDark: #898989;
     font-display: swap;
 }
 
-@function getViewportWidth($targetWidth, $baseWidth: 1300px) {
+@function get-viewport-width($targetWidth, $baseWidth: 1300px) {
     @if  $targetWidth >=$baseWidth {
         @error "Target width should be less than base width";
     }
@@ -50,88 +50,85 @@ $secondaryDark: #898989;
         display: flex;
         align-items: center;
         flex-wrap: wrap;
-        gap: getviewportwidth(5px);
-        width: getviewportwidth(1155px);
+        gap: get-viewport-width(5px);
+        width: get-viewport-width(1155px);
         margin: 0 auto;
 
         &__logo {
             flex-grow: 1;
-            font: 700 getviewportwidth(20px) "Leto Sans", sans-serif;
+            font: 700 get-viewport-width(20px) "Leto Sans", sans-serif;
             text-transform: uppercase;
             text-align: left;
             color: $colorPrimary;
         }
 
         &__link {
-            padding: getviewportwidth(6px) getviewportwidth(20px);
-            font-size: getviewportwidth(15px);
+            padding: get-viewport-width(6px) get-viewport-width(20px);
+            font-size: get-viewport-width(15px);
             color: $colorSecondary;
             text-decoration: none;
 
             &--active {
-                color: $primaryGreen;
-                border: 2px solid $primaryGreen;
+                color: $primary-green;
+                border: 2px solid $primary-green;
                 border-radius: 3px;
             }
         }
     }
 }
 
-@mixin backgroundImage($url) {
+@mixin background-image($url) {
     background-image: url($url);
     background-position: center;
     background-size: cover;
 }
 
-@mixin placeLogotype($scale, $scaleTop: 1) {
+@mixin place-logotype($scale, $scaleTop: 1) {
     position: relative;
     text-align: center;
     
     &__logo {
         position: absolute;
-        top: getviewportwidth(198px * $scaleTop);
-
-        $resultLeft: 19.5% * $scale;
-
+        top: get-viewport-width(198px * $scaleTop);
         left: 50%;
         transform: translateX(-55.7%);
         display: block;
-        width: getviewportwidth(705px * $scale);
+        width: get-viewport-width(705px * $scale);
     }
 
     &__heading {
         position: relative;
-        font-size: getviewportwidth(44px * $scale);
-        margin-top: getviewportwidth(325px * $scaleTop);
-        margin-bottom: getviewportwidth(20px);
+        font-size: get-viewport-width(44px * $scale);
+        margin-top: get-viewport-width(325px * $scaleTop);
+        margin-bottom: get-viewport-width(20px);
         text-transform: uppercase;
-        letter-spacing: getviewportwidth(12px * $scale);
+        letter-spacing: get-viewport-width(12px * $scale);
         z-index: 1;
-        font-family: "Leto Sans";
+        font-family: "Leto Sans", sans-serif;
         color: #fff;
        
         &--subtext {
             position: relative;
-            left: getviewportwidth(-8px * $scale);
+            left: get-viewport-width(-8px * $scale);
         }
     }
 }
 
-@mixin borderCircle($size) {
+@mixin border-circle($size) {
     top: 50%;
     width: $size;
     height: $size;
     box-sizing: border-box;
     border-color: inherit;
     border-style: solid;
-    border-width: getviewportwidth(2.5px);
+    border-width: get-viewport-width(2.5px);
     border-radius: 50%;
 }
 
-@mixin limitMaximumWidth($width: null) {
+@mixin limit-maximum-width($width: null) {
     & > * {
         @if  $width {
-            width: getviewportwidth($width);
+            width: get-viewport-width($width);
         }
 
         margin-left: auto;
@@ -147,34 +144,34 @@ body {
 
 .button {
     cursor: pointer;
-    color: $primaryWhite;
+    color: $primary-white;
 
     &--white {
-        border: 2px solid $primaryWhite;
+        border: 2px solid $primary-white;
         border-radius: 100vw;
-        padding: getviewportwidth(4px) getviewportwidth(30px);
-        font-size: getviewportwidth(11.5px);
+        padding: get-viewport-width(4px) get-viewport-width(30px);
+        font-size: get-viewport-width(11.5px);
         background-color: transparent;
     }
 
     &--green {
         border: none;
-        font-size: getviewportwidth(14.5px);
-        border-radius: getviewportwidth(6px);
-        background-color: $primaryGreen;
-        padding: getviewportwidth(12px) 0;
+        font-size: get-viewport-width(14.5px);
+        border-radius: get-viewport-width(6px);
+        background-color: $primary-green;
+        padding: get-viewport-width(12px) 0;
     }
 }
 
 .separator {
     position: relative;
     display: block;
-    height: getviewportwidth(2.5px);
-    background-color: $primaryWhite;
-    color: $primaryWhite;
+    height: get-viewport-width(2.5px);
+    background-color: $primary-white;
+    color: $primary-white;
 
     &::before {
-        @include borderCircle(getViewportWidth(15px));
+        @include border-circle(get-viewport-width(15px));
 
         position: absolute;
         left: 0;
@@ -184,7 +181,7 @@ body {
     }
 
     &::after {
-        @include borderCircle(getViewportWidth(15px));
+        @include border-circle(get-viewport-width(15px));
 
         position: absolute;
         right: 0;
@@ -205,10 +202,10 @@ body {
         top: 0;
         left: 0;
         transform: translateY(-100%) rotate(45deg);
-        width: getviewportwidth(2px);
-        height: getviewportwidth(15px);
-        background-color: $secondaryDark;
-        border-radius: getviewportwidth(2px);
+        width: get-viewport-width(2px);
+        height: get-viewport-width(15px);
+        background-color: $secondary-dark;
+        border-radius: get-viewport-width(2px);
         content: "";
     }
 
@@ -217,10 +214,10 @@ body {
         bottom: 0;
         left: 0;
         transform: translateY(66%) rotate(-45deg);
-        width: getviewportwidth(2px);
-        height: getviewportwidth(15px);
-        background-color: $secondaryDark;
-        border-radius: getviewportwidth(2px);
+        width: get-viewport-width(2px);
+        height: get-viewport-width(15px);
+        background-color: $secondary-dark;
+        border-radius: get-viewport-width(2px);
         content: "";
     }
 
@@ -234,38 +231,38 @@ body {
 }
 
 .header {
-    @include backgroundImage("./img/header-image.jpg");
-    @include navigation($primaryWhite, $primaryWhite);
-    @include placeLogotype($scale: 1);
-    @include limitMaximumWidth;
+    @include background-image("./img/header-image.jpg");
+    @include navigation($primary-white, $primary-white);
+    @include place-logotype($scale: 1);
+    @include limit-maximum-width;
 
-    padding: getviewportwidth(32px) 0 getviewportwidth(190px) 0;
-    color: $primaryWhite;
+    padding: get-viewport-width(32px) 0 get-viewport-width(190px) 0;
+    color: $primary-white;
 
     &__paragraph {
         margin-top: 0;
-        margin-bottom: getviewportwidth(100px);
-        max-width: getviewportwidth(515px);
-        font-size: getviewportwidth(14px);
-        color: $secondaryWhite;
+        margin-bottom: get-viewport-width(100px);
+        max-width: get-viewport-width(515px);
+        font-size: get-viewport-width(14px);
+        color: $secondary-white;
     }
 
     &-slides {
         display: flex;
         justify-content: center;
-        gap: getviewportwidth(17px);
+        gap: get-viewport-width(17px);
         margin: 0;
         padding: 0;
         list-style-type: none;
 
         &__button {
-            @include borderCircle(getViewportWidth(12px));
+            @include border-circle(get-viewport-width(12px));
 
             cursor: pointer;
 
             &--active {
-                border-color: $primaryGreen;
-                background-color: $primaryGreen;
+                border-color: $primary-green;
+                background-color: $primary-green;
             }
         }
     }
@@ -278,86 +275,86 @@ body {
         z-index: 1;
 
         &::before {
-            @include borderCircle(getViewportWidth(28px));
+            @include border-circle(get-viewport-width(28px));
 
             position: absolute;
-            right: getviewportwidth(32px);
+            right: get-viewport-width(32px);
             transform: translateY(-60%);
             content: "";
         }
 
         &::after {
             position: absolute;
-            top: getviewportwidth(35px);
-            right: getviewportwidth(32px);
+            top: get-viewport-width(35px);
+            right: get-viewport-width(32px);
             transform: rotate(-45deg);
-            width: getviewportwidth(3px);
-            height: getviewportwidth(8px);
-            background-color: $primaryWhite;
+            width: get-viewport-width(3px);
+            height: get-viewport-width(8px);
+            background-color: $primary-white;
             content: "";
         }
 
         &__input {
-            width: getviewportwidth(335px);
+            width: get-viewport-width(335px);
             box-sizing: border-box;
             margin: 0;
-            padding: getviewportwidth(19px);
-            border: 2px solid $primaryWhite;
+            padding: get-viewport-width(19px);
+            border: 2px solid $primary-white;
             border-radius: 100vw;
             appearance: none;
 
             &::placeholder {
                 font-family: inherit;
-                font-size: getviewportwidth(12px);
-                color: $primaryWhite;
+                font-size: get-viewport-width(12px);
+                color: $primary-white;
             }
         }
     }
 }
 
 .featured-trips {
-    @include limitMaximumWidth(1100px);
+    @include limit-maximum-width(1100px);
 
     text-align: center;
-    padding-bottom: getviewportwidth(115px);
+    padding-bottom: get-viewport-width(115px);
 
     &__line-vertical {
         display: block;
-        width: getviewportwidth(3.2px);
-        height: getviewportwidth(85px);
-        background-color: $primaryWhite;
+        width: get-viewport-width(3.2px);
+        height: get-viewport-width(85px);
+        background-color: $primary-white;
     }
 
     &__heading {
-        font-size: getviewportwidth(24px);
-        margin-top: getviewportwidth(35px);
-        margin-bottom: getviewportwidth(12.5px);
-        color: $primaryDark;
+        font-size: get-viewport-width(24px);
+        margin-top: get-viewport-width(35px);
+        margin-bottom: get-viewport-width(12.5px);
+        color: $primary-dark;
         text-transform: uppercase;
     }
 
     &__description {
         margin-top: 0;
-        margin-bottom: getviewportwidth(30px);
-        font-size: getviewportwidth(12.5px);
-        color: $secondaryDark;
+        margin-bottom: get-viewport-width(30px);
+        font-size: get-viewport-width(12.5px);
+        color: $secondary-dark;
     }
 
     &-carousel {
-        @include placeLogotype($scale: 0.65, $scaleTop: 0.5);
+        @include place-logotype($scale: 0.65, $scaleTop: 0.5);
 
         position: relative;
         display: flex;
         align-items: center;
-        gap: getviewportwidth(33.5px);
+        gap: get-viewport-width(33.5px);
 
         &__wrap {
-            @include backgroundImage("./img/header-section-image.png");
+            @include background-image("./img/header-section-image.png");
 
-            color: $primaryWhite;
+            color: $primary-white;
             flex-grow: 1;
             background-position-y: bottom;
-            padding-bottom: getviewportwidth(35px);
+            padding-bottom: get-viewport-width(35px);
         }
 
         &__logo {
@@ -365,46 +362,46 @@ body {
         }
 
         &__paragraph {
-            max-width: getviewportwidth(525px);
-            margin: 0 auto getviewportwidth(35px);
-            font-size: getviewportwidth(12px);
-            color: $secondaryWhite;
+            max-width: get-viewport-width(525px);
+            margin: 0 auto get-viewport-width(35px);
+            font-size: get-viewport-width(12px);
+            color: $secondary-white;
         }
     }
 }
 
 .upcoming-trips {
-    @include limitMaximumWidth(1130px);
+    @include limit-maximum-width(1130px);
 
     &-headline {
         display: grid;
-        grid-template-columns: getviewportwidth(84px) 78% 14%;
-        grid-template-rows: getviewportwidth(26px) getviewportwidth(21px) getviewportwidth(22px);
-        column-gap: getviewportwidth(6px);
-        margin-bottom: getviewportwidth(44px);
+        grid-template-columns: get-viewport-width(84px) 78% 14%;
+        grid-template-rows: get-viewport-width(26px) get-viewport-width(21px) get-viewport-width(22px);
+        column-gap: get-viewport-width(6px);
+        margin-bottom: get-viewport-width(44px);
 
         &__image {
-            width: getviewportwidth(84px);
-            height: getviewportwidth(74px);
+            width: get-viewport-width(84px);
+            height: get-viewport-width(74px);
             grid-row: span 3;
         }
 
         &__heading {
             position: relative;
-            left: getviewportwidth(-26px);
+            left: get-viewport-width(-26px);
             align-self: end;
             grid-row: span 2;
             margin: 0;
-            font-size: getviewportwidth(30px);
-            color: $primaryDark;
+            font-size: get-viewport-width(30px);
+            color: $primary-dark;
         }
 
         &__description {
             align-self: end;
             grid-column: 2;
             margin: 0;
-            font-size: getviewportwidth(14px);
-            color: $secondaryDark;
+            font-size: get-viewport-width(14px);
+            color: $secondary-dark;
         }
 
         .button {
@@ -416,16 +413,16 @@ body {
     &-controls {
         display: flex;
         justify-content: center;
-        gap: getviewportwidth(560px);
-        margin-bottom: getviewportwidth(55px);
+        gap: get-viewport-width(560px);
+        margin-bottom: get-viewport-width(55px);
 
         .carousel-button--right {
-            right: getviewportwidth(-25px);
+            right: get-viewport-width(-25px);
         }
     }
 
     .separator {
-        margin-bottom: getviewportwidth(25px);
+        margin-bottom: get-viewport-width(25px);
     }
 
     &-gallery {
@@ -442,45 +439,45 @@ body {
 
         &-item {
             position: relative;
-            max-width: getviewportwidth(280px);
-            height: getviewportwidth(250px);
+            max-width: get-viewport-width(280px);
+            height: get-viewport-width(250px);
 
             &::before {
-                @include backgroundImage("./img/eye-icon.png");
+                @include background-image("./img/eye-icon.png");
 
                 position: absolute;
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
                 z-index: 1;
-                width: getviewportwidth(55px);
-                height: getviewportwidth(44px);
+                width: get-viewport-width(55px);
+                height: get-viewport-width(44px);
                 opacity: 0;
                 cursor: pointer;
                 content: "";
             }
 
             &:first-child, &:last-child {
-                max-width: getviewportwidth(160px);
-            }
-
-            &--active {
-                max-width: getviewportwidth(430px);
-                height: getviewportwidth(300px);
-
-                &::before {
-                    opacity: 1;
-                }
-            }
-
-            &--active &__image {
-                filter: brightness(0.9);
+                max-width: get-viewport-width(160px);
             }
 
             &__image {
                 max-width: inherit;
                 height: 100%;
                 object-fit: cover;
+            }
+
+            &--active &__image {
+                filter: brightness(0.9);
+            }
+
+            &--active {
+                max-width: get-viewport-width(430px);
+                height: get-viewport-width(300px);
+
+                &::before {
+                    opacity: 1;
+                }
             }
         }
     }
@@ -489,12 +486,12 @@ body {
         display: flex;
         justify-content: space-around;
         flex-wrap: wrap;
-        row-gap: getviewportwidth(20px);
+        row-gap: get-viewport-width(20px);
         list-style-type: none;
         margin: 0;
         padding: 0;
         min-width: 100%;
-        margin-bottom: getviewportwidth(55px);
+        margin-bottom: get-viewport-width(55px);
 
         &-item {
             position: relative;
@@ -526,7 +523,7 @@ body {
 }
 
 .map-section {
-    height: getviewportwidth(475px);
+    height: get-viewport-width(475px);
 
     &__map {
         width: 100%;
@@ -536,7 +533,7 @@ body {
 }
 
 .footer {
-    @include navigation($primaryDark, $secondaryDark);
+    @include navigation($primary-dark, $secondary-dark);
 
-    padding: getviewportwidth(12px) 0 getviewportwidth(8px) 0;
+    padding: get-viewport-width(12px) 0 get-viewport-width(8px) 0;
 }

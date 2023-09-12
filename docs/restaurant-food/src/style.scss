@@ -1,11 +1,11 @@
-$mainWhite: #fff;
-$mainGray: #e6e6e6;
-$mainDark: #2c2c2c;
-$secondaryDark: #11130b;
-$tertiaryDark: #101519;
+$main-white: #fff;
+$main-gray: #e6e6e6;
+$main-dark: #2c2c2c;
+$secondary-dark: #11130b;
+$tertiary-dark: #101519;
 $black: #090909;
-$mainOrange: #e2940f;
-$secondaryOrange: #e19608;
+$main-orange: #e2940f;
+$secondary-orange: #e19608;
 
 @font-face {
     font-family: Amazone;
@@ -45,13 +45,13 @@ $secondaryOrange: #e19608;
     font-display: swap;
 }
 
-@mixin backgroundPlacement($urlString) {
+@mixin background-placement($urlString) {
     background-image: url($urlString);
     background-repeat: no-repeat;
     background-size: calc(100% + 3px) 100%;
     background-position-x: -3px;
 
-    @media (max-width: 599px), (width >= 1600px) {
+    @media (max-width: 599px), (min-width: 1600px) {
         background-size: cover;
     }
 }
@@ -102,16 +102,16 @@ p {
     box-sizing: border-box;
     border: none;
     border-radius: 1.5em;
-    font: 1em/1 "Kyrial Sans Pro";
+    font: 1em/1 "Kyrial Sans Pro", sans-serif;
     text-transform: uppercase;
     cursor: pointer;
 
     &--orange {
-        border: $secondaryOrange 3px solid;
+        border: $secondary-orange 3px solid;
         padding: 5px 7px;
         font-family: "Core Sans", sans-serif;
-        background-color: $mainOrange;
-        color: $mainWhite;
+        background-color: $main-orange;
+        color: $main-white;
 
         @media (max-width: 599px) {
             padding: 4px;
@@ -123,17 +123,17 @@ p {
         font-family: "Core Sans", sans-serif;
         padding: 10px 24px;
         font-weight: 700;
-        color: $mainOrange;
+        color: $main-orange;
         word-spacing: -1px;
-        background-color: $mainWhite;
+        background-color: $main-white;
     }
 
     &--black {
-        border: 2px solid $secondaryDark;
+        border: 2px solid $secondary-dark;
         padding: 6px 32px;
         font-size: 8px;
-        background-color: $mainDark;
-        color: $mainOrange;
+        background-color: $main-dark;
+        color: $main-orange;
         text-transform: initial;
 
         @media (min-width: 1200px) {
@@ -148,14 +148,14 @@ p {
 }
 
 .header {
-    @include backgroundPlacement("./img/header-background.jpg");
+    @include background-placement("./img/header-background.jpg");
 
     display: flex;
     align-items: center;
     flex-direction: column;
     width: 100%;
     font-weight: 100;
-    color: $mainWhite;
+    color: $main-white;
 
     &-title {
         margin-bottom: 0;
@@ -174,9 +174,9 @@ p {
     &-subtitle {
         margin-top: calc(1.25em - 10px);
         margin-bottom: 1.5em;
-        font-family: "Kyrial Sans Pro";
+        font-family: "Kyrial Sans Pro", sans-serif;
         font-weight: 100;
-        background-color: $mainWhite;
+        background-color: $main-white;
         color: transparent;
         background-clip: text;
         opacity: 0.75;
@@ -213,7 +213,7 @@ p {
                 align-items: center;
                 justify-content: center;
                 padding: 12px;
-                font: calc(0.5em + (100% / 7 / 7))/1 "Kyrial Sans Pro";
+                font: calc(0.5em + (100% / 7 / 7))/1 "Kyrial Sans Pro", sans-serif;
                 text-transform: uppercase;
 
                 @media (min-width: 1200px) {
@@ -223,10 +223,10 @@ p {
                 &:first-child {
                     background-color: rgba($color: #000, $alpha: 50%);
                     padding-bottom: 10.5px;
-                    border-bottom: $mainOrange 2px solid;
+                    border-bottom: $main-orange 2px solid;
 
                     & > * {
-                        color: $mainOrange;
+                        color: $main-orange;
                     }
                 }
 
@@ -238,7 +238,7 @@ p {
 
         &__link {
             text-decoration: none;
-            color: $mainWhite;
+            color: $main-white;
             
         }
     }
@@ -252,7 +252,7 @@ p {
     position: relative;
     width: 100%;
     height: 25vw;
-    background-color: $mainGray;
+    background-color: $main-gray;
 
     &:first-of-type {
         height: 29vw;
@@ -260,41 +260,25 @@ p {
 }
 
 .showcase-article {
-    $extensionSize: 2.25em;
-    $extensionSizeCompact: 1.875em;
+    $extension-size: 2.25em;
+    $extension-size-compact: 1.875em;
 
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: 1fr;
     position: absolute;
-    top: -$extensionSizeCompact;
+    top: -$extension-size-compact;
     left: 50%;
     transform: translateX(-50%);
     z-index: 1;
     width: 63.5vw;
-    height: calc(25vw + $extensionSizeCompact + $extensionSizeCompact);
-    box-shadow: 6px 2px 2px rgba($color: $mainDark, $alpha: 20%);
+    height: calc(25vw + $extension-size-compact + $extension-size-compact);
+    box-shadow: 6px 2px 2px rgba($color: $main-dark, $alpha: 20%);
 
     &--compact {
-        top: -$extensionSize;
-        height: calc(29vw + $extensionSize + $extensionSize);
+        top: -$extension-size;
+        height: calc(29vw + $extension-size + $extension-size);
         grid-template-columns: 22.45vw 41.5vw;
-    }
-
-    &--compact &__section--description:first-of-type {
-        padding: 30px 20px 24px;
-
-        @media (max-width: 850px) { 
-            padding: 6px;
-        }
-    }
-
-    &--compact &__section--description:last-of-type {
-        padding: 40px 40px 45px 30px;
-
-        @media (max-width: 850px) { 
-            padding: 6px;
-        }
     }
 
     &__section {
@@ -308,7 +292,7 @@ p {
         &--description {
             padding: 0 0.78em;
             text-align: center;
-            background-color: $mainWhite;
+            background-color: $main-white;
 
             @media (max-width: 499px) {
                 display: flex;
@@ -325,7 +309,7 @@ p {
         font-size: 2em;
         font-weight: 100;
         line-height: 0.9;
-        color: $mainOrange;
+        color: $main-orange;
     }
 
     h4#{&}__header {
@@ -352,7 +336,7 @@ p {
         left: 50%;
         transform: translateX(-50%);
         content: "";
-        background-color: $mainDark;
+        background-color: $main-dark;
 
         @media (min-width: 1200px) {
             top: 1.5em;
@@ -378,17 +362,33 @@ p {
     &__price {
         font: bold 0.75em/1 "Kyrial Sans Pro", sans-serif;
     }
+
+    &--compact &__section--description:first-of-type {
+        padding: 30px 20px 24px;
+
+        @media (max-width: 850px) { 
+            padding: 6px;
+        }
+    }
+
+    &--compact &__section--description:last-of-type {
+        padding: 40px 40px 45px 30px;
+
+        @media (max-width: 850px) { 
+            padding: 6px;
+        }
+    }
 }
 
 .speciality-section {
-    @include backgroundPlacement("./img/section-key-image.png");
+    @include background-placement("./img/section-key-image.png");
 
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
     height: 38vw;
-    color: $mainWhite;
+    color: $main-white;
 }
 
 .section__heading {
@@ -404,8 +404,8 @@ p {
     align-items: center;
     padding-top: 8vw;
     padding-bottom: 3.5vw;
-    background-color: $tertiaryDark;
-    color: $mainWhite;
+    background-color: $tertiary-dark;
+    color: $main-white;
 
     .section__heading {
         margin-bottom: 18px;
@@ -476,7 +476,7 @@ p {
     flex-direction: column;
     align-items: center;
     padding: 7vw 0 3.3vw;
-    background-color: $mainGray;
+    background-color: $main-gray;
     color: $black;
 
     .section__heading {
@@ -504,7 +504,7 @@ p {
 
             &__description {
                 max-width: 19.5vw;
-                color: $mainDark;
+                color: $main-dark;
             }
 
             &__heading {

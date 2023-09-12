@@ -124,13 +124,13 @@
                 }
     
                 &--top-right {
-                    $paddingLeft: 100px;
+                    $padding-left: 100px;
     
                     display: inline-flex;
                     gap: mixins.obtain-viewport-width(7px);
-                    width: calc(100% - mixins.obtain-viewport-width($top-region-width + $top-region-padding-left + $paddingLeft));
+                    width: calc(100% - mixins.obtain-viewport-width($top-region-width + $top-region-padding-left + $padding-left));
                     padding-top: mixins.obtain-viewport-width($top-region-padding-top);
-                    padding-left: mixins.obtain-viewport-width($paddingLeft);
+                    padding-left: mixins.obtain-viewport-width($padding-left);
                     background: linear-gradient(to bottom, #edddbf, #e4d4b8);
                     color: #827263;
     

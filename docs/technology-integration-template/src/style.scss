@@ -1,11 +1,11 @@
 @use "sass:math";
 
-$primaryWhite: #fdf9fb;
-$secondaryWhite: rgba($primaryWhite, 0.8);
-$primaryOrange: #fc633a;
-$primaryDark: #1a1a1a;
-$secondaryDark: #787878;
-$backgroundSecondary: #f0f4fd;
+$primary-white: #fdf9fb;
+$secondary-white: rgba($primary-white, 0.8);
+$primary-orange: #fc633a;
+$primary-dark: #1a1a1a;
+$secondary-dark: #787878;
+$background-secondary: #f0f4fd;
 
 @font-face {
     font-family: Quodlibet;
@@ -38,7 +38,7 @@ $backgroundSecondary: #f0f4fd;
     font-display: swap;
 }
 
-@function getViewportWidth($targetWidth, $baseWidth: 1300px) {
+@function get-viewport-width($targetWidth, $baseWidth: 1300px) {
     @if  $targetWidth >= $baseWidth {
         @error "Target width should be less than base width";
     }
@@ -46,7 +46,7 @@ $backgroundSecondary: #f0f4fd;
     @return math.div($targetWidth * 100vw, $baseWidth);
 }
 
-@mixin place-backgroundBehind {
+@mixin place-background-behind {
     position: absolute;
     z-index: -1;
     pointer-events: none;
@@ -56,40 +56,37 @@ $backgroundSecondary: #f0f4fd;
     &-navigation {
         display: flex;
         align-items: center;
-        gap: getviewportwidth(30px);
-        width: getviewportwidth(950px);
+        gap: get-viewport-width(30px);
+        width: get-viewport-width(950px);
 
         &__logo {
             flex-grow: 1;
-            margin-left: getviewportwidth(12px);
+            margin-left: get-viewport-width(12px);
             font-weight: 500;
-            font-size: getviewportwidth(26px);
+            font-size: get-viewport-width(26px);
             letter-spacing: 1px;
             text-transform: uppercase;
-            color: $primaryWhite;
+            color: $primary-white;
         }
 
         &__link {
-            font-size: getviewportwidth(14px);
+            font-size: get-viewport-width(14px);
             text-decoration: none;
-            color: $secondaryWhite;
+            color: $secondary-white;
         }
     }
 }
 
 body {
     margin: 0;
-    border-top: #f9ba70 solid getviewportwidth(6px);
+    border-top: #f9ba70 solid get-viewport-width(6px);
     padding: 0;
     font-family: Quodlibet, sans-serif;
+    background-color: #f3f3f3;
 
     & > svg {
         position: absolute;
     }
-}
-
-body {
-    background-color: #f3f3f3;
 }
 
 button {
@@ -97,13 +94,13 @@ button {
 }
 
 .button {
-    border: getviewportwidth(2px) solid $secondaryWhite;
-    border-radius: getviewportwidth(32px);
-    padding: getviewportwidth(8px) getviewportwidth(18px);
-    font-size: getviewportwidth(14px);
+    border: get-viewport-width(2px) solid $secondary-white;
+    border-radius: get-viewport-width(32px);
+    padding: get-viewport-width(8px) get-viewport-width(18px);
+    font-size: get-viewport-width(14px);
     line-height: 1.3;
     background-color: transparent;
-    color: $secondaryWhite;
+    color: $secondary-white;
 }
 
 .header {
@@ -111,80 +108,80 @@ button {
 
     position: relative;
     width: 100%;
-    height: getviewportwidth(830px);
-    padding-top: getviewportwidth(18px);
+    height: get-viewport-width(830px);
+    padding-top: get-viewport-width(18px);
     clip-path: url("#headerCurve");
-    background-color: $primaryOrange;
-    color: $primaryWhite;
+    background-color: $primary-orange;
+    color: $primary-white;
     overflow: hidden;
 
     & > :not(.button ~ *) {
-        margin-left: getviewportwidth(180px);
+        margin-left: get-viewport-width(180px);
     }
 
     &__subheading {
         font-weight: 300;
-        font-size: getviewportwidth(15px);
-        margin: 0 0 getviewportwidth(20px) 0;
-        color: $secondaryWhite;
+        font-size: get-viewport-width(15px);
+        margin: 0 0 get-viewport-width(20px) 0;
+        color: $secondary-white;
 
         &:first-of-type {
-            margin-top: getviewportwidth(265px);
+            margin-top: get-viewport-width(265px);
         }
     }
 
     &__heading {
         font-weight: 400;
-        font-size: getviewportwidth(32px);
-        font-family: "Leto Sans";
-        margin: 0 0 getviewportwidth(14px) 0;
+        font-size: get-viewport-width(32px);
+        font-family: "Leto Sans", sans-serif;
+        margin: 0 0 get-viewport-width(14px) 0;
     }
 
     &__description {
-        max-width: getviewportwidth(360px);
-        margin: 0 0 getviewportwidth(40px) 0;
-        font-size: getviewportwidth(16px);
+        max-width: get-viewport-width(360px);
+        margin: 0 0 get-viewport-width(40px) 0;
+        font-size: get-viewport-width(16px);
         font-weight: 300;
-        color: $secondaryWhite;
+        color: $secondary-white;
     }
 
     &__image {
-        @include place-backgroundBehind;
+        @include place-background-behind;
 
-        top: getviewportwidth(80px);
-        left: getviewportwidth(170px);
-        width: 100vw - getviewportwidth(170px);
-        height: getviewportwidth(637px);
+        top: get-viewport-width(80px);
+        left: get-viewport-width(170px);
+        width: 100vw - get-viewport-width(170px);
+        height: get-viewport-width(637px);
     }
 
     &-visuals {
-        @include place-backgroundBehind;
+        @include place-background-behind;
 
         inset: 0;
 
         &__lines {
             position: absolute;
-            width: getviewportwidth(25px);
-            height: getviewportwidth(2px);
-            background-color: $primaryWhite;
+            width: get-viewport-width(25px);
+            height: get-viewport-width(2px);
+            background-color: $primary-white;
 
             &::before {
                 position: absolute;
-                top: getviewportwidth(-12px);
-                left: getviewportwidth(-16px);
-                width: getviewportwidth(85px);
-                height: getviewportwidth(2px);
-                background-color: $primaryWhite;
+                top: get-viewport-width(-12px);
+                left: get-viewport-width(-16px);
+                width: get-viewport-width(85px);
+                height: get-viewport-width(2px);
+                background-color: $primary-white;
                 content: "";
             }
 
             &::after {
                 position: absolute;
-                bottom: getviewportwidth(-12px);
-                left: getviewportwidth(-17.5px);
-                width: getviewportwidth(60px);
-                height: getviewportwidth(2px);
-                background-color: $primaryWhite;
+                bottom: get-viewport-width(-12px);
+                left: get-viewport-width(-17.5px);
+                width: get-viewport-width(60px);
+                height: get-viewport-width(2px);
+                background-color: $primary-white;
                 content: "";
             }
         }
@@ -193,8 +190,8 @@ button {
         $counter: 1;
         @each $left, $top in $placements {
             &__lines:nth-child(#{$counter}) {
-                top: getviewportwidth($top * 1px - 2px);
-                left: getviewportwidth($left * 1px - 2px);
+                top: get-viewport-width($top * 1px - 2px);
+                left: get-viewport-width($left * 1px - 2px);
             }
 
             $counter: $counter + 1;
@@ -215,50 +212,50 @@ button {
         position: absolute;
         right: 0;
         left: 0;
-        bottom: getviewportwidth(76px);
+        bottom: get-viewport-width(76px);
         display: flex;
         justify-content: center;
-        gap: getviewportwidth(10px);
+        gap: get-viewport-width(10px);
         margin: 0;
         padding: 0;
         list-style-type: none;
 
         &__button {
-            width: getviewportwidth(12px);
-            height: getviewportwidth(12px);
+            width: get-viewport-width(12px);
+            height: get-viewport-width(12px);
             box-sizing: border-box;
-            border: 2px solid $secondaryWhite;
+            border: 2px solid $secondary-white;
             border-radius: 50%;
 
             &--active {
-                background-color: $primaryWhite;
+                background-color: $primary-white;
             }
         }
     }
 }
 
 .header-subsection {
-    padding: getviewportwidth(78px) 0 getviewportwidth(110px) 0;
+    padding: get-viewport-width(78px) 0 get-viewport-width(110px) 0;
 
     &-navigation {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        width: getviewportwidth(925px);
+        width: get-viewport-width(925px);
         margin: 0 auto;
 
         &__link {
-            padding: getviewportwidth(21px) getviewportwidth(40px);
-            font-size: getviewportwidth(17px);
+            padding: get-viewport-width(21px) get-viewport-width(40px);
+            font-size: get-viewport-width(17px);
             font-weight: 600;
-            color: $secondaryDark;
+            color: $secondary-dark;
             text-decoration: none;
 
             &--active {
-                padding: getviewportwidth(19px) getviewportwidth(38px);
-                border: $primaryOrange 2px solid;
-                border-radius: getviewportwidth(9px);
-                color: $primaryOrange;
+                padding: get-viewport-width(19px) get-viewport-width(38px);
+                border: $primary-orange 2px solid;
+                border-radius: get-viewport-width(9px);
+                color: $primary-orange;
             }
         }
     }
@@ -270,38 +267,38 @@ button {
 
     &__heading {
         margin: 0 auto;
-        font-size: getviewportwidth(27px);
-        font-family: "Leto Sans";
-        color: $primaryDark;
+        font-size: get-viewport-width(27px);
+        font-family: "Leto Sans", sans-serif;
+        color: $primary-dark;
     }
 
     &__description {
-        font-size: getviewportwidth(16px);
-        margin: getviewportwidth(24px) auto getviewportwidth(36px) auto;
-        max-width: getviewportwidth(500px);
-        color: $secondaryDark;
+        font-size: get-viewport-width(16px);
+        margin: get-viewport-width(24px) auto get-viewport-width(36px) auto;
+        max-width: get-viewport-width(500px);
+        color: $secondary-dark;
         text-align: center;
     }
 
     &-advantage {
         display: inline-flex;
         align-items: center;
-        gap: getviewportwidth(20px);
-        width: getviewportwidth(475px);
-        height: getviewportwidth(280px);
-        padding: 0 getviewportwidth(28px) 0 getviewportwidth(36px);
+        gap: get-viewport-width(20px);
+        width: get-viewport-width(475px);
+        height: get-viewport-width(280px);
+        padding: 0 get-viewport-width(28px) 0 get-viewport-width(36px);
         box-sizing: border-box;
         text-align: left;
-        color: $primaryWhite;
+        color: $primary-white;
 
         &:first-of-type {
-            border-top-left-radius: getviewportwidth(8px);
-            border-bottom-left-radius: getviewportwidth(8px);
+            border-top-left-radius: get-viewport-width(8px);
+            border-bottom-left-radius: get-viewport-width(8px);
         }
 
         &:last-of-type {
-            border-top-right-radius: getviewportwidth(8px);
-            border-bottom-right-radius: getviewportwidth(8px);
+            border-top-right-radius: get-viewport-width(8px);
+            border-bottom-right-radius: get-viewport-width(8px);
         }
 
         &--blue {
@@ -309,31 +306,31 @@ button {
         }
 
         &--orange {
-            background-color: $primaryOrange;
+            background-color: $primary-orange;
         }
 
         &__image {
-            width: getviewportwidth(180px);
-            height: getviewportwidth(180px);
+            width: get-viewport-width(180px);
+            height: get-viewport-width(180px);
         }
 
         &-wrap {
-            color: $secondaryWhite;
+            color: $secondary-white;
         }
 
         &__heading {
             margin: 0;
-            font-size: getviewportwidth(13.5px);
+            font-size: get-viewport-width(13.5px);
             font-weight: 400;
         }
 
         &__description {
-            font-size: getviewportwidth(15px);
-            margin: getviewportwidth(22px) 0 getviewportwidth(24px) 0;
+            font-size: get-viewport-width(15px);
+            margin: get-viewport-width(22px) 0 get-viewport-width(24px) 0;
         }
 
         .button {
-            font-size: getviewportwidth(12px);
+            font-size: get-viewport-width(12px);
         }
     }
 }
@@ -341,14 +338,14 @@ button {
 .insights {
     clip-path: url("#insightsCurve");
     margin-top: 27px;
-    padding: getviewportwidth(148px) 0 getviewportwidth(128px);
-    background-color: $backgroundSecondary;
+    padding: get-viewport-width(148px) 0 get-viewport-width(128px);
+    background-color: $background-secondary;
 
     &-list {
         display: flex;
-        gap: getviewportwidth(45px);
-        width: getviewportwidth(950px);
-        height: getviewportwidth(375px);
+        gap: get-viewport-width(45px);
+        width: get-viewport-width(950px);
+        height: get-viewport-width(375px);
         padding: 0;
         margin: 0 auto;
         list-style-type: none;
@@ -358,10 +355,10 @@ button {
             flex-direction: column;
             align-items: flex-start;
             flex: 1 1 0;
-            height: getviewportwidth(300px);
-            padding: getviewportwidth(32px) getviewportwidth(32px) 0;
+            height: get-viewport-width(300px);
+            padding: get-viewport-width(32px) get-viewport-width(32px) 0;
             box-sizing: border-box;
-            border-radius: getviewportwidth(7px);
+            border-radius: get-viewport-width(7px);
             background-color: #fff;
 
             &__icon-wrap {
@@ -369,43 +366,43 @@ button {
                 align-items: center;
                 justify-content: center;
                 align-self: center;
-                width: getviewportwidth(64px);
-                height: getviewportwidth(64px);
+                width: get-viewport-width(64px);
+                height: get-viewport-width(64px);
                 border-radius: 50%;
             }
 
             &__icon {
-                width: getviewportwidth(50px);
-                height: getviewportwidth(40px);
+                width: get-viewport-width(50px);
+                height: get-viewport-width(40px);
             }
 
             &__heading {
-                margin: getviewportwidth(26px) 0 getviewportwidth(18px) 0;
-                font-size: getviewportwidth(13.5px);
+                margin: get-viewport-width(26px) 0 get-viewport-width(18px) 0;
+                font-size: get-viewport-width(13.5px);
                 font-weight: 400;
                 letter-spacing: -1px;
             }
 
             &__description {
                 margin: 0;
-                font-size: getviewportwidth(16px);
+                font-size: get-viewport-width(16px);
             }
 
             &--active {
                 align-self: flex-end;
-                background-color: $primaryOrange;
-                border: #fd6640 solid getviewportwidth(1.5px);
-                color: $secondaryWhite;
+                background-color: $primary-orange;
+                border: #fd6640 solid get-viewport-width(1.5px);
+                color: $secondary-white;
             }
 
             &--active &__icon-wrap {
-                background-color: $primaryWhite;
-                border: getviewportwidth(2px) $primaryOrange solid;
-                outline: rgba($primaryWhite, 0.33) getviewportwidth(2px) solid;
+                background-color: $primary-white;
+                border: get-viewport-width(2px) $primary-orange solid;
+                outline: rgba($primary-white, 0.33) get-viewport-width(2px) solid;
             }
 
             &--active &__heading {
-                margin-top: calc(getviewportwidth(26px) - getviewportwidth(2px));
+                margin-top: calc(get-viewport-width(26px) - get-viewport-width(2px));
             }
         }
     }
@@ -413,73 +410,73 @@ button {
 
 .contacts {
     position: relative;
-    height: getviewportwidth(500px);
+    height: get-viewport-width(500px);
 
     &::before {
-        @include place-backgroundBehind;
+        @include place-background-behind;
 
         top: -4%;
         left: 0;
         right: 0;
         height: 54%;
-        background-color: $backgroundSecondary;
+        background-color: $background-secondary;
         clip-path: url("#headerCurve");
         content: "";
     }
 
     &__image {
-        @include place-backgroundBehind;
+        @include place-background-behind;
 
         top: 0;
-        right: getviewportwidth(150px);
-        width: getviewportwidth(462px);
-        height: getviewportwidth(462px);
+        right: get-viewport-width(150px);
+        width: get-viewport-width(462px);
+        height: get-viewport-width(462px);
     }
 
     &__heading {
-        font-family: "Leto Sans";
-        font-size: getviewportwidth(30px);
-        margin: 0 0 getviewportwidth(30px) getviewportwidth(200px);
-        color: $primaryDark;
+        font-family: "Leto Sans", sans-serif;
+        font-size: get-viewport-width(30px);
+        margin: 0 0 get-viewport-width(30px) get-viewport-width(200px);
+        color: $primary-dark;
     }
 
     &__description {
-        margin: 0 0 getviewportwidth(66px) getviewportwidth(200px);
-        font-size: getviewportwidth(15px);
-        max-width: getviewportwidth(490px);
-        color: $secondaryDark;
+        margin: 0 0 get-viewport-width(66px) get-viewport-width(200px);
+        font-size: get-viewport-width(15px);
+        max-width: get-viewport-width(490px);
+        color: $secondary-dark;
     }
 
     &-form {
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
-        row-gap: getviewportwidth(8px);
-        width: getviewportwidth(480px);
-        padding: getviewportwidth(22px) getviewportwidth(50px) getviewportwidth(28px) getviewportwidth(50px);
-        margin: 0 0 0 getviewportwidth(175px);
+        row-gap: get-viewport-width(8px);
+        width: get-viewport-width(480px);
+        padding: get-viewport-width(22px) get-viewport-width(50px) get-viewport-width(28px) get-viewport-width(50px);
+        margin: 0 0 0 get-viewport-width(175px);
         box-sizing: border-box;
         background-color: #fff;
-        border-radius: getviewportwidth(7px);
+        border-radius: get-viewport-width(7px);
 
         &__label:first-child {
-            flex: 1 0 getviewportwidth(380px);
+            flex: 1 0 get-viewport-width(380px);
         }
 
         &__label:not(:first-child) {
-            width: getviewportwidth(180px);
+            width: get-viewport-width(180px);
         }
 
         &__text {
             display: block;
             line-height: 2;
-            font-size: getviewportwidth(18px);
+            font-size: get-viewport-width(18px);
             color: #dedede;
         }
 
         &__input {
             width: 100%;
-            height: getviewportwidth(45px);
+            height: get-viewport-width(45px);
             padding: 0;
             border: 1px solid #ebebeb;
             background-color: #e9e9e9;
@@ -487,20 +484,20 @@ button {
         }
 
         &__label:first-child &__input {
-            height: getviewportwidth(60px);
+            height: get-viewport-width(60px);
         }
     }
 }
 
 .partners {
-    padding: getviewportwidth(70px) 0 getviewportwidth(44px) 0;
+    padding: get-viewport-width(70px) 0 get-viewport-width(44px) 0;
     background-color: #f5f6fa;
 
     &-list {
         display: flex;
         justify-content: center;
         list-style-type: none;
-        gap: getviewportwidth(50px);
+        gap: get-viewport-width(50px);
         margin: 0;
         padding: 0;
 
@@ -510,8 +507,8 @@ button {
             justify-content: center;
 
             &__logo {
-                width: getviewportwidth(65px);
-                height: getviewportwidth(28px);
+                width: get-viewport-width(65px);
+                height: get-viewport-width(28px);
             }
         }
     }
@@ -520,8 +517,8 @@ button {
 .footer {
     @include navigation;
 
-    padding: getviewportwidth(40px) 0;
-    background-color: $primaryOrange;
+    padding: get-viewport-width(40px) 0;
+    background-color: $primary-orange;
 
     &-navigation {
         margin: 0 auto;

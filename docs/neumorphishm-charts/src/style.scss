@@ -3,38 +3,35 @@
 
 @namespace svg url('http://www.w3.org/2000/svg');
 
-$firstBlue: #179aea;
-$secondBlue: #01e8f8;
-$transparentBlue: #0f597c;
-$backgroundPrimary: #1d224c;
-$backgroundSecondary: #51398f;
-$backgroundTertiaryRight: #172145;
-$backgroundTertiaryLeft: #272b51;
-$backgroundInnerLeft: #161d4b;
-$backgroundInnerRight: #26204c;
-$contentMain: #75778e;
-$primaryActive: #f6f8f7;
-$firstRed: #ff2c86;
-$secondRed: #ff225e;
-$tertiaryRed: #f8184a;
-$tertiaryGradientRed: #f7286e;
-$transparentRed: #681a56;
-$firstOrange: #ff5108;
-$secondOrange: #ffa21f;
-$transparentOrange: #684937;
-$secondaryRedBorder: #b42052;
-$secondaryBlueBorder: #00d7d0;
-$secondaryOrangeLeft: #fb67c5;
-$secondaryOrangeRight: #ffa18b;
-$secondaryBlueLeft: #7e55d7;
-$secondaryBlueRight: #04d1f0;
-$widgetBackgroundLeft: #080a31;
-$widgetBackgroundRight: #222955;
-$pieChartGradientRed: #771d51;
-$pieChatGradientViolet: #2b2d91;
-$violetPrimary: #464aff;
-$violetSecondary: #a234eb;
-$backgroundViolet: #574aa6;
+$first-blue: #179aea;
+$second-blue: #01e8f8;
+$transparent-blue: #0f597c;
+$background-primary: #1d224c;
+$background-tertiary-right: #172145;
+$background-tertiary-left: #272b51;
+$background-inner-left: #161d4b;
+$background-inner-right: #26204c;
+$content-main: #75778e;
+$primary-active: #f6f8f7;
+$first-red: #ff2c86;
+$second-red: #ff225e;
+$tertiary-red: #f8184a;
+$tertiary-gradient-red: #f7286e;
+$transparent-red: #681a56;
+$first-orange: #ff5108;
+$second-orange: #ffa21f;
+$transparent-orange: #684937;
+$secondary-blue-border: #00d7d0;
+$secondary-orange-left: #fb67c5;
+$secondary-orange-right: #ffa18b;
+$secondary-blue-left: #7e55d7;
+$secondary-blue-right: #04d1f0;
+$widget-background-left: #080a31;
+$widget-background-right: #222955;
+$pie-chart-gradient-red: #771d51;
+$pie-chart-gradient-violet: #2b2d91;
+$violet-primary: #464aff;
+$violet-secondary: #a234eb;
 
 @font-face {
     font-family: Icons;
@@ -49,7 +46,7 @@ $backgroundViolet: #574aa6;
 }
 
 %font-icon {
-    font-family: Icons !important;
+    font-family: Icons, system-ui !important;
     speak: never;
     font-style: normal;
     font-weight: normal;
@@ -120,21 +117,21 @@ $backgroundViolet: #574aa6;
     content: "\2699";
 }
 
-@function mapToRange($value, $currentMin, $currentMax, $newMin, $newMax) {
+@function map-to-range($value, $currentMin, $currentMax, $newMin, $newMax) {
     @return ($value - $currentMin) * math.div($newMax - $newMin, $currentMax - $currentMin);
 }
 
-@mixin centralizeAbsolute($defaultTransform: true) {
+@mixin centralize-absolute($defaultTransform: true) {
     position: absolute;
     top: 50%;
     left: 50%;
 
-    @if  $defaultTransform {
+    @if $defaultTransform {
         transform: translate(-50%, -50%);
     }
 }
 
-@mixin hideText {
+@mixin hide-text {
     text-indent: 100%;
     white-space: nowrap;
     overflow: hidden;
@@ -143,26 +140,26 @@ $backgroundViolet: #574aa6;
 html {
     font-size: 16px;
 
-    $startValue: 1050px;
+    $start-value: 1050px;
     $counter: 16px;
-    @while  $startValue < 1800px {
-        @media (min-width: $startValue) {
+    @while  $start-value < 1800px {
+        @media (min-width: $start-value) {
             font-size: $counter;
         }
 
         $counter: $counter + 1px;
-        $startValue: $startValue + 50px;
+        $start-value: $start-value + 50px;
     }
 
-    $startValue: 800px;
+    $start-value: 800px;
     $counter: 16px;
-    @while  $startValue > 400px {
-        @media (max-width: $startValue) {
+    @while $start-value > 400px {
+        @media (max-width: $start-value) {
             font-size: $counter;
         }
 
         $counter: $counter - 0.25px;
-        $startValue: $startValue - 50px;
+        $start-value: $start-value - 50px;
     }
 
     @media (max-width: 370px) {
@@ -177,8 +174,8 @@ body {
     margin: 0;
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(to right, $firstBlue, $secondBlue);
-    font-family: Arial;
+    background: linear-gradient(to right, $first-blue, $second-blue);
+    font-family: Arial, sans-serif;
 }
 
 .application {
@@ -188,7 +185,7 @@ body {
     height: 92.5vh;
     padding-top: 16px;
     overflow: hidden;
-    background: linear-gradient(to bottom right, $backgroundPrimary, $backgroundInnerRight);
+    background: linear-gradient(to bottom right, $background-primary, $background-inner-right);
     border-radius: 16px;
     box-shadow: 19px 19px 38px rgba(#222, 0.4),
         -19px -19px 38px rgba(#222, 0.35);
@@ -199,13 +196,13 @@ body {
 }
 
 .header {
-    @mixin headerButton {
+    @mixin header-button {
         position: relative;
         width: 1.55rem;
         height: 1.55rem;
         border-radius: 50%;
         box-shadow: 3px 2px 5px rgb(0 0 0 / 85%),
-             -2px -2px 5px rgba($primaryActive, 0.2);
+             -2px -2px 5px rgba($primary-active, 0.2);
     }
 
     display: flex;
@@ -222,27 +219,27 @@ body {
         gap: 0.8rem;
 
         &__image {
-            @include headerButton;
+            @include header-button;
 
-            background: linear-gradient(to bottom right, $firstRed, $secondRed);
+            background: linear-gradient(to bottom right, $first-red, $second-red);
 
             &::before {
-                @include centralizeAbsolute;
+                @include centralize-absolute;
 
                 font-size: 0.875rem;
                 font-weight: 600;
-                color: $primaryActive;
+                color: $primary-active;
                 content: "L";
             }
         }
 
         &__heading {
             padding: 0.31rem 0.4rem 0.22rem 0.5rem;
-            border: rgba($primaryActive, 0.25) 2px solid;
+            border: rgba($primary-active, 0.25) 2px solid;
             border-radius: 0.15rem;
             margin: 0;
             font: 700 0.7rem/1.1 Arial, sans-serif;
-            color: $primaryActive;
+            color: $primary-active;
             text-transform: uppercase;
         }
     }
@@ -255,7 +252,7 @@ body {
         &__link {
             padding-bottom: 0.18rem;
             font-size: 0.58rem;
-            color: $contentMain;
+            color: $content-main;
             text-decoration: none;
             letter-spacing: 0.4px;
 
@@ -263,8 +260,8 @@ body {
                 padding-top: calc(0.18rem - 1.75px);
                 border-bottom-width: 1.75px;
                 border-bottom-style: solid;
-                border-image: linear-gradient(to right, $firstBlue 25%, $secondBlue) 10;
-                color: $primaryActive;
+                border-image: linear-gradient(to right, $first-blue 25%, $second-blue) 10;
+                color: $primary-active;
             }
         }
     }
@@ -275,7 +272,7 @@ body {
         justify-content: flex-end;
         gap: 2.1818vw;
         flex-grow: 1;
-        color: $primaryActive;
+        color: $primary-active;
         
         &__search-icon {
             @extend %icon-search;
@@ -297,27 +294,27 @@ body {
                 border-radius: 50%;
                 font-size: 0.6rem;
                 line-height: 0.7;
-                background: linear-gradient(to bottom right, $firstRed, $secondRed);
+                background: linear-gradient(to bottom right, $first-red, $second-red);
                 content: attr(data-notifications);
             }
         }
 
         &__avatar {
-            @include headerButton;
+            @include header-button;
 
             position: relative;
             margin-right: 1.125rem;
-            background: linear-gradient(to bottom right, $violetPrimary, $violetSecondary);
+            background: linear-gradient(to bottom right, $violet-primary, $violet-secondary);
             overflow: hidden;
 
             svg|svg {
-                @include centralizeAbsolute($defaultTransform: false);
+                @include centralize-absolute($defaultTransform: false);
 
                 transform: translate(-55%, -36%) scale(1.6);
             }
 
             svg|g.head {
-                fill: $primaryActive;
+                fill: $primary-active;
             }
 
             #person-gradient {
@@ -336,7 +333,7 @@ body {
             height: 1.5px;
             margin-left: 0.5rem;
             margin-right: 1.15rem;
-            background-color: $primaryActive;
+            background-color: $primary-active;
             cursor: pointer;
 
             &::before {
@@ -346,7 +343,7 @@ body {
                 transform: translateY(-300%);
                 width: 1.5rem;
                 height: 1.5px;
-                background-color: $primaryActive;
+                background-color: $primary-active;
                 cursor: pointer;
                 content: "";
             }
@@ -358,7 +355,7 @@ body {
                 transform: translateY(300%);
                 width: 1.5rem;
                 height: 1.5px;
-                background-color: $primaryActive;
+                background-color: $primary-active;
                 cursor: pointer;
                 content: "";
             }
@@ -371,7 +368,7 @@ body {
     padding-left: 2.5vw;
     padding-right: 2.5vw;
     font-size: 0.6rem;
-    background: linear-gradient(to bottom, $backgroundPrimary, $backgroundTertiaryRight 3.5%);
+    background: linear-gradient(to bottom, $background-primary, $background-tertiary-right 3.5%);
 
     @media (max-width: 800px) {
        flex: 1 0 100%;
@@ -379,7 +376,7 @@ body {
 
     &__heading {
         margin: 2.15vw 0 0;
-        color: $contentMain;
+        color: $content-main;
         font-size: inherit;
         font-weight: 700;
         letter-spacing: -0.5px;
@@ -392,8 +389,8 @@ body {
         &__link {
             display: block;
             padding: 2vh 0;
-            border-bottom: 1.5px solid $contentMain;
-            color: $primaryActive;
+            border-bottom: 1.5px solid $content-main;
+            color: $primary-active;
             text-decoration: none;
             line-height: 1.25;
             font-size: 0.9em;
@@ -401,7 +398,7 @@ body {
             &::before {
                 margin-right: 0.7rem;
                 font-size: 0.825rem;
-                color: $contentMain;
+                color: $content-main;
             }
 
             &--home {
@@ -432,10 +429,10 @@ body {
         aspect-ratio: 1/1;
         margin: 5vh 0 0;
         border-radius: 1.05vh;
-        background: linear-gradient(to bottom right, $widgetBackgroundLeft, $widgetBackgroundRight 66%);
+        background: linear-gradient(to bottom right, $widget-background-left, $widget-background-right 66%);
         box-shadow: 0.5pc 0.5pc 0.75pc #171b39,
              -0.1pc -0.1pc 0.5pc #2d3771,
-             inset 0 0 0.2pc $widgetBackgroundLeft, inset 0 0 0.2pc $widgetBackgroundLeft, inset 0 0 0.2pc $widgetBackgroundLeft;
+             inset 0 0 0.2pc $widget-background-left, inset 0 0 0.2pc $widget-background-left, inset 0 0 0.2pc $widget-background-left;
 
         &-wrap {
             width: 100%;
@@ -452,25 +449,25 @@ body {
             font-size: 0.8em;
             font-weight: bold;
             letter-spacing: -0.5px;
-            color: $contentMain;
+            color: $content-main;
         }
 
         &__circle {
-            @include centralizeAbsolute($defaultTransform: false);
+            @include centralize-absolute($defaultTransform: false);
 
             transform: translate(-50%, -60%);
             width: calc(53% + 1px);
             height: 53%;
             box-sizing: border-box;
             padding: 0.5px;
-            border: 2px dotted rgba($contentMain, 0.6);
+            border: 2px dotted rgba($content-main, 0.6);
             border-radius: 50%;
-            background: linear-gradient(275deg, $widgetBackgroundLeft 15%, $widgetBackgroundRight);
+            background: linear-gradient(275deg, $widget-background-left 15%, $widget-background-right);
             background-clip: content-box;
             background-position: center;
             box-shadow: 0.15pc 0.15pc 1.625pc #0e1022;
             text-align: center;
-            color: $primaryActive;
+            color: $primary-active;
 
             &::before {
                 position: absolute;
@@ -480,7 +477,7 @@ body {
                 z-index: 2;
                 width: 12.5%;
                 height: 12.5%;
-                background: linear-gradient(to right, $firstRed, $secondRed);
+                background: linear-gradient(to right, $first-red, $second-red);
                 clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
                 content: "";
             }
@@ -509,18 +506,18 @@ body {
             font: 700 0.425rem/0 Arial, sans-serif;
             text-align: center;
             text-transform: uppercase;
-            color: $primaryActive;
+            color: $primary-active;
         }
 
         &__upper-indicator {
-            @include centralizeAbsolute($defaultTransform: false);
+            @include centralize-absolute($defaultTransform: false);
 
             transform: translate(-50%, -60%);
             z-index: 1;
             width: 64%;
             height: 63%;
             border-radius: 50%;
-            background: linear-gradient(to right, $firstRed, $secondRed);
+            background: linear-gradient(to right, $first-red, $second-red);
             mask-image: radial-gradient(circle at center, transparent 84.1269%, white 85.1269%);
             clip-path: polygon(0 0, 100% 0, 100% 25%, 87% 33%, 13% 33%, 0% 25%);
         }
@@ -536,7 +533,7 @@ body {
     flex: 1 0 0;
     padding: 4vh 0 0 4vw;
     border-top-left-radius: 12px;
-    background: linear-gradient(to bottom right, $backgroundInnerLeft, $backgroundInnerRight);
+    background: linear-gradient(to bottom right, $background-inner-left, $background-inner-right);
     overflow: hidden;
 
     @media (max-width: 570px) {
@@ -581,11 +578,11 @@ body {
     align-items: center;
     height: 56.5%;
     padding: 0;
-    border: 1px solid rgba($contentMain, 0.1);
+    border: 1px solid rgba($content-main, 0.1);
     border-radius: 0.65rem;
     margin: 0;
     list-style-type: none;
-    background: linear-gradient(to right, $backgroundTertiaryLeft, $backgroundTertiaryRight);
+    background: linear-gradient(to right, $background-tertiary-left, $background-tertiary-right);
 
     &::before {
         position: absolute;
@@ -616,13 +613,13 @@ body {
         padding: 0 0.76vw 0 1.3vw;
 
         &:not(:last-child) {
-            border-right: 1px solid $contentMain;
+            border-right: 1px solid $content-main;
         }
         
         &__icon {
             grid-row: span 2;
             align-self: center;
-            color: $contentMain;
+            color: $content-main;
             font-size: 150%;
 
             &::before {
@@ -645,13 +642,13 @@ body {
         &__heading {
             align-self: end;
             margin: 0;
-            color: $primaryActive;
+            color: $primary-active;
             font-size: 0.6rem;
         }
 
         &__description {
             margin: 0;
-            color: $contentMain;
+            color: $content-main;
             font-size: 0.5rem;
         }
 
@@ -659,23 +656,17 @@ body {
             display: flex;
             justify-content: center;
             align-items: center;
-            border: 2px solid $secondaryBlueBorder;
+            border: 2px solid $secondary-blue-border;
             border-radius: 0.5rem;
             font-size: 0.45rem;
             letter-spacing: -0.5px;
-            background: linear-gradient(to right, $firstBlue, $secondBlue);
+            background: linear-gradient(to right, $first-blue, $second-blue);
         }
     }
 }
 
 .pie-chart {
-    @keyframes pieChartFill {
-        from {
-            transform: rotate(0deg);
-        }
-    }
-
-    @keyframes pieChartFill {
+    @keyframes pie-chart-fill {
         from {
             transform: rotate(0deg);
         }
@@ -708,11 +699,11 @@ body {
         }
 
         &--red::after {
-            background: linear-gradient(to right, $tertiaryGradientRed, $tertiaryRed) border-box; 
+            background: linear-gradient(to right, $tertiary-gradient-red, $tertiary-red) border-box; 
         }
 
         &--purple::after {
-            background: linear-gradient(to right, $violetPrimary, $violetSecondary) border-box; 
+            background: linear-gradient(to right, $violet-primary, $violet-secondary) border-box; 
         }
     }
 
@@ -730,11 +721,11 @@ body {
     clip-path: polygon(0 0, 100% 0, 100% 99%, 0 99%);
 
     &-wrap--red & {
-        background: linear-gradient(to right, $tertiaryGradientRed, $tertiaryRed) border-box; 
+        background: linear-gradient(to right, $tertiary-gradient-red, $tertiary-red) border-box; 
     }
 
     &-wrap--purple & {
-        background: linear-gradient(to right, $violetPrimary, $violetSecondary 33%) border-box; 
+        background: linear-gradient(to right, $violet-primary, $violet-secondary 33%) border-box; 
     }
 
     &__half-circle {
@@ -749,20 +740,20 @@ body {
         border-top-right-radius: 100vh;
         border: 1.4vw solid transparent;
         border-bottom: 0;
+        animation: 1.5s ease-in-out pie-chart-fill;
     }
 
     &-wrap--red &__half-circle {
-        background: linear-gradient(to right, $pieChartGradientRed 33%, $secondRed) border-box; 
+        background: linear-gradient(to right, $pie-chart-gradient-red 33%, $second-red) border-box; 
     }
 
     &-wrap--purple &__half-circle {
-        background: linear-gradient(to right, $pieChatGradientViolet 33%, $violetSecondary) border-box; 
+        background: linear-gradient(to right, $pie-chart-gradient-violet 33%, $violet-secondary) border-box; 
     }
 
     @for $i from 0 through 100 {
         &__half-circle[data-progress="#{$i}"] {
-            animation: 1.5s ease-in-out pieChartFill;
-            transform: rotate(#{mapToRange($value: $i, $currentMin: 0, $currentMax: 100, $newMin: 0, $newMax: 180)}deg);
+            transform: rotate(#{map-to-range($value: $i, $currentMin: 0, $currentMax: 100, $newMin: 0, $newMax: 180)}deg);
         }
     }
 
@@ -773,7 +764,7 @@ body {
         transform: translate(calc(-50% + 0.5px), 150%);
         margin: 0;
         font-size: 1.48vw;
-        color: $primaryActive;
+        color: $primary-active;
 
         @media (max-width: 800px) {
             transform: translate(calc(-100% + 0.5px), 150%);
@@ -783,9 +774,9 @@ body {
     &__description {
         margin-top: 2.15vw;
         font-size: 0.87vw;
-        color: $primaryActive;
+        color: $primary-active;
 
-        @media (height <= 685px) {
+        @media (max-height: 685px) {
             margin-top: 1vw;
         }
     }
@@ -807,7 +798,7 @@ body {
     width: 85%;
     height: 85%;
     border-radius: 0.5rem;
-    background: linear-gradient(to bottom right, $backgroundTertiaryLeft, $backgroundTertiaryRight);
+    background: linear-gradient(to bottom right, $background-tertiary-left, $background-tertiary-right);
     box-shadow:  4px 4px 9px #17192f,
              -4px -4px 9px #373d73;
 
@@ -826,7 +817,7 @@ body {
             margin: 0;
 
             &:not(:last-child) {
-                border-bottom: 1.5px solid rgba($contentMain, 0.5);
+                border-bottom: 1.5px solid rgba($content-main, 0.5);
             }
         }
 
@@ -842,7 +833,7 @@ body {
             width: 1.375rem;
             height: 0.7rem;
             border-radius: 0.6rem;
-            background: linear-gradient(to right,  $firstBlue, $secondBlue, $widgetBackgroundLeft, $backgroundInnerLeft);
+            background: linear-gradient(to right,  $first-blue, $second-blue, $widget-background-left, $background-inner-left);
             background-size: 300% 100%;
             background-position-x: 100%;
             box-shadow:  2px 2px 4px #101222,
@@ -859,7 +850,7 @@ body {
                 width: 0.45rem;
                 height: 0.45rem;
                 border-radius: 50%;
-                background-color: $primaryActive;
+                background-color: $primary-active;
                 content: "";
                 cursor: pointer;
                 transition: all 0.3s ease-in;
@@ -881,7 +872,7 @@ body {
 
             &::before {
                 filter: brightness(1.1);
-                background-color: $contentMain;
+                background-color: $content-main;
             }
         }
 
@@ -890,7 +881,7 @@ body {
             align-self: end;
             font-size: 0.5rem;
             text-transform: uppercase;
-            color: $primaryActive;
+            color: $primary-active;
             white-space: nowrap;
 
             @media (max-width: 570px) {
@@ -903,7 +894,7 @@ body {
             margin: 0;
             align-self: end;
             font-size: 0.49rem;
-            color: $contentMain;
+            color: $content-main;
 
             @media (max-width: 570px) {
                 font-size: 0.35rem;
@@ -914,13 +905,7 @@ body {
 }
 
 .histogram {
-    @keyframes histogramFill {
-        from {
-            flex-basis: 0;
-        }
-    }
-
-    @keyframes histogramFill {
+    @keyframes histogram-fill {
         from {
             flex-basis: 0;
         }
@@ -938,32 +923,17 @@ body {
     gap: 0.28rem;
     border-spacing: 0;
 
-    &__head > tr {
-        width: 100vh;
-    }
-
-    &:last-child &__heading:last-child {
-        border-right: 1px solid rgba($primaryActive, 0.5);
-        border-top-right-radius: 0.2rem;
-        border-bottom-right-radius: 0.2rem;
-    }
-
-    &:first-child &__heading:first-child {
-        border-top-left-radius: 0.2rem;
-        border-bottom-left-radius: 0.2rem;
-    }
-
     &__heading {
         width: 100vh;
         font-size: 0.4rem;
         padding: 0.4rem 0;
-        color: $primaryActive;
-        border: 1px solid rgba($primaryActive, 0.5);
+        color: $primary-active;
+        border: 1px solid rgba($primary-active, 0.5);
         border-right: 0;
 
         &:last-child {
             width: 50vh;
-            color: $tertiaryRed;
+            color: $tertiary-red;
             font-weight: 700;
             white-space: nowrap;
             margin-right: 0.45rem;
@@ -988,30 +958,30 @@ body {
     &__stat {
         box-shadow: 3px 3px 3px #1f1a3e,
             -1px -1px 4px #2d265a;
-        animation: 1.5s ease-in-out histogramFill;
+        animation: 1.5s ease-in-out histogram-fill;
 
         &--filled#{&}--red {
-            background: linear-gradient(to bottom, $firstRed, $secondRed);
+            background: linear-gradient(to bottom, $first-red, $second-red);
         }
 
         &--filled#{&}--blue {
-            background: linear-gradient(to top, $firstBlue, $secondBlue);
+            background: linear-gradient(to top, $first-blue, $second-blue);
         }
 
         &--filled#{&}--orange {
-            background: linear-gradient(to top, $firstOrange, $secondOrange);
+            background: linear-gradient(to top, $first-orange, $second-orange);
         }
 
         &--transparent#{&}--red {
-            background-color: $transparentRed;
+            background-color: $transparent-red;
         }
 
         &--transparent#{&}--blue {
-            background-color: $transparentBlue;
+            background-color: $transparent-blue;
         }
 
         &--transparent#{&}--orange {
-            background-color: $transparentOrange;
+            background-color: $transparent-orange;
         }
 
         @for $i from 1 through 100 {
@@ -1019,6 +989,21 @@ body {
                 flex-basis: string.unquote("#{$i}%");
             }
         }
+    }
+
+    &__head > tr {
+        width: 100vh;
+    }
+
+    &:last-child &__heading:last-child {
+        border-right: 1px solid rgba($primary-active, 0.5);
+        border-top-right-radius: 0.2rem;
+        border-bottom-right-radius: 0.2rem;
+    }
+
+    &:first-child &__heading:first-child {
+        border-top-left-radius: 0.2rem;
+        border-bottom-left-radius: 0.2rem;
     }
 }
 
@@ -1031,20 +1016,14 @@ body {
     grid-area: progress-bars;
     align-self: center;
 
-    @media (height <= 685px) {
+    @media (max-height: 685px) {
         grid-row-start: area-charts;
         grid-column: area-charts / 1;
     }
 }
 
 .progress-bar {
-    @keyframes progressbarFill {
-        from {
-            width: 0;
-        }
-    }
-
-    @keyframes progressbarFill {
+    @keyframes progressbar-fill {
         from {
             width: 0;
         }
@@ -1069,20 +1048,20 @@ body {
             height: 80%;
             border-radius: 0.5rem;
             content: "";
-            animation: 1.5s cubic-bezier(0.7, 0.4, 0.165, 1) progressbarFill;
+            animation: 1.5s cubic-bezier(0.7, 0.4, 0.165, 1) progressbar-fill;
         }
 
         &--blue::before {
-            background: linear-gradient(to right, $secondaryBlueLeft, $secondaryBlueRight);
+            background: linear-gradient(to right, $secondary-blue-left, $secondary-blue-right);
         }
 
         &--orange::before {
-            background: linear-gradient(to right, $secondaryOrangeLeft, $secondaryOrangeRight);
+            background: linear-gradient(to right, $secondary-orange-left, $secondary-orange-right);
         }
 
         @for $i from 0 through 116 {
             &[data-value="#{$i}"]::before {
-                width: string.unquote("#{mapToRange($i, 0, 116, 0, 100)}%");
+                width: string.unquote("#{map-to-range($i, 0, 116, 0, 100)}%");
             }
         }
     }
@@ -1092,7 +1071,7 @@ body {
     font-size: 0.55rem;
     font-weight: bold;
     text-align: right;
-    color: $primaryActive;
+    color: $primary-active;
 }
 
 .area-charts-section {
@@ -1104,7 +1083,7 @@ body {
     padding-top: 2.2rem;
     height: 70%;
 
-    @media (height <= 685px) {
+    @media (max-height: 685px) {
         padding-top: 0;
         grid-row: progress-bars / line-chart;
     }
@@ -1114,17 +1093,7 @@ body {
     }
 }
 
-@keyframes areaChartSlideIn {
-    from {
-        clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
-    }
-
-    to {
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-    }
-}
-
-@keyframes areaChartSlideIn {
+@keyframes area-chart-slide-in {
     from {
         clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
     }
@@ -1141,7 +1110,7 @@ body {
         position: relative;
         padding: 0.45rem 0;
         margin: 0;
-        background: linear-gradient(to right, $backgroundTertiaryLeft, $backgroundTertiaryRight);
+        background: linear-gradient(to right, $background-tertiary-left, $background-tertiary-right);
         border-radius: 0.625rem;
         box-shadow:  0.215pc 0.215pc 0.7pc #0a0e23,
             -0.3pc -0.3pc 0.7pc #212545;
@@ -1154,10 +1123,10 @@ body {
     margin: 0;
     padding: 0;
     list-style-type: none;
-    animation: 1.5s cubic-bezier(1, 0.1, 0.165, 1) areaChartSlideIn;
+    animation: 1.5s cubic-bezier(1, 0.1, 0.165, 1) area-chart-slide-in;
 
     &-section {
-        @include hideText;
+        @include hide-text;
 
         position: relative;
         flex: var(--length) 1 0;
@@ -1191,18 +1160,18 @@ body {
     }
 
     &--blue &-section {
-        background: linear-gradient(to bottom, $firstBlue, rgba($secondBlue, 0.1));
+        background: linear-gradient(to bottom, $first-blue, rgba($second-blue, 0.1));
 
         &::before {
-            background-color: rgba($secondBlue, 0.5);
+            background-color: rgba($second-blue, 0.5);
         }
     }
 
     &--red &-section {
-        background: linear-gradient(to bottom, $firstRed, rgba($secondRed, 0.1));
+        background: linear-gradient(to bottom, $first-red, rgba($second-red, 0.1));
 
         &::before {
-            background-color: rgba($secondRed, 0.5);
+            background-color: rgba($second-red, 0.5);
         }
     }
 
@@ -1215,14 +1184,14 @@ body {
     &__heading {
         margin: 0;
         font-size: 0.5rem;
-        color: $primaryActive;
+        color: $primary-active;
     }
 
     &__description {
         margin: 2px 0 0;
         font-size: 0.4rem;
         font-weight: bold;
-        color: $contentMain;
+        color: $content-main;
     }
 }
 
@@ -1246,7 +1215,7 @@ body {
         right: 0.25rem;
         font-size: 0.45rem;
         text-align: right;
-        color: $contentMain;
+        color: $content-main;
     }
 
     &__head {
@@ -1267,7 +1236,7 @@ body {
         position: relative;
         flex: 0 1 0;
         font: 400 0.3rem/1.54vw Arial, sans-serif;
-        color: $primaryActive;
+        color: $primary-active;
 
         &::before {
             position: absolute;
@@ -1275,7 +1244,7 @@ body {
             bottom: 0.5rem;
             width: 866%;
             height: 0.5px;
-            background-color: rgba($primaryActive, 0.5);
+            background-color: rgba($primary-active, 0.5);
             content: "";
         }
     }
@@ -1286,7 +1255,7 @@ body {
     width: 90%;
     height: 9vw;
     margin-left: auto;
-    animation: 1.5s cubic-bezier(1, 0.1, 0.165, 1) areaChartSlideIn;
+    animation: 1.5s cubic-bezier(1, 0.1, 0.165, 1) area-chart-slide-in;
 
     &::before {
         position: absolute;
@@ -1297,7 +1266,7 @@ body {
         z-index: 1;
         width: 1px;
         height: 105%;
-        border-right: 0.1px dashed $primaryActive;
+        border-right: 0.1px dashed $primary-active;
         opacity: 0.4;
         content: "";
     }
@@ -1321,12 +1290,8 @@ body {
         flex-grow: var(--length);
     }
 
-    &__line:last-child &__section {
-        border-radius: 0;
-    }
-
     &__section {
-        @include hideText;
+        @include hide-text;
 
         position: absolute;
         inset: 0;
@@ -1342,13 +1307,17 @@ body {
         background-attachment: fixed;
 
         &:first-child {
-            background-image: linear-gradient(to top, rgba($transparentRed, 0.5), $secondRed 27.5%);
+            background-image: linear-gradient(to top, rgba($transparent-red, 0.5), $second-red 27.5%);
         }
 
         &:last-child {
-            background-image: linear-gradient(to bottom, $secondBlue 80%, $violetSecondary 90%);
+            background-image: linear-gradient(to bottom, $second-blue 80%, $violet-secondary 90%);
             opacity: 0.8;
         }
+    }
+
+    &__line:last-child &__section {
+        border-radius: 0;
     }
 
     @for $i from 1 through 6 {
@@ -1359,7 +1328,7 @@ body {
 }
 
 .line-chart {
-    @mixin fixedBorder($borderSize) {
+    @mixin fixed-border($borderSize) {
         border-left-color: transparent;
 
         &::before {
@@ -1368,7 +1337,7 @@ body {
             right: 0;
             width: 100%;
             height: $borderSize;
-            border-left: 1.5px dashed rgba($primaryActive, 0.5);
+            border-left: 1.5px dashed rgba($primary-active, 0.5);
             content: "";
         }
     }
@@ -1378,7 +1347,7 @@ body {
         grid-area: line-chart;
         align-self: center;
 
-        @media (height <= 685px) {
+        @media (max-height: 685px) {
             display: grid;
             grid-row-end: area-charts 2;
             grid-column: area-charts / 1;
@@ -1397,7 +1366,7 @@ body {
 
     &__anchor {
         font: 400 0.4rem/2.08vw Arial, sans-serif;
-        color: $primaryActive;
+        color: $primary-active;
     }
 
     &-wrap {
@@ -1412,8 +1381,8 @@ body {
         position: relative;
         width: 100vh;
         height: 2vw;
-        border-left: 1.5px dashed rgba($primaryActive, 0.5);
-        border-bottom: 1.5px solid rgba($primaryActive, 0.25);
+        border-left: 1.5px dashed rgba($primary-active, 0.5);
+        border-bottom: 1.5px solid rgba($primary-active, 0.25);
 
         &:last-child {
             border-bottom: 1.5px solid transparent;
@@ -1432,12 +1401,12 @@ body {
         width: 0.4rem;
         height: 0.4rem;
         border-radius: 50%;
-        background-color: $tertiaryRed;
+        background-color: $tertiary-red;
         content: "";
 
         &--white {
             transform: translate(calc(150% + 0.75px), -100%);
-            background-color: $primaryActive;
+            background-color: $primary-active;
 
         }
 
@@ -1452,7 +1421,7 @@ body {
         top: -125%;
         left: 150%;
         font-size: 10px;
-        color: $primaryActive;
+        color: $primary-active;
     }
 
     &__line:first-child &__cell {
@@ -1475,24 +1444,24 @@ body {
     &__line:nth-child(2) &__cell:nth-child(3),
     &__line:nth-child(2) &__cell:nth-child(7),
     &__line:nth-child(3) &__cell:nth-child(5) {
-        @include fixedBorder(40%);
+        @include fixed-border(40%);
     }
 
     &__line:nth-child(2) &__cell:nth-child(4),
     &__line:nth-child(3) &__cell:nth-child(10) {
-        @include fixedBorder(50%);
+        @include fixed-border(50%);
     }
 
     &__line:nth-child(3) &__cell:nth-child(6),
     &__line:nth-child(4) &__cell:nth-child(9) {
-        @include fixedBorder(75%);
+        @include fixed-border(75%);
     }
 
     &__line:nth-child(3) &__cell:nth-child(8) {
-        @include fixedBorder(10%);
+        @include fixed-border(10%);
     }
 
-    &-dashed-line {
+    %dashed-line {
         position: absolute;
         top: 2.72vw;
         left: 2.02vw;
@@ -1500,7 +1469,7 @@ body {
 
         &__path {
             fill: none;
-            stroke: $primaryActive;
+            stroke: $primary-active;
             stroke-width: 2px;
             stroke-dasharray: 4, 2;
             stroke-linejoin: round;
@@ -1508,12 +1477,16 @@ body {
         }
     }
 
+    &-dashed-line {
+        @extend %dashed-line;
+    }
+
     &-red-line {
-        @extend .line-chart-dashed-line;
+        @extend %dashed-line;
 
         &__path {
             fill: none;
-            stroke: $tertiaryRed;
+            stroke: $tertiary-red;
             stroke-width: 2.5px;
         }
     }

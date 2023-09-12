@@ -1,4 +1,5 @@
 @use "sass:math";
+@use "sass:list";
 
 @font-face {
     font-family: Latinaires;
@@ -33,7 +34,7 @@
 }
 
 %font-icon {
-    font-family: Icons !important;
+    font-family: Icons, system-ui !important;
     speak: never;
     font-style: normal;
     font-weight: normal;
@@ -118,7 +119,7 @@
 
     @for $i from $from through $stroke {
         @for $j from $from through $stroke {
-            $shadow: append($shadow, $i * $step $j * $step 0 $color, comma);
+            $shadow: list.append($shadow, $i * $step $j * $step 0 $color, comma);
         }
     }
 
@@ -134,7 +135,7 @@
     color: $color; 
 }
 
-@mixin slideButton($size, $activeColor) {
+@mixin slide-button($size, $activeColor) {
     width: obtain-viewport-width($size);
     height: obtain-viewport-width($size);
     border-radius: 50%;
@@ -165,7 +166,7 @@
     }
 }
 
-@mixin featuresHeader($vertical) {
+@mixin features-header($vertical) {
     @if  $vertical {
         @include aliasedtext-stroke($stroke: 2, $color: rgba(#000, 0.7), $step: 0.7px);
 
@@ -352,7 +353,7 @@ button {
         list-style-type: none;
 
         &__button {
-            @include slideButton($size: 8px, $activeColor: #300800);
+            @include slide-button($size: 8px, $activeColor: #300800);
         }
     }
 
@@ -556,7 +557,7 @@ button {
     color: #737373;
 
     &__heading {
-        @include featuresHeader($vertical: true);
+        @include features-header($vertical: true);
     }
 
     &__paragraph {
@@ -594,14 +595,6 @@ button {
                 cursor: pointer;
                 transition: all 0.3s ease;
 
-                &:hover {
-                    color: #f85908;
-
-                    &::after {
-                        border-color: #f85908;
-                    }
-                }
-    
                 &::after {
                     position: absolute;
                     top: 50%;
@@ -613,7 +606,15 @@ button {
                     border-radius: 50%;
                     content: "";
                 }
-                
+
+                &:hover {
+                    color: #f85908;
+
+                    &::after {
+                        border-color: #f85908;
+                    }
+                }
+    
                 &--phone {
                     @extend %icon-phone1;
                 }
@@ -664,7 +665,7 @@ button {
     overflow: hidden;
 
     &-description {
-        @include featuresHeader($vertical: false);
+        @include features-header($vertical: false);
 
         width: 0;
         flex: 0 0 obtain-viewport-width(252px);
@@ -789,7 +790,7 @@ button {
     }
 
     &-description {
-        @include featuresHeader($vertical: false);
+        @include features-header($vertical: false);
 
         &__paragraph {
             max-width: obtain-viewport-width(360px);
@@ -807,7 +808,7 @@ button {
         margin: 0;
 
         &__button {
-            @include slideButton($activeColor: #303030, $size: 10px);
+            @include slide-button($activeColor: #303030, $size: 10px);
 
             background-color: transparent;
             border: obtain-viewport-width(2px) solid #fff;
@@ -816,14 +817,14 @@ button {
 }
 
 .map-section {
-    @include featuresHeader($vertical: false);
+    @include features-header($vertical: false);
 
     padding-top: obtain-viewport-width(55px);
     text-align: center;
     background-color: #1f1f1f;
 
     &__heading {
-        @include featuresHeader($vertical: true);
+        @include features-header($vertical: true);
 
         display: block;
         z-index: 1;

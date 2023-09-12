@@ -1,18 +1,19 @@
 @use "sass:math";
 @use "sass:color";
 @use "sass:string";
+@use "sass:list";
 
-$primaryOrange: #f64e00;
-$secondaryOrange: #f49141;
-$primaryWhite: #fff;
-$secondaryWhite: #dbdbdb;
-$primaryBlue: #1330fa;
-$secondaryBlue: #4465fe;
-$tertiaryBlue: #c9cdfe;
+$primary-orange: #f64e00;
+$secondary-orange: #f49141;
+$primary-white: #fff;
+$secondary-white: #dbdbdb;
+$primary-blue: #1330fa;
+$secondary-blue: #4465fe;
+$tertiary-blue: #c9cdfe;
 $gray: #b9b9b9;
 $dark: #161421;
-$darkGray: #949494;
-$darkPurple: #393452;
+$dark-gray: #949494;
+$dark-purple: #393452;
 $black: #272727;
 $green: #22e9bc;
 
@@ -49,7 +50,7 @@ $green: #22e9bc;
 }
 
 %font-icon {
-    font-family: Icons !important;
+    font-family: Icons, system-ui !important;
     speak: never;
     font-style: normal;
     font-weight: normal;
@@ -114,7 +115,7 @@ $green: #22e9bc;
 
     @for $i from $from through $stroke {
         @for $j from $from through $stroke {
-            $shadow: append($shadow, $i * $step $j * $step 0 $color, comma);
+            $shadow: list.append($shadow, $i * $step $j * $step 0 $color, comma);
         }
     }
 
@@ -129,7 +130,7 @@ $green: #22e9bc;
     @return math.div($targetWidth * 100vw, $baseWidth);
 }
 
-@mixin selectIconById($string, $prefix) {
+@mixin select-icon-by-id($string, $prefix) {
     &[aria-describedby="#{string.slice(#{$string}, 2)}--#{$prefix}"] {
         @content;
     }
@@ -144,7 +145,7 @@ $green: #22e9bc;
 body {
     margin: 0;
     padding: 0;
-    font-family: Latinaires;
+    font-family: Latinaires, sans-serif;
     line-height: 1;
 
     > svg {
@@ -160,16 +161,16 @@ button {
     font-size: 12px;
     padding: 2.5px 12px 4px;
     margin: 0;
-    color: $primaryWhite;
+    color: $primary-white;
 
     &--blue {
-        background-color: $secondaryBlue;
-        border: 2px solid $primaryBlue;
+        background-color: $secondary-blue;
+        border: 2px solid $primary-blue;
     }
 
     &--white {
         border-radius: 3px;
-        border: 2px solid $primaryWhite;
+        border: 2px solid $primary-white;
         background-color: transparent;
     }
 
@@ -177,8 +178,8 @@ button {
         box-sizing: border-box;
         width: 110px;
         padding: 6px 16px;
-        background-color: $secondaryOrange;
-        border: 1px solid $primaryOrange;
+        background-color: $secondary-orange;
+        border: 1px solid $primary-orange;
     }
 }
 
@@ -208,13 +209,13 @@ button {
             font-weight: 700;
             font-size: 18px;
             text-transform: uppercase;
-            color: $primaryWhite;
+            color: $primary-white;
             text-shadow: text-stroke($stroke: 5, $color: #000);
         }
 
         &__link {
             font-size: 15.5px;
-            color: $primaryWhite;
+            color: $primary-white;
             text-decoration: none;
             text-shadow: text-stroke($stroke: 3, $color: #000);
 
@@ -222,7 +223,7 @@ button {
                 margin-left: obtain-viewport-width(95px);
                 padding: 2px 9px 5px;
                 border-radius: 3px;
-                border: 2px solid $primaryWhite;
+                border: 2px solid $primary-white;
             }
         }
     }
@@ -232,7 +233,7 @@ button {
         margin: 0;
         font-size: 40px;
         font-weight: 500;
-        color: $primaryWhite;
+        color: $primary-white;
 
         @media (max-width: 700px) {
             font-size: 30px;
@@ -243,7 +244,7 @@ button {
         margin: obtain-viewport-width(17px) 0 obtain-viewport-width(30px) 0;
         font-size: 13px;
         max-width: obtain-viewport-width(515px);
-        color: $secondaryWhite;
+        color: $secondary-white;
         text-shadow: text-stroke($stroke: 1, $color: #000);
     }
 
@@ -270,24 +271,24 @@ button {
         &__icon {
             display: block;
             font-size: 45px;
-            color: $primaryBlue;
+            color: $primary-blue;
 
-            @include selectIconById($string: &, $prefix: "heart") {
+            @include select-icon-by-id($string: &, $prefix: "heart") {
                 @extend %icon-heart;
             }
 
-            @include selectIconById($string: &, $prefix: "study") {
+            @include select-icon-by-id($string: &, $prefix: "study") {
                 @extend %icon-briefcase;
             }
 
-            @include selectIconById($string: &, $prefix: "drop") {
+            @include select-icon-by-id($string: &, $prefix: "drop") {
                 @extend %icon-droplet;
             }
         }
 
         &__heading {
             font-size: 16px;
-            text-shadow: text-stroke($stroke: 2, $color: $darkGray, $step: 0.15px);
+            text-shadow: text-stroke($stroke: 2, $color: $dark-gray, $step: 0.15px);
             font-weight: 400;
             color: $black;
             margin: 40px 0 12px;
@@ -309,17 +310,17 @@ button {
             width: 37px;
             height: 37px;
             margin-top: 35px;
-            border: 2px solid $darkGray;
+            border: 2px solid $dark-gray;
             border-radius: 50%;
             padding: 10px;
             font-size: 14px;
-            color: $darkGray;
+            color: $dark-gray;
             background-color: transparent;
             transition: all 0.3s ease;
 
             &:hover {
-                color: $secondaryOrange;
-                border-color: $secondaryOrange;
+                color: $secondary-orange;
+                border-color: $secondary-orange;
             }
         }
     }
@@ -336,9 +337,9 @@ button {
         margin: 0 auto 20px;
         font-size: 18.5px;
         padding-bottom: 6px;
-        color: $primaryWhite;
+        color: $primary-white;
         text-align: center;
-        border-bottom: 2px solid $primaryWhite;
+        border-bottom: 2px solid $primary-white;
     }
 
     &-list {
@@ -361,7 +362,7 @@ button {
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            background-color: $primaryWhite;
+            background-color: $primary-white;
             border-radius: 2px;
             text-align: center;
             padding: 0 18px;
@@ -369,45 +370,45 @@ button {
 
             &__icon {
                 font-size: 50px;
-                color: $primaryOrange;
+                color: $primary-orange;
 
-                @include selectIconById($string: &, $prefix: "heart") {
+                @include select-icon-by-id($string: &, $prefix: "heart") {
                     @extend %icon-heart;
                 }
     
-                @include selectIconById($string: &, $prefix: "study") {
+                @include select-icon-by-id($string: &, $prefix: "study") {
                     @extend %icon-briefcase;
                 }
     
-                @include selectIconById($string: &, $prefix: "drop") {
+                @include select-icon-by-id($string: &, $prefix: "drop") {
                     @extend %icon-droplet;
                 }
 
-                @include selectIconById($string: &, $prefix: "reactive") {
+                @include select-icon-by-id($string: &, $prefix: "reactive") {
                     @extend %icon-atom;
 
-                    text-shadow: text-stroke($stroke: 1, $color: $secondaryOrange, $step: 0.01px);
+                    text-shadow: text-stroke($stroke: 1, $color: $secondary-orange, $step: 0.01px);
                 }
 
-                @include selectIconById($string: &, $prefix: "label") {
+                @include select-icon-by-id($string: &, $prefix: "label") {
                     @extend %icon-label;
 
-                    color: $primaryWhite;
-                    text-shadow: text-stroke($stroke: 5, $color: $primaryOrange, $step: 0.5px);
+                    color: $primary-white;
+                    text-shadow: text-stroke($stroke: 5, $color: $primary-orange, $step: 0.5px);
                     transform: scaleX(-1);
                 }
 
-                @include selectIconById($string: &, $prefix: "clipboard") {
+                @include select-icon-by-id($string: &, $prefix: "clipboard") {
                     @extend %icon-clipboard;
 
-                    text-shadow: text-stroke($stroke: 1, $color: $secondaryOrange, $step: 0.01px);
+                    text-shadow: text-stroke($stroke: 1, $color: $secondary-orange, $step: 0.01px);
                 }
             }
 
             &__paragraph {
                 font-size: 13px;
                 line-height: 1.25;
-                color: $darkGray;
+                color: $dark-gray;
                 margin: 0;
             }
         }
@@ -426,7 +427,7 @@ button {
         padding-bottom: 7px;
         color: $black;
         text-align: center;
-        border-bottom: 3px solid $tertiaryBlue
+        border-bottom: 3px solid $tertiary-blue
     }
 }
 
@@ -503,7 +504,7 @@ button {
             width: 7px;
             height: 7px;
             border-radius: 50%;
-            background-color: $primaryBlue;
+            background-color: $primary-blue;
             top: 4ex;
             right: -12px;
             content: "";
@@ -514,7 +515,7 @@ button {
             width: 7px;
             height: 7px;
             border-radius: 50%;
-            background-color: $primaryBlue;
+            background-color: $primary-blue;
             top: 4ex;
             left: -12px;
             content: "";
@@ -654,8 +655,8 @@ button {
             width: 16px;
             height: 16px;
             box-sizing: border-box;
-            background-color: $secondaryBlue;
-            border: 2px solid $primaryBlue;
+            background-color: $secondary-blue;
+            border: 2px solid $primary-blue;
             border-radius: 50%;
 
             &:first-child {
@@ -689,7 +690,7 @@ button {
         margin-top: 0;
         margin-bottom: 17px;
         color: $black;
-        text-shadow: text-stroke($stroke: 5, $color: $primaryWhite);
+        text-shadow: text-stroke($stroke: 5, $color: $primary-white);
     }
 
     &-form {
@@ -701,8 +702,8 @@ button {
 
         &__paragraph {
             margin: 0 auto 0 0;
-            color: color.scale($color: $primaryBlue, $blackness: 33%);
-            text-shadow: text-stroke($stroke: 5, $color: $primaryWhite);
+            color: color.scale($color: $primary-blue, $blackness: 33%);
+            text-shadow: text-stroke($stroke: 5, $color: $primary-white);
             text-transform: uppercase;
             font: 700 15px/1.25 Latinaires, sans-serif;
             max-width: obtain-viewport-width(500px);
@@ -718,7 +719,7 @@ button {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    background-color: $darkPurple;
+    background-color: $dark-purple;
 
     &-item {
         display: flex;
@@ -730,7 +731,7 @@ button {
         transition: all 0.3s ease;
 
         &:hover {
-            background-color: $secondaryBlue
+            background-color: $secondary-blue
         }
 
         &__icon {
@@ -743,27 +744,27 @@ button {
             padding: 4px;
             text-align: center;
             line-height: 1.25;
-            color: $primaryWhite;
+            color: $primary-white;
     
-            @include selectIconById($string: &, $prefix: "blue") {
-                background: linear-gradient(to bottom right, $secondaryBlue, $primaryBlue);
+            @include select-icon-by-id($string: &, $prefix: "blue") {
+                background: linear-gradient(to bottom right, $secondary-blue, $primary-blue);
             }
     
-            @include selectIconById($string: &, $prefix: "orange") {
+            @include select-icon-by-id($string: &, $prefix: "orange") {
                 padding: 3px;
                 background-color: #f5b922;
                 border: color.scale($color: #f5b922, $blackness: -50%) 1px solid;
             }
     
-            @include selectIconById($string: &, $prefix: "white") {
-                background-color: $primaryWhite;
+            @include select-icon-by-id($string: &, $prefix: "white") {
+                background-color: $primary-white;
                 color: $green;
             }
         }
 
         &__link {
             transform: translateY(-25%);
-            color: $primaryWhite;
+            color: $primary-white;
             text-decoration: none;
             font-size: 20px;
         }
@@ -825,7 +826,7 @@ button {
         font-size: 11px;
         font-weight: 500;
         margin: 15px 0 0;
-        color: $secondaryWhite;
+        color: $secondary-white;
         text-transform: uppercase;
         text-shadow: text-stroke($stroke: 3, $color: #000);
     }
@@ -834,11 +835,10 @@ button {
 .footer {
     display: grid;
     padding-top: 11px;
-    grid-template-rows: repeat(3, obtain-viewport-width(38px));
-    grid-template-columns: auto obtain-viewport-width(125px) obtain-viewport-width(50px) obtain-viewport-width(50px) obtain-viewport-width(125px) auto;
-    grid-template-areas: ". . logo logo . ."
-        ". phone-1 phone-1 phone-2 phone-2 ."
-        ". location location location location .";
+    grid-template: ". . logo logo . ." obtain-viewport-width(38px)
+        ". phone-1 phone-1 phone-2 phone-2 ." obtain-viewport-width(38px)
+        ". location location location location ." obtain-viewport-width(38px)
+        / auto obtain-viewport-width(125px) obtain-viewport-width(50px) obtain-viewport-width(50px) obtain-viewport-width(125px) auto;
     background-color: $black;
     text-align: center;
 
@@ -847,7 +847,7 @@ button {
         align-self: center;
         font-size: obtain-viewport-width(19px);
         font-weight: 700;
-        color: $primaryWhite;
+        color: $primary-white;
         text-shadow: text-stroke($stroke: 3, $color: #000, $step: 0.8px);
         text-transform: uppercase;
     }
@@ -855,7 +855,7 @@ button {
 
 .phone-number {
     align-self: center;
-    color: $secondaryWhite;
+    color: $secondary-white;
     font-size: obtain-viewport-width(11px);
 
     &__header {
@@ -877,7 +877,7 @@ button {
 
 .location {
     grid-area: location;
-    color: $darkGray;
+    color: $dark-gray;
     font-size: obtain-viewport-width(10px);
 
     &__header {

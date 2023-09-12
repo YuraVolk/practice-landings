@@ -1,4 +1,6 @@
 @use "sass:math";
+@use "sass:list";
+@use "sass:color";
 
 @font-face {
     font-family: Latinaires;
@@ -33,7 +35,7 @@
 }
 
 %font-icon {
-    font-family: Icons !important;
+    font-family: Icons, system-ui !important;
     speak: never;
     font-style: normal;
     font-weight: normal;
@@ -58,7 +60,7 @@
 
     @for $i from $from through $stroke {
         @for $j from $from through $stroke {
-            $shadow: append($shadow, $i * $step $j * $step 0 $color, comma);
+            $shadow: list.append($shadow, $i * $step $j * $step 0 $color, comma);
         }
     }
 
@@ -69,7 +71,7 @@ body {
     margin: 0;
     padding: 0;
     border-top: 1px solid #080539;
-    font-family: Latinaires;
+    font-family: Latinaires, sans-serif;
 }
 
 %icon-arrow-up::before {
@@ -108,11 +110,11 @@ body {
     content: "\ea95";
 }
 
-$skewDeg: 168deg;
+$skew-deg: 168deg;
 
 .header {
     padding-bottom: obtain-viewport-width(360px);
-    transform: skewY($skewDeg * -1);
+    transform: skewY($skew-deg * -1);
 
     &::before {
         position: absolute;
@@ -124,7 +126,7 @@ $skewDeg: 168deg;
     }
 
     & > * {
-        transform: skewY($skewDeg);
+        transform: skewY($skew-deg);
     }
    
     &-navigation {
@@ -221,7 +223,7 @@ main {
 .intro {
     position: relative;
     padding: obtain-viewport-width(24px) 0 obtain-viewport-width(180px) 0;
-    transform: skewY($skewDeg * -1);
+    transform: skewY($skew-deg * -1);
     overflow: hidden;
     background-color: #fff;
 
@@ -229,7 +231,7 @@ main {
         position: absolute;
         left: 0;
         bottom: obtain-viewport-width(-70px);
-        transform: skewY($skewDeg);
+        transform: skewY($skew-deg);
         width: obtain-viewport-width(650px);
         height: obtain-viewport-width(712px);
         background-image: url("./img/section-image.jpg");
@@ -239,13 +241,13 @@ main {
     }
 
     & > * {
-        transform: skewY($skewDeg);
+        transform: skewY($skew-deg);
     }
 
     &__number {
         display: block;
         font-weight: 700;
-        transform: skewY($skewDeg) translateY(-50%);
+        transform: skewY($skew-deg) translateY(-50%);
         font-size: obtain-viewport-width(80px);
         color: #dedede;
         margin-left: obtain-viewport-width(579px);
@@ -526,9 +528,9 @@ main {
     flex-grow: 1;
 }
 
-@mixin footerButton($color) {
+@mixin footer-button($color) {
     position: relative;
-    border: 1px solid lighten($color: $color, $amount: 1);
+    border: 1px solid color.adjust($color: $color, $lightness: 1);
     border-radius: 3px;
     padding: obtain-viewport-width(4px) obtain-viewport-width(12px);
     font-size: obtain-viewport-width(14px);
@@ -537,7 +539,7 @@ main {
 }
 
 .contact-us-button {
-    @include footerButton(#029ae6);
+    @include footer-button(#029ae6);
 
     &::before {
         position: relative;
@@ -566,7 +568,7 @@ main {
 }
 
 .go-up-button {
-    @include footerButton(#f04b1e);
+    @include footer-button(#f04b1e);
     @extend %icon-arrow-up;
 
     align-self: stretch;

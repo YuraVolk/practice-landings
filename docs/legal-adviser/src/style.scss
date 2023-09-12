@@ -1,16 +1,17 @@
 @use "sass:color";
 @use "sass:math";
+@use "sass:list";
 
 $white: #fff;
-$lightGray: #e0e0e0;
-$primaryDarkGray: #acacac;
-$secondaryDarkGray: #555;
-$primaryActive: #304771;
-$secondaryActive: #283b63;
-$tertiaryActive: #1d3051;
-$primaryActiveLight: #8bb0f7;
-$primaryYellow: #c7ab47;
-$headerSubsectionHeight: 11.92vw;
+$light-gray: #e0e0e0;
+$primary-dark-gray: #acacac;
+$secondary-dark-gray: #555;
+$primary-active: #304771;
+$secondary-active: #283b63;
+$tertiary-active: #1d3051;
+$primary-active-light: #8bb0f7;
+$primary-yellow: #c7ab47;
+$header-subsection-height: 11.92vw;
 
 @font-face {
     font-family: Latinaires;
@@ -45,7 +46,7 @@ $headerSubsectionHeight: 11.92vw;
 }
 
 %font-icon {
-    font-family: Icons !important;
+    font-family: Icons, system-ui !important;
     speak: never;
     font-style: normal;
     font-weight: normal;
@@ -80,7 +81,7 @@ $headerSubsectionHeight: 11.92vw;
     content: "\1f5e9";
 }
 
-%icon-uniF125::before {
+%icon-email::before {
     @extend %font-icon;
 
     content: "\1f582";
@@ -158,7 +159,7 @@ $headerSubsectionHeight: 11.92vw;
 
     @for $i from $from through $stroke {
         @for $j from $from through $stroke {
-            $shadow: append($shadow, $i * $step $j * $step 0 $color, comma);
+            $shadow: list.append($shadow, $i * $step $j * $step 0 $color, comma);
         }
     }
 
@@ -182,7 +183,7 @@ $headerSubsectionHeight: 11.92vw;
     color: $color; 
 }
 
-@mixin centralizeItems {
+@mixin centralize-items {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -215,7 +216,7 @@ html {
 body {
     margin: 0;
     border-top: 1.92vw solid #ecedf1;
-    font-family: Latinaires;
+    font-family: Latinaires, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizelegibility;
@@ -247,19 +248,19 @@ button {
     color: $white;
 
     &--yellow {
-        background-color: $primaryYellow;
-        border: color.scale($primaryYellow, $lightness: 10%) 2px solid;
+        background-color: $primary-yellow;
+        border: color.scale($primary-yellow, $lightness: 10%) 2px solid;
     }
 
     &--white {
         background-color: transparent;
-        border: $lightGray 2px solid;
+        border: $light-gray 2px solid;
     }
 
     &--gray {
         background-color: transparent;
-        border: $primaryDarkGray 2px solid;
-        color: $primaryDarkGray;
+        border: $primary-dark-gray 2px solid;
+        color: $primary-dark-gray;
     }
 }
 
@@ -268,7 +269,7 @@ button {
 }
 
 .header {
-    @include centralizeItems;
+    @include centralize-items;
 
     position: relative;
     padding-bottom: 14.23vw;
@@ -299,36 +300,36 @@ button {
         text-align: center;
         font-size: 0.8rem;
         line-height: 1.5;
-        color: $lightGray;
+        color: $light-gray;
     }
 
     &-information {
         position: absolute;
-        bottom: math.div($headerSubsectionHeight, 2) * -1;
+        bottom: math.div($header-subsection-height, 2) * -1;
         left: 50%;
         transform: translateX(-50%);
         display: flex;
         width: 61vw;
-        height: $headerSubsectionHeight;
+        height: $header-subsection-height;
         box-sizing: border-box;
-        background-color: $primaryActive;
+        background-color: $primary-active;
 
         &-block {
-            @include centralizeItems;
+            @include centralize-items;
 
             flex: 1 0 math.div(100%, 3);
             padding-top: 1.25rem;
             font-size: 0.625rem;
             line-height: 1.5;
             text-align: center;
-            color: $lightGray;
+            color: $light-gray;
 
             &:nth-child(2) {
-                background-color: $secondaryActive;
+                background-color: $secondary-active;
             }
 
             &:nth-child(3) {
-                background-color: $tertiaryActive;
+                background-color: $tertiary-active;
             }
 
             &__image {
@@ -349,7 +350,7 @@ button {
                 background-image: url("./img/header-icon.png");
                 background-position: -100% 0;
                 background-size: 2.25rem 2.875rem;
-                filter: blur(0.3px) drop-shadow(2.25rem 0 $primaryYellow);
+                filter: blur(0.3px) drop-shadow(2.25rem 0 $primary-yellow);
             }
         }
 
@@ -367,7 +368,7 @@ button {
 }
 
 .navigation {
-    @include centralizeItems;
+    @include centralize-items;
 
     gap: 0.75rem;
     width: 100%;
@@ -392,9 +393,9 @@ button {
             position: relative;
             line-height: 0;
             margin-right: 1.875rem;
-            font-family: Latinaires;
+            font-family: Latinaires, sans-serif;
             font-size: 0.9rem;
-            color: $primaryDarkGray;
+            color: $primary-dark-gray;
 
             &--phone {
                 @extend %icon-phone1;
@@ -405,7 +406,7 @@ button {
             }
 
             &--email {
-                @extend %icon-uniF125;
+                @extend %icon-email;
             }
 
             &::before {
@@ -421,21 +422,21 @@ button {
         &__searchbar {
             width: 18.75rem;
             height: 1.625rem;
-            border: 3px solid $lightGray;
+            border: 3px solid $light-gray;
             border-radius: 0.75rem;
             padding: 2px 0 2px 1.375rem;
             box-sizing: border-box;
             background-color: $white;
 
             &::placeholder {
-                color: $lightGray;
+                color: $light-gray;
                 font-size: 1rem;
             }
 
             &:focus,
             &:focus-visible,
             &:active {
-                border-color: $primaryActive;
+                border-color: $primary-active;
             }
 
             &::-webkit-search-decoration,
@@ -456,7 +457,7 @@ button {
                     right: 0.5rem;
                     transform: translateY(-50%);
                     font-size: calc(1rem - 1px);
-                    background: linear-gradient(to bottom right, $primaryDarkGray 70%, $secondaryDarkGray 50%);
+                    background: linear-gradient(to bottom right, $primary-dark-gray 70%, $secondary-dark-gray 50%);
                     background-clip: text;
                     -webkit-text-fill-color: transparent;
                 }
@@ -468,7 +469,7 @@ button {
         align-items: flex-end;
 
         &__logo {
-            @include aliasedtext-stroke($stroke: 1, $color: $primaryYellow);
+            @include aliasedtext-stroke($stroke: 1, $color: $primary-yellow);
 
             margin-bottom: 8px;
             font: 500 24px/24px Latinaires, sans-serif;
@@ -494,24 +495,24 @@ button {
             background-color: transparent;
 
             &:first-child {
-                border-top-color: $primaryActiveLight;
-                border-left: 0.188rem solid $primaryActiveLight;
-                border-bottom: 2px solid $primaryActiveLight;
+                border-top-color: $primary-active-light;
+                border-left: 0.188rem solid $primary-active-light;
+                border-bottom: 2px solid $primary-active-light;
                 border-right: none;
                 border-top-left-radius: 0.188rem;
                 border-bottom-left-radius: 0.188rem;
-                color: $primaryActiveLight
+                color: $primary-active-light
             }
 
             &:last-child {
-                border-color: $primaryDarkGray;
+                border-color: $primary-dark-gray;
                 border-style: solid;
-                border-right: 0.188rem solid $primaryDarkGray;
-                border-bottom: 2px solid $primaryDarkGray;
-                border-left: 0.15rem solid $primaryDarkGray;
+                border-right: 0.188rem solid $primary-dark-gray;
+                border-bottom: 2px solid $primary-dark-gray;
+                border-left: 0.15rem solid $primary-dark-gray;
                 border-top-right-radius: 0.15rem;
                 border-bottom-right-radius: 0.15rem;
-                color: $primaryDarkGray;
+                color: $primary-dark-gray;
             }
         }
 
@@ -522,8 +523,8 @@ button {
 
             &--active {
                 padding-bottom: 4px;
-                border-bottom: 0.188rem solid $primaryActiveLight;
-                text-shadow: text-stroke($stroke: 1, $color: $primaryActiveLight);
+                border-bottom: 0.188rem solid $primary-active-light;
+                text-shadow: text-stroke($stroke: 1, $color: $primary-active-light);
             }
 
             &:not(:last-of-type) {
@@ -534,10 +535,10 @@ button {
 }
 
 .header-subsection {
-    @include centralizeItems;
+    @include centralize-items;
 
     position: relative;
-    padding-top: math.div($headerSubsectionHeight, 2) + 6.3vw;
+    padding-top: math.div($header-subsection-height, 2) + 6.3vw;
     overflow-x: hidden;
 
     &__chinese-heading {
@@ -545,8 +546,8 @@ button {
         margin-bottom: 0.5rem;
         font-size: 1.2rem;
         font-weight: 300;
-        text-shadow: text-stroke($stroke: 3, $color: $secondaryActive, $step: 0.02px);
-        color: $secondaryActive;
+        text-shadow: text-stroke($stroke: 3, $color: $secondary-active, $step: 0.02px);
+        color: $secondary-active;
     }
 
     &__heading {
@@ -556,7 +557,7 @@ button {
         font-size: 0.75rem;
         letter-spacing: 1.5px;
         text-transform: uppercase;
-        color: $primaryDarkGray;
+        color: $primary-dark-gray;
 
         &::before {
             position: absolute;
@@ -565,7 +566,7 @@ button {
             transform: translateX(-100%);
             width: 100vw;
             height: 2px;
-            background-color: $primaryDarkGray;
+            background-color: $primary-dark-gray;
             content: "";
 
             @media (max-width: 500px) {
@@ -608,7 +609,7 @@ button {
 }
 
 .ceo-section {
-    @include centralizeItems;
+    @include centralize-items;
 
     padding-bottom: 2rem;
     background-image: url("./img/section-2-image.jpg");
@@ -630,12 +631,12 @@ button {
         margin-bottom: 3.625rem;
         font-size: 0.75rem;
         line-height: 1.5;
-        color: $lightGray;
+        color: $light-gray;
     }
 }
 
 .partnership-section {
-    @include centralizeItems;
+    @include centralize-items;
 
     padding-top: 5.4vw;
     overflow-x: hidden;
@@ -652,7 +653,7 @@ button {
     }
 
     &-item {
-        @include centralizeItems;
+        @include centralize-items;
 
         padding-top: 4.45vw;
         padding-bottom: 2.85vw;
@@ -680,7 +681,7 @@ button {
                 transform-origin: 53% 51%;
                 width: 6.75rem;
                 height: 6.75rem;
-                border: 2.5px solid $primaryActiveLight;
+                border: 2.5px solid $primary-active-light;
                 border-radius: 50%;
                 clip-path: polygon(66% 10%, 66% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0%, 33% 0%, 33% 10%);
                 transition: all 0.4s ease-in-out;
@@ -696,7 +697,7 @@ button {
                 width: 0.469rem;
                 height: 0.469rem;
                 box-sizing: border-box;
-                border: 2px solid $primaryActiveLight;
+                border: 2px solid $primary-active-light;
                 border-radius: 2.5px;
                 transition: all 0.4s ease-in-out;
                 content: "";
@@ -707,13 +708,22 @@ button {
             }
         }
 
+        &:hover {
+            background-color: $primary-active;
+        }
+
+        &:hover &__icon {
+            filter: brightness(10);
+        }
+
+        &:hover &__icon-wrap::before,
+        &:hover &__icon-wrap::after {
+            border-color: $light-gray;
+        }
+
         &:nth-child(3n + 1) &__icon-wrap::before {
             transform-origin: 50% 51%;
             transform: translate(-50%, -50%) rotate(125deg);
-        }
-
-        &:nth-child(3n + 1):hover &__icon-wrap::before {
-            transform: translate(-50%, -50%) rotate(125deg + 360deg);
         }
 
         &:nth-child(3n + 1) &__icon-wrap::after {
@@ -727,10 +737,6 @@ button {
             transform: translate(-50%, -50%) rotate(30deg);
         }
 
-        &:nth-child(3n + 2):hover &__icon-wrap::before {
-            transform: translate(-50%, -50%) rotate(30deg + 360deg);
-        }
-
         &:nth-child(3n + 2) &__icon-wrap::after {
             top: -90%;
             right: 25%;
@@ -742,31 +748,26 @@ button {
             transform: translate(-50%, -50%) rotate(-30deg);
         }
 
-        &:nth-child(3n + 3):hover &__icon-wrap::before {
-            transform: translate(-50%, -50%) rotate(-30deg + -360deg);
-        }
-
         &:nth-child(3n + 3) &__icon-wrap::after {
             top: -50%;
             left: -11%;
             transform: rotate(-75deg);
         }
 
-        &:hover {
-            background-color: $primaryActive;
+        &:nth-child(3n + 3):hover &__icon-wrap::before {
+            transform: translate(-50%, -50%) rotate(-30deg + -360deg);
         }
 
-        &:hover &__icon {
-            filter: brightness(10);
+        &:nth-child(3n + 1):hover &__icon-wrap::before {
+            transform: translate(-50%, -50%) rotate(125deg + 360deg);
         }
 
-        &:hover &__icon-wrap::before,
-        &:hover &__icon-wrap::after {
-            border-color: $lightGray;
+        &:nth-child(3n + 2):hover &__icon-wrap::before {
+            transform: translate(-50%, -50%) rotate(30deg + 360deg);
         }
 
         &__heading {
-            @include aliasedtext-stroke($stroke: 1, $color: $primaryYellow, $step: 0.01px);
+            @include aliasedtext-stroke($stroke: 1, $color: $primary-yellow, $step: 0.01px);
 
             margin-top: 0;
             margin-bottom: 0.875rem;
@@ -844,7 +845,7 @@ button {
     }
    
     &-item {
-        @include centralizeItems;
+        @include centralize-items;
 
         text-align: center;
 
@@ -899,13 +900,13 @@ button {
         &__label {
             font-size: 0.8rem;
             line-height: 1.3;
-            color: $lightGray;
+            color: $light-gray;
         }
     }
 }
 
 .our-team-section {
-    @include centralizeItems;
+    @include centralize-items;
 
     padding-top: obtain-viewport-width(45px);
 }
@@ -937,12 +938,12 @@ button {
 
         &--description {
             display: block;
-            border: 1.5px solid $secondaryActive;
+            border: 1.5px solid $secondary-active;
             border-radius: 1px;
             padding: 1.875rem 0.625rem;
-            background-color: $primaryActive;
+            background-color: $primary-active;
             font-size: 0.75rem;
-            color: $lightGray;
+            color: $light-gray;
         }
 
         &__image {
@@ -950,7 +951,7 @@ button {
             grid-row: 1 / -1;
             width: 3.75rem;
             height: 3.75rem;
-            background-color: lighten($lightGray, 5);
+            background-color: color.adjust($color: $light-gray, $lightness: 5);
             border-radius: 100%;
             overflow: hidden;
             
@@ -1024,7 +1025,7 @@ button {
             font-size: 0.825rem;
             font-weight: 300;
             text-align: center;
-            color: $lightGray;
+            color: $light-gray;
 
             &::before {
                 position: absolute;
@@ -1033,7 +1034,7 @@ button {
                 z-index: -1;
                 width: 100%;
                 height: 100%;
-                background-color: $primaryActive;
+                background-color: $primary-active;
                 opacity: 0.8;
                 content: "";
             }
@@ -1042,13 +1043,13 @@ button {
 }
 
 .footer {
-    @include centralizeItems;
+    @include centralize-items;
 
     width: 100%;
     padding-top: obtain-viewport-width(30px);
     padding-bottom: obtain-viewport-width(22px);
-    background-color: $tertiaryActive;
-    color: $lightGray;
+    background-color: $tertiary-active;
+    color: $light-gray;
 
     > * {
         max-width: obtain-viewport-width(950px);
@@ -1060,7 +1061,7 @@ button {
         margin-top: 0.9rem;
         margin-bottom: 0.7rem;
         border: none;
-        background-color: rgba($lightGray, 0.5);
+        background-color: rgba($light-gray, 0.5);
     }
 
     &-icons {
@@ -1085,7 +1086,7 @@ button {
             top: 21%;
             left: 18%;
             font-size: 0.625rem;
-            color: $tertiaryActive;
+            color: $tertiary-active;
         }
 
         &:first-child {
@@ -1145,7 +1146,7 @@ button {
 
     &__header {
         font-size: 0.72rem;
-        color: rgba($lightGray, 0.5);
+        color: rgba($light-gray, 0.5);
         letter-spacing: -1px;
     }
 
@@ -1161,11 +1162,11 @@ button {
         left: 0;
         transform: translateY(-45%);
         font-size: obtain-viewport-width(36.5px);
-        -webkit-text-stroke: 1px $lightGray;
+        -webkit-text-stroke: 1px $light-gray;
         color: transparent;
 
-        @supports not (-webkit-text-stroke: 1px $lightGray) {
-            text-shadow: 0 0 0.5px $lightGray;
+        @supports not (-webkit-text-stroke: 1px $light-gray) {
+            text-shadow: 0 0 0.5px $light-gray;
         }
     }
 }
@@ -1177,9 +1178,9 @@ button {
     flex-grow: 1;
 }
 
-@mixin footerButton($color) {
+@mixin footer-button($color) {
     position: relative;
-    border: 1px solid lighten($color: $color, $amount: 1);
+    border: 1px solid color.adjust($color: $color, $lightness: 1);
     border-radius: 3px;
     padding: 0.235rem 0.77rem;
     font-size: 0.875rem;
@@ -1188,7 +1189,7 @@ button {
 }
 
 .contact-us-button {
-    @include footerButton(#029ae6);
+    @include footer-button(#029ae6);
 
     &::before {
         position: relative;
@@ -1211,13 +1212,13 @@ button {
         transform: translateY(-50%);
         width: calc(0.92rem - 2px);
         height: 1.5px;
-        background-color: $lightGray;
+        background-color: $light-gray;
         content: "";
     }
 }
 
 .go-up-button {
-    @include footerButton(#f04b1e);
+    @include footer-button(#f04b1e);
     @extend %icon-arrow-up;
 
     align-self: stretch;
