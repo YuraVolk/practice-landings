@@ -155,21 +155,3 @@ jobs:
       
       - name: Run Surge
         run: surge ./docs/ui-business-template/build practice-landings-ui-business-template.surge.sh --token ${{ secrets.SURGE_TOKEN }}
-
-  deploy-surrealist:
-    name: Deploy Surrealist
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2 
-      - name: Install Node.js
-        uses: actions/setup-node@v2-beta
-        with: 
-          node-version: 16
-               
-      - name: Install surge
-        run: npm install --global surge
-      
-      - name: Run Surge
-        run: surge ./docs/surrealist/build practice-landings-surrealist.surge.sh --token ${{ secrets.SURGE_TOKEN }}
- 
