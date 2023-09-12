@@ -3,58 +3,36 @@ name: Deploy Surge Websites
 on: [release, workflow_dispatch]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    name: Install assets
-    steps:
-        - uses: actions/checkout@v2 
-        - name: Install Node.js
-          uses: actions/setup-node@v2-beta
-          with: 
-            node-version: 16
-
-        - name: Cache node modules
-          id: cache-npm
-          uses: actions/cache@v3
-          env:
-            cache-name: cache-node-modules
-          with:
-            path: ~/.npm
-            key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-            restore-keys: |
-              ${{ runner.os }}-build-${{ env.cache-name }}-
-              ${{ runner.os }}-build-
-              ${{ runner.os }}-
-  
-        - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
-          name: List the state of node modules
-          continue-on-error: true
-          run: npm list
-        
-        - name: Install dependencies
-          run: npm install
-
-        - name: Install Surge
-          run: npm install --global surge
-
   deploy-betting-template:
     name: Deploy Betting Template
-    needs: build
     runs-on: ubuntu-latest
 
     steps:
-      - name: Cache node modules
-        id: cache-npm
-        uses: actions/cache@v3
-        env:
-          cache-name: cache-node-modules
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
+      - uses: actions/checkout@v2 
+      - name: Install Node.js
+        uses: actions/setup-node@v2-beta
+        with: 
+          node-version: 16
+               
+      - name: Install surge
+        run: npm install --global surge
+      
       - name: Run Surge
-        run: surge ./docs/betting-template/build practice-landings-betting-template.surge.sh --token ${{   secrets.SURGE_TOKEN }}
+        run: surge ./docs/betting-template/build practice-landings-betting-template.surge.sh --token ${{ secrets.SURGE_TOKEN }}
+  deploy-headphones:
+    name: Deploy Headphones
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2 
+      - name: Install Node.js
+        uses: actions/setup-node@v2-beta
+        with: 
+          node-version: 16
+               
+      - name: Install surge
+        run: npm install --global surge
+      
+      - name: Run Surge
+        run: surge ./docs/headphones/build practice-landings-headphones.surge.sh --token ${{ secrets.SURGE_TOKEN }}
  
