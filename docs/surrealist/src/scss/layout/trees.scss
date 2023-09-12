@@ -119,7 +119,10 @@
 			margin-top: 130px;
 			padding: 7% 7% 5% 10%;
 			background-color: #f2edc3;
-			border-radius: 53% 50% 38% 53% 48% 50% 63% 50%;
+			border-top-left-radius: 53% 50%;
+            border-top-right-radius: 38% 53%;
+            border-bottom-right-radius: 48% 50%;
+            border-bottom-left-radius: 63% 50%;
 			box-shadow:
 				5px 5px 10px #c8c190,
 				-5px -5px 10px #ffffd0;
@@ -155,18 +158,6 @@
 			margin: 8px 0 0 6px;
 			text-transform: uppercase;
 			opacity: 0.8;
-
-			&::after {
-				position: absolute;
-				bottom: -4px;
-				right: 16px;
-				width: 6px;
-				height: 8px;
-				box-sizing: border-box;
-				border: 2px solid #a39d5e;
-				border-radius: 50%;
-				content: "";
-			}
 		}
 
 		&__paragraph {
