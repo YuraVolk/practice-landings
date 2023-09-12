@@ -24,11 +24,11 @@ This issue proposes the implementation of a new HTML & CSS landing page for our 
 - [ ] Add compelling content, including headlines, descriptions, and call-to-action buttons.
 - [ ] Optimize the landing page for performance, including image compression and code minification.
 - [ ] Implement SEO best practices, such as meta tags and structured data.
-- [ ] Conduct accessibility testing and make necessary adjustments to meet WCAG guidelines.
+- [ ] Conduct accessibility testing and make necessary adjustments to meet Web Content Accessibility Guidelines guidelines.
 - [ ] Test the landing page on different browsers and devices to ensure consistent appearance and functionality.
 - [ ] Make sure the landing page passes all linters and required code quality checks.
 - [ ] Deploy the landing page to our production environment.
 
 ### Resources
 
-- Design mockups and wireframes: [Link to Figma/Sketch/Photoshop/other format file]
+- Design mockups: [Link to Figma/Sketch/Photoshop/other format file]
