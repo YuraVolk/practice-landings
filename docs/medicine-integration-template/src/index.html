@@ -1,240 +1,355 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Vite App</title>
+		<link rel="stylesheet" href="./style.scss" />
+	</head>
 
-<head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-    <link rel="stylesheet" href="./style.scss">
-</head>
-
-<body>
-    <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0">
-        <defs>
-            <clipPath id="contactsCurve" clipPathUnits="objectBoundingBox">
-                <path d="M1,0.981 H0 V0.151 l0,0 c0.333,-0.226,0.714,-0.226,1,0 l0,0 V0.981" />
-            </clipPath>
-        </defs>
-    </svg>
-    <header class="header">
-        <nav class="header-navigation">
-            <span class="header-navigation__logo">You Logo</span>
-            <a href="#" class="header-navigation__link" lang="zh">般务</a>
-            <a href="#" class="header-navigation__link" lang="zh">关于</a>
-            <a href="#" class="header-navigation__link" lang="zh">我们</a>
-            <a href="#" class="header-navigation__link" lang="zh">联络</a>
-            <a href="#" class="header-navigation__link" lang="zh">我们</a>
-            <a href="#" class="header-navigation__link" lang="zh">公司</a>
-            <a href="#" class="header-navigation__link header-navigation__link--active" lang="zh">联络我们</a>
-        </nav>
-        <h1 class="header__heading">专注为你留住每个客户</h1>
-        <p class="header__paragraph">
-            it has gradually built three big data models: network data model, content data model and business data
-            model.
-            With the unique feature of "big data analysis closed-loop processing". zhitian provides users with a
-            complete
-            closed-loop product from data
-        </p>
-        <button class="button button--blue" lang="zh">联络我们</button>
-        <button class="button button--white" lang="zh">了解更多</button>
-    </header>
-    <main>
-        <section class="exploration">
-            <article class="exploration-item">
-                <span class="exploration-item__icon" role="img" aria-describedby="exploration-item__icon--heart"></span>
-                <h3 class="exploration-item__heading" id="exploration-item__icon--heart" lang="zh">联络我们</h3>
-                <p class="exploration-item__paragraph">To explore the infinite</p>
-                <button class="exploration-item__button"></button>
-            </article>
-            <article class="exploration-item">
-                <span class="exploration-item__icon" role="img" aria-describedby="exploration-item__icon--study"></span>
-                <h3 class="exploration-item__heading" id="exploration-item__icon--study" lang="zh">联络我们</h3>
-                <p class="exploration-item__paragraph">To explore the infinite</p>
-                <button class="exploration-item__button"></button>
-            </article>
-            <article class="exploration-item">
-                <span class="exploration-item__icon" role="img" aria-describedby="exploration-item__icon--drop"></span>
-                <h3 class="exploration-item__heading" id="exploration-item__icon--drop" lang="zh">联络我们</h3>
-                <p class="exploration-item__paragraph">To explore the infinite</p>
-                <button class="exploration-item__button"></button>
-            </article>
-        </section>
-        <section class="advantages">
-            <h2 class="advantages__heading" lang="zh">了解更多</h2>
-            <ul class="advantages-list">
-                <li class="advantages-list-item">
-                    <span class="advantages-list-item__icon" role="img" aria-describedby="advantages-list-item__icon--reactive"></span>
-                    <p class="advantages-list-item__paragraph" id="advantages-list-item__icon--reactive">
-                        it has gradually built three big data models: network data modelmodel, product
-                    </p>
-                </li>
-                <li class="advantages-list-item">
-                    <span class="advantages-list-item__icon" role="img" aria-describedby="advantages-list-item__icon--label"></span>
-                    <p class="advantages-list-item__paragraph" id="advantages-list-item__icon--label">
-                        it has gradually built three big data models: network data modelmodel, product
-                    </p>
-                </li>
-                <li class="advantages-list-item">
-                    <span class="advantages-list-item__icon" role="img" aria-describedby="advantages-list-item__icon--clipboard"></span>
-                    <p class="advantages-list-item__paragraph" id="advantages-list-item__icon--clipboard">
-                        it has gradually built three big data models: network data modelmodel, product
-                    </p>
-                </li>
-                <li class="advantages-list-item">
-                    <span class="advantages-list-item__icon" role="img" aria-describedby="advantages-list-item__icon--heart"></span>
-                    <p class="advantages-list-item__paragraph" id="advantages-list-item__icon--heart">
-                        it has gradually built three big data models: network data modelmodel, product
-                    </p>
-                </li>
-                <li class="advantages-list-item">
-                    <span class="advantages-list-item__icon" role="img" aria-describedby="advantages-list-item__icon--study"></span>
-                    <p class="advantages-list-item__paragraph" id="advantages-list-item__icon--study">
-                        it has gradually built three big data models: network data modelmodel, product
-                    </p>
-                </li>
-                <li class="advantages-list-item">
-                    <span class="advantages-list-item__icon" role="img" aria-describedby="advantages-list-item__icon--drop"></span>
-                    <p class="advantages-list-item__paragraph" id="advantages-list-item__icon--drop">
-                        it has gradually built three big data models: network data modelmodel, product
-                    </p>
-                </li>
-            </ul>
-        </section>
-        <section class="timeline-section">
-            <h2 class="timeline-section__heading" lang="zh">联络我们</h2>
-            <ul class="timeline">
-                <li class="timeline-item timeline-item--left">
-                    <h3 class="timeline-item__date">2015</h3>
-                    <p class="timeline-item__description">
-                        Development, the company's business scope continues to expand,
-                        the industry visibility continues to improve. At present,
-                        the company's customer groups are mainly concentrated in the
-                    </p>
-                </li>
-                <li class="timeline-item timeline-item--top timeline-item--right">
-                    <h3 class="timeline-item__date">2016</h3>
-                    <p class="timeline-item__description">
-                        Development, the company's business scope continues to expand,
-                        the industry visibility continues to improve. At present,
-                        the company's customer groups are mainly concentrated in the
-                    </p>
-                </li>
-                <li class="timeline-item timeline-item--blank"></li>
-                <li class="timeline-item timeline-item--blank"></li>
-                <li class="timeline-item timeline-item--blank"></li>
-                <li class="timeline-item timeline-item--right">
-                    <h3 class="timeline-item__date">2018</h3>
-                    <p class="timeline-item__description">
-                        Development, the company's business scope continues to expand,
-                        the industry visibility continues to improve. At
-                    </p>
-                </li>
-                <li class="timeline-item timeline-item--bottom timeline-item--left">
-                    <h3 class="timeline-item__date">2017</h3>
-                    <p class="timeline-item__description">
-                        Development, the company's business scope continues to expand,
-                        the industry visibility continues to improve. At present,
-                        the company's customer groups are mainly concentrated in the
-                        government, public institutions and
-                    </p>
-                </li>
-                <li class="timeline-item timeline-item--blank"></li>
-                <li class="timeline-item timeline-item--blank"></li>
-                <li class="timeline-item timeline-item--large timeline-item--top timeline-item--right">
-                    <h3 class="timeline-item__date">2020</h3>
-                    <p class="timeline-item__description">
-                        Development, the company's business scope continues to expand,
-                        the industry visibility continues to improve. At present,
-                        the company's customer groups are mainly concentrated in the
-                        government, public institutions and
-                    </p>
-                </li>
-                <li class="timeline-item timeline-item--left">
-                    <h3 class="timeline-item__date">2019</h3>
-                    <p class="timeline-item__description">
-                        Development, the company's business scope continues to expand,
-                        the industry visibility continues to improve. At present,
-                        the company's customer groups are mainly concentrated in the
-                    </p>
-                </li>
-            </ul>
-            <div class="timeline-central">
-                <span class="timeline-central__circle"></span>
-                <span class="timeline-central__circle"></span>
-                <span class="timeline-central__circle"></span>
-            </div>
-        </section>
-        <section class="contacts">
-            <h2 class="contacts__heading" lang="zh">了解更多</h2>
-            <div class="contacts-form">
-                <p class="contacts-form__paragraph">
-                    Summary and intuitive display of main data, each panel presents summary information of
-                    relevant data, click to jump to the specific interface to see details.
-                </p>
-                <button class="button button--orange" lang="zh">联络我们</button>
-                <button class="button button--blue" lang="zh">了解更多</button>
-            </div>
-        </section>
-        <section class="locations" lang="zh">
-            <article class="locations-item">
-                <span class="locations-item__icon" role="img" aria-describedby="locations-item__icon--blue"></span>
-                <a href="#" class="locations-item__link" id="locations-item__link--blue">示例公司位置</a>
-            </article>
-            <article class="locations-item">
-                <span class="locations-item__icon" role="img" aria-describedby="locations-item__icon--orange"></span>
-                <a href="#" class="locations-item__link" id="locations-item__link--orange">示例公司位置</a>
-            </article>
-            <article class="locations-item">
-                <span class="locations-item__icon" role="img" aria-describedby="locations-item__icon--white"></span>
-                <a href="#" class="locations-item__link" id="locations-item__link--white">示例公司位置</a>
-            </article>
-        </section>
-        <section class="testimonials">
-            <article class="testimonial">
-                <blockquote class="testimonial__wrap">
-                    <cite class="testimonial__heading" lang="zh">联络我们</cite>
-                    <p class="testimonial__description">
-                        Summary and intuitive display of main data, each panel presents summary information of
-                        relevant data, click to jump to the specific interface to see details.
-                    </p>
-                </blockquote> 
-            </article>
-            <article class="testimonial">
-                <blockquote class="testimonial__wrap">
-                    <cite class="testimonial__heading" lang="zh">联络我们</cite>
-                    <p class="testimonial__description">
-                        Summary and intuitive display of main data, each panel presents summary information of
-                        relevant data, click to jump to the specific interface to see details.
-                    </p>
-                </blockquote> 
-            </article>
-            <article class="testimonial">
-                <blockquote class="testimonial__wrap">
-                    <cite class="testimonial__heading" lang="zh">联络我们</cite>
-                    <p class="testimonial__description">
-                        Summary and intuitive display of main data, each panel presents summary information of
-                        relevant data, click to jump to the specific interface to see details.
-                    </p>
-                </blockquote> 
-            </article>
-        </section>
-    </main>
-    <footer class="footer">
-        <span class="footer__logo">You Logo</span>
-        <div class="phone-number" lang="zh">
-            <span class="phone-number__header">联络我们 :</span>
-            <span class="phone-number__number">0000-00000000</span>
-        </div>
-        <div class="phone-number" lang="zh">
-            <span class="phone-number__header">联络我们 :</span>
-            <span class="phone-number__number">0000-00000000</span>
-        </div>
-        <div class="location">
-            <span class="location__header" lang="zh">示例位置:</span>
-            <span class="location__text">Example of a company location</span>
-        </div>
-    </footer>
-</body>
-
+	<body>
+		<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0">
+			<defs>
+				<clipPath id="contactsCurve" clipPathUnits="objectBoundingBox">
+					<path
+						d="M1,0.981 H0 V0.151 l0,0 c0.333,-0.226,0.714,-0.226,1,0 l0,0 V0.981"
+					/>
+				</clipPath>
+			</defs>
+		</svg>
+		<header class="header">
+			<nav class="header-navigation">
+				<span class="header-navigation__logo">You Logo</span>
+				<a href="#" class="header-navigation__link" lang="zh">般务</a>
+				<a href="#" class="header-navigation__link" lang="zh">关于</a>
+				<a href="#" class="header-navigation__link" lang="zh">我们</a>
+				<a href="#" class="header-navigation__link" lang="zh">联络</a>
+				<a href="#" class="header-navigation__link" lang="zh">我们</a>
+				<a href="#" class="header-navigation__link" lang="zh">公司</a>
+				<a
+					href="#"
+					class="header-navigation__link header-navigation__link--active"
+					lang="zh"
+					>联络我们</a
+				>
+			</nav>
+			<h1 class="header__heading">专注为你留住每个客户</h1>
+			<p class="header__paragraph">
+				it has gradually built three big data models: network data model,
+				content data model and business data model. With the unique feature of
+				"big data analysis closed-loop processing". zhitian provides users with
+				a complete closed-loop product from data
+			</p>
+			<button class="button button--blue" lang="zh">联络我们</button>
+			<button class="button button--white" lang="zh">了解更多</button>
+		</header>
+		<main>
+			<section class="exploration">
+				<article class="exploration-item">
+					<span
+						class="exploration-item__icon"
+						role="img"
+						aria-describedby="exploration-item__icon--heart"
+					></span>
+					<h3
+						class="exploration-item__heading"
+						id="exploration-item__icon--heart"
+						lang="zh"
+					>
+						联络我们
+					</h3>
+					<p class="exploration-item__paragraph">To explore the infinite</p>
+					<button class="exploration-item__button"></button>
+				</article>
+				<article class="exploration-item">
+					<span
+						class="exploration-item__icon"
+						role="img"
+						aria-describedby="exploration-item__icon--study"
+					></span>
+					<h3
+						class="exploration-item__heading"
+						id="exploration-item__icon--study"
+						lang="zh"
+					>
+						联络我们
+					</h3>
+					<p class="exploration-item__paragraph">To explore the infinite</p>
+					<button class="exploration-item__button"></button>
+				</article>
+				<article class="exploration-item">
+					<span
+						class="exploration-item__icon"
+						role="img"
+						aria-describedby="exploration-item__icon--drop"
+					></span>
+					<h3
+						class="exploration-item__heading"
+						id="exploration-item__icon--drop"
+						lang="zh"
+					>
+						联络我们
+					</h3>
+					<p class="exploration-item__paragraph">To explore the infinite</p>
+					<button class="exploration-item__button"></button>
+				</article>
+			</section>
+			<section class="advantages">
+				<h2 class="advantages__heading" lang="zh">了解更多</h2>
+				<ul class="advantages-list">
+					<li class="advantages-list-item">
+						<span
+							class="advantages-list-item__icon"
+							role="img"
+							aria-describedby="advantages-list-item__icon--reactive"
+						></span>
+						<p
+							class="advantages-list-item__paragraph"
+							id="advantages-list-item__icon--reactive"
+						>
+							it has gradually built three big data models: network data
+							modelmodel, product
+						</p>
+					</li>
+					<li class="advantages-list-item">
+						<span
+							class="advantages-list-item__icon"
+							role="img"
+							aria-describedby="advantages-list-item__icon--label"
+						></span>
+						<p
+							class="advantages-list-item__paragraph"
+							id="advantages-list-item__icon--label"
+						>
+							it has gradually built three big data models: network data
+							modelmodel, product
+						</p>
+					</li>
+					<li class="advantages-list-item">
+						<span
+							class="advantages-list-item__icon"
+							role="img"
+							aria-describedby="advantages-list-item__icon--clipboard"
+						></span>
+						<p
+							class="advantages-list-item__paragraph"
+							id="advantages-list-item__icon--clipboard"
+						>
+							it has gradually built three big data models: network data
+							modelmodel, product
+						</p>
+					</li>
+					<li class="advantages-list-item">
+						<span
+							class="advantages-list-item__icon"
+							role="img"
+							aria-describedby="advantages-list-item__icon--heart"
+						></span>
+						<p
+							class="advantages-list-item__paragraph"
+							id="advantages-list-item__icon--heart"
+						>
+							it has gradually built three big data models: network data
+							modelmodel, product
+						</p>
+					</li>
+					<li class="advantages-list-item">
+						<span
+							class="advantages-list-item__icon"
+							role="img"
+							aria-describedby="advantages-list-item__icon--study"
+						></span>
+						<p
+							class="advantages-list-item__paragraph"
+							id="advantages-list-item__icon--study"
+						>
+							it has gradually built three big data models: network data
+							modelmodel, product
+						</p>
+					</li>
+					<li class="advantages-list-item">
+						<span
+							class="advantages-list-item__icon"
+							role="img"
+							aria-describedby="advantages-list-item__icon--drop"
+						></span>
+						<p
+							class="advantages-list-item__paragraph"
+							id="advantages-list-item__icon--drop"
+						>
+							it has gradually built three big data models: network data
+							modelmodel, product
+						</p>
+					</li>
+				</ul>
+			</section>
+			<section class="timeline-section">
+				<h2 class="timeline-section__heading" lang="zh">联络我们</h2>
+				<ul class="timeline">
+					<li class="timeline-item timeline-item--left">
+						<h3 class="timeline-item__date">2015</h3>
+						<p class="timeline-item__description">
+							Development, the company's business scope continues to expand, the
+							industry visibility continues to improve. At present, the
+							company's customer groups are mainly concentrated in the
+						</p>
+					</li>
+					<li class="timeline-item timeline-item--top timeline-item--right">
+						<h3 class="timeline-item__date">2016</h3>
+						<p class="timeline-item__description">
+							Development, the company's business scope continues to expand, the
+							industry visibility continues to improve. At present, the
+							company's customer groups are mainly concentrated in the
+						</p>
+					</li>
+					<li class="timeline-item timeline-item--blank"></li>
+					<li class="timeline-item timeline-item--blank"></li>
+					<li class="timeline-item timeline-item--blank"></li>
+					<li class="timeline-item timeline-item--right">
+						<h3 class="timeline-item__date">2018</h3>
+						<p class="timeline-item__description">
+							Development, the company's business scope continues to expand, the
+							industry visibility continues to improve. At
+						</p>
+					</li>
+					<li class="timeline-item timeline-item--bottom timeline-item--left">
+						<h3 class="timeline-item__date">2017</h3>
+						<p class="timeline-item__description">
+							Development, the company's business scope continues to expand, the
+							industry visibility continues to improve. At present, the
+							company's customer groups are mainly concentrated in the
+							government, public institutions and
+						</p>
+					</li>
+					<li class="timeline-item timeline-item--blank"></li>
+					<li class="timeline-item timeline-item--blank"></li>
+					<li
+						class="timeline-item timeline-item--large timeline-item--top timeline-item--right"
+					>
+						<h3 class="timeline-item__date">2020</h3>
+						<p class="timeline-item__description">
+							Development, the company's business scope continues to expand, the
+							industry visibility continues to improve. At present, the
+							company's customer groups are mainly concentrated in the
+							government, public institutions and
+						</p>
+					</li>
+					<li class="timeline-item timeline-item--left">
+						<h3 class="timeline-item__date">2019</h3>
+						<p class="timeline-item__description">
+							Development, the company's business scope continues to expand, the
+							industry visibility continues to improve. At present, the
+							company's customer groups are mainly concentrated in the
+						</p>
+					</li>
+				</ul>
+				<div class="timeline-central">
+					<span class="timeline-central__circle"></span>
+					<span class="timeline-central__circle"></span>
+					<span class="timeline-central__circle"></span>
+				</div>
+			</section>
+			<section class="contacts">
+				<h2 class="contacts__heading" lang="zh">了解更多</h2>
+				<div class="contacts-form">
+					<p class="contacts-form__paragraph">
+						Summary and intuitive display of main data, each panel presents
+						summary information of relevant data, click to jump to the specific
+						interface to see details.
+					</p>
+					<button class="button button--orange" lang="zh">联络我们</button>
+					<button class="button button--blue" lang="zh">了解更多</button>
+				</div>
+			</section>
+			<section class="locations" lang="zh">
+				<article class="locations-item">
+					<span
+						class="locations-item__icon"
+						role="img"
+						aria-describedby="locations-item__icon--blue"
+					></span>
+					<a
+						href="#"
+						class="locations-item__link"
+						id="locations-item__link--blue"
+						>示例公司位置</a
+					>
+				</article>
+				<article class="locations-item">
+					<span
+						class="locations-item__icon"
+						role="img"
+						aria-describedby="locations-item__icon--orange"
+					></span>
+					<a
+						href="#"
+						class="locations-item__link"
+						id="locations-item__link--orange"
+						>示例公司位置</a
+					>
+				</article>
+				<article class="locations-item">
+					<span
+						class="locations-item__icon"
+						role="img"
+						aria-describedby="locations-item__icon--white"
+					></span>
+					<a
+						href="#"
+						class="locations-item__link"
+						id="locations-item__link--white"
+						>示例公司位置</a
+					>
+				</article>
+			</section>
+			<section class="testimonials">
+				<article class="testimonial">
+					<blockquote class="testimonial__wrap">
+						<cite class="testimonial__heading" lang="zh">联络我们</cite>
+						<p class="testimonial__description">
+							Summary and intuitive display of main data, each panel presents
+							summary information of relevant data, click to jump to the
+							specific interface to see details.
+						</p>
+					</blockquote>
+				</article>
+				<article class="testimonial">
+					<blockquote class="testimonial__wrap">
+						<cite class="testimonial__heading" lang="zh">联络我们</cite>
+						<p class="testimonial__description">
+							Summary and intuitive display of main data, each panel presents
+							summary information of relevant data, click to jump to the
+							specific interface to see details.
+						</p>
+					</blockquote>
+				</article>
+				<article class="testimonial">
+					<blockquote class="testimonial__wrap">
+						<cite class="testimonial__heading" lang="zh">联络我们</cite>
+						<p class="testimonial__description">
+							Summary and intuitive display of main data, each panel presents
+							summary information of relevant data, click to jump to the
+							specific interface to see details.
+						</p>
+					</blockquote>
+				</article>
+			</section>
+		</main>
+		<footer class="footer">
+			<span class="footer__logo">You Logo</span>
+			<div class="phone-number" lang="zh">
+				<span class="phone-number__header">联络我们 :</span>
+				<span class="phone-number__number">0000-00000000</span>
+			</div>
+			<div class="phone-number" lang="zh">
+				<span class="phone-number__header">联络我们 :</span>
+				<span class="phone-number__number">0000-00000000</span>
+			</div>
+			<div class="location">
+				<span class="location__header" lang="zh">示例位置:</span>
+				<span class="location__text">Example of a company location</span>
+			</div>
+		</footer>
+	</body>
 </html>

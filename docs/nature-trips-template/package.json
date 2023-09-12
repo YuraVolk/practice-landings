@@ -1,18 +1,18 @@
 {
-  "name": "practice-landings-nature-trips",
-  "private": true,
-  "version": "1.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite src/",
-    "build": "vite build src/ --outDir ../build --emptyOutDir",
-    "preview": "vite preview --outDir build"
-  },
-  "devDependencies": {
-    "@csstools/postcss-cascade-layers": "^4.0.0",
-    "autoprefixer": "^10.4.15",
-    "postcss": "^8.4.28",
-    "sass": "^1.63.6",
-    "vite": "^4.3.9"
-  }
+	"name": "practice-landings-nature-trips",
+	"private": true,
+	"version": "1.0.0",
+	"type": "module",
+	"scripts": {
+		"dev": "vite src/",
+		"build": "vite build src/ --outDir ../build --emptyOutDir",
+		"preview": "vite preview --outDir build"
+	},
+	"devDependencies": {
+		"@csstools/postcss-cascade-layers": "^4.0.0",
+		"autoprefixer": "^10.4.15",
+		"postcss": "^8.4.28",
+		"sass": "^1.63.6",
+		"vite": "^4.3.9"
+	}
 }

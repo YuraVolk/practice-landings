@@ -2,187 +2,203 @@
 @use "../config/mixins.scss";
 
 .trees-section {
-    @include mixins.place-background("/img/trees-image", "jpg");
+	@include mixins.place-background("/img/trees-image", "jpg");
 
-    padding: 24px 0 26px;
+	padding: 24px 0 26px;
 
-    &-navigation {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        gap: 24px;
+	&-navigation {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+		gap: 24px;
 
-        &__link {
-            font-family: "Rainbow Land", sans-serif;
-            font-size: 22px;
-            color: #fff;
-            text-shadow: mixins.text-stroke($stroke: 3, $color: rgba(#224131, 0.1), $step: 0.6px);
-            text-decoration: none;
-        }
-    }
+		&__link {
+			font-family: "Rainbow Land", sans-serif;
+			font-size: 22px;
+			color: #fff;
+			text-shadow: mixins.text-stroke(
+				$stroke: 3,
+				$color: rgba(#224131, 0.1),
+				$step: 0.6px
+			);
+			text-decoration: none;
+		}
+	}
 
-    &__heading {
-        font: 800 32px "Rainbow Land", sans-serif;
-        text-align: center;
-        color: #fff;
-    }
+	&__heading {
+		font:
+			800 32px "Rainbow Land",
+			sans-serif;
+		text-align: center;
+		color: #fff;
+	}
 
-    &-regions {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        row-gap: 170px;
-        padding: 32px mixins.obtain-viewport-width(25px) 0;
-    }
+	&-regions {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		row-gap: 170px;
+		padding: 32px mixins.obtain-viewport-width(25px) 0;
+	}
 
-    &-left-regions, 
-    &-right-regions {
-        flex-basis: 270px;
-    }
+	&-left-regions,
+	&-right-regions {
+		flex-basis: 270px;
+	}
 
-    &-right-regions {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-    }
+	&-right-regions {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+	}
 
-    &-listed-regions {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        flex: 1 0 100%;
-        gap: 20px;
-        list-style-type: none;
-        margin: 0;
-        padding: 8px mixins.obtain-viewport-width(78px) 30px;
-        box-sizing: border-box;
-        text-align: center;
-        background-color: #acb06c;
-        border-radius: 20px;
+	&-listed-regions {
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		flex: 1 0 100%;
+		gap: 20px;
+		list-style-type: none;
+		margin: 0;
+		padding: 8px mixins.obtain-viewport-width(78px) 30px;
+		box-sizing: border-box;
+		text-align: center;
+		background-color: #acb06c;
+		border-radius: 20px;
 
-        &-item {
-            flex: 1 1 0;
-            border-top-left-radius: 15px;
-            border-top-right-radius: 15px;
-            height: calc(400px - math.div(mixins.obtain-viewport-width(230px), 2));
-            background: linear-gradient(to bottom, #f0ebc1 0%, #f0ebc1 75%, #acb06c 100%);
+		&-item {
+			flex: 1 1 0;
+			border-top-left-radius: 15px;
+			border-top-right-radius: 15px;
+			height: calc(400px - math.div(mixins.obtain-viewport-width(230px), 2));
+			background: linear-gradient(
+				to bottom,
+				#f0ebc1 0%,
+				#f0ebc1 75%,
+				#acb06c 100%
+			);
 
-            &--large {
-                height: initial;
-                flex: 1 0 100%;
-            }
-        }
-    }
+			&--large {
+				height: initial;
+				flex: 1 0 100%;
+			}
+		}
+	}
 
-    &-region {
-        width: 100%;
-        box-sizing: border-box;
+	&-region {
+		width: 100%;
+		box-sizing: border-box;
 
-        &--large {
-            height: 240px;
-            border-top-left-radius: 12px;
-            border-top-right-radius: 6px 11px;
-            border-bottom-left-radius: 20px;
-            padding: 14px;
-            background-color: #e5dea5;
-            box-shadow:  8px 8px 16px #a09f74,
-               -8px -8px 16px #ffffc2;
-        }
+		&--large {
+			height: 240px;
+			border-top-left-radius: 12px;
+			border-top-right-radius: 6px 11px;
+			border-bottom-left-radius: 20px;
+			padding: 14px;
+			background-color: #e5dea5;
+			box-shadow:
+				8px 8px 16px #a09f74,
+				-8px -8px 16px #ffffc2;
+		}
 
-        &--small {
-            width: 140px;
-            height: 160px;
-            padding: 14px 6px 6px;
-            border-top-left-radius: 50% 24px;
-            border-bottom-left-radius: 16px;
-            border-bottom-right-radius: 8px 6px;
-            background-color: #e5dea5;
-            box-shadow:  5px 5px 10px #232b14;
-        }
+		&--small {
+			width: 140px;
+			height: 160px;
+			padding: 14px 6px 6px;
+			border-top-left-radius: 50% 24px;
+			border-bottom-left-radius: 16px;
+			border-bottom-right-radius: 8px 6px;
+			background-color: #e5dea5;
+			box-shadow: 5px 5px 10px #232b14;
+		}
 
-        &--circular {
-            width: 155px;
-            height: 115px;
-            margin-top: 130px;
-            padding: 7% 7% 5% 10%;
-            background-color: #f2edc3;
-            border-radius: 53% 50% 38% 53% 48% 50% 63% 50%;
-            box-shadow: 5px 5px 10px #c8c190, -5px -5px 10px #ffffd0;
-        }
+		&--circular {
+			width: 155px;
+			height: 115px;
+			margin-top: 130px;
+			padding: 7% 7% 5% 10%;
+			background-color: #f2edc3;
+			border-radius: 53% 50% 38% 53% 48% 50% 63% 50%;
+			box-shadow:
+				5px 5px 10px #c8c190,
+				-5px -5px 10px #ffffd0;
+		}
 
-        &--listed {
-            padding: 24px 16px 55px;
-            height: inherit;
-        }
-    }
+		&--listed {
+			padding: 24px 16px 55px;
+			height: inherit;
+		}
+	}
 
-    &-content {
-        color: #544933;
+	&-content {
+		color: #544933;
 
-        &__subheading {
-            font-family: Helsky, sans-serif;
-            font-size: 9px;
-            margin: 0 0 5px;
-            text-transform: uppercase;
-            opacity: 0.75;
-        }
+		&__subheading {
+			font-family: Helsky, sans-serif;
+			font-size: 9px;
+			margin: 0 0 5px;
+			text-transform: uppercase;
+			opacity: 0.75;
+		}
 
-        &__heading {
-            margin: 0;
-            font-family: "Rainbow Land", sans-serif;
-            font-size: 20px;
-        }
+		&__heading {
+			margin: 0;
+			font-family: "Rainbow Land", sans-serif;
+			font-size: 20px;
+		}
 
-        &__small-heading {
-            position: relative;
-            font-family: Helsky, sans-serif;
-            font-size: 8px;
-            margin: 8px 0 0 6px;
-            text-transform: uppercase;
-            opacity: 0.8;
+		&__small-heading {
+			position: relative;
+			font-family: Helsky, sans-serif;
+			font-size: 8px;
+			margin: 8px 0 0 6px;
+			text-transform: uppercase;
+			opacity: 0.8;
 
-            &::after {
-                position: absolute;
-                bottom: -4px;
-                right: 16px;
-                width: 6px;
-                height: 8px;
-                box-sizing: border-box;
-                border: 2px solid #a39d5e;
-                border-radius: 50%;
-                content: "";
-            }
-        }
+			&::after {
+				position: absolute;
+				bottom: -4px;
+				right: 16px;
+				width: 6px;
+				height: 8px;
+				box-sizing: border-box;
+				border: 2px solid #a39d5e;
+				border-radius: 50%;
+				content: "";
+			}
+		}
 
-        &__paragraph {
-            margin: 4px 0;
-            font-family: Brusly, sans-serif;
-            font-size: 11px;
-        }
+		&__paragraph {
+			margin: 4px 0;
+			font-family: Brusly, sans-serif;
+			font-size: 11px;
+		}
 
-        &__link {
-            font: 700 12px Undertown, sans-serif;
-            color: #b1a971;
-        }
-    }
+		&__link {
+			font:
+				700 12px Undertown,
+				sans-serif;
+			color: #b1a971;
+		}
+	}
 
-    &-listed-regions-item--large &-content__paragraph {
-        max-width: 66%;
-        margin: 0 auto;
-    }
-       
-    &-listed-regions-item--large &-region {
-        padding: 0;
-    }
+	&-listed-regions-item--large &-content__paragraph {
+		max-width: 66%;
+		margin: 0 auto;
+	}
 
-    &-listed-regions-item--large &-content {
-        & > :first-child {
-            padding-top: 24px;
-        }
+	&-listed-regions-item--large &-region {
+		padding: 0;
+	}
 
-        & > :last-child {
-            padding-bottom: 55px;
-        }
-    }
+	&-listed-regions-item--large &-content {
+		& > :first-child {
+			padding-top: 24px;
+		}
+
+		& > :last-child {
+			padding-bottom: 55px;
+		}
+	}
 }

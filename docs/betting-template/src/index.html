@@ -1,137 +1,188 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Vite App</title>
+		<link rel="stylesheet" href="./style.scss" />
+	</head>
 
-<head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-    <link rel="stylesheet" href="./style.scss">
-</head>
-
-<body>
-    <header class="header">
-        <nav class="header-navigation">
-            <div class="header-navigation-inner">
-                <span class="header-navigation__logo">You Logo</span>
-                <span class="header-navigation__text header-navigation__text--active" lang="zh">关于我们</span>
-                <span class="header-navigation__text" lang="zh">关于我们</span>
-                <span class="header-navigation__text" lang="zh">关于我们</span>
-                <span class="header-navigation__text" lang="zh">联络我们</span>
-                <span class="header-navigation__text" lang="zh">公司篇介</span>
-                <div class="header-navigation__settings" lang="zh">
-                    <button class="header-navigation__setting">简化</button>
-                    <button class="header-navigation__setting">传统</button>
-                </div>
-            </div>
-        </nav>
-        <h1 class="header__heading" lang="zh">照片/商务办公</h1>
-        <h2 class="header__subheading">— Photo Taken/Business Office —</h2>
-    </header>
-    <main>
-        <section class="intro">
-            <span class="intro__number">01</span>
-            <h1 class="intro__heading">Photo Taken/Business Office —</h1>
-            <ul class="intro-advantages">
-                <li class="intro-advantages-item">
-                    <img class="intro-advantages-item__image" alt="Fast execution time" src="./img/section-icon-1.jpg">
-                    <p class="intro-advantages-item__description">
-                        You can add the word to the word book by clicking the favorites button when looking up the word
-                    </p>
-                </li>
-                <li class="intro-advantages-item">
-                    <img class="intro-advantages-item__image" alt="Fast execution time" src="./img/section-icon-2.jpg">
-                    <p class="intro-advantages-item__description">
-                        You can add the word to the word book by clicking the favorites button when looking up the word
-                    </p>
-                </li>
-                <li class="intro-advantages-item">
-                    <img class="intro-advantages-item__image" alt="Fast execution time" src="./img/section-icon-3.jpg">
-                    <p class="intro-advantages-item__description">
-                        You can add the word to the word book by clicking the favorites button when looking up the word
-                    </p>
-                </li>
-            </ul>
-        </section>
-        <section class="statistics">
-            <span class="statistics__number">02</span>
-            <h1 class="statistics__heading">Photo Taken/Business Office —</h1>
-            <p class="statistics__paragraph">
-                You can add the word to the word book by clicking the favorites button when looking up the word
-            </p>
-            <img class="statistics__chart" alt="Statistics chart" src="./img/chart.jpg">
-            <p class="statistics__paragraph">
-                You can add the word to the word book by clicking the favorites<br>
-                button when looking up the word<br>
-                You can also set intermediate batch guides
-            </p>
-            <img class="statistics__map" alt="World map with our locations" src="./img/map-image.png">
-        </section>
-        <section class="partners">
-            <ul class="partners-list">
-                <li class="partners-list-item">
-                    <img class="partners-list-item__logo" alt="Baidu logotype" src="./img/Baidu.svg">
-                </li>
-                <li class="partners-list-item">
-                    <img class="partners-list-item__logo" alt="Sina logotype" src="./img/Sina-logo.svg">
-                </li>
-                <li class="partners-list-item">
-                    <img class="partners-list-item__logo" alt="Bank of China logotype" src="./img/bank-of-china-logo.svg">
-                </li>
-                <li class="partners-list-item">
-                    <img class="partners-list-item__logo" alt="IBM logotype" src="./img/ibm-logo.svg">
-                </li>
-                <li class="partners-list-item">
-                    <img class="partners-list-item__logo" alt="Microsoft logotype" src="./img/microsoft-logo.svg">
-                </li>
-                <li class="partners-list-item">
-                    <img class="partners-list-item__logo" alt="Pingan logotype" src="./img/Pingan-logo.svg">
-                </li>
-            </ul>
-        </section>
-        <section class="office">
-            <h2 class="office__heading">Photo Taken/Business Office —</h2>
-            <p class="office__description">
-                You can add the word to the word book by clicking the favorites button when looking up the word
-            </p>
-            <button class="office__button">联络我们>></button>
-        </section>
-    </main>
-    <footer class="footer" lang="zh">
-        <nav class="contact-links">
-            <span class="contact-links__text">主页</span>
-            <span class="contact-links__text">服务</span>
-            <span class="contact-links__text">关于我们</span>
-            <span class="contact-links__text">联络我们</span>
-            <span class="contact-links__text">联络我们</span>
-            <span class="contact-links__text">般务团队</span>
-            <span class="contact-links__text">了解更多</span>
-        </nav>
-        <hr class="footer-separator">
-        <ul class="footer-icons">
-            <li class="footer-icon"></li>
-            <li class="footer-icon"></li>
-            <li class="footer-icon"></li>
-            <li class="footer-icon"></li>
-        </ul>
-        <div class="contacts-section">
-            <div class="phone-number">
-                <span class="phone-number__header">联络我们 :</span>
-                <span class="phone-number__number">0000-00000000</span>
-            </div>
-            <img class="qr-code" src="./img/qr-code.png" alt="QR code">
-            <img class="qr-code" src="./img/qr-code.png" alt="QR code">
-            <div class="contacts-buttons">
-                <button class="contact-us-button">联络我们</button>
-                <button class="go-up-button"></button>
-            </div>
-        </div>
-        <hr class="footer-separator">
-        <div class="location">
-            <span class="location__header" lang="zh">示例位置:</span>
-            <span class="location__text">Example of a company location</span>
-        </div>
-    </footer>
-</body>
-
+	<body>
+		<header class="header">
+			<nav class="header-navigation">
+				<div class="header-navigation-inner">
+					<span class="header-navigation__logo">You Logo</span>
+					<span
+						class="header-navigation__text header-navigation__text--active"
+						lang="zh"
+						>关于我们</span
+					>
+					<span class="header-navigation__text" lang="zh">关于我们</span>
+					<span class="header-navigation__text" lang="zh">关于我们</span>
+					<span class="header-navigation__text" lang="zh">联络我们</span>
+					<span class="header-navigation__text" lang="zh">公司篇介</span>
+					<div class="header-navigation__settings" lang="zh">
+						<button class="header-navigation__setting">简化</button>
+						<button class="header-navigation__setting">传统</button>
+					</div>
+				</div>
+			</nav>
+			<h1 class="header__heading" lang="zh">照片/商务办公</h1>
+			<h2 class="header__subheading">— Photo Taken/Business Office —</h2>
+		</header>
+		<main>
+			<section class="intro">
+				<span class="intro__number">01</span>
+				<h1 class="intro__heading">Photo Taken/Business Office —</h1>
+				<ul class="intro-advantages">
+					<li class="intro-advantages-item">
+						<img
+							class="intro-advantages-item__image"
+							alt="Fast execution time"
+							src="./img/section-icon-1.jpg"
+						/>
+						<p class="intro-advantages-item__description">
+							You can add the word to the word book by clicking the favorites
+							button when looking up the word
+						</p>
+					</li>
+					<li class="intro-advantages-item">
+						<img
+							class="intro-advantages-item__image"
+							alt="Fast execution time"
+							src="./img/section-icon-2.jpg"
+						/>
+						<p class="intro-advantages-item__description">
+							You can add the word to the word book by clicking the favorites
+							button when looking up the word
+						</p>
+					</li>
+					<li class="intro-advantages-item">
+						<img
+							class="intro-advantages-item__image"
+							alt="Fast execution time"
+							src="./img/section-icon-3.jpg"
+						/>
+						<p class="intro-advantages-item__description">
+							You can add the word to the word book by clicking the favorites
+							button when looking up the word
+						</p>
+					</li>
+				</ul>
+			</section>
+			<section class="statistics">
+				<span class="statistics__number">02</span>
+				<h1 class="statistics__heading">Photo Taken/Business Office —</h1>
+				<p class="statistics__paragraph">
+					You can add the word to the word book by clicking the favorites button
+					when looking up the word
+				</p>
+				<img
+					class="statistics__chart"
+					alt="Statistics chart"
+					src="./img/chart.jpg"
+				/>
+				<p class="statistics__paragraph">
+					You can add the word to the word book by clicking the favorites<br />
+					button when looking up the word<br />
+					You can also set intermediate batch guides
+				</p>
+				<img
+					class="statistics__map"
+					alt="World map with our locations"
+					src="./img/map-image.png"
+				/>
+			</section>
+			<section class="partners">
+				<ul class="partners-list">
+					<li class="partners-list-item">
+						<img
+							class="partners-list-item__logo"
+							alt="Baidu logotype"
+							src="./img/Baidu.svg"
+						/>
+					</li>
+					<li class="partners-list-item">
+						<img
+							class="partners-list-item__logo"
+							alt="Sina logotype"
+							src="./img/Sina-logo.svg"
+						/>
+					</li>
+					<li class="partners-list-item">
+						<img
+							class="partners-list-item__logo"
+							alt="Bank of China logotype"
+							src="./img/bank-of-china-logo.svg"
+						/>
+					</li>
+					<li class="partners-list-item">
+						<img
+							class="partners-list-item__logo"
+							alt="IBM logotype"
+							src="./img/ibm-logo.svg"
+						/>
+					</li>
+					<li class="partners-list-item">
+						<img
+							class="partners-list-item__logo"
+							alt="Microsoft logotype"
+							src="./img/microsoft-logo.svg"
+						/>
+					</li>
+					<li class="partners-list-item">
+						<img
+							class="partners-list-item__logo"
+							alt="Pingan logotype"
+							src="./img/Pingan-logo.svg"
+						/>
+					</li>
+				</ul>
+			</section>
+			<section class="office">
+				<h2 class="office__heading">Photo Taken/Business Office —</h2>
+				<p class="office__description">
+					You can add the word to the word book by clicking the favorites button
+					when looking up the word
+				</p>
+				<button class="office__button">联络我们>></button>
+			</section>
+		</main>
+		<footer class="footer" lang="zh">
+			<nav class="contact-links">
+				<span class="contact-links__text">主页</span>
+				<span class="contact-links__text">服务</span>
+				<span class="contact-links__text">关于我们</span>
+				<span class="contact-links__text">联络我们</span>
+				<span class="contact-links__text">联络我们</span>
+				<span class="contact-links__text">般务团队</span>
+				<span class="contact-links__text">了解更多</span>
+			</nav>
+			<hr class="footer-separator" />
+			<ul class="footer-icons">
+				<li class="footer-icon"></li>
+				<li class="footer-icon"></li>
+				<li class="footer-icon"></li>
+				<li class="footer-icon"></li>
+			</ul>
+			<div class="contacts-section">
+				<div class="phone-number">
+					<span class="phone-number__header">联络我们 :</span>
+					<span class="phone-number__number">0000-00000000</span>
+				</div>
+				<img class="qr-code" src="./img/qr-code.png" alt="QR code" />
+				<img class="qr-code" src="./img/qr-code.png" alt="QR code" />
+				<div class="contacts-buttons">
+					<button class="contact-us-button">联络我们</button>
+					<button class="go-up-button"></button>
+				</div>
+			</div>
+			<hr class="footer-separator" />
+			<div class="location">
+				<span class="location__header" lang="zh">示例位置:</span>
+				<span class="location__text">Example of a company location</span>
+			</div>
+		</footer>
+	</body>
 </html>

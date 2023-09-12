@@ -1,202 +1,243 @@
 @use "../../config/mixins.scss";
 
 @mixin position-absolute($width, $height, $top: 0, $left: 0) {
-    position: absolute;
-    @if  $top == 0 {
-        top: 0;
-    } @else {
-        top: mixins.obtain-viewport-width($top);
-    }
-    @if  $left == 0 {
-        left: 0;
-    } @else {
-        left: mixins.obtain-viewport-width($left);
-    }
+	position: absolute;
+	@if $top == 0 {
+		top: 0;
+	} @else {
+		top: mixins.obtain-viewport-width($top);
+	}
+	@if $left == 0 {
+		left: 0;
+	} @else {
+		left: mixins.obtain-viewport-width($left);
+	}
 
-    width: mixins.obtain-viewport-width($width);
-    height: mixins.obtain-viewport-width($height);
+	width: mixins.obtain-viewport-width($width);
+	height: mixins.obtain-viewport-width($height);
 }
 
 @mixin overlay-form {
-    &__inner {
-        position: relative;
-        height: mixins.obtain-viewport-width(415px);
-        min-height: 247px;
-    }
+	&__inner {
+		position: relative;
+		height: mixins.obtain-viewport-width(415px);
+		min-height: 247px;
+	}
 
-    &-overlay {
-        @include position-absolute($width: 525px, $height: 440px, $left: -50px);
-        @include mixins.place-background("/img/navigation-image", "png");
+	&-overlay {
+		@include position-absolute($width: 525px, $height: 440px, $left: -50px);
+		@include mixins.place-background("/img/navigation-image", "png");
 
-        transform: rotate(165deg) scale(-1, -1);
-        display: flex;
-        flex-direction: column;
-        padding-top: mixins.obtain-viewport-width(35px);
-        background-position-y: top;
-        mask-image: linear-gradient(-257deg, rgb(0 0 0 / 100%) 60%, transparent 95%, transparent 95%, transparent 150%);
-        mask-size: 300% 100%;
-        mask-position: right;
-        box-shadow: inset 2px 2px #f6e7ca;
-        opacity: 1;
-        transition: all 0.6s ease-in-out;
+		transform: rotate(165deg) scale(-1, -1);
+		display: flex;
+		flex-direction: column;
+		padding-top: mixins.obtain-viewport-width(35px);
+		background-position-y: top;
+		mask-image: linear-gradient(
+			-257deg,
+			rgb(0 0 0 / 100%) 60%,
+			transparent 95%,
+			transparent 95%,
+			transparent 150%
+		);
+		mask-size: 300% 100%;
+		mask-position: right;
+		box-shadow: inset 2px 2px #f6e7ca;
+		opacity: 1;
+		transition: all 0.6s ease-in-out;
 
-        @media (max-width: 700px) {
-            width: initial;
-            height: initial;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            transform: none;
-        }
+		@media (max-width: 700px) {
+			width: initial;
+			height: initial;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			transform: none;
+		}
 
-        &:hover,
-        &:focus-within {
-            mask-position: left;
-            opacity: 0.85;
-        }
+		&:hover,
+		&:focus-within {
+			mask-position: left;
+			opacity: 0.85;
+		}
 
-        &-navigation {
-            display: flex;
-            flex-wrap: wrap;
-            max-width: mixins.obtain-viewport-width(365px);
-            gap: mixins.obtain-viewport-width(20px);
-            align-self: flex-end;
-            padding-right: mixins.obtain-viewport-width(23px);
+		&-navigation {
+			display: flex;
+			flex-wrap: wrap;
+			max-width: mixins.obtain-viewport-width(365px);
+			gap: mixins.obtain-viewport-width(20px);
+			align-self: flex-end;
+			padding-right: mixins.obtain-viewport-width(23px);
 
-            @media (max-width: 700px) {
-                padding-left: 5px;
-                max-width: initial;
-                align-self: center;
-            }
-    
-            &__link {
-                border-bottom: 2px solid transparent;
-                font: 700 mixins.obtain-viewport-width(5px) Spring, sans-serif;
-                text-decoration: none;
-                text-transform: uppercase;
-                letter-spacing: 2px;
-                color: #000;
-                transition: all 0.4s 0.2s ease-in-out;
+			@media (max-width: 700px) {
+				padding-left: 5px;
+				max-width: initial;
+				align-self: center;
+			}
 
-                @media (max-width: 700px) {
-                    font-size: 7px;
-                }
+			&__link {
+				border-bottom: 2px solid transparent;
+				font:
+					700 mixins.obtain-viewport-width(5px) Spring,
+					sans-serif;
+				text-decoration: none;
+				text-transform: uppercase;
+				letter-spacing: 2px;
+				color: #000;
+				transition: all 0.4s 0.2s ease-in-out;
 
-                &:first-child {
-                    margin-right: mixins.obtain-viewport-width(40px);
-                }
+				@media (max-width: 700px) {
+					font-size: 7px;
+				}
 
-                &:last-child {
-                    margin-left: mixins.obtain-viewport-width(40px);
-                }
+				&:first-child {
+					margin-right: mixins.obtain-viewport-width(40px);
+				}
 
-                @include mixins.lift-up($levels: 2, $modifiers: (":hover", ":focus-within")) {
-                    font-size: mixins.obtain-viewport-width(7px);
-                    border-color: #000;
+				&:last-child {
+					margin-left: mixins.obtain-viewport-width(40px);
+				}
 
-                    @media (max-width: 700px) {
-                        font-size: 9px;
-                    }
-                }
-            }
-        }
+				@include mixins.lift-up(
+					$levels: 2,
+					$modifiers: (
+						":hover",
+						":focus-within",
+					)
+				) {
+					font-size: mixins.obtain-viewport-width(7px);
+					border-color: #000;
 
-        &-form {
-            position: relative;
-            transform: translateX(50%) scaleX(-1);
-            margin-top: mixins.obtain-viewport-width(35px);
-            padding: mixins.obtain-viewport-width(32px) 0 mixins.obtain-viewport-width(32px) mixins.obtain-viewport-width(27px);
-            width: mixins.obtain-viewport-width(180px);
-            height: mixins.obtain-viewport-width(180px);
-            box-sizing: border-box;
-            border-radius: mixins.obtain-viewport-width(22px);
-            align-self: center;
-            perspective: mixins.obtain-viewport-width(50px);
-            background-color: #f7e6ca;
-            transition: all 0.4s 0.2s ease-in-out;
+					@media (max-width: 700px) {
+						font-size: 9px;
+					}
+				}
+			}
+		}
 
-            @include mixins.lift-up($levels: 1, $modifiers: (":hover", ":focus-within")) {
-                transform: translateX(55%);
-            }
+		&-form {
+			position: relative;
+			transform: translateX(50%) scaleX(-1);
+			margin-top: mixins.obtain-viewport-width(35px);
+			padding: mixins.obtain-viewport-width(32px) 0
+				mixins.obtain-viewport-width(32px) mixins.obtain-viewport-width(27px);
+			width: mixins.obtain-viewport-width(180px);
+			height: mixins.obtain-viewport-width(180px);
+			box-sizing: border-box;
+			border-radius: mixins.obtain-viewport-width(22px);
+			align-self: center;
+			perspective: mixins.obtain-viewport-width(50px);
+			background-color: #f7e6ca;
+			transition: all 0.4s 0.2s ease-in-out;
 
-            @media (max-width: 700px) {
-                align-self: flex-start;
-                width: 200px;
-                height: 200px;
-                transform: none;
+			@include mixins.lift-up(
+				$levels: 1,
+				$modifiers: (
+					":hover",
+					":focus-within",
+				)
+			) {
+				transform: translateX(55%);
+			}
 
-                *:not(#\#) {
-                    width: initial;
-                    max-width: initial;
-                    font-size: 9.3px;
-                }
-            }
+			@media (max-width: 700px) {
+				align-self: flex-start;
+				width: 200px;
+				height: 200px;
+				transform: none;
 
-            &__heading {
-                margin: 0;
-                font: 700 small-caps mixins.obtain-viewport-width(12px) Spring, sans-serif;
-                letter-spacing: 3px;
-            }
+				*:not(#\#) {
+					width: initial;
+					max-width: initial;
+					font-size: 9.3px;
+				}
+			}
 
-            &__description {
-                margin: mixins.obtain-viewport-width(7px) 0;
-                max-width: mixins.obtain-viewport-width(100px);
-                font-size: mixins.obtain-viewport-width(7px);
-                font-family: Brusly, sans-serif;
-            }
+			&__heading {
+				margin: 0;
+				font:
+					700 small-caps mixins.obtain-viewport-width(12px) Spring,
+					sans-serif;
+				letter-spacing: 3px;
+			}
 
-            &__input {
-                width: mixins.obtain-viewport-width(100px);
-                padding: mixins.obtain-viewport-width(2px);
-                border-color: rgb(0 0 0 / 25%);
-                border-radius: mixins.obtain-viewport-width(2px);
-                margin: 0;
+			&__description {
+				margin: mixins.obtain-viewport-width(7px) 0;
+				max-width: mixins.obtain-viewport-width(100px);
+				font-size: mixins.obtain-viewport-width(7px);
+				font-family: Brusly, sans-serif;
+			}
 
-                &::placeholder {
-                    color: rgb(0 0 0 / 25%);
-                    font-family: Brusly, sans-serif;
-                    font-size: mixins.obtain-viewport-width(8px);
-                    text-transform: lowercase;
-                }
-            }
+			&__input {
+				width: mixins.obtain-viewport-width(100px);
+				padding: mixins.obtain-viewport-width(2px);
+				border-color: rgb(0 0 0 / 25%);
+				border-radius: mixins.obtain-viewport-width(2px);
+				margin: 0;
 
-            &-list {
-                border-top: rgb(0 0 0 / 33%) solid 1px;
-                margin: mixins.obtain-viewport-width(5px) 0 0;
-                padding: mixins.obtain-viewport-width(5px) 0 0;
-                width: mixins.obtain-viewport-width(133px);
-                list-style-type: none;
+				&::placeholder {
+					color: rgb(0 0 0 / 25%);
+					font-family: Brusly, sans-serif;
+					font-size: mixins.obtain-viewport-width(8px);
+					text-transform: lowercase;
+				}
+			}
 
-                &-item {
-                    font-family: Brusly, sans-serif;
-                    font-size: mixins.obtain-viewport-width(6px);
-                    line-height: 1.5;
-                    text-transform: lowercase;
-                }
-            }
+			&-list {
+				border-top: rgb(0 0 0 / 33%) solid 1px;
+				margin: mixins.obtain-viewport-width(5px) 0 0;
+				padding: mixins.obtain-viewport-width(5px) 0 0;
+				width: mixins.obtain-viewport-width(133px);
+				list-style-type: none;
 
-            &__subheading {
-                margin: 0;
-                font: 700 small-caps mixins.obtain-viewport-width(8px) Spring, sans-serif;
-                letter-spacing: 1px;
-            }
+				&-item {
+					font-family: Brusly, sans-serif;
+					font-size: mixins.obtain-viewport-width(6px);
+					line-height: 1.5;
+					text-transform: lowercase;
+				}
+			}
 
-            &::before {
-                @include position-absolute($width: 180px, $height: 170px, $top: 6px, $left: -105px);
+			&__subheading {
+				margin: 0;
+				font:
+					700 small-caps mixins.obtain-viewport-width(8px) Spring,
+					sans-serif;
+				letter-spacing: 1px;
+			}
 
-                z-index: -1;
-                display: block;
-                background: linear-gradient(to right, #f7a383 0%, #f7a383 61.5%, #f7e6ca 61.5%, #f7e6ca 100%);
-                border-radius: mixins.obtain-viewport-width(22px);
-                content: "";
-            }
+			&::before {
+				@include position-absolute(
+					$width: 180px,
+					$height: 170px,
+					$top: 6px,
+					$left: -105px
+				);
 
-            &::after {
-                @include position-absolute($width: 70px, $height: 4px, $top: 40px, $left: -64px);
+				z-index: -1;
+				display: block;
+				background: linear-gradient(
+					to right,
+					#f7a383 0%,
+					#f7a383 61.5%,
+					#f7e6ca 61.5%,
+					#f7e6ca 100%
+				);
+				border-radius: mixins.obtain-viewport-width(22px);
+				content: "";
+			}
 
-                background-color: rgb(0 0 0 / 85%);
-                content: "";
-            }
-        }
-    }
+			&::after {
+				@include position-absolute(
+					$width: 70px,
+					$height: 4px,
+					$top: 40px,
+					$left: -64px
+				);
+
+				background-color: rgb(0 0 0 / 85%);
+				content: "";
+			}
+		}
+	}
 }

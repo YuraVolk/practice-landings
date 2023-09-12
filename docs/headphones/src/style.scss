@@ -2,901 +2,971 @@
 @use "sass:list";
 
 @font-face {
-    font-family: Latinaires;
-    font-weight: 400;
-    font-style: normal;
-    font-variant: normal;
-    src: url("./fonts/LatinairesPro-Regular.woff2") format("woff2"),
-        url("./fonts/LatinairesPro-Regular.woff") format("woff");
-    font-display: swap;
+	font-family: Latinaires;
+	font-weight: 400;
+	font-style: normal;
+	font-variant: normal;
+	src:
+		url("./fonts/LatinairesPro-Regular.woff2") format("woff2"),
+		url("./fonts/LatinairesPro-Regular.woff") format("woff");
+	font-display: swap;
 }
 
 @font-face {
-    font-family: Latinaires;
-    font-weight: 500;
-    font-style: normal;
-    font-variant: normal;
-    src: url("./fonts/LatinairesProSC-Regular.woff2") format("woff2"),
-        url("./fonts/LatinairesProSC-Regular.woff") format("woff");
-    font-display: swap;
+	font-family: Latinaires;
+	font-weight: 500;
+	font-style: normal;
+	font-variant: normal;
+	src:
+		url("./fonts/LatinairesProSC-Regular.woff2") format("woff2"),
+		url("./fonts/LatinairesProSC-Regular.woff") format("woff");
+	font-display: swap;
 }
 
 @font-face {
-    font-family: Icons;
-    src: url('fonts/icomoon.eot?ww2sau');
-    src: url('fonts/icomoon.eot?ww2sau#iefix') format('embedded-opentype'),
-        url('fonts/icomoon.ttf?ww2sau') format('truetype'),
-        url('fonts/icomoon.woff?ww2sau') format('woff'),
-        url('fonts/icomoon.svg?ww2sau#icomoon') format('svg');
-    font-weight: normal;
-    font-style: normal;
-    font-display: block;
+	font-family: Icons;
+	src: url("fonts/icomoon.eot?ww2sau");
+	src:
+		url("fonts/icomoon.eot?ww2sau#iefix") format("embedded-opentype"),
+		url("fonts/icomoon.ttf?ww2sau") format("truetype"),
+		url("fonts/icomoon.woff?ww2sau") format("woff"),
+		url("fonts/icomoon.svg?ww2sau#icomoon") format("svg");
+	font-weight: normal;
+	font-style: normal;
+	font-display: block;
 }
 
 %font-icon {
-    font-family: Icons, system-ui !important;
-    speak: never;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+	font-family: Icons, system-ui !important;
+	speak: never;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 %icon-mail::before {
-    @extend %font-icon;
+	@extend %font-icon;
 
-    content: "\1f4e8";
+	content: "\1f4e8";
 }
 
 %icon-headphones::before {
-    @extend %font-icon;
+	@extend %font-icon;
 
-    content: "\1f3a7";
+	content: "\1f3a7";
 }
 
 %icon-connection::before {
-    @extend %font-icon;
+	@extend %font-icon;
 
-    content: "\1f4f6";
+	content: "\1f4f6";
 }
 
 %icon-phone1::before {
-    @extend %font-icon;
+	@extend %font-icon;
 
-    content: "\1f4de";
+	content: "\1f4de";
 }
 
 %icon-bubble::before {
-    @extend %font-icon;
+	@extend %font-icon;
 
-    content: "\1f4ad";
+	content: "\1f4ad";
 }
 
 %icon-user::before {
-    @extend %font-icon;
+	@extend %font-icon;
 
-    content: "\1f464";
+	content: "\1f464";
 }
 
 %icon-user-tie::before {
-    @extend %font-icon;
+	@extend %font-icon;
 
-    content: "\1f482";
+	content: "\1f482";
 }
 
 %icon-arrow-right::before {
-    @extend %font-icon;
+	@extend %font-icon;
 
-    content: "\27a1";
+	content: "\27a1";
 }
 
 %icon-instagram::before {
-    @extend %font-icon;
+	@extend %font-icon;
 
-    content: "\1f4f7";
+	content: "\1f4f7";
 }
 
 %icon-sina-weibo::before {
-    @extend %font-icon;
+	@extend %font-icon;
 
-    content: "\1f5cc";
+	content: "\1f5cc";
 }
 
 @function obtain-viewport-width($targetWidth, $baseWidth: 1300px) {
-    @if  $targetWidth >= $baseWidth {
-        @error "Target width should be less than base width";
-    }
+	@if $targetWidth >= $baseWidth {
+		@error "Target width should be less than base width";
+	}
 
-    @return math.div($targetWidth * 100vw, $baseWidth);
+	@return math.div($targetWidth * 100vw, $baseWidth);
 }
 
 @function text-stroke($stroke, $color, $step: 0.3px) {
-    $shadow: ();
-    $from: $stroke * -1;
+	$shadow: ();
+	$from: $stroke * -1;
 
-    @for $i from $from through $stroke {
-        @for $j from $from through $stroke {
-            $shadow: list.append($shadow, $i * $step $j * $step 0 $color, comma);
-        }
-    }
+	@for $i from $from through $stroke {
+		@for $j from $from through $stroke {
+			$shadow: list.append($shadow, $i * $step $j * $step 0 $color, comma);
+		}
+	}
 
-    @return $shadow;
+	@return $shadow;
 }
 
 @mixin aliasedtext-stroke($stroke, $color, $step: 0.3px) {
-    @media (min-width: 880px) {
-        text-shadow: text-stroke($stroke, $color, $step);
-        filter: blur(0.1px);
-    }
+	@media (min-width: 880px) {
+		text-shadow: text-stroke($stroke, $color, $step);
+		filter: blur(0.1px);
+	}
 
-    color: $color; 
+	color: $color;
 }
 
 @mixin slide-button($size, $activeColor) {
-    width: obtain-viewport-width($size);
-    height: obtain-viewport-width($size);
-    border-radius: 50%;
-    background-color: #646464;
-    cursor: pointer;
-    filter: drop-shadow(0 0 math.div($size, 3) #000) drop-shadow(0 0 math.div($size, 3) #000);
+	width: obtain-viewport-width($size);
+	height: obtain-viewport-width($size);
+	border-radius: 50%;
+	background-color: #646464;
+	cursor: pointer;
+	filter: drop-shadow(0 0 math.div($size, 3) #000)
+		drop-shadow(0 0 math.div($size, 3) #000);
 
-    &--active {
-        filter: drop-shadow(0 0 math.div($size, 3) $activeColor) 
-            drop-shadow(0 0 math.div($size, 3) $activeColor)
-            drop-shadow(0 0 math.div($size, 3) $activeColor); 
-        background-color: #b5bdbf;
-    }
+	&--active {
+		filter: drop-shadow(0 0 math.div($size, 3) $activeColor)
+			drop-shadow(0 0 math.div($size, 3) $activeColor)
+			drop-shadow(0 0 math.div($size, 3) $activeColor);
+		background-color: #b5bdbf;
+	}
 }
 
 @mixin subheading {
-    @include aliasedtext-stroke($stroke: 2, $color: #000, $step: 0.35px);
+	@include aliasedtext-stroke($stroke: 2, $color: #000, $step: 0.35px);
 
-    position: relative;
-    font-size: obtain-viewport-width(18px);
-    font-weight: 500;
-    color: #bebebe;
-    margin-top: 0;
-    margin-bottom: obtain-viewport-width(10px);
+	position: relative;
+	font-size: obtain-viewport-width(18px);
+	font-weight: 500;
+	color: #bebebe;
+	margin-top: 0;
+	margin-bottom: obtain-viewport-width(10px);
 
-    &--orange {
-        color: #e66e10;
-    }
+	&--orange {
+		color: #e66e10;
+	}
 }
 
 @mixin features-header($vertical) {
-    @if  $vertical {
-        @include aliasedtext-stroke($stroke: 2, $color: rgba(#000, 0.7), $step: 0.7px);
+	@if $vertical {
+		@include aliasedtext-stroke(
+			$stroke: 2,
+			$color: rgba(#000, 0.7),
+			$step: 0.7px
+		);
 
-        position: relative;
-        margin: 0;
-        font-size: obtain-viewport-width(26px);
-        color: #fff;
-        letter-spacing: 4px;
-        text-transform: uppercase;
+		position: relative;
+		margin: 0;
+		font-size: obtain-viewport-width(26px);
+		color: #fff;
+		letter-spacing: 4px;
+		text-transform: uppercase;
 
-        &::after {
-            position: absolute;
-            bottom: obtain-viewport-width(-18px);
-            left: 50%;
-            transform: translateX(-50%);
-            width: obtain-viewport-width(25px);
-            height: obtain-viewport-width(3px);
-            background-color: #f85908;
-            content: "";
-        }
-    } @else {
-        &__heading {
-            @extend %icon-headphones;
-            @include aliasedtext-stroke($stroke: 4, $color: rgba(#000, 0.7), $step: 0.55px);
+		&::after {
+			position: absolute;
+			bottom: obtain-viewport-width(-18px);
+			left: 50%;
+			transform: translateX(-50%);
+			width: obtain-viewport-width(25px);
+			height: obtain-viewport-width(3px);
+			background-color: #f85908;
+			content: "";
+		}
+	} @else {
+		&__heading {
+			@extend %icon-headphones;
+			@include aliasedtext-stroke(
+				$stroke: 4,
+				$color: rgba(#000, 0.7),
+				$step: 0.55px
+			);
 
-            display: flex;
-            align-items: flex-start;
-            font-size: obtain-viewport-width(30px);
-            color: #fff;
-            margin: obtain-viewport-width(34px) 0;
-            text-transform: uppercase;
+			display: flex;
+			align-items: flex-start;
+			font-size: obtain-viewport-width(30px);
+			color: #fff;
+			margin: obtain-viewport-width(34px) 0;
+			text-transform: uppercase;
 
-            &::before {
-                font-size: obtain-viewport-width(40px);
-                margin-right: obtain-viewport-width(18px);
-            }
+			&::before {
+				font-size: obtain-viewport-width(40px);
+				margin-right: obtain-viewport-width(18px);
+			}
 
-            &::after {
-                position: absolute;
-                bottom: obtain-viewport-width(-6px);
-                left: obtain-viewport-width(70px);
-                transform: translateX(-50%);
-                width: obtain-viewport-width(25px);
-                height: obtain-viewport-width(3px);
-                background-color: #f85908;
-                content: "";
-            }
-        }
+			&::after {
+				position: absolute;
+				bottom: obtain-viewport-width(-6px);
+				left: obtain-viewport-width(70px);
+				transform: translateX(-50%);
+				width: obtain-viewport-width(25px);
+				height: obtain-viewport-width(3px);
+				background-color: #f85908;
+				content: "";
+			}
+		}
 
-        &__paragraph {
-            @include aliasedtext-stroke($stroke: 2, $color: rgba(#000, 0.7));
+		&__paragraph {
+			@include aliasedtext-stroke($stroke: 2, $color: rgba(#000, 0.7));
 
-            margin: 0 0 obtain-viewport-width(31px) 0;
-            font-size: obtain-viewport-width(12px);
-            color: #d5d5d5;
-            line-height: 1.5;
-        }
-    }
+			margin: 0 0 obtain-viewport-width(31px) 0;
+			font-size: obtain-viewport-width(12px);
+			color: #d5d5d5;
+			line-height: 1.5;
+		}
+	}
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    font-family: Latinaires, sans-serif;
+	margin: 0;
+	padding: 0;
+	font-family: Latinaires, sans-serif;
 }
 
 button {
-    cursor: pointer;
+	cursor: pointer;
 }
 
 .button {
-    padding: obtain-viewport-width(4px) obtain-viewport-width(9px);
-    filter: drop-shadow(0 0 4px #000);
+	padding: obtain-viewport-width(4px) obtain-viewport-width(9px);
+	filter: drop-shadow(0 0 4px #000);
 
-    &--white {
-        border: obtain-viewport-width(2px) solid #fff;
-        background-color: transparent;
-        color: #fff;
-        border-radius: obtain-viewport-width(3px);
-    }
+	&--white {
+		border: obtain-viewport-width(2px) solid #fff;
+		background-color: transparent;
+		color: #fff;
+		border-radius: obtain-viewport-width(3px);
+	}
 
-    &--orange {
-        padding: obtain-viewport-width(2px) obtain-viewport-width(8px);
-        background-color: #f85908;
-        border: obtain-viewport-width(2px) solid #e66e10;
-        border-radius: obtain-viewport-width(3px);
-        color: #fff;
-        font-size: obtain-viewport-width(10px);
-    }
+	&--orange {
+		padding: obtain-viewport-width(2px) obtain-viewport-width(8px);
+		background-color: #f85908;
+		border: obtain-viewport-width(2px) solid #e66e10;
+		border-radius: obtain-viewport-width(3px);
+		color: #fff;
+		font-size: obtain-viewport-width(10px);
+	}
 }
 
 .header {
-    position: relative;
-    background-color: #131313;
-    padding-bottom: obtain-viewport-width(42px);
+	position: relative;
+	background-color: #131313;
+	padding-bottom: obtain-viewport-width(42px);
 
-    & > * {
-        z-index: 1;
-    }
+	& > * {
+		z-index: 1;
+	}
 
-    &-navigation {
-        position: relative;
-        display: flex;
-        justify-content: center;
-        padding: obtain-viewport-width(14.5px) 0;
-        background-color: #0e0e0e;
-        color: #fff;
+	&-navigation {
+		position: relative;
+		display: flex;
+		justify-content: center;
+		padding: obtain-viewport-width(14.5px) 0;
+		background-color: #0e0e0e;
+		color: #fff;
 
-        &-inner {
-            display: flex;
-            align-items: center;
-            gap: obtain-viewport-width(16px);
-            width: obtain-viewport-width(950px);
-        }
+		&-inner {
+			display: flex;
+			align-items: center;
+			gap: obtain-viewport-width(16px);
+			width: obtain-viewport-width(950px);
+		}
 
-        &__logo {
-            @include aliasedtext-stroke($stroke: 5, $color: #000, $step: 0.55px);
+		&__logo {
+			@include aliasedtext-stroke($stroke: 5, $color: #000, $step: 0.55px);
 
-            flex-grow: 1;
-            font-size: obtain-viewport-width(17.5px);
-            font-weight: 700;
-            text-transform: uppercase;
-            color: inherit;
-        }
+			flex-grow: 1;
+			font-size: obtain-viewport-width(17.5px);
+			font-weight: 700;
+			text-transform: uppercase;
+			color: inherit;
+		}
 
-        &__link {
-            @include aliasedtext-stroke($stroke: 2, $color: #000, $step: 0.225px);
+		&__link {
+			@include aliasedtext-stroke($stroke: 2, $color: #000, $step: 0.225px);
 
-            font-size: obtain-viewport-width(15px);
-            text-decoration: none;
-            color: #4d4d4d;
-            padding-bottom: obtain-viewport-width(2px);
+			font-size: obtain-viewport-width(15px);
+			text-decoration: none;
+			color: #4d4d4d;
+			padding-bottom: obtain-viewport-width(2px);
 
-            &--active {
-                color: #fff;
-                border-bottom: obtain-viewport-width(1.5px) solid #fff;
-            }
+			&--active {
+				color: #fff;
+				border-bottom: obtain-viewport-width(1.5px) solid #fff;
+			}
 
-            &:nth-child(3) {
-                margin-right: obtain-viewport-width(14px);
-            }
-        }
+			&:nth-child(3) {
+				margin-right: obtain-viewport-width(14px);
+			}
+		}
 
-        &-social {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            gap: inherit;
-            flex-grow: 1;
+		&-social {
+			display: flex;
+			align-items: center;
+			justify-content: flex-end;
+			gap: inherit;
+			flex-grow: 1;
 
-            &__button {
-                @include aliasedtext-stroke($stroke: 5, $color: #000, $step: 0.55px);
+			&__button {
+				@include aliasedtext-stroke($stroke: 5, $color: #000, $step: 0.55px);
 
-                width: obtain-viewport-width(16px);
-                height: obtain-viewport-width(16px);
-                font-size: obtain-viewport-width(16px);
-                background-color: transparent;
-                padding: 0;
-                border: none;
-                color: inherit;
+				width: obtain-viewport-width(16px);
+				height: obtain-viewport-width(16px);
+				font-size: obtain-viewport-width(16px);
+				background-color: transparent;
+				padding: 0;
+				border: none;
+				color: inherit;
 
-                &--instagram {
-                    @extend %icon-instagram;
-                }
+				&--instagram {
+					@extend %icon-instagram;
+				}
 
-                &--sina {
-                    @extend %icon-sina-weibo;
-                }
+				&--sina {
+					@extend %icon-sina-weibo;
+				}
 
-                &--rss {
-                    @extend %icon-connection;
-                }
-            }
-        }
-    }
+				&--rss {
+					@extend %icon-connection;
+				}
+			}
+		}
+	}
 
-    &-slides {
-        position: absolute;
-        top: obtain-viewport-width(113px);
-        right: obtain-viewport-width(232px);
-        display: flex;
-        flex-direction: column;
-        gap: obtain-viewport-width(11px);
-        list-style-type: none;
+	&-slides {
+		position: absolute;
+		top: obtain-viewport-width(113px);
+		right: obtain-viewport-width(232px);
+		display: flex;
+		flex-direction: column;
+		gap: obtain-viewport-width(11px);
+		list-style-type: none;
 
-        &__button {
-            @include slide-button($size: 8px, $activeColor: #300800);
-        }
-    }
+		&__button {
+			@include slide-button($size: 8px, $activeColor: #300800);
+		}
+	}
 
-    &::before {
-        position: absolute;
-        top: obtain-viewport-width(50px);
-        left: obtain-viewport-width(264px);
-        width: obtain-viewport-width(675px);
-        height: obtain-viewport-width(440px);
-        background-image: url("./img/header-image.png");
-        background-size: cover;
-        background-position: center;
-        content: "";
-    }
+	&::before {
+		position: absolute;
+		top: obtain-viewport-width(50px);
+		left: obtain-viewport-width(264px);
+		width: obtain-viewport-width(675px);
+		height: obtain-viewport-width(440px);
+		background-image: url("./img/header-image.png");
+		background-size: cover;
+		background-position: center;
+		content: "";
+	}
 
-    &__heading {
-        @include aliasedtext-stroke($stroke: 2, $color: #000, $step: 0.85px);
+	&__heading {
+		@include aliasedtext-stroke($stroke: 2, $color: #000, $step: 0.85px);
 
-        position: relative;
-        text-shadow: text-stroke($stroke: 3, $color: rgba(#000, 0.05), $step: obtain-viewport-width(0.55px));
-        margin: obtain-viewport-width(270px) 0 obtain-viewport-width(54px) obtain-viewport-width(210px);
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        font-weight: 100;
-        font-size: obtain-viewport-width(44px);
-        letter-spacing: obtain-viewport-width(55px);
-        color: #fff;
+		position: relative;
+		text-shadow: text-stroke(
+			$stroke: 3,
+			$color: rgba(#000, 0.05),
+			$step: obtain-viewport-width(0.55px)
+		);
+		margin: obtain-viewport-width(270px) 0 obtain-viewport-width(54px)
+			obtain-viewport-width(210px);
+		font-family:
+			system-ui,
+			-apple-system,
+			BlinkMacSystemFont,
+			"Segoe UI",
+			Roboto,
+			Oxygen,
+			Ubuntu,
+			Cantarell,
+			"Open Sans",
+			"Helvetica Neue",
+			sans-serif;
+		font-weight: 100;
+		font-size: obtain-viewport-width(44px);
+		letter-spacing: obtain-viewport-width(55px);
+		color: #fff;
 
-        & ~ * {
-            margin-left: obtain-viewport-width(445px);  
-        }
-    }
+		& ~ * {
+			margin-left: obtain-viewport-width(445px);
+		}
+	}
 
-    &__subheading {
-        @include subheading;
-    }
+	&__subheading {
+		@include subheading;
+	}
 
-    &__description {
-        @include aliasedtext-stroke($stroke: 2, $color: #000, $step: 0.55px);
+	&__description {
+		@include aliasedtext-stroke($stroke: 2, $color: #000, $step: 0.55px);
 
-        margin-top: 0;
-        margin-bottom: obtain-viewport-width(28px);
-        font-size: obtain-viewport-width(11.25px);
-        color: #bebebe;
-    }
+		margin-top: 0;
+		margin-bottom: obtain-viewport-width(28px);
+		font-size: obtain-viewport-width(11.25px);
+		color: #bebebe;
+	}
 }
 
 .about {
-    display: flex;
-    justify-content: center;
-    gap: obtain-viewport-width(250px);
-    background-color: #1f1f1f;
-    padding: obtain-viewport-width(73px) 0 obtain-viewport-width(43px) 0;
-    
-    &-figure {
-        position: relative;
-        width: obtain-viewport-width(382px);
-        height: obtain-viewport-width(382px);
+	display: flex;
+	justify-content: center;
+	gap: obtain-viewport-width(250px);
+	background-color: #1f1f1f;
+	padding: obtain-viewport-width(73px) 0 obtain-viewport-width(43px) 0;
 
-        &__image {
-            width: inherit;
-            height: inherit;
-            object-fit: cover;
-        }
+	&-figure {
+		position: relative;
+		width: obtain-viewport-width(382px);
+		height: obtain-viewport-width(382px);
 
-        &-description {
-            position: absolute;
-            top: obtain-viewport-width(70px);
-            left: obtain-viewport-width(270px);
-            width: obtain-viewport-width(333px);
-            height: obtain-viewport-width(177px);
-            padding: obtain-viewport-width(42px) obtain-viewport-width(21px) obtain-viewport-width(13px) obtain-viewport-width(11px);
-            box-sizing: border-box;
-            box-shadow: 2px 2px 6px rgba(#000, 0.2);
-            background-color: #292929;
+		&__image {
+			width: inherit;
+			height: inherit;
+			object-fit: cover;
+		}
 
-            &__heading {
-                @include subheading;
-            }
+		&-description {
+			position: absolute;
+			top: obtain-viewport-width(70px);
+			left: obtain-viewport-width(270px);
+			width: obtain-viewport-width(333px);
+			height: obtain-viewport-width(177px);
+			padding: obtain-viewport-width(42px) obtain-viewport-width(21px)
+				obtain-viewport-width(13px) obtain-viewport-width(11px);
+			box-sizing: border-box;
+			box-shadow: 2px 2px 6px rgba(#000, 0.2);
+			background-color: #292929;
 
-            &__paragraph {
-                @include aliasedtext-stroke($stroke: 3, $color: #000);
+			&__heading {
+				@include subheading;
+			}
 
-                margin: obtain-viewport-width(20px) 0 obtain-viewport-width(9px);
-                max-width: obtain-viewport-width(240px);
-                font: 400 #{"#{obtain-viewport-width(11px)}/1.5"} Latinaires, sans-serif;
-                color: #fff;
-            }
+			&__paragraph {
+				@include aliasedtext-stroke($stroke: 3, $color: #000);
 
-            &__button {
-                @extend %icon-arrow-right;
+				margin: obtain-viewport-width(20px) 0 obtain-viewport-width(9px);
+				max-width: obtain-viewport-width(240px);
+				font:
+					400 #{"#{obtain-viewport-width(11px)}/1.5"} Latinaires,
+					sans-serif;
+				color: #fff;
+			}
 
-                display: block;
-                margin-left: auto;
-                border: none;
-                background-color: transparent;
-                padding: 0;
-                font-size: obtain-viewport-width(15px);
-                filter: drop-shadow(0 0 3px #000);
-                color: #fff;;
-            }
-        }
-    }
+			&__button {
+				@extend %icon-arrow-right;
 
-    &-info {
-        position: relative;
+				display: block;
+				margin-left: auto;
+				border: none;
+				background-color: transparent;
+				padding: 0;
+				font-size: obtain-viewport-width(15px);
+				filter: drop-shadow(0 0 3px #000);
+				color: #fff;
+			}
+		}
+	}
 
-        &__heading {
-            @include aliasedtext-stroke($stroke: 3, $color: rgba(#000, 0.7), $step: 0.6px);
+	&-info {
+		position: relative;
 
-            position: absolute;
-            top: obtain-viewport-width(60px);
-            left: 0;
-            color: #fff;
-            width: obtain-viewport-width(135px);
-            height: obtain-viewport-width(40px);
-            font-size: obtain-viewport-width(46px);
-            font-weight: 400;
-            margin: 0;
-            transform: rotate(90deg);
-            letter-spacing: obtain-viewport-width(5px);
-        }
+		&__heading {
+			@include aliasedtext-stroke(
+				$stroke: 3,
+				$color: rgba(#000, 0.7),
+				$step: 0.6px
+			);
 
-        &__number {
-            @include aliasedtext-stroke($stroke: 2, $color: rgba(#000, 0.7), $step: 0.7px);
+			position: absolute;
+			top: obtain-viewport-width(60px);
+			left: 0;
+			color: #fff;
+			width: obtain-viewport-width(135px);
+			height: obtain-viewport-width(40px);
+			font-size: obtain-viewport-width(46px);
+			font-weight: 400;
+			margin: 0;
+			transform: rotate(90deg);
+			letter-spacing: obtain-viewport-width(5px);
+		}
 
-            position: relative;
-            margin-top: obtain-viewport-width(62px);
-            margin-bottom: obtain-viewport-width(195px);
-            font-size: obtain-viewport-width(27px);
-            color: #fff;
-            font-weight: 500;
-            letter-spacing: 2px;
+		&__number {
+			@include aliasedtext-stroke(
+				$stroke: 2,
+				$color: rgba(#000, 0.7),
+				$step: 0.7px
+			);
 
-            &::before {
-                position: absolute;
-                left: obtain-viewport-width(19.5px + 5px);
-                bottom: obtain-viewport-width(-12px);
-                transform: translate(-100%, 100%);
-                width: obtain-viewport-width(12px);
-                height: obtain-viewport-width(12px);
-                background-color: #fff;
-                border-radius: 50%;
-                border: #302f1c obtain-viewport-width(5px) solid;
-                content: "";
-            }
+			position: relative;
+			margin-top: obtain-viewport-width(62px);
+			margin-bottom: obtain-viewport-width(195px);
+			font-size: obtain-viewport-width(27px);
+			color: #fff;
+			font-weight: 500;
+			letter-spacing: 2px;
 
-            &::after {
-                position: absolute;
-                left: obtain-viewport-width(12.5px);
-                bottom: obtain-viewport-width(-24px);
-                z-index: -1;
-                transform: translateY(100%);
-                width: obtain-viewport-width(2px);
-                height: obtain-viewport-width(134px);
-                background: linear-gradient(to bottom, rgba(#fff, 0.7), rgba(#fff, 0));
-                content: "";
-            }
-        }
+			&::before {
+				position: absolute;
+				left: obtain-viewport-width(19.5px + 5px);
+				bottom: obtain-viewport-width(-12px);
+				transform: translate(-100%, 100%);
+				width: obtain-viewport-width(12px);
+				height: obtain-viewport-width(12px);
+				background-color: #fff;
+				border-radius: 50%;
+				border: #302f1c obtain-viewport-width(5px) solid;
+				content: "";
+			}
 
-        &__image {
-            width: obtain-viewport-width(106px);
-            height: obtain-viewport-width(106px);
-            object-fit: cover;
-        }
+			&::after {
+				position: absolute;
+				left: obtain-viewport-width(12.5px);
+				bottom: obtain-viewport-width(-24px);
+				z-index: -1;
+				transform: translateY(100%);
+				width: obtain-viewport-width(2px);
+				height: obtain-viewport-width(134px);
+				background: linear-gradient(to bottom, rgba(#fff, 0.7), rgba(#fff, 0));
+				content: "";
+			}
+		}
 
-        &__button {
-            position: absolute;
-            left: obtain-viewport-width(-65px);
-            bottom: obtain-viewport-width(22px);
-            width: obtain-viewport-width(106px);
-            height: obtain-viewport-width(43px);
-            padding: 0;
-            border: none;
-            background-color: #3f3f3f;
-            filter: drop-shadow(0 0 2px rgba(#000, 0.5));
-            overflow: hidden;
+		&__image {
+			width: obtain-viewport-width(106px);
+			height: obtain-viewport-width(106px);
+			object-fit: cover;
+		}
 
-            &::before {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%) scaleY(0.5);
-                width: 0;
-                height: 0;
-                border-color: transparent transparent transparent #d5d5d5;
-                border-style: solid;
-                border-width: obtain-viewport-width(19px) 0 obtain-viewport-width(19px) obtain-viewport-width(19px);
-                filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 1px #fff)  drop-shadow(0 0 3px #000);
-                content: "";
-            }
-        }
-    }
+		&__button {
+			position: absolute;
+			left: obtain-viewport-width(-65px);
+			bottom: obtain-viewport-width(22px);
+			width: obtain-viewport-width(106px);
+			height: obtain-viewport-width(43px);
+			padding: 0;
+			border: none;
+			background-color: #3f3f3f;
+			filter: drop-shadow(0 0 2px rgba(#000, 0.5));
+			overflow: hidden;
+
+			&::before {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%) scaleY(0.5);
+				width: 0;
+				height: 0;
+				border-color: transparent transparent transparent #d5d5d5;
+				border-style: solid;
+				border-width: obtain-viewport-width(19px) 0 obtain-viewport-width(19px)
+					obtain-viewport-width(19px);
+				filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 1px #fff)
+					drop-shadow(0 0 3px #000);
+				content: "";
+			}
+		}
+	}
 }
 
 .features {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: obtain-viewport-width(54px) 0 obtain-viewport-width(50px);
-    background-color: #272727;
-    color: #737373;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: obtain-viewport-width(54px) 0 obtain-viewport-width(50px);
+	background-color: #272727;
+	color: #737373;
 
-    &__heading {
-        @include features-header($vertical: true);
-    }
+	&__heading {
+		@include features-header($vertical: true);
+	}
 
-    &__paragraph {
-        @include aliasedtext-stroke($stroke: 2, $color: rgba(#000, 0.7), $step: 0.35px);
+	&__paragraph {
+		@include aliasedtext-stroke(
+			$stroke: 2,
+			$color: rgba(#000, 0.7),
+			$step: 0.35px
+		);
 
-        color: #fff;
-        max-width: obtain-viewport-width(435px);
-        text-align: center;
-        font-size: obtain-viewport-width(13px);
-        line-height: 1.5;
-        margin: obtain-viewport-width(24px) 0 obtain-viewport-width(28px) 0;
-    }
+		color: #fff;
+		max-width: obtain-viewport-width(435px);
+		text-align: center;
+		font-size: obtain-viewport-width(13px);
+		line-height: 1.5;
+		margin: obtain-viewport-width(24px) 0 obtain-viewport-width(28px) 0;
+	}
 
-    &-list {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: obtain-viewport-width(131px);
+	&-list {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: obtain-viewport-width(131px);
 
-        &-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
+		&-item {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
 
-            &__icon {
-                @include aliasedtext-stroke($stroke: 2, $color: rgba(#000, 0.7), $step: 0.2px);
+			&__icon {
+				@include aliasedtext-stroke(
+					$stroke: 2,
+					$color: rgba(#000, 0.7),
+					$step: 0.2px
+				);
 
-                color: inherit;
-                position: relative;
-                width: obtain-viewport-width(28px);
-                height: obtain-viewport-width(28px);
-                font-size: obtain-viewport-width(18px);
-                line-height: 1.3;
-                cursor: pointer;
-                transition: all 0.3s ease;
+				color: inherit;
+				position: relative;
+				width: obtain-viewport-width(28px);
+				height: obtain-viewport-width(28px);
+				font-size: obtain-viewport-width(18px);
+				line-height: 1.3;
+				cursor: pointer;
+				transition: all 0.3s ease;
 
-                &::after {
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                    width: obtain-viewport-width(28px);
-                    height: obtain-viewport-width(28px);
-                    border: obtain-viewport-width(2px) solid #737373;
-                    border-radius: 50%;
-                    content: "";
-                }
+				&::after {
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%);
+					width: obtain-viewport-width(28px);
+					height: obtain-viewport-width(28px);
+					border: obtain-viewport-width(2px) solid #737373;
+					border-radius: 50%;
+					content: "";
+				}
 
-                &:hover {
-                    color: #f85908;
+				&:hover {
+					color: #f85908;
 
-                    &::after {
-                        border-color: #f85908;
-                    }
-                }
-    
-                &--phone {
-                    @extend %icon-phone1;
-                }
-    
-                &--chat {
-                    @extend %icon-bubble;
-                }
-    
-                &--message {
-                    @extend %icon-mail;
-                }
-    
-                &--official-user {
-                    @extend %icon-user-tie;
-                }
-    
-                &--user {
-                    @extend %icon-user;
-                }
-            }
-    
-            &__heading {
-                @include aliasedtext-stroke($stroke: 2, $color: rgba(#000, 0.7), $step: 0.1px);
+					&::after {
+						border-color: #f85908;
+					}
+				}
 
-                color: inherit;
-                margin: obtain-viewport-width(12px) 0 0 0;
-                font-size: obtain-viewport-width(15px);
-                font-weight: 700;
-                letter-spacing: 2.5px;
-            }
-    
-            &__label {
-                margin: 0;
-                font-size: obtain-viewport-width(9px);
-                line-height: 1.3;
-                color: #737373;
-            }
-        }
-    }
+				&--phone {
+					@extend %icon-phone1;
+				}
+
+				&--chat {
+					@extend %icon-bubble;
+				}
+
+				&--message {
+					@extend %icon-mail;
+				}
+
+				&--official-user {
+					@extend %icon-user-tie;
+				}
+
+				&--user {
+					@extend %icon-user;
+				}
+			}
+
+			&__heading {
+				@include aliasedtext-stroke(
+					$stroke: 2,
+					$color: rgba(#000, 0.7),
+					$step: 0.1px
+				);
+
+				color: inherit;
+				margin: obtain-viewport-width(12px) 0 0 0;
+				font-size: obtain-viewport-width(15px);
+				font-weight: 700;
+				letter-spacing: 2.5px;
+			}
+
+			&__label {
+				margin: 0;
+				font-size: obtain-viewport-width(9px);
+				line-height: 1.3;
+				color: #737373;
+			}
+		}
+	}
 }
 
 .sales {
-    display: flex;
-    align-items: center;
-    background-color: #1f1f1f;  
-    padding: obtain-viewport-width(42px) 0 obtain-viewport-width(72px) obtain-viewport-width(175px);
-    gap: obtain-viewport-width(47px);
-    overflow: hidden;
+	display: flex;
+	align-items: center;
+	background-color: #1f1f1f;
+	padding: obtain-viewport-width(42px) 0 obtain-viewport-width(72px)
+		obtain-viewport-width(175px);
+	gap: obtain-viewport-width(47px);
+	overflow: hidden;
 
-    &-description {
-        @include features-header($vertical: false);
+	&-description {
+		@include features-header($vertical: false);
 
-        width: 0;
-        flex: 0 0 obtain-viewport-width(252px);
-    }
+		width: 0;
+		flex: 0 0 obtain-viewport-width(252px);
+	}
 
-    &-slider {
-        display: flex;
-        align-items: center;
-        gap: obtain-viewport-width(70px);
-        flex-grow: 1;
-        padding: obtain-viewport-width(20px) 0 0 obtain-viewport-width(40px);
-        background-color: #272727;
+	&-slider {
+		display: flex;
+		align-items: center;
+		gap: obtain-viewport-width(70px);
+		flex-grow: 1;
+		padding: obtain-viewport-width(20px) 0 0 obtain-viewport-width(40px);
+		background-color: #272727;
 
-        &__button {
-            position: relative;
-            border: none;
-            padding: 0;
-            cursor: pointer;
-        
-            &::before {
-                position: absolute;
-                top: 0;
-                left: 0;
-                transform: translateY(-100%) rotate(45deg);
-                width: obtain-viewport-width(2px);
-                height: obtain-viewport-width(20px);
-                background-color: #fff;
-                border-radius: obtain-viewport-width(2px);
-                content: "";
-            }
-        
-            &::after {
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                transform: translateY(66%) rotate(-45deg);
-                width: obtain-viewport-width(2px);
-                height: obtain-viewport-width(20px);
-                background-color: #fff;
-                border-radius: obtain-viewport-width(2px);
-                content: "";
-            }        
-        }
+		&__button {
+			position: relative;
+			border: none;
+			padding: 0;
+			cursor: pointer;
 
-        &-list {
-            display: flex;
-            align-items: center;
-            list-style-type: none;
-            gap: obtain-viewport-width(18px);
-            overflow: hidden;
-            margin: 0;
-            padding: 0;
+			&::before {
+				position: absolute;
+				top: 0;
+				left: 0;
+				transform: translateY(-100%) rotate(45deg);
+				width: obtain-viewport-width(2px);
+				height: obtain-viewport-width(20px);
+				background-color: #fff;
+				border-radius: obtain-viewport-width(2px);
+				content: "";
+			}
 
-            &-item {
-                background-color: #494949;
-                padding-bottom: obtain-viewport-width(12px);
-                cursor: pointer;
-                transition: all 0.3s ease;
+			&::after {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				transform: translateY(66%) rotate(-45deg);
+				width: obtain-viewport-width(2px);
+				height: obtain-viewport-width(20px);
+				background-color: #fff;
+				border-radius: obtain-viewport-width(2px);
+				content: "";
+			}
+		}
 
-                &__heading {
-                    @include aliasedtext-stroke($stroke: 2, $color: rgba(#000, 0.7));
+		&-list {
+			display: flex;
+			align-items: center;
+			list-style-type: none;
+			gap: obtain-viewport-width(18px);
+			overflow: hidden;
+			margin: 0;
+			padding: 0;
 
-                    position: relative;
-                    font-size: obtain-viewport-width(16px);
-                    color: #fff;
-                    text-transform: uppercase;
-                    margin: obtain-viewport-width(4px) 0 obtain-viewport-width(8px) obtain-viewport-width(10px);
-                    transition: all 0.3s ease;
+			&-item {
+				background-color: #494949;
+				padding-bottom: obtain-viewport-width(12px);
+				cursor: pointer;
+				transition: all 0.3s ease;
 
-                    &::before {
-                        position: absolute;
-                        bottom: obtain-viewport-width(-6px);
-                        left: 0;
-                        width: obtain-viewport-width(28px);
-                        height: obtain-viewport-width(2px);
-                        background-color: #f85908;
-                        transition: all 0.3s ease;
-                        content: "";
-                    }
-                }
+				&__heading {
+					@include aliasedtext-stroke($stroke: 2, $color: rgba(#000, 0.7));
 
-                &:hover {
-                    background-color: #f85908;
-                }
+					position: relative;
+					font-size: obtain-viewport-width(16px);
+					color: #fff;
+					text-transform: uppercase;
+					margin: obtain-viewport-width(4px) 0 obtain-viewport-width(8px)
+						obtain-viewport-width(10px);
+					transition: all 0.3s ease;
 
-                &:hover &__heading {
-                    text-shadow: none;
+					&::before {
+						position: absolute;
+						bottom: obtain-viewport-width(-6px);
+						left: 0;
+						width: obtain-viewport-width(28px);
+						height: obtain-viewport-width(2px);
+						background-color: #f85908;
+						transition: all 0.3s ease;
+						content: "";
+					}
+				}
 
-                    &::before {
-                        background-color: #fff;
-                    }
-                }
+				&:hover {
+					background-color: #f85908;
+				}
 
-                &__image {
-                    height: obtain-viewport-width(175px);
-                    width: obtain-viewport-width(263px);
-                    object-fit: cover;
-                    background-color: #fff;
-                    box-shadow: 2px 0 5px -2px #000, -2px 0 5px -2px #000;
-                }
-    
-                &__description {
-                    font-size: obtain-viewport-width(10px);
-                    margin: 0 0 0 obtain-viewport-width(10px);
-                    color: #909090;
-                }
-            }
-        }
-    }
+				&:hover &__heading {
+					text-shadow: none;
+
+					&::before {
+						background-color: #fff;
+					}
+				}
+
+				&__image {
+					height: obtain-viewport-width(175px);
+					width: obtain-viewport-width(263px);
+					object-fit: cover;
+					background-color: #fff;
+					box-shadow:
+						2px 0 5px -2px #000,
+						-2px 0 5px -2px #000;
+				}
+
+				&__description {
+					font-size: obtain-viewport-width(10px);
+					margin: 0 0 0 obtain-viewport-width(10px);
+					color: #909090;
+				}
+			}
+		}
+	}
 }
 
 .showcase {
-    position: relative;
-    display: flex;
-    align-items: center;
-    padding: obtain-viewport-width(60px) 0 obtain-viewport-width(20px) obtain-viewport-width(30px);
-    background-color: #272727;
+	position: relative;
+	display: flex;
+	align-items: center;
+	padding: obtain-viewport-width(60px) 0 obtain-viewport-width(20px)
+		obtain-viewport-width(30px);
+	background-color: #272727;
 
-    &__image {
-        width: obtain-viewport-width(616px);
-        height: obtain-viewport-width(393px);
-    }
+	&__image {
+		width: obtain-viewport-width(616px);
+		height: obtain-viewport-width(393px);
+	}
 
-    &-description {
-        @include features-header($vertical: false);
+	&-description {
+		@include features-header($vertical: false);
 
-        &__paragraph {
-            max-width: obtain-viewport-width(360px);
-        }
-    }
+		&__paragraph {
+			max-width: obtain-viewport-width(360px);
+		}
+	}
 
-    &-slides {
-        position: absolute;
-        bottom: obtain-viewport-width(20px);
-        right: obtain-viewport-width(200px);
-        display: flex;
-        gap: obtain-viewport-width(15px);
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
+	&-slides {
+		position: absolute;
+		bottom: obtain-viewport-width(20px);
+		right: obtain-viewport-width(200px);
+		display: flex;
+		gap: obtain-viewport-width(15px);
+		list-style-type: none;
+		padding: 0;
+		margin: 0;
 
-        &__button {
-            @include slide-button($activeColor: #303030, $size: 10px);
+		&__button {
+			@include slide-button($activeColor: #303030, $size: 10px);
 
-            background-color: transparent;
-            border: obtain-viewport-width(2px) solid #fff;
-        }
-    }
+			background-color: transparent;
+			border: obtain-viewport-width(2px) solid #fff;
+		}
+	}
 }
 
 .map-section {
-    @include features-header($vertical: false);
+	@include features-header($vertical: false);
 
-    padding-top: obtain-viewport-width(55px);
-    text-align: center;
-    background-color: #1f1f1f;
+	padding-top: obtain-viewport-width(55px);
+	text-align: center;
+	background-color: #1f1f1f;
 
-    &__heading {
-        @include features-header($vertical: true);
+	&__heading {
+		@include features-header($vertical: true);
 
-        display: block;
-        z-index: 1;
-        margin-bottom: obtain-viewport-width(40px);
+		display: block;
+		z-index: 1;
+		margin-bottom: obtain-viewport-width(40px);
 
-        &::before {
-            white-space: pre;
-            content: "\1f3a7 \a\a";
-        }
-    }
+		&::before {
+			white-space: pre;
+			content: "\1f3a7 \a\a";
+		}
+	}
 }
 
 .map {
-    position: relative;
-    width: obtain-viewport-width(865px);
-    height: obtain-viewport-width(575px);
-    margin: 0 auto;
+	position: relative;
+	width: obtain-viewport-width(865px);
+	height: obtain-viewport-width(575px);
+	margin: 0 auto;
 
-    &__image {
-        width: inherit;
-        height: inherit;
-    }
+	&__image {
+		width: inherit;
+		height: inherit;
+	}
 
-    $coordinates: (95: 285, 119: 377, 190: 148, 295: 177, 300: 555, 348: 125, 363: 526, 550: 556, 633: 124, 772: 308);
+	$coordinates: (
+		95: 285,
+		119: 377,
+		190: 148,
+		295: 177,
+		300: 555,
+		348: 125,
+		363: 526,
+		550: 556,
+		633: 124,
+		772: 308,
+	);
 
-    &__location {
-        position: absolute;
-        width: obtain-viewport-width(14px);
-        height: obtain-viewport-width(14px);
-        box-sizing: border-box;
-        background-color: #fff;
-        border-radius: 50%;
+	&__location {
+		position: absolute;
+		width: obtain-viewport-width(14px);
+		height: obtain-viewport-width(14px);
+		box-sizing: border-box;
+		background-color: #fff;
+		border-radius: 50%;
 
-        &--labeled {
-            border: obtain-viewport-width(4px) solid #fff;
-            background-color: #909090;
+		&--labeled {
+			border: obtain-viewport-width(4px) solid #fff;
+			background-color: #909090;
 
-            &::before {
-                position: absolute;
-                top: obtain-viewport-width(-40px);
-                left: 50%;
-                transform: translateX(-50%);
-                padding: obtain-viewport-width(2.5px) obtain-viewport-width(24px) obtain-viewport-width(5px) obtain-viewport-width(24px);
-                border: obtain-viewport-width(3px) solid #000;
-                background-color: #fff;
-                color: #606060;
-                font-size: obtain-viewport-width(13px);
-                border-radius: obtain-viewport-width(11px);
-                content: "FEATURES";
-            }
+			&::before {
+				position: absolute;
+				top: obtain-viewport-width(-40px);
+				left: 50%;
+				transform: translateX(-50%);
+				padding: obtain-viewport-width(2.5px) obtain-viewport-width(24px)
+					obtain-viewport-width(5px) obtain-viewport-width(24px);
+				border: obtain-viewport-width(3px) solid #000;
+				background-color: #fff;
+				color: #606060;
+				font-size: obtain-viewport-width(13px);
+				border-radius: obtain-viewport-width(11px);
+				content: "FEATURES";
+			}
 
-            &::after {
-                position: absolute;
-                top: obtain-viewport-width(-16px);
-                left: 50%;
-                transform: translateX(-50%);
-                z-index: 1;
-                width: obtain-viewport-width(3px);
-                height: obtain-viewport-width(12px);
-                background-color: #4c4c4c;
-                content: "";
-            }
-        }
+			&::after {
+				position: absolute;
+				top: obtain-viewport-width(-16px);
+				left: 50%;
+				transform: translateX(-50%);
+				z-index: 1;
+				width: obtain-viewport-width(3px);
+				height: obtain-viewport-width(12px);
+				background-color: #4c4c4c;
+				content: "";
+			}
+		}
 
-        $counter: 1;
-        @each $left, $top in $coordinates {
-            &:nth-child(#{$counter}) {
-                top: obtain-viewport-width($top * 1px);
-                left: obtain-viewport-width($left * 1px);
-            }
+		$counter: 1;
+		@each $left, $top in $coordinates {
+			&:nth-child(#{$counter}) {
+				top: obtain-viewport-width($top * 1px);
+				left: obtain-viewport-width($left * 1px);
+			}
 
-            $counter: $counter + 1;
-        }
-    }
+			$counter: $counter + 1;
+		}
+	}
 }

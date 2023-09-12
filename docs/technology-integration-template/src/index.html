@@ -1,198 +1,275 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Vite App</title>
+		<link rel="stylesheet" href="./style.scss" />
+	</head>
 
-<head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-    <link rel="stylesheet" href="./style.scss">
-</head>
-
-<body>
-    <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0">
-        <defs>
-            <clipPath id="headerCurve" clipPathUnits="objectBoundingBox">
-                <path d="M0,0 h1 v0.83 l0,0 C0.667,1,0.286,1,0,0.83 l0,0 V0" />
-            </clipPath>
-            <clipPath id="insightsCurve" clipPathUnits="objectBoundingBox">
-                <path d="M1,0.981 H0 V0.151 l0,0 c0.333,-0.226,0.714,-0.226,1,0 l0,0 V0.981" />
-            </clipPath>
-        </defs>
-    </svg>
-    <header class="header">
-        <nav class="header-navigation">
-            <span class="header-navigation__logo">You Logo</span>
-            <a href="#" class="header-navigation__link" lang="zh">般务</a>
-            <a href="#" class="header-navigation__link" lang="zh">关于我们</a>
-            <a href="#" class="header-navigation__link" lang="zh">联络我们</a>
-            <a href="#" class="header-navigation__link" lang="zh">公司篇介</a>
-            <a href="#" class="header-navigation__link" lang="zh">了解更多</a>
-            <a href="#" class="header-navigation__link" lang="zh">般务团队</a>
-            <a href="#" class="header-navigation__link" lang="zh">公司篇介</a>
-        </nav>
-        <h3 class="header__subheading" lang="zh">不止于歼短分析</h3>
-        <h1 class="header__heading" lang="zh">摄图科技/大数据分析</h1>
-        <h3 class="header__subheading" lang="zh">综合这用网络过信、物联网、GIS、大数据分煌以及人工智能技术</h3>
-        <p class="header__description">
-            We will comprehensively apply network communications, the internet of things,
-            GIS, big data analysis and artificial intelligence technologies
-        </p>
-        <button class="button" lang="zh">联络我们>></button>
-        <div class="header-visuals">
-            <span class="header-visuals__lines"></span>
-            <span class="header-visuals__lines"></span>
-            <span class="header-visuals__lines"></span>
-            <span class="header-visuals__lines"></span>
-            <span class="header-visuals__lines"></span>
-            <span class="header-visuals__lines"></span>
-        </div>
-        <ul class="header-slides">
-            <li class="header-slides__button"></li>
-            <li class="header-slides__button"></li>
-            <li class="header-slides__button header-slides__button--active"></li>
-            <li class="header-slides__button"></li>
-            <li class="header-slides__button"></li>
-        </ul>
-        <img src="./img/header-image.png" class="header__image"
-            alt="A visual depiction of our key technologies: cloud analysis, statistical analysis, GIS, network communications and realtime communications, creativity and internet of things">
-    </header>
-    <main>
-        <section class="header-subsection" lang="zh">
-            <nav class="header-subsection-navigation">
-                <a href="#" class="header-subsection-navigation__link" lang="zh">关于我们</a>
-                <a href="#" class="header-subsection-navigation__link" lang="zh">联络我们</a>
-                <a href="#" class="header-subsection-navigation__link header-subsection-navigation__link--active" lang="zh">公司篇介</a>
-                <a href="#" class="header-subsection-navigation__link" lang="zh">了解更多</a>
-                <a href="#" class="header-subsection-navigation__link" lang="zh">般务团队</a>
-            </nav>
-        </section>
-        <section class="about">
-            <h2 class="about__heading">摄图科技/大数据分析</h2>
-            <p class="about__description">
-                We will comprehensively apply network communications, the internet of things,
-                GIS, big data analysis and artificial intelligence technologies
-            </p>
-            <article class="about-advantage about-advantage--blue">
-                <img src="./img/header-section-image-1.png" class="about-advantage__image"
-                    alt="A demonstration of our internet of things pipeline: interactions of internet of things with personnel">
-                <div class="about-advantage-wrap">
-                    <h3 class="about-advantage__heading">综合这用网络过信、物联网、<br>GIS、大数据分煌以及人工智能技术</h3>
-                    <p class="about-advantage__description">
-                        We will comprehensively apply network communications, the internet of things,
-                        GIS, big data analysis and artificial intelligence technologies
-                    </p>
-                    <button class="button" lang="zh">联络我们>></button>
-                </div>
-            </article>
-            <article class="about-advantage about-advantage--orange">
-                <img src="./img/header-section-image-2.png" class="about-advantage__image"
-                    alt="A demonstration of our internet of things pipeline: interactions of internet of things with personnel">
-                <div class="about-advantage-wrap">
-                    <h3 class="about-advantage__heading">综合这用网络过信、物联网、<br>GIS、大数据分煌以及人工智能技术</h3>
-                    <p class="about-advantage__description">
-                        We will comprehensively apply network communications, the internet of things,
-                        GIS, big data analysis and artificial intelligence technologies
-                    </p>
-                    <button class="button" lang="zh">联络我们>></button>
-                </div>
-            </article>
-        </section>
-        <section class="insights">
-            <ul class="insights-list">
-                <li class="insights-list-item">
-                    <div class="insights-list-item__icon-wrap">
-                        <img class="insights-list-item__icon" alt="Icon of a magnifier near a line chart"
-                        src="./img/magnifier-image.png">
-                    </div>
-                    <h3 class="insights-list-item__heading">综合这用网络过信、物联网、<br>GIS、大数据分煌以及人工智能技术</h3>
-                    <p class="insights-list-item__description">
-                        We will comprehensively apply network communications, the internet of things,
-                        GIS, big data analysis and artificial intelligence technologies
-                    </p>
-                </li>
-                <li class="insights-list-item insights-list-item--active">
-                    <div class="insights-list-item__icon-wrap">
-                        <img class="insights-list-item__icon" alt="Icon of a magnifier near a line chart"
-                        src="./img/magnifier-image.png">
-                    </div>
-                    <h3 class="insights-list-item__heading">综合这用网络过信、物联网、<br>GIS、大数据分煌以及人工智能技术</h3>
-                    <p class="insights-list-item__description">
-                        We will comprehensively apply network communications, the internet of things,
-                        GIS, big data analysis and artificial intelligence technologies
-                    </p>
-                </li>
-                <li class="insights-list-item">
-                    <div class="insights-list-item__icon-wrap">
-                        <img class="insights-list-item__icon" alt="Icon of a magnifier near a line chart"
-                        src="./img/magnifier-image.png">
-                    </div>
-                    <h3 class="insights-list-item__heading">综合这用网络过信、物联网、GIS、大数据分煌以及人工智能技术</h3>
-                    <p class="insights-list-item__description">
-                        We will comprehensively apply network communications, the internet of things,
-                        GIS, big data analysis and artificial intelligence technologies
-                    </p>
-                </li>
-            </ul>
-        </section>
-        <section class="contacts">
-            <h2 class="contacts__heading">摄图科技/大数据分析</h2>
-            <p class="contacts__description">
-                We will comprehensively apply network communications, the internet of things,<br>
-                GIS, big data analysis and artificial intelligence technologies
-            </p>
-            <form class="contacts-form">
-                <label class="contacts-form__label">
-                    <span class="contacts-form__text">Contact us</span>
-                    <input class="contacts-form__input" type="text">
-                </label>
-                <label class="contacts-form__label">
-                    <span class="contacts-form__text">Contact us</span>
-                    <input class="contacts-form__input" type="text">
-                </label>
-                <label class="contacts-form__label">
-                    <span class="contacts-form__text">Contact us</span>
-                    <input class="contacts-form__input" type="text">
-                </label>
-            </form>
-            <img class="contacts__image" src="./img/footer-image.png"
-                alt="A demonstration of our website and personnel interaction with it, from creation of video to review and publishing">
-        </section>
-        <section class="partners">
-            <ul class="partners-list">
-                <li class="partners-list-item">
-                    <img class="partners-list-item__logo" alt="Baidu logotype" src="./img/Baidu.svg">
-                </li>
-                <li class="partners-list-item">
-                    <img class="partners-list-item__logo" alt="Sina logotype" src="./img/Sina-logo.svg">
-                </li>
-                <li class="partners-list-item">
-                    <img class="partners-list-item__logo" alt="Bank of China logotype" src="./img/bank-of-china-logo.svg">
-                </li>
-                <li class="partners-list-item">
-                    <img class="partners-list-item__logo" alt="IBM logotype" src="./img/ibm-logo.svg">
-                </li>
-                <li class="partners-list-item">
-                    <img class="partners-list-item__logo" alt="Microsoft logotype" src="./img/microsoft-logo.svg">
-                </li>
-                <li class="partners-list-item">
-                    <img class="partners-list-item__logo" alt="Pingan logotype" src="./img/Pingan-logo.svg">
-                </li>
-            </ul>
-        </section>
-    </main>
-    <footer class="footer">
-        <nav class="footer-navigation">
-            <span class="footer-navigation__logo">You Logo</span>
-            <a href="#" class="footer-navigation__link" lang="zh">般务</a>
-            <a href="#" class="footer-navigation__link" lang="zh">关于我们</a>
-            <a href="#" class="footer-navigation__link" lang="zh">联络我们</a>
-            <a href="#" class="footer-navigation__link" lang="zh">公司篇介</a>
-            <a href="#" class="footer-navigation__link" lang="zh">了解更多</a>
-            <a href="#" class="footer-navigation__link" lang="zh">般务团队</a>
-            <a href="#" class="footer-navigation__link" lang="zh">公司篇介</a>
-        </nav>
-    </footer>
-</body>
-
+	<body>
+		<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0">
+			<defs>
+				<clipPath id="headerCurve" clipPathUnits="objectBoundingBox">
+					<path d="M0,0 h1 v0.83 l0,0 C0.667,1,0.286,1,0,0.83 l0,0 V0" />
+				</clipPath>
+				<clipPath id="insightsCurve" clipPathUnits="objectBoundingBox">
+					<path
+						d="M1,0.981 H0 V0.151 l0,0 c0.333,-0.226,0.714,-0.226,1,0 l0,0 V0.981"
+					/>
+				</clipPath>
+			</defs>
+		</svg>
+		<header class="header">
+			<nav class="header-navigation">
+				<span class="header-navigation__logo">You Logo</span>
+				<a href="#" class="header-navigation__link" lang="zh">般务</a>
+				<a href="#" class="header-navigation__link" lang="zh">关于我们</a>
+				<a href="#" class="header-navigation__link" lang="zh">联络我们</a>
+				<a href="#" class="header-navigation__link" lang="zh">公司篇介</a>
+				<a href="#" class="header-navigation__link" lang="zh">了解更多</a>
+				<a href="#" class="header-navigation__link" lang="zh">般务团队</a>
+				<a href="#" class="header-navigation__link" lang="zh">公司篇介</a>
+			</nav>
+			<h3 class="header__subheading" lang="zh">不止于歼短分析</h3>
+			<h1 class="header__heading" lang="zh">摄图科技/大数据分析</h1>
+			<h3 class="header__subheading" lang="zh">
+				综合这用网络过信、物联网、GIS、大数据分煌以及人工智能技术
+			</h3>
+			<p class="header__description">
+				We will comprehensively apply network communications, the internet of
+				things, GIS, big data analysis and artificial intelligence technologies
+			</p>
+			<button class="button" lang="zh">联络我们>></button>
+			<div class="header-visuals">
+				<span class="header-visuals__lines"></span>
+				<span class="header-visuals__lines"></span>
+				<span class="header-visuals__lines"></span>
+				<span class="header-visuals__lines"></span>
+				<span class="header-visuals__lines"></span>
+				<span class="header-visuals__lines"></span>
+			</div>
+			<ul class="header-slides">
+				<li class="header-slides__button"></li>
+				<li class="header-slides__button"></li>
+				<li class="header-slides__button header-slides__button--active"></li>
+				<li class="header-slides__button"></li>
+				<li class="header-slides__button"></li>
+			</ul>
+			<img
+				src="./img/header-image.png"
+				class="header__image"
+				alt="A visual depiction of our key technologies: cloud analysis, statistical analysis, GIS, network communications and realtime communications, creativity and internet of things"
+			/>
+		</header>
+		<main>
+			<section class="header-subsection" lang="zh">
+				<nav class="header-subsection-navigation">
+					<a href="#" class="header-subsection-navigation__link" lang="zh"
+						>关于我们</a
+					>
+					<a href="#" class="header-subsection-navigation__link" lang="zh"
+						>联络我们</a
+					>
+					<a
+						href="#"
+						class="header-subsection-navigation__link header-subsection-navigation__link--active"
+						lang="zh"
+						>公司篇介</a
+					>
+					<a href="#" class="header-subsection-navigation__link" lang="zh"
+						>了解更多</a
+					>
+					<a href="#" class="header-subsection-navigation__link" lang="zh"
+						>般务团队</a
+					>
+				</nav>
+			</section>
+			<section class="about">
+				<h2 class="about__heading">摄图科技/大数据分析</h2>
+				<p class="about__description">
+					We will comprehensively apply network communications, the internet of
+					things, GIS, big data analysis and artificial intelligence
+					technologies
+				</p>
+				<article class="about-advantage about-advantage--blue">
+					<img
+						src="./img/header-section-image-1.png"
+						class="about-advantage__image"
+						alt="A demonstration of our internet of things pipeline: interactions of internet of things with personnel"
+					/>
+					<div class="about-advantage-wrap">
+						<h3 class="about-advantage__heading">
+							综合这用网络过信、物联网、<br />GIS、大数据分煌以及人工智能技术
+						</h3>
+						<p class="about-advantage__description">
+							We will comprehensively apply network communications, the internet
+							of things, GIS, big data analysis and artificial intelligence
+							technologies
+						</p>
+						<button class="button" lang="zh">联络我们>></button>
+					</div>
+				</article>
+				<article class="about-advantage about-advantage--orange">
+					<img
+						src="./img/header-section-image-2.png"
+						class="about-advantage__image"
+						alt="A demonstration of our internet of things pipeline: interactions of internet of things with personnel"
+					/>
+					<div class="about-advantage-wrap">
+						<h3 class="about-advantage__heading">
+							综合这用网络过信、物联网、<br />GIS、大数据分煌以及人工智能技术
+						</h3>
+						<p class="about-advantage__description">
+							We will comprehensively apply network communications, the internet
+							of things, GIS, big data analysis and artificial intelligence
+							technologies
+						</p>
+						<button class="button" lang="zh">联络我们>></button>
+					</div>
+				</article>
+			</section>
+			<section class="insights">
+				<ul class="insights-list">
+					<li class="insights-list-item">
+						<div class="insights-list-item__icon-wrap">
+							<img
+								class="insights-list-item__icon"
+								alt="Icon of a magnifier near a line chart"
+								src="./img/magnifier-image.png"
+							/>
+						</div>
+						<h3 class="insights-list-item__heading">
+							综合这用网络过信、物联网、<br />GIS、大数据分煌以及人工智能技术
+						</h3>
+						<p class="insights-list-item__description">
+							We will comprehensively apply network communications, the internet
+							of things, GIS, big data analysis and artificial intelligence
+							technologies
+						</p>
+					</li>
+					<li class="insights-list-item insights-list-item--active">
+						<div class="insights-list-item__icon-wrap">
+							<img
+								class="insights-list-item__icon"
+								alt="Icon of a magnifier near a line chart"
+								src="./img/magnifier-image.png"
+							/>
+						</div>
+						<h3 class="insights-list-item__heading">
+							综合这用网络过信、物联网、<br />GIS、大数据分煌以及人工智能技术
+						</h3>
+						<p class="insights-list-item__description">
+							We will comprehensively apply network communications, the internet
+							of things, GIS, big data analysis and artificial intelligence
+							technologies
+						</p>
+					</li>
+					<li class="insights-list-item">
+						<div class="insights-list-item__icon-wrap">
+							<img
+								class="insights-list-item__icon"
+								alt="Icon of a magnifier near a line chart"
+								src="./img/magnifier-image.png"
+							/>
+						</div>
+						<h3 class="insights-list-item__heading">
+							综合这用网络过信、物联网、GIS、大数据分煌以及人工智能技术
+						</h3>
+						<p class="insights-list-item__description">
+							We will comprehensively apply network communications, the internet
+							of things, GIS, big data analysis and artificial intelligence
+							technologies
+						</p>
+					</li>
+				</ul>
+			</section>
+			<section class="contacts">
+				<h2 class="contacts__heading">摄图科技/大数据分析</h2>
+				<p class="contacts__description">
+					We will comprehensively apply network communications, the internet of
+					things,<br />
+					GIS, big data analysis and artificial intelligence technologies
+				</p>
+				<form class="contacts-form">
+					<label class="contacts-form__label">
+						<span class="contacts-form__text">Contact us</span>
+						<input class="contacts-form__input" type="text" />
+					</label>
+					<label class="contacts-form__label">
+						<span class="contacts-form__text">Contact us</span>
+						<input class="contacts-form__input" type="text" />
+					</label>
+					<label class="contacts-form__label">
+						<span class="contacts-form__text">Contact us</span>
+						<input class="contacts-form__input" type="text" />
+					</label>
+				</form>
+				<img
+					class="contacts__image"
+					src="./img/footer-image.png"
+					alt="A demonstration of our website and personnel interaction with it, from creation of video to review and publishing"
+				/>
+			</section>
+			<section class="partners">
+				<ul class="partners-list">
+					<li class="partners-list-item">
+						<img
+							class="partners-list-item__logo"
+							alt="Baidu logotype"
+							src="./img/Baidu.svg"
+						/>
+					</li>
+					<li class="partners-list-item">
+						<img
+							class="partners-list-item__logo"
+							alt="Sina logotype"
+							src="./img/Sina-logo.svg"
+						/>
+					</li>
+					<li class="partners-list-item">
+						<img
+							class="partners-list-item__logo"
+							alt="Bank of China logotype"
+							src="./img/bank-of-china-logo.svg"
+						/>
+					</li>
+					<li class="partners-list-item">
+						<img
+							class="partners-list-item__logo"
+							alt="IBM logotype"
+							src="./img/ibm-logo.svg"
+						/>
+					</li>
+					<li class="partners-list-item">
+						<img
+							class="partners-list-item__logo"
+							alt="Microsoft logotype"
+							src="./img/microsoft-logo.svg"
+						/>
+					</li>
+					<li class="partners-list-item">
+						<img
+							class="partners-list-item__logo"
+							alt="Pingan logotype"
+							src="./img/Pingan-logo.svg"
+						/>
+					</li>
+				</ul>
+			</section>
+		</main>
+		<footer class="footer">
+			<nav class="footer-navigation">
+				<span class="footer-navigation__logo">You Logo</span>
+				<a href="#" class="footer-navigation__link" lang="zh">般务</a>
+				<a href="#" class="footer-navigation__link" lang="zh">关于我们</a>
+				<a href="#" class="footer-navigation__link" lang="zh">联络我们</a>
+				<a href="#" class="footer-navigation__link" lang="zh">公司篇介</a>
+				<a href="#" class="footer-navigation__link" lang="zh">了解更多</a>
+				<a href="#" class="footer-navigation__link" lang="zh">般务团队</a>
+				<a href="#" class="footer-navigation__link" lang="zh">公司篇介</a>
+			</nav>
+		</footer>
+	</body>
 </html>

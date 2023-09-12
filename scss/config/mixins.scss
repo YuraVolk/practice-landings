@@ -4,144 +4,148 @@
 @use "sass:math";
 
 @function split-string($str, $separators) {
-    $result: ();
-    $splitters: ();
-    $current-word: '';
+	$result: ();
+	$splitters: ();
+	$current-word: "";
 
-    @for $i from 1 through string.length($str) {
-        $char: string.slice($str, $i, $i);
-        $matched-separator: false;
-        $is-break: false;
+	@for $i from 1 through string.length($str) {
+		$char: string.slice($str, $i, $i);
+		$matched-separator: false;
+		$is-break: false;
 
-        @each $separator in $separators {
-            @if $is-break == false {
-                $separator-length: string.length($separator);
+		@each $separator in $separators {
+			@if $is-break == false {
+				$separator-length: string.length($separator);
 
-                @if string.slice($str, $i, $i + $separator-length - 1) == $separator {
-                    $matched-separator: true;
-                    $splitters: list.append($splitters, $separator, comma);
+				@if string.slice($str, $i, $i + $separator-length - 1) == $separator {
+					$matched-separator: true;
+					$splitters: list.append($splitters, $separator, comma);
 
-                    @if $current-word != '' {
-                        $result: list.append($result, $current-word, comma);
-                        $current-word: '';
-                    }
+					@if $current-word != "" {
+						$result: list.append($result, $current-word, comma);
+						$current-word: "";
+					}
 
-                    $i: $i + $separator-length - 1;
-                    $is-break: true;
-                }
-            }
-        }
+					$i: $i + $separator-length - 1;
+					$is-break: true;
+				}
+			}
+		}
 
-        @if not $matched-separator {
-            $current-word: #{$current-word}#{$char};
-        }
-    }
+		@if not $matched-separator {
+			$current-word: #{$current-word}#{$char};
+		}
+	}
 
-    @if $current-word != '' {
-        $result: list.append($result, $current-word, comma);
-    }
+	@if $current-word != "" {
+		$result: list.append($result, $current-word, comma);
+	}
 
-    @return ($result, $splitters);
+	@return ($result, $splitters);
 }
 
 @function reverse($list) {
-    $result: ();
+	$result: ();
 
-    @for $i from list.length($list) * -1 through -1 {
-        $result: list.append($result, list.nth($list, math.abs($i)));
-    }
+	@for $i from list.length($list) * -1 through -1 {
+		$result: list.append($result, list.nth($list, math.abs($i)));
+	}
 
-    @return $result;
+	@return $result;
 }
 
 @function remove-nesting($selector, $levels) {
-    $result: '';
+	$result: "";
 
-    @if $levels == 0 {
-        @return $selector;
-    } @else {
-        $results: split-string(string.quote(#{$selector}), (" ", "-", "__"));
-        $parts: reverse(list.nth($results, 1));
-        $separators: reverse(list.nth($results, 2));
+	@if $levels == 0 {
+		@return $selector;
+	} @else {
+		$results: split-string(string.quote(#{$selector}), (" ", "-", "__"));
+		$parts: reverse(list.nth($results, 1));
+		$separators: reverse(list.nth($results, 2));
 
-        @for $i from 1 through list.length($parts) {
-            $part: list.nth($parts, $i);
+		@for $i from 1 through list.length($parts) {
+			$part: list.nth($parts, $i);
 
-            @if $i > $levels {
-                @if  string.length($result) == 0 {
-                    $result: "#{$part}";
-                } @else {
-                    $result: "#{$part}#{list.nth($separators, $i - 1)}#{$result}";
-                }
-            }
-        }
+			@if $i > $levels {
+				@if string.length($result) == 0 {
+					$result: "#{$part}";
+				} @else {
+					$result: "#{$part}#{list.nth($separators, $i - 1)}#{$result}";
+				}
+			}
+		}
 
-        @return #{string.slice(string.quote(#{$result}), 1)};
-    }
+		@return #{string.slice(string.quote(#{$result}), 1)};
+	}
 }
 
 @mixin lift-up($levels, $modifiers, $reverseNestingOrder: false) {
-    @each $modifier in $modifiers {
-        $result: remove-nesting(&, $levels);
-        @if  $result == "." or $result == "#" {
-            @error "Erroneous selector generated on level lifting #{$levels} with base selector #{&}";
-        } @else if selector.is-superselector("*", "*#{$result}") or selector.unify($result, "*") != null {
-            @if  $reverseNestingOrder {
-                @at-root #{selector.nest(&, "#{$result}#{$modifier}")} {
-                    @content;
-                }
-            } @else {
-                @at-root #{selector.nest("#{$result}#{$modifier}", &)} {
-                    @content;
-                }
-            }
-        } @else {
-            @debug "Potentially erroneous selector generated on level lifting #{$levels} with base selector #{&}";
-        }
-    }
+	@each $modifier in $modifiers {
+		$result: remove-nesting(&, $levels);
+		@if $result == "." or $result == "#" {
+			@error "Erroneous selector generated on level lifting #{$levels} with base selector #{&}";
+		} @else if
+			selector.is-superselector("*", "*#{$result}") or
+			selector.unify($result, "*") !=
+			null
+		{
+			@if $reverseNestingOrder {
+				@at-root #{selector.nest(&, "#{$result}#{$modifier}")} {
+					@content;
+				}
+			} @else {
+				@at-root #{selector.nest("#{$result}#{$modifier}", &)} {
+					@content;
+				}
+			}
+		} @else {
+			@debug "Potentially erroneous selector generated on level lifting #{$levels} with base selector #{&}";
+		}
+	}
 }
 
 @function obtain-viewport-width($targetWidth, $baseWidth: 1013px) {
-    @if  $targetWidth >= $baseWidth {
-        @error "Target width should be less than base width";
-    }
+	@if $targetWidth >= $baseWidth {
+		@error "Target width should be less than base width";
+	}
 
-    @return math.div($targetWidth * 100vw, $baseWidth);
+	@return math.div($targetWidth * 100vw, $baseWidth);
 }
 
 @function text-stroke($stroke, $color, $step: 0.3px) {
-    $shadow: ();
-    $from: $stroke * -1;
+	$shadow: ();
+	$from: $stroke * -1;
 
-    @for $i from $from through $stroke {
-        @for $j from $from through $stroke {
-            $shadow: list.append($shadow, $i * $step $j * $step 0 $color, comma);
-        }
-    }
+	@for $i from $from through $stroke {
+		@for $j from $from through $stroke {
+			$shadow: list.append($shadow, $i * $step $j * $step 0 $color, comma);
+		}
+	}
 
-    @return $shadow;
+	@return $shadow;
 }
 
 @mixin place-background($url, $format) {
-    background-position: center;
-    background-size: cover;
-        
-    @at-root {
-        #{selector.nest(".webp", &)} {
-            background-image: url("#{$url}.webp");
-        }
-        
-        #{selector.nest(".no-webp", &)},
-        #{selector.nest(".no-js", &)}{
-            background-image: url("#{$url}.#{$format}");
-        }
-    }
+	background-position: center;
+	background-size: cover;
+
+	@at-root {
+		#{selector.nest(".webp", &)} {
+			background-image: url("#{$url}.webp");
+		}
+
+		#{selector.nest(".no-webp", &)},
+		#{selector.nest(".no-js", &)} {
+			background-image: url("#{$url}.#{$format}");
+		}
+	}
 }
 
 @mixin square-viewport-width {
-    width: calc(100vw - (100vw - 100%));
-    height: 100vw;
-    aspect-ratio: 1 / 1;
-    box-sizing: border-box;
-    overflow: hidden;
+	width: calc(100vw - (100vw - 100%));
+	height: 100vw;
+	aspect-ratio: 1 / 1;
+	box-sizing: border-box;
+	overflow: hidden;
 }

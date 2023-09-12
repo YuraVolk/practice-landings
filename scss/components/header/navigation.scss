@@ -2,136 +2,163 @@
 @use "../../config/mixins.scss";
 
 @mixin position-centrally {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translate(-100%, -50%);
+	position: absolute;
+	top: 50%;
+	left: 0;
+	transform: translate(-100%, -50%);
 }
 
 @mixin dashed-line {
-    width: 8px;
-    height: 3px;
-    background-color: #fff;
-    opacity: 0;
-    transition: all 0.6s 0.2s ease-in-out;
-    content: "";
+	width: 8px;
+	height: 3px;
+	background-color: #fff;
+	opacity: 0;
+	transition: all 0.6s 0.2s ease-in-out;
+	content: "";
 }
 
 @mixin navigation {
-    &-navigation {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 16px;
-        background-color: #f7e8cb;
+	&-navigation {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 16px;
+		background-color: #f7e8cb;
 
-        &-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.01px;
-            flex-grow: 1;
-            padding: 0;
-            margin: 0;
-            list-style-type: none;
-            background-color: #000;
-        }
+		&-links {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.01px;
+			flex-grow: 1;
+			padding: 0;
+			margin: 0;
+			list-style-type: none;
+			background-color: #000;
+		}
 
-        &-link {
-            position: relative;
-            flex-grow: 1;
-            padding: mixins.obtain-viewport-width(18px) 20px;
-            background: linear-gradient(to top left, #203740, #203740, #ff8998, #e66a6c);
-            background-position: 100% 50%;
-            background-size: 800% 800%;
-            text-align: center;
-            overflow-x: hidden;
-            cursor: pointer;
-            transition: all 0.6s 0.2s ease-in-out;
+		&-link {
+			position: relative;
+			flex-grow: 1;
+			padding: mixins.obtain-viewport-width(18px) 20px;
+			background: linear-gradient(
+				to top left,
+				#203740,
+				#203740,
+				#ff8998,
+				#e66a6c
+			);
+			background-position: 100% 50%;
+			background-size: 800% 800%;
+			text-align: center;
+			overflow-x: hidden;
+			cursor: pointer;
+			transition: all 0.6s 0.2s ease-in-out;
 
-            &::before {
-                @include position-centrally;
-                @include dashed-line;
-            }
+			&::before {
+				@include position-centrally;
+				@include dashed-line;
+			}
 
-            &:hover,
-            &--active {
-                flex-grow: 10;
-                background-position: 0 0;
-                text-indent: 26px;
-                padding-right: 0;
+			&:hover,
+			&--active {
+				flex-grow: 10;
+				background-position: 0 0;
+				text-indent: 26px;
+				padding-right: 0;
 
-                &::before {
-                    left: 25%;
-                    opacity: 1;
-                }
-            }
+				&::before {
+					left: 25%;
+					opacity: 1;
+				}
+			}
 
+			&__text {
+				position: relative;
+				color: #fff;
+				font:
+					700 16px Brusly,
+					sans-serif;
+				letter-spacing: 3px;
+				text-decoration: none;
+				text-transform: lowercase;
 
-            &__text {
-                position: relative;
-                color: #fff;
-                font: 700 16px Brusly, sans-serif;
-                letter-spacing: 3px;
-                text-decoration: none;
-                text-transform: lowercase;
+				&::before {
+					@include position-centrally;
 
-                &::before {
-                    @include position-centrally;
+					border-style: solid;
+					border-color: transparent #fff transparent transparent;
+					border-width: 8px 12px 8px 0;
+					opacity: 0;
+					transition: all 0.6s 0.2s ease-in-out;
+					content: "";
 
-                    border-style: solid;
-                    border-color: transparent #fff transparent transparent;
-                    border-width: 8px 12px 8px 0;
-                    opacity: 0;
-                    transition: all 0.6s 0.2s ease-in-out;
-                    content: "";
+					@include mixins.lift-up(
+						$levels: 1,
+						$modifiers: (
+							"--active",
+							":hover",
+						)
+					) {
+						left: -27px;
+						opacity: 1;
+					}
+				}
 
-                    @include mixins.lift-up($levels: 1, $modifiers: ("--active", ":hover")) {
-                        left: -27px;
-                        opacity: 1;
-                    }
-                }
+				&::after {
+					@include position-centrally;
+					@include dashed-line;
 
-                &::after {
-                    @include position-centrally;
-                    @include dashed-line;
+					@include mixins.lift-up(
+						$levels: 1,
+						$modifiers: (
+							"--active",
+							":hover",
+						)
+					) {
+						left: -20px;
+						opacity: 1;
+					}
+				}
+			}
+		}
 
-                    @include mixins.lift-up($levels: 1, $modifiers: ("--active", ":hover")) {
-                        left: -20px;
-                        opacity: 1;
-                    }
-                }
-            }
-        }
+		&-logotype {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			flex-basis: mixins.obtain-viewport-width(365px);
+			padding-block: 8px;
+			padding-inline-start: mixins.obtain-viewport-width(35px);
 
-        &-logotype {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            flex-basis: mixins.obtain-viewport-width(365px);
-            padding-block: 8px;
-            padding-inline-start: mixins.obtain-viewport-width(35px);
+			&__title {
+				font:
+					small-caps string.unquote("250%/0.75") Spring,
+					sans-serif;
+				color: #1e2c2e;
+				text-shadow: mixins.text-stroke(
+					$stroke: 1,
+					$color: rgba(#1e2c2e, 0.33),
+					$step: 0.01px
+				);
+			}
 
-            &__title {
-                font: small-caps string.unquote("250%/0.75") Spring, sans-serif;
-                color: #1e2c2e;
-                text-shadow: mixins.text-stroke($stroke: 1, $color: rgba(#1e2c2e, 0.33), $step: 0.01px);
-            }
+			&__description {
+				font:
+					700 string.unquote("66%/0") Brusly,
+					sans-serif;
+				text-transform: lowercase;
+				color: #504d41;
+			}
 
-            &__description {
-                font: 700 string.unquote("66%/0") Brusly, sans-serif;
-                text-transform: lowercase;
-                color: #504d41;
-            }
+			@media (max-width: 350px) {
+				transform: rotate(-90deg);
+			}
 
-            @media (max-width: 350px) {
-                transform: rotate(-90deg);
-            }
-
-            @media (max-width: 300px) {
-                flex-grow: 0.5;
-                writing-mode: vertical-rl;
-                transform: none;
-            }
-        }
-    }
+			@media (max-width: 300px) {
+				flex-grow: 0.5;
+				writing-mode: vertical-rl;
+				transform: none;
+			}
+		}
+	}
 }
