@@ -6,6 +6,7 @@
         "**/.pnpm-lock.json",
         ".vscode",
         "package-lock.json",
+        "package.json",
         "megalinter-reports"
     ],
     "language": "en",
