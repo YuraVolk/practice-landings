@@ -15,5 +15,5 @@
 		"scss/percent-placeholder-pattern": "^[a-z]([a-z0-9-]+)?(__([a-z0-9]+-?)+)?(--([a-z0-9]+-?)+){0,2}$",
 		"selector-id-pattern": ".*"
 	},
-	"ignoreFiles": "scss/layout/trees.scss"
+	"ignoreFiles": "docs/surrealist/src/scss/layout/trees.scss"
 }
