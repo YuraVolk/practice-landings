@@ -19,6 +19,7 @@ jobs:
       
       - name: Run Surge
         run: surge ./docs/betting-template/build practice-landings-betting-template.surge.sh --token ${{ secrets.SURGE_TOKEN }}
+  
   deploy-headphones:
     name: Deploy Headphones
     runs-on: ubuntu-latest
@@ -35,4 +36,140 @@ jobs:
       
       - name: Run Surge
         run: surge ./docs/headphones/build practice-landings-headphones.surge.sh --token ${{ secrets.SURGE_TOKEN }}
+
+  deploy-legal-adviser:
+    name: Deploy Legal Adviser
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2 
+      - name: Install Node.js
+        uses: actions/setup-node@v2-beta
+        with: 
+          node-version: 16
+               
+      - name: Install surge
+        run: npm install --global surge
+      
+      - name: Run Surge
+        run: surge ./docs/legal-adviser/build practice-landings-legal-adviser.surge.sh --token ${{ secrets.SURGE_TOKEN }}
+
+  deploy-medicine-integration-template:
+    name: Deploy Medicine Integration Template
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2 
+      - name: Install Node.js
+        uses: actions/setup-node@v2-beta
+        with: 
+          node-version: 16
+               
+      - name: Install surge
+        run: npm install --global surge
+      
+      - name: Run Surge
+        run: surge ./docs/medicine-integration-template/build practice-landings-medicine-integration-template.surge.sh --token ${{ secrets.SURGE_TOKEN }}
+
+  deploy-nature-trips-template:
+    name: Deploy Nature Trips Template
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2 
+      - name: Install Node.js
+        uses: actions/setup-node@v2-beta
+        with: 
+          node-version: 16
+               
+      - name: Install surge
+        run: npm install --global surge
+      
+      - name: Run Surge
+        run: surge ./docs/nature-trips-template/build practice-landings-nature-trips-template.surge.sh --token ${{ secrets.SURGE_TOKEN }}
+
+  deploy-neumorphism-charts:
+    name: Deploy Neumorphism Charts
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2 
+      - name: Install Node.js
+        uses: actions/setup-node@v2-beta
+        with: 
+          node-version: 16
+               
+      - name: Install surge
+        run: npm install --global surge
+      
+      - name: Run Surge
+        run: surge ./docs/neumorphism-charts/build practice-landings-neumorphism-charts.surge.sh --token ${{ secrets.SURGE_TOKEN }}
+
+  deploy-restaraunt-food:
+    name: Deploy Restaurant Food
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2 
+      - name: Install Node.js
+        uses: actions/setup-node@v2-beta
+        with: 
+          node-version: 16
+               
+      - name: Install surge
+        run: npm install --global surge
+      
+      - name: Run Surge
+        run: surge ./docs/restaurant-food/build practice-landings-restaurant-food.surge.sh --token ${{ secrets.SURGE_TOKEN }}
+
+  deploy-technology-integration-template:
+    name: Deploy Technology Integration Template
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2 
+      - name: Install Node.js
+        uses: actions/setup-node@v2-beta
+        with: 
+          node-version: 16
+               
+      - name: Install surge
+        run: npm install --global surge
+      
+      - name: Run Surge
+        run: surge ./docs/technology-integration-template/build practice-landings-technology-integration-template.surge.sh --token ${{ secrets.SURGE_TOKEN }}
+
+  deploy-ui-business-template:
+    name: Deploy UI Business Template
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2 
+      - name: Install Node.js
+        uses: actions/setup-node@v2-beta
+        with: 
+          node-version: 16
+               
+      - name: Install surge
+        run: npm install --global surge
+      
+      - name: Run Surge
+        run: surge ./docs/ui-business-template/build practice-landings-ui-business-template.surge.sh --token ${{ secrets.SURGE_TOKEN }}
+
+  deploy-surrealist:
+    name: Deploy Surrealist
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2 
+      - name: Install Node.js
+        uses: actions/setup-node@v2-beta
+        with: 
+          node-version: 16
+               
+      - name: Install surge
+        run: npm install --global surge
+      
+      - name: Run Surge
+        run: surge ./docs/surrealist/build practice-landings-surrealist.surge.sh --token ${{ secrets.SURGE_TOKEN }}
  
