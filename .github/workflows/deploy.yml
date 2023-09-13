@@ -7,6 +7,23 @@ on:
     - cron: "59   */12   1   1,4,7,10   *"
 
 jobs:
+  deploy-target:
+    name: Deploy Target Entry
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Node.js
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: 16
+
+      - name: Install surge
+        run: npm install --global surge
+
+      - name: Run Surge
+        run: surge ./target/build practice-landings-catalog.surge.sh --token ${{ secrets.SURGE_TOKEN }}
+
   deploy-betting-template:
     name: Deploy Betting Template
     runs-on: ubuntu-latest
