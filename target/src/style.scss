@@ -1,5 +1,133 @@
 body {
     margin: 0;
+
+    &::-webkit-scrollbar-track {
+		box-shadow: inset 0 0 6px rgb(0 0 0 / 30%);
+		background-color: #f5f5f5;
+		border-radius: 10px;
+	}
+
+	&::-webkit-scrollbar {
+		width: 12.5px;
+		background-color: #f5f5f5;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background-color: #aaa;
+		border-radius: 10px;
+		background-image: linear-gradient(
+			90deg,
+			rgb(0 0 0 / 20%) 25%,
+			transparent 25%,
+			transparent 50%,
+			rgb(0 0 0 / 20%) 50%,
+			rgb(0 0 0 / 20%) 75%,
+			transparent 75%,
+			transparent
+		);
+	}
 }
 
+@mixin fix-grid-empty-space($column-count, $ignore-height: false) {
+    @for $i from 1 to $column-count {
+        &:nth-child(#{$column-count}n-#{$i}):nth-last-of-type(1) {
+            grid-column: span #{$i + 1};
 
+            @if (not $ignore-height) {
+                height: calc(100vw / (#{$column-count - $i}));
+            }
+        }   
+    }
+}
+
+$item-count: 10;
+
+.catalog {
+    $transition-length: 0.25s;
+
+    @keyframes slide-top {
+        from {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    display: grid;
+    grid-template-columns: repeat(3, calc(100% / 3 - 2.5px));
+    gap: 2.5px;
+    background-color: #222;
+
+
+    @media (max-width: 1101px) {
+        grid-template-columns: repeat(2, calc(100% / 2 - 2.5px));
+    }
+
+    @media (max-width: 601px) {
+        grid-template-columns: 100%;
+    }
+
+    &-item {
+        position: relative;
+        width: 100%;
+        height: calc(100vw / 3);
+        overflow: hidden;
+        transition: all $transition-length ease-in-out;
+        opacity: 0;
+
+        @for $i from 1 through 10 {
+            &:nth-child(#{$i}) {
+                animation: $transition-length ease-out #{$transition-length * ($i - 1)} slide-top forwards;
+            }
+        }
+
+        @media (min-width: 1101px) {
+            @include fix-grid-empty-space($column-count: 3, $ignore-height: true);
+        }
+
+        @media (max-width: 1101px) and (min-width: 600px) {
+            @include fix-grid-empty-space($column-count: 2);
+            height: calc(100vw / 2);
+        }
+
+        @media (max-width: 601px) {
+            height: 100vw;
+        }
+
+        &-link {
+            display: block;
+            width: 100%;
+            height: 100%;
+
+            &__image {
+                width: inherit;
+                height: inherit;
+                object-fit: cover;
+            }
+
+            &__description {
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                padding: 4%;
+                background-color: rgba($color: #333, $alpha: 0.95);
+                color: #fff;
+                text-align: center;
+                text-decoration: none;
+                font-family: 'Open Sans', sans-serif;
+                font-size: 100%; 
+                transition: all 0.3s ease-in-out;
+            }
+
+            &:hover &__description {
+                background-color: rgba($color: #222, $alpha: 1);
+                letter-spacing: 3px;
+            }
+        }
+    }
+}
