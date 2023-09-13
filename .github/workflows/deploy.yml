@@ -4,7 +4,7 @@ on:
   release:
   workflow_dispatch:
   schedule:
-    - cron:  '59   */12   1   1,4,7,10   *'
+    - cron: "59   */12   1   1,4,7,10   *"
 
 jobs:
   deploy-betting-template:
@@ -12,32 +12,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2 
+      - uses: actions/checkout@v2
       - name: Install Node.js
         uses: actions/setup-node@v2-beta
-        with: 
+        with:
           node-version: 16
-               
+
       - name: Install surge
         run: npm install --global surge
-      
+
       - name: Run Surge
         run: surge ./docs/betting-template/build practice-landings-betting-template.surge.sh --token ${{ secrets.SURGE_TOKEN }}
-  
+
   deploy-headphones:
     name: Deploy Headphones
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2 
+      - uses: actions/checkout@v2
       - name: Install Node.js
         uses: actions/setup-node@v2-beta
-        with: 
+        with:
           node-version: 16
-               
+
       - name: Install surge
         run: npm install --global surge
-      
+
       - name: Run Surge
         run: surge ./docs/headphones/build practice-landings-headphones.surge.sh --token ${{ secrets.SURGE_TOKEN }}
 
@@ -46,15 +46,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2 
+      - uses: actions/checkout@v2
       - name: Install Node.js
         uses: actions/setup-node@v2-beta
-        with: 
+        with:
           node-version: 16
-               
+
       - name: Install surge
         run: npm install --global surge
-      
+
       - name: Run Surge
         run: surge ./docs/legal-adviser/build practice-landings-legal-adviser.surge.sh --token ${{ secrets.SURGE_TOKEN }}
 
@@ -63,15 +63,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2 
+      - uses: actions/checkout@v2
       - name: Install Node.js
         uses: actions/setup-node@v2-beta
-        with: 
+        with:
           node-version: 16
-               
+
       - name: Install surge
         run: npm install --global surge
-      
+
       - name: Run Surge
         run: surge ./docs/medicine-integration-template/build practice-landings-medicine-integration-template.surge.sh --token ${{ secrets.SURGE_TOKEN }}
 
@@ -80,15 +80,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2 
+      - uses: actions/checkout@v2
       - name: Install Node.js
         uses: actions/setup-node@v2-beta
-        with: 
+        with:
           node-version: 16
-               
+
       - name: Install surge
         run: npm install --global surge
-      
+
       - name: Run Surge
         run: surge ./docs/nature-trips-template/build practice-landings-nature-trips-template.surge.sh --token ${{ secrets.SURGE_TOKEN }}
 
@@ -97,32 +97,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2 
+      - uses: actions/checkout@v2
       - name: Install Node.js
         uses: actions/setup-node@v2-beta
-        with: 
+        with:
           node-version: 16
-               
+
       - name: Install surge
         run: npm install --global surge
-      
+
       - name: Run Surge
         run: surge ./docs/neumorphism-charts/build practice-landings-neumorphism-charts.surge.sh --token ${{ secrets.SURGE_TOKEN }}
 
-  deploy-restaraunt-food:
+  deploy-restaurant-food:
     name: Deploy Restaurant Food
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2 
+      - uses: actions/checkout@v2
       - name: Install Node.js
         uses: actions/setup-node@v2-beta
-        with: 
+        with:
           node-version: 16
-               
+
       - name: Install surge
         run: npm install --global surge
-      
+
       - name: Run Surge
         run: surge ./docs/restaurant-food/build practice-landings-restaurant-food.surge.sh --token ${{ secrets.SURGE_TOKEN }}
 
@@ -131,15 +131,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2 
+      - uses: actions/checkout@v2
       - name: Install Node.js
         uses: actions/setup-node@v2-beta
-        with: 
+        with:
           node-version: 16
-               
+
       - name: Install surge
         run: npm install --global surge
-      
+
       - name: Run Surge
         run: surge ./docs/technology-integration-template/build practice-landings-technology-integration-template.surge.sh --token ${{ secrets.SURGE_TOKEN }}
 
@@ -148,14 +148,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2 
+      - uses: actions/checkout@v2
       - name: Install Node.js
         uses: actions/setup-node@v2-beta
-        with: 
+        with:
           node-version: 16
-               
+
       - name: Install surge
         run: npm install --global surge
-      
+
       - name: Run Surge
         run: surge ./docs/ui-business-template/build practice-landings-ui-business-template.surge.sh --token ${{ secrets.SURGE_TOKEN }}

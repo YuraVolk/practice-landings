@@ -4,7 +4,6 @@ about: Suggest a new landing idea for the project
 title: New Landing Proposal
 labels: landing-proposal
 assignees: YuraVolk
-
 ---
 
 This issue proposes the implementation of a new HTML & CSS landing page for our project. The landing page will serve as the main entry point for our website, and the only page in case for this project.
