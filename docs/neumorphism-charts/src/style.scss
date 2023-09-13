@@ -1448,6 +1448,22 @@ body {
 	}
 }
 
+@mixin dashed-line {
+	position: absolute;
+	top: 2.72vw;
+	left: 2.02vw;
+	width: 78%;
+
+	&__path {
+		fill: none;
+		stroke: $primary-active;
+		stroke-width: 2px;
+		stroke-dasharray: 4, 2;
+		stroke-linejoin: round;
+		opacity: 0.75;
+	}
+}
+
 .line-chart {
 	@mixin fixed-border($borderSize) {
 		border-left-color: transparent;
@@ -1583,28 +1599,12 @@ body {
 		@include fixed-border(10%);
 	}
 
-	%dashed-line {
-		position: absolute;
-		top: 2.72vw;
-		left: 2.02vw;
-		width: 78%;
-
-		&__path {
-			fill: none;
-			stroke: $primary-active;
-			stroke-width: 2px;
-			stroke-dasharray: 4, 2;
-			stroke-linejoin: round;
-			opacity: 0.75;
-		}
-	}
-
 	&-dashed-line {
-		@extend %dashed-line;
+		@include dashed-line;
 	}
 
 	&-red-line {
-		@extend %dashed-line;
+		@include dashed-line;
 
 		&__path {
 			fill: none;

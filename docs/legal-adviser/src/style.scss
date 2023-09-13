@@ -986,7 +986,7 @@ button {
 			grid-row: 1 / -1;
 			width: 3.75rem;
 			height: 3.75rem;
-			background-color: color.adjust($color: $light-gray, $lightness: 5);
+			background-color: color.adjust($color: $light-gray, $lightness: 5 * 1%);
 			border-radius: 100%;
 			overflow: hidden;
 
@@ -1215,7 +1215,7 @@ button {
 
 @mixin footer-button($color) {
 	position: relative;
-	border: 1px solid color.adjust($color: $color, $lightness: 1);
+	border: 1px solid color.adjust($color: $color, $lightness: 1 * 1%);
 	border-radius: 3px;
 	padding: 0.235rem 0.77rem;
 	font-size: 0.875rem;

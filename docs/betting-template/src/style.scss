@@ -542,7 +542,7 @@ main {
 
 @mixin footer-button($color) {
 	position: relative;
-	border: 1px solid color.adjust($color: $color, $lightness: 1);
+	border: 1px solid color.adjust($color: $color, $lightness: 1 * 1%);
 	border-radius: 3px;
 	padding: obtain-viewport-width(4px) obtain-viewport-width(12px);
 	font-size: obtain-viewport-width(14px);
