@@ -2,6 +2,7 @@ name: Deploy Surge Websites
 
 on:
   release:
+    types: [published]
   workflow_dispatch:
   schedule:
     - cron: "59   */12   1   1,4,7,10   *"
