@@ -21,7 +21,7 @@
 		"autoprefixer": "^10.4.15",
 		"cspell": "^7.3.5",
 		"htmlhint": "^1.1.4",
-		"mega-linter-runner": "^7.3.0",
+		"mega-linter-runner": "^7.5.0",
 		"postcss": "^8.4.28",
 		"prettier": "^3.0.3",
 		"sass": "^1.66.1",
