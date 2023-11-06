@@ -1,430 +1,760 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Vite App</title>
+		
+		<link rel="stylesheet" href="/assets/index-03e2e08f.css">
+	</head>
 
-<head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-    
-  <link rel="stylesheet" href="/assets/index-33bf6323.css">
-</head>
-
-<body>
-    <svg width="0" height="0">
-        <defs>
-            <clipPath id="lineChartCurve" clipPathUnits="objectBoundingBox">
-                <path
-                    d="M.5,138.6s39-142,68-138,35,60,61,64,60-35,60-35,26-16,40,1,31,68,66,67,42-45,56-53,30-15,30-10v139H.5Z" />
-            </clipPath>
-        </defs>
-    </svg>
-    <main class="application">
-        <header class="header">
-            <div class="header-logotype">
-                <div class="header-logotype__image"></div>
-                <h1 class="header-logotype__heading">Logo</h1>
-            </div>
-            <nav class="header-navigation">
-                <a href="#" class="header-navigation__link">Lorem ipsum</a>
-                <a href="#" class="header-navigation__link">Dolor sit</a>
-                <a href="#" class="header-navigation__link header-navigation__link--active">Amet lorem</a>
-                <a href="#" class="header-navigation__link">Ipsum dolor</a>
-            </nav>
-            <div class="header-user-information">
-                <span class="header-user-information__search-icon" role="img" aria-label="Search"></span>
-                <span class="header-user-information__notifications" data-notifications="5" role="img"
-                    aria-label="Notifications"></span>
-                <div class="header-user-information__avatar" role="img" aria-label="User avatar">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34 35">
-                        <defs>
-                            <linearGradient id="person-gradient" x1="0%" y1="0%" x2="133%" y2="0%"
-                                gradientUnits="userSpaceOnUse">
-                                <stop offset="0%" stop-color="var(--color-start)" />
-                                <stop offset="100%" stop-color="var(--color-end)" />
-                            </linearGradient>
-                        </defs>
-                        <g>
-                            <g class="head">
-                                <ellipse cx="17" cy="10.5" rx="8" ry="7.4" />
-                                <rect x="13.5" y="13" width="7" height="9" />
-                            </g>
-                            <g class="body">
-                                <path d="M34,35H0l3.2-7.4a10.8,10.8,0,0,1,10-6.6h7.6a10.8,10.8,0,0,1,10,6.6Z" />
-                                <path d="M8.4,10s5-9,9-3,9,2,9,2,0-9-9-9S8.4,7,8.4,10Z" />
-                            </g>
-                        </g>
-                    </svg>
-                </div>
-                <span class="header-user-information__hamburger" role="img" aria-label="More menu options"></span>
-            </div>
-        </header>
-        <aside class="sidebar">
-            <h2 class="sidebar__heading">Lorem</h2>
-            <nav class="sidebar-navigation">
-                <a href="#" class="sidebar-navigation__link sidebar-navigation__link--home">Ipsum dolor</a>
-                <a href="#" class="sidebar-navigation__link sidebar-navigation__link--security">Sit amet</a>
-                <a href="#" class="sidebar-navigation__link sidebar-navigation__link--credentials">Lorem ipsum</a>
-                <a href="#" class="sidebar-navigation__link sidebar-navigation__link--payment">Dolor sit</a>
-                <a href="#" class="sidebar-navigation__link sidebar-navigation__link--settings">Amet lorem</a>
-            </nav>
-            <figure class="sidebar-counter-wrap">
-                <div class="sidebar-counter">
-                    <span class="sidebar-counter__upper-indicator"></span>
-                    <div class="sidebar-counter__circle">
-                        <span class="sidebar-counter__amount">304,56</span>
-                        <p class="sidebar-counter__description">Ipsum dolor<br>sit amet</p>
-                    </div>
-                    <h3 class="sidebar-counter__heading">Lorem ipsum dolor</h3>
-                </div>
-                <figcaption class="sidebar-counter__caption">Lorem ipsum dolor</figcaption>
-            </figure>
-        </aside>
-        <section class="main">
-            <article class="todo-list-wrap">
-                <ul class="todo-list">
-                    <li class="todo-list-item">
-                        <span class="todo-list-item__icon todo-list-item__icon--book"></span>
-                        <h3 class="todo-list-item__heading">Dolor sit amet</h3>
-                        <span class="todo-list-item__price">3,799</span>
-                        <p class="todo-list-item__description">Lorem ipsum</p>
-                    </li>
-                    <li class="todo-list-item">
-                        <span class="todo-list-item__icon todo-list-item__icon--book-with-pencil"></span>
-                        <h3 class="todo-list-item__heading">Dolor sit amet</h3>
-                        <span class="todo-list-item__price">2,387</span>
-                        <p class="todo-list-item__description">Lorem ipsum</p>
-                    </li>
-                    <li class="todo-list-item">
-                        <span class="todo-list-item__icon todo-list-item__icon--notebook"></span>
-                        <h3 class="todo-list-item__heading">Dolor sit amet</h3>
-                        <span class="todo-list-item__price">6,007</span>
-                        <p class="todo-list-item__description">Lorem ipsum</p>
-                    </li>
-                </ul>
-            </article>
-            <article class="pie-chart-section">
-                <figure class="pie-chart-wrap pie-chart-wrap--red">
-                    <div class="pie-chart">
-                        <span class="pie-chart__half-circle" data-progress="51"></span>
-                    </div>
-                    <h3 class="pie-chart__heading">51%</h3>
-                    <figcaption class="pie-chart__description">Lorem ipsum dolor sit amet, consectetur</figcaption>
-                </figure>
-                <figure class="pie-chart-wrap pie-chart-wrap--purple">
-                    <div class="pie-chart">
-                        <span class="pie-chart__half-circle" data-progress="28"></span>
-                    </div>
-                    <h3 class="pie-chart__heading">28%</h3>
-                    <figcaption class="pie-chart__description">Lorem ipsum dolor sit amet, consectetur</figcaption>
-                </figure>
-            </article>
-            <article class="settings-section">
-                <form class="settings">
-                    <fieldset class="settings-checkbox-wrap">
-                        <input class="settings-checkbox__hidden-input" type="checkbox" checked id="setting1">
-                        <label class="settings-checkbox__fake-input" for="setting1"></label>
-                        <h3 class="settings-checkbox__heading">Lorem ipsum dolor</h3>
-                        <p class="settings-checkbox__description">Lorem ipsum dolor sit amet</p>
-                    </fieldset>
-                    <fieldset class="settings-checkbox-wrap">
-                        <input class="settings-checkbox__hidden-input" type="checkbox" id="setting2">
-                        <label class="settings-checkbox__fake-input" for="setting2"></label>
-                        <h3 class="settings-checkbox__heading">Lorem ipsum dolor</h3>
-                        <p class="settings-checkbox__description">Lorem ipsum dolor sit amet</p>
-                    </fieldset>
-                    <fieldset class="settings-checkbox-wrap">
-                        <input class="settings-checkbox__hidden-input" type="checkbox" id="setting3" disabled>
-                        <label class="settings-checkbox__fake-input" for="setting3"></label>
-                        <h3 class="settings-checkbox__heading">Lorem ipsum dolor</h3>
-                        <p class="settings-checkbox__description">Lorem ipsum dolor sit amet</p>
-                    </fieldset>
-                </form>
-            </article>
-            <article class="histogram-section">
-                <table class="histogram">
-                    <thead class="histogram__head">
-                        <th class="histogram__heading">Lorem sit</th>
-                        <th class="histogram__heading">+3,799</th>
-                    </thead>
-                    <tbody class="histogram__body">
-                        <tr class="histogram__line">
-                            <td class="histogram__stat histogram__stat--filled histogram__stat--red" data-value="16">
-                            </td>
-                            <td class="histogram__stat histogram__stat--transparent histogram__stat--red"
-                                data-value="39"></td>
-                        </tr>
-                        <tr class="histogram__line">
-                            <td class="histogram__stat histogram__stat--filled histogram__stat--red" data-value="19">
-                            </td>
-                            <td class="histogram__stat histogram__stat--transparent histogram__stat--red"
-                                data-value="50"></td>
-                        </tr>
-                        <tr class="histogram__line">
-                            <td class="histogram__stat histogram__stat--filled histogram__stat--red" data-value="24">
-                            </td>
-                            <td class="histogram__stat histogram__stat--transparent histogram__stat--red"
-                                data-value="64"></td>
-                        </tr>
-                        <tr class="histogram__line">
-                            <td class="histogram__stat histogram__stat--filled histogram__stat--red" data-value="18">
-                            </td>
-                            <td class="histogram__stat histogram__stat--transparent histogram__stat--red"
-                                data-value="46"></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table class="histogram">
-                    <thead class="histogram__head">
-                        <th class="histogram__heading">Lorem sit</th>
-                        <th class="histogram__heading">+2,387</th>
-                    </thead>
-                    <tbody class="histogram__body">
-                        <tr class="histogram__line">
-                            <td class="histogram__stat histogram__stat--filled histogram__stat--blue" data-value="19">
-                            </td>
-                            <td class="histogram__stat histogram__stat--transparent histogram__stat--blue"
-                                data-value="31"></td>
-                        </tr>
-                        <tr class="histogram__line">
-                            <td class="histogram__stat histogram__stat--filled histogram__stat--blue" data-value="11">
-                            </td>
-                            <td class="histogram__stat histogram__stat--transparent histogram__stat--blue"
-                                data-value="19"></td>
-                        </tr>
-                        <tr class="histogram__line">
-                            <td class="histogram__stat histogram__stat--filled histogram__stat--blue" data-value="19">
-                            </td>
-                            <td class="histogram__stat histogram__stat--transparent histogram__stat--blue"
-                                data-value="45"></td>
-                        </tr>
-                        <tr class="histogram__line">
-                            <td class="histogram__stat histogram__stat--filled histogram__stat--blue" data-value="17">
-                            </td>
-                            <td class="histogram__stat histogram__stat--transparent histogram__stat--blue"
-                                data-value="28"></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table class="histogram">
-                    <thead class="histogram__head">
-                        <th class="histogram__heading">Lorem sit</th>
-                        <th class="histogram__heading">+6,007</th>
-                    </thead>
-                    <tbody class="histogram__body">
-                        <tr class="histogram__line">
-                            <td class="histogram__stat histogram__stat--filled histogram__stat--orange" data-value="14">
-                            </td>
-                            <td class="histogram__stat histogram__stat--transparent histogram__stat--orange"
-                                data-value="33"></td>
-                        </tr>
-                        <tr class="histogram__line">
-                            <td class="histogram__stat histogram__stat--filled histogram__stat--orange" data-value="28">
-                            </td>
-                            <td class="histogram__stat histogram__stat--transparent histogram__stat--orange"
-                                data-value="70"></td>
-                        </tr>
-                        <tr class="histogram__line">
-                            <td class="histogram__stat histogram__stat--filled histogram__stat--orange" data-value="15">
-                            </td>
-                            <td class="histogram__stat histogram__stat--transparent histogram__stat--orange"
-                                data-value="35"></td>
-                        </tr>
-                        <tr class="histogram__line">
-                            <td class="histogram__stat histogram__stat--filled histogram__stat--orange" data-value="8">
-                            </td>
-                            <td class="histogram__stat histogram__stat--transparent histogram__stat--orange"
-                                data-value="24"></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </article>
-            <article class="progress-section">
-                <div class="progress-bar-wrap progress-bar-wrap--blue" data-value="55">
-                    <progress class="progress-bar" aria-label="Progress Bar 1" id="progress-bar-1" value="55"
-                        max="116"></progress>
-                </div>
-                <label class="progress-description" for="progress-bar-1">55%</label>
-                <div class="progress-bar-wrap progress-bar-wrap--orange" data-value="76">
-                    <progress class="progress-bar" aria-label="Progress Bar 2" id="progress-bar-2" value="76"
-                        max="116"></progress>
-                </div>
-                <label class="progress-description" for="progress-bar-2">76%</label>
-            </article>
-            <article class="area-charts-section">
-                <figure class="area-chart-wrap">
-                    <ul class="area-chart area-chart--blue">
-                        <li class="area-chart-section" style="--start: 0.25; --end: 0.56; --length: 14.53;">25%</li>
-                        <li class="area-chart-section" style="--start: 0.56; --end: 0.4; --length: 7.97;">56%</li>
-                        <li class="area-chart-section" style="--start: 0.4; --end: 0.45; --length: 3.54;">40%</li>
-                        <li class="area-chart-section" style="--start: 0.45; --end: 0.36; --length: 10.46;">45%</li>
-                        <li class="area-chart-section" style="--start: 0.36; --end: 0.738; --length: 11.7;">36%</li>
-                        <li class="area-chart-section" style="--start: 0.738; --end: 0.388; --length: 11.34;">73.8%</li>
-                        <li class="area-chart-section" style="--start: 0.388; --end: 0.67; --length: 8.51;">38.8%</li>
-                        <li class="area-chart-section" style="--start: 0.67; --end: 0.583; --length: 6.56;">67%</li>
-                        <li class="area-chart-section" style="--start: 0.583; --end: 1; --length: 10.81;">100%</li>
-                        <li class="area-chart-section" style="--start: 1; --end: 0.433; --length: 14.71;">43.3%</li>
-                    </ul>
-                    <figcaption class="area-chart__caption">
-                        <h3 class="area-chart__heading">Dolor sit amet</h3>
-                        <p class="area-chart__description">3,799</p>
-                    </figcaption>
-                </figure>
-                <figure class="area-chart-wrap">
-                    <ul class="area-chart area-chart--red">
-                        <li class="area-chart-section" style="--start: 0.232; --end: 0.47; --length: 9;">23.2%</li>
-                        <li class="area-chart-section" style="--start: 0.47; --end: 0.3867; --length: 10.63;">47%</li>
-                        <li class="area-chart-section" style="--start: 0.3867; --end: 0.52; --length: 7.45;">38.67%</li>
-                        <li class="area-chart-section" style="--start: 0.52; --end: 0.38; --length: 6.9;">52%</li>
-                        <li class="area-chart-section" style="--start: 0.38; --end: 0.63; --length: 10;">38%</li>
-                        <li class="area-chart-section" style="--start: 0.63; --end: 0.605; --length: 17.37;">63%</li>
-                        <li class="area-chart-section" style="--start: 0.605; --end: 0.806; --length: 9;">60.5%</li>
-                        <li class="area-chart-section" style="--start: 0.806; --end: 0.45; --length: 11.5;">80.6%</li>
-                        <li class="area-chart-section" style="--start: 0.45; --end: 0.585; --length: 10.3;">45%</li>
-                        <li class="area-chart-section" style="--start: 0.585; --end: 0.4; --length: 5.14;">58.5%</li>
-                    </ul>
-                    <figcaption class="area-chart__caption">
-                        <h3 class="area-chart__heading">Dolor sit amet</h3>
-                        <p class="area-chart__description">2,387</p>
-                    </figcaption>
-                </figure>
-            </article>
-            <article class="combined-area-chart-section">
-                <table class="combined-area-chart-wrap">
-                    <caption class="combined-area-chart__caption">Lorem ipsum dolor sit</caption>
-                    <thead class="combined-area-chart__head">
-                        <th class="combined-area-chart__anchor">150</th>
-                        <th class="combined-area-chart__anchor">125</th>
-                        <th class="combined-area-chart__anchor">100</th>
-                        <th class="combined-area-chart__anchor">75</th>
-                        <th class="combined-area-chart__anchor">50</th>
-                        <th class="combined-area-chart__anchor">25</th>
-                    </thead>
-                    <tbody class="combined-area-chart">
-                        <tr class="combined-area-chart__line" style="--length: 30.75;">
-                            <td class="combined-area-chart__section" style="--start: 0; --end: 0.2">20%</td>
-                            <td class="combined-area-chart__section" style="--start: 0; --end: 0.117">11.7%</td>
-                        </tr>
-                        <tr class="combined-area-chart__line" style="--length: 21.15;">
-                            <td class="combined-area-chart__section" style="--start: 0.2; --end: 0.4">40%</td>
-                            <td class="combined-area-chart__section" style="--start: 0.117; --end: 0.23">23%</td>
-                        </tr>
-                        <tr class="combined-area-chart__line" style="--length: 18.9;">
-                            <td class="combined-area-chart__section" style="--start: 0.4; --end: 0.6">60%</td>
-                            <td class="combined-area-chart__section" style="--start: 0.23; --end: 0.35">35%</td>
-                        </tr>
-                        <tr class="combined-area-chart__line" style="--length: 14.23;">
-                            <td class="combined-area-chart__section" style="--start: 0.6; --end: 0.8">80%</td>
-                            <td class="combined-area-chart__section" style="--start: 0.35; --end: 0.464">46.4%</td>
-                        </tr>
-                        <tr class="combined-area-chart__line" style="--length: 10.38;">
-                            <td class="combined-area-chart__section" style="--start: 0.8; --end: 1">100%</td>
-                            <td class="combined-area-chart__section" style="--start: 0.464; --end: 0.59">59%</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </article>
-            <article class="line-chart-section">
-                <table class="line-chart-wrap">
-                    <thead class="line-chart__head">
-                        <tr>
-                            <th class="line-chart__anchor">500</th>
-                            <th class="line-chart__anchor">400</th>
-                            <th class="line-chart__anchor">300</th>
-                            <th class="line-chart__anchor">200</th>
-                            <th class="line-chart__anchor">100</th>
-                        </tr>
-                    </thead>
-                    <tbody class="line-chart">
-                        <tr class="line-chart__line">
-                            <td class="line-chart__cell"></td>
-                            <td class="line-chart__cell"></td>
-                            <td class="line-chart__cell"></td>
-                            <td class="line-chart__cell"></td>
-                            <td class="line-chart__cell"></td>
-                            <td class="line-chart__cell"></td>
-                            <td class="line-chart__cell"></td>
-                            <td class="line-chart__cell"></td>
-                            <td class="line-chart__cell"></td>
-                            <td class="line-chart__cell"></td>
-                            <td class="line-chart__cell"></td>
-                        </tr>
-                        <tr class="line-chart__line">
-                            <td class="line-chart__cell"></td>
-                            <td class="line-chart__cell"></td>
-                            <td class="line-chart__cell"></td>
-                            <td class="line-chart__cell"></td>
-                            <td class="line-chart__cell">
-                                <h3 class="line-chart__peak-value">425</h3>
-                                <span class="line-chart__circle line-chart__circle--white" data-displacement="38"></span>
-                            </td>
-                            <td class="line-chart__cell"></td>
-                            <td class="line-chart__cell"></td>
-                            <td class="line-chart__cell"></td>
-                            <td class="line-chart__cell"></td>
-                            <td class="line-chart__cell"></td>
-                            <td class="line-chart__cell"></td>
-                        </tr>
-                        <tr class="line-chart__line">
-                            <td class="line-chart__cell"></td>
-                            <td class="line-chart__cell"></td>
-                            <td class="line-chart__cell"></td>
-                            <td class="line-chart__cell"></td>
-                            <td class="line-chart__cell"></td>
-                            <td class="line-chart__cell"></td>
-                            <td class="line-chart__cell">
-                                <span class="line-chart__circle" data-displacement="67"></span>
-                            </td>
-                            <td class="line-chart__cell"></td>
-                            <td class="line-chart__cell">
-                                <span class="line-chart__circle" data-displacement="45"></span>
-                            </td>
-                            <td class="line-chart__cell"></td>
-                            <td class="line-chart__cell"></td>
-                        </tr>
-                        <tr class="line-chart__line">
-                            <td class="line-chart__cell"></td>
-                            <td class="line-chart__cell">
-                                <span class="line-chart__circle" data-displacement="50"></span>
-                            </td>
-                            <td class="line-chart__cell">
-                                <span class="line-chart__circle" data-displacement="0"></span>
-                            </td>
-                            <td class="line-chart__cell"></td>
-                            <td class="line-chart__cell"></td>
-                            <td class="line-chart__cell"></td>
-                            <td class="line-chart__cell"></td>
-                            <td class="line-chart__cell"></td>
-                            <td class="line-chart__cell"></td>
-                            <td class="line-chart__cell"></td>
-                            <td class="line-chart__cell"></td>
-                        </tr>
-                        <tr class="line-chart__line">
-                            <td class="line-chart__cell"></td>
-                            <td class="line-chart__cell"></td>
-                            <td class="line-chart__cell"></td>
-                            <td class="line-chart__cell"></td>
-                            <td class="line-chart__cell"></td>
-                            <td class="line-chart__cell"></td>
-                            <td class="line-chart__cell"></td>
-                            <td class="line-chart__cell"></td>
-                            <td class="line-chart__cell"></td>
-                            <td class="line-chart__cell"></td>
-                            <td class="line-chart__cell"></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 382 138.7" class="line-chart-dashed-line">
-                    <path class="line-chart-dashed-line__path"
-                        d="M.5,138.6s39-142,68-138,35,60,61,64,60-35,60-35,26-16,40,1,31,68,66,67,42-45,56-53,30-15,30-10" />
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 377.4 143.1" class="line-chart-red-line">
-                    <path class="line-chart-red-line__path"
-                        d="M.3,142.9s20-51,29-46,26,38,37,35,19-69,32-60,27,34,40,17,33-96,53-88,45,70,56,73,28-16,38-31,19-18,23-16,19,16,35,43,34,29,34,29" />
-                </svg>
-            </article>
-        </section>
-    </main>
-</body>
-
+	<body>
+		<svg width="0" height="0">
+			<defs>
+				<clipPath id="lineChartCurve" clipPathUnits="objectBoundingBox">
+					<path
+						d="M.5,138.6s39-142,68-138,35,60,61,64,60-35,60-35,26-16,40,1,31,68,66,67,42-45,56-53,30-15,30-10v139H.5Z"
+					/>
+				</clipPath>
+			</defs>
+		</svg>
+		<main class="application">
+			<header class="header">
+				<div class="header-logotype">
+					<div class="header-logotype__image"></div>
+					<h1 class="header-logotype__heading">Logo</h1>
+				</div>
+				<nav class="header-navigation">
+					<a href="#" class="header-navigation__link">Lorem ipsum</a>
+					<a href="#" class="header-navigation__link">Dolor sit</a>
+					<a
+						href="#"
+						class="header-navigation__link header-navigation__link--active"
+						>Amet lorem</a
+					>
+					<a href="#" class="header-navigation__link">Ipsum dolor</a>
+				</nav>
+				<div class="header-user-information">
+					<span
+						class="header-user-information__search-icon"
+						role="img"
+						aria-label="Search"
+					></span>
+					<span
+						class="header-user-information__notifications"
+						data-notifications="5"
+						role="img"
+						aria-label="Notifications"
+					></span>
+					<div
+						class="header-user-information__avatar"
+						role="img"
+						aria-label="User avatar"
+					>
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34 35">
+							<defs>
+								<linearGradient
+									id="person-gradient"
+									x1="0%"
+									y1="0%"
+									x2="133%"
+									y2="0%"
+									gradientUnits="userSpaceOnUse"
+								>
+									<stop offset="0%" stop-color="var(--color-start)" />
+									<stop offset="100%" stop-color="var(--color-end)" />
+								</linearGradient>
+							</defs>
+							<g>
+								<g class="head">
+									<ellipse cx="17" cy="10.5" rx="8" ry="7.4" />
+									<rect x="13.5" y="13" width="7" height="9" />
+								</g>
+								<g class="body">
+									<path
+										d="M34,35H0l3.2-7.4a10.8,10.8,0,0,1,10-6.6h7.6a10.8,10.8,0,0,1,10,6.6Z"
+									/>
+									<path d="M8.4,10s5-9,9-3,9,2,9,2,0-9-9-9S8.4,7,8.4,10Z" />
+								</g>
+							</g>
+						</svg>
+					</div>
+					<span
+						class="header-user-information__hamburger"
+						role="img"
+						aria-label="More menu options"
+					></span>
+				</div>
+			</header>
+			<aside class="sidebar">
+				<h2 class="sidebar__heading">Lorem</h2>
+				<nav class="sidebar-navigation">
+					<a
+						href="#"
+						class="sidebar-navigation__link sidebar-navigation__link--home"
+						>Ipsum dolor</a
+					>
+					<a
+						href="#"
+						class="sidebar-navigation__link sidebar-navigation__link--security"
+						>Sit amet</a
+					>
+					<a
+						href="#"
+						class="sidebar-navigation__link sidebar-navigation__link--credentials"
+						>Lorem ipsum</a
+					>
+					<a
+						href="#"
+						class="sidebar-navigation__link sidebar-navigation__link--payment"
+						>Dolor sit</a
+					>
+					<a
+						href="#"
+						class="sidebar-navigation__link sidebar-navigation__link--settings"
+						>Amet lorem</a
+					>
+				</nav>
+				<figure class="sidebar-counter-wrap">
+					<div class="sidebar-counter">
+						<span class="sidebar-counter__upper-indicator"></span>
+						<div class="sidebar-counter__circle">
+							<span class="sidebar-counter__amount">304,56</span>
+							<p class="sidebar-counter__description">
+								Ipsum dolor<br />sit amet
+							</p>
+						</div>
+						<h3 class="sidebar-counter__heading">Lorem ipsum dolor</h3>
+					</div>
+					<figcaption class="sidebar-counter__caption">
+						Lorem ipsum dolor
+					</figcaption>
+				</figure>
+			</aside>
+			<section class="main">
+				<article class="todo-list-wrap">
+					<ul class="todo-list">
+						<li class="todo-list-item">
+							<span
+								class="todo-list-item__icon todo-list-item__icon--book"
+							></span>
+							<h3 class="todo-list-item__heading">Dolor sit amet</h3>
+							<span class="todo-list-item__price">3,799</span>
+							<p class="todo-list-item__description">Lorem ipsum</p>
+						</li>
+						<li class="todo-list-item">
+							<span
+								class="todo-list-item__icon todo-list-item__icon--book-with-pencil"
+							></span>
+							<h3 class="todo-list-item__heading">Dolor sit amet</h3>
+							<span class="todo-list-item__price">2,387</span>
+							<p class="todo-list-item__description">Lorem ipsum</p>
+						</li>
+						<li class="todo-list-item">
+							<span
+								class="todo-list-item__icon todo-list-item__icon--notebook"
+							></span>
+							<h3 class="todo-list-item__heading">Dolor sit amet</h3>
+							<span class="todo-list-item__price">6,007</span>
+							<p class="todo-list-item__description">Lorem ipsum</p>
+						</li>
+					</ul>
+				</article>
+				<article class="pie-chart-section">
+					<figure class="pie-chart-wrap pie-chart-wrap--red">
+						<div class="pie-chart">
+							<span class="pie-chart__half-circle" data-progress="51"></span>
+						</div>
+						<h3 class="pie-chart__heading">51%</h3>
+						<figcaption class="pie-chart__description">
+							Lorem ipsum dolor sit amet, consectetur
+						</figcaption>
+					</figure>
+					<figure class="pie-chart-wrap pie-chart-wrap--purple">
+						<div class="pie-chart">
+							<span class="pie-chart__half-circle" data-progress="28"></span>
+						</div>
+						<h3 class="pie-chart__heading">28%</h3>
+						<figcaption class="pie-chart__description">
+							Lorem ipsum dolor sit amet, consectetur
+						</figcaption>
+					</figure>
+				</article>
+				<article class="settings-section">
+					<form class="settings">
+						<fieldset class="settings-checkbox-wrap">
+							<input
+								class="settings-checkbox__hidden-input"
+								type="checkbox"
+								checked
+								id="setting1"
+							/>
+							<label
+								class="settings-checkbox__fake-input"
+								for="setting1"
+							></label>
+							<h3 class="settings-checkbox__heading">Lorem ipsum dolor</h3>
+							<p class="settings-checkbox__description">
+								Lorem ipsum dolor sit amet
+							</p>
+						</fieldset>
+						<fieldset class="settings-checkbox-wrap">
+							<input
+								class="settings-checkbox__hidden-input"
+								type="checkbox"
+								id="setting2"
+							/>
+							<label
+								class="settings-checkbox__fake-input"
+								for="setting2"
+							></label>
+							<h3 class="settings-checkbox__heading">Lorem ipsum dolor</h3>
+							<p class="settings-checkbox__description">
+								Lorem ipsum dolor sit amet
+							</p>
+						</fieldset>
+						<fieldset class="settings-checkbox-wrap">
+							<input
+								class="settings-checkbox__hidden-input"
+								type="checkbox"
+								id="setting3"
+								disabled
+							/>
+							<label
+								class="settings-checkbox__fake-input"
+								for="setting3"
+							></label>
+							<h3 class="settings-checkbox__heading">Lorem ipsum dolor</h3>
+							<p class="settings-checkbox__description">
+								Lorem ipsum dolor sit amet
+							</p>
+						</fieldset>
+					</form>
+				</article>
+				<article class="histogram-section">
+					<table class="histogram">
+						<thead class="histogram__head">
+							<th class="histogram__heading">Lorem sit</th>
+							<th class="histogram__heading">+3,799</th>
+						</thead>
+						<tbody class="histogram__body">
+							<tr class="histogram__line">
+								<td
+									class="histogram__stat histogram__stat--filled histogram__stat--red"
+									data-value="16"
+								></td>
+								<td
+									class="histogram__stat histogram__stat--transparent histogram__stat--red"
+									data-value="39"
+								></td>
+							</tr>
+							<tr class="histogram__line">
+								<td
+									class="histogram__stat histogram__stat--filled histogram__stat--red"
+									data-value="19"
+								></td>
+								<td
+									class="histogram__stat histogram__stat--transparent histogram__stat--red"
+									data-value="50"
+								></td>
+							</tr>
+							<tr class="histogram__line">
+								<td
+									class="histogram__stat histogram__stat--filled histogram__stat--red"
+									data-value="24"
+								></td>
+								<td
+									class="histogram__stat histogram__stat--transparent histogram__stat--red"
+									data-value="64"
+								></td>
+							</tr>
+							<tr class="histogram__line">
+								<td
+									class="histogram__stat histogram__stat--filled histogram__stat--red"
+									data-value="18"
+								></td>
+								<td
+									class="histogram__stat histogram__stat--transparent histogram__stat--red"
+									data-value="46"
+								></td>
+							</tr>
+						</tbody>
+					</table>
+					<table class="histogram">
+						<thead class="histogram__head">
+							<th class="histogram__heading">Lorem sit</th>
+							<th class="histogram__heading">+2,387</th>
+						</thead>
+						<tbody class="histogram__body">
+							<tr class="histogram__line">
+								<td
+									class="histogram__stat histogram__stat--filled histogram__stat--blue"
+									data-value="19"
+								></td>
+								<td
+									class="histogram__stat histogram__stat--transparent histogram__stat--blue"
+									data-value="31"
+								></td>
+							</tr>
+							<tr class="histogram__line">
+								<td
+									class="histogram__stat histogram__stat--filled histogram__stat--blue"
+									data-value="11"
+								></td>
+								<td
+									class="histogram__stat histogram__stat--transparent histogram__stat--blue"
+									data-value="19"
+								></td>
+							</tr>
+							<tr class="histogram__line">
+								<td
+									class="histogram__stat histogram__stat--filled histogram__stat--blue"
+									data-value="19"
+								></td>
+								<td
+									class="histogram__stat histogram__stat--transparent histogram__stat--blue"
+									data-value="45"
+								></td>
+							</tr>
+							<tr class="histogram__line">
+								<td
+									class="histogram__stat histogram__stat--filled histogram__stat--blue"
+									data-value="17"
+								></td>
+								<td
+									class="histogram__stat histogram__stat--transparent histogram__stat--blue"
+									data-value="28"
+								></td>
+							</tr>
+						</tbody>
+					</table>
+					<table class="histogram">
+						<thead class="histogram__head">
+							<th class="histogram__heading">Lorem sit</th>
+							<th class="histogram__heading">+6,007</th>
+						</thead>
+						<tbody class="histogram__body">
+							<tr class="histogram__line">
+								<td
+									class="histogram__stat histogram__stat--filled histogram__stat--orange"
+									data-value="14"
+								></td>
+								<td
+									class="histogram__stat histogram__stat--transparent histogram__stat--orange"
+									data-value="33"
+								></td>
+							</tr>
+							<tr class="histogram__line">
+								<td
+									class="histogram__stat histogram__stat--filled histogram__stat--orange"
+									data-value="28"
+								></td>
+								<td
+									class="histogram__stat histogram__stat--transparent histogram__stat--orange"
+									data-value="70"
+								></td>
+							</tr>
+							<tr class="histogram__line">
+								<td
+									class="histogram__stat histogram__stat--filled histogram__stat--orange"
+									data-value="15"
+								></td>
+								<td
+									class="histogram__stat histogram__stat--transparent histogram__stat--orange"
+									data-value="35"
+								></td>
+							</tr>
+							<tr class="histogram__line">
+								<td
+									class="histogram__stat histogram__stat--filled histogram__stat--orange"
+									data-value="8"
+								></td>
+								<td
+									class="histogram__stat histogram__stat--transparent histogram__stat--orange"
+									data-value="24"
+								></td>
+							</tr>
+						</tbody>
+					</table>
+				</article>
+				<article class="progress-section">
+					<div
+						class="progress-bar-wrap progress-bar-wrap--blue"
+						data-value="55"
+					>
+						<progress
+							class="progress-bar"
+							aria-label="Progress Bar 1"
+							id="progress-bar-1"
+							value="55"
+							max="116"
+						></progress>
+					</div>
+					<label class="progress-description" for="progress-bar-1">55%</label>
+					<div
+						class="progress-bar-wrap progress-bar-wrap--orange"
+						data-value="76"
+					>
+						<progress
+							class="progress-bar"
+							aria-label="Progress Bar 2"
+							id="progress-bar-2"
+							value="76"
+							max="116"
+						></progress>
+					</div>
+					<label class="progress-description" for="progress-bar-2">76%</label>
+				</article>
+				<article class="area-charts-section">
+					<figure class="area-chart-wrap">
+						<ul class="area-chart area-chart--blue">
+							<li
+								class="area-chart-section"
+								style="--start: 0.25; --end: 0.56; --length: 14.53"
+							>
+								25%
+							</li>
+							<li
+								class="area-chart-section"
+								style="--start: 0.56; --end: 0.4; --length: 7.97"
+							>
+								56%
+							</li>
+							<li
+								class="area-chart-section"
+								style="--start: 0.4; --end: 0.45; --length: 3.54"
+							>
+								40%
+							</li>
+							<li
+								class="area-chart-section"
+								style="--start: 0.45; --end: 0.36; --length: 10.46"
+							>
+								45%
+							</li>
+							<li
+								class="area-chart-section"
+								style="--start: 0.36; --end: 0.738; --length: 11.7"
+							>
+								36%
+							</li>
+							<li
+								class="area-chart-section"
+								style="--start: 0.738; --end: 0.388; --length: 11.34"
+							>
+								73.8%
+							</li>
+							<li
+								class="area-chart-section"
+								style="--start: 0.388; --end: 0.67; --length: 8.51"
+							>
+								38.8%
+							</li>
+							<li
+								class="area-chart-section"
+								style="--start: 0.67; --end: 0.583; --length: 6.56"
+							>
+								67%
+							</li>
+							<li
+								class="area-chart-section"
+								style="--start: 0.583; --end: 1; --length: 10.81"
+							>
+								100%
+							</li>
+							<li
+								class="area-chart-section"
+								style="--start: 1; --end: 0.433; --length: 14.71"
+							>
+								43.3%
+							</li>
+						</ul>
+						<figcaption class="area-chart__caption">
+							<h3 class="area-chart__heading">Dolor sit amet</h3>
+							<p class="area-chart__description">3,799</p>
+						</figcaption>
+					</figure>
+					<figure class="area-chart-wrap">
+						<ul class="area-chart area-chart--red">
+							<li
+								class="area-chart-section"
+								style="--start: 0.232; --end: 0.47; --length: 9"
+							>
+								23.2%
+							</li>
+							<li
+								class="area-chart-section"
+								style="--start: 0.47; --end: 0.3867; --length: 10.63"
+							>
+								47%
+							</li>
+							<li
+								class="area-chart-section"
+								style="--start: 0.3867; --end: 0.52; --length: 7.45"
+							>
+								38.67%
+							</li>
+							<li
+								class="area-chart-section"
+								style="--start: 0.52; --end: 0.38; --length: 6.9"
+							>
+								52%
+							</li>
+							<li
+								class="area-chart-section"
+								style="--start: 0.38; --end: 0.63; --length: 10"
+							>
+								38%
+							</li>
+							<li
+								class="area-chart-section"
+								style="--start: 0.63; --end: 0.605; --length: 17.37"
+							>
+								63%
+							</li>
+							<li
+								class="area-chart-section"
+								style="--start: 0.605; --end: 0.806; --length: 9"
+							>
+								60.5%
+							</li>
+							<li
+								class="area-chart-section"
+								style="--start: 0.806; --end: 0.45; --length: 11.5"
+							>
+								80.6%
+							</li>
+							<li
+								class="area-chart-section"
+								style="--start: 0.45; --end: 0.585; --length: 10.3"
+							>
+								45%
+							</li>
+							<li
+								class="area-chart-section"
+								style="--start: 0.585; --end: 0.4; --length: 5.14"
+							>
+								58.5%
+							</li>
+						</ul>
+						<figcaption class="area-chart__caption">
+							<h3 class="area-chart__heading">Dolor sit amet</h3>
+							<p class="area-chart__description">2,387</p>
+						</figcaption>
+					</figure>
+				</article>
+				<article class="combined-area-chart-section">
+					<table class="combined-area-chart-wrap">
+						<caption class="combined-area-chart__caption">
+							Lorem ipsum dolor sit
+						</caption>
+						<thead class="combined-area-chart__head">
+							<th class="combined-area-chart__anchor">150</th>
+							<th class="combined-area-chart__anchor">125</th>
+							<th class="combined-area-chart__anchor">100</th>
+							<th class="combined-area-chart__anchor">75</th>
+							<th class="combined-area-chart__anchor">50</th>
+							<th class="combined-area-chart__anchor">25</th>
+						</thead>
+						<tbody class="combined-area-chart">
+							<tr class="combined-area-chart__line" style="--length: 30.75">
+								<td
+									class="combined-area-chart__section"
+									style="--start: 0; --end: 0.2"
+								>
+									20%
+								</td>
+								<td
+									class="combined-area-chart__section"
+									style="--start: 0; --end: 0.117"
+								>
+									11.7%
+								</td>
+							</tr>
+							<tr class="combined-area-chart__line" style="--length: 21.15">
+								<td
+									class="combined-area-chart__section"
+									style="--start: 0.2; --end: 0.4"
+								>
+									40%
+								</td>
+								<td
+									class="combined-area-chart__section"
+									style="--start: 0.117; --end: 0.23"
+								>
+									23%
+								</td>
+							</tr>
+							<tr class="combined-area-chart__line" style="--length: 18.9">
+								<td
+									class="combined-area-chart__section"
+									style="--start: 0.4; --end: 0.6"
+								>
+									60%
+								</td>
+								<td
+									class="combined-area-chart__section"
+									style="--start: 0.23; --end: 0.35"
+								>
+									35%
+								</td>
+							</tr>
+							<tr class="combined-area-chart__line" style="--length: 14.23">
+								<td
+									class="combined-area-chart__section"
+									style="--start: 0.6; --end: 0.8"
+								>
+									80%
+								</td>
+								<td
+									class="combined-area-chart__section"
+									style="--start: 0.35; --end: 0.464"
+								>
+									46.4%
+								</td>
+							</tr>
+							<tr class="combined-area-chart__line" style="--length: 10.38">
+								<td
+									class="combined-area-chart__section"
+									style="--start: 0.8; --end: 1"
+								>
+									100%
+								</td>
+								<td
+									class="combined-area-chart__section"
+									style="--start: 0.464; --end: 0.59"
+								>
+									59%
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</article>
+				<article class="line-chart-section">
+					<table class="line-chart-wrap">
+						<thead class="line-chart__head">
+							<tr>
+								<th class="line-chart__anchor">500</th>
+								<th class="line-chart__anchor">400</th>
+								<th class="line-chart__anchor">300</th>
+								<th class="line-chart__anchor">200</th>
+								<th class="line-chart__anchor">100</th>
+							</tr>
+						</thead>
+						<tbody class="line-chart">
+							<tr class="line-chart__line">
+								<td class="line-chart__cell"></td>
+								<td class="line-chart__cell"></td>
+								<td class="line-chart__cell"></td>
+								<td class="line-chart__cell"></td>
+								<td class="line-chart__cell"></td>
+								<td class="line-chart__cell"></td>
+								<td class="line-chart__cell"></td>
+								<td class="line-chart__cell"></td>
+								<td class="line-chart__cell"></td>
+								<td class="line-chart__cell"></td>
+								<td class="line-chart__cell"></td>
+							</tr>
+							<tr class="line-chart__line">
+								<td class="line-chart__cell"></td>
+								<td class="line-chart__cell"></td>
+								<td class="line-chart__cell"></td>
+								<td class="line-chart__cell"></td>
+								<td class="line-chart__cell">
+									<h3 class="line-chart__peak-value">425</h3>
+									<span
+										class="line-chart__circle line-chart__circle--white"
+										data-displacement="38"
+									></span>
+								</td>
+								<td class="line-chart__cell"></td>
+								<td class="line-chart__cell"></td>
+								<td class="line-chart__cell"></td>
+								<td class="line-chart__cell"></td>
+								<td class="line-chart__cell"></td>
+								<td class="line-chart__cell"></td>
+							</tr>
+							<tr class="line-chart__line">
+								<td class="line-chart__cell"></td>
+								<td class="line-chart__cell"></td>
+								<td class="line-chart__cell"></td>
+								<td class="line-chart__cell"></td>
+								<td class="line-chart__cell"></td>
+								<td class="line-chart__cell"></td>
+								<td class="line-chart__cell">
+									<span
+										class="line-chart__circle"
+										data-displacement="67"
+									></span>
+								</td>
+								<td class="line-chart__cell"></td>
+								<td class="line-chart__cell">
+									<span
+										class="line-chart__circle"
+										data-displacement="45"
+									></span>
+								</td>
+								<td class="line-chart__cell"></td>
+								<td class="line-chart__cell"></td>
+							</tr>
+							<tr class="line-chart__line">
+								<td class="line-chart__cell"></td>
+								<td class="line-chart__cell">
+									<span
+										class="line-chart__circle"
+										data-displacement="50"
+									></span>
+								</td>
+								<td class="line-chart__cell">
+									<span class="line-chart__circle" data-displacement="0"></span>
+								</td>
+								<td class="line-chart__cell"></td>
+								<td class="line-chart__cell"></td>
+								<td class="line-chart__cell"></td>
+								<td class="line-chart__cell"></td>
+								<td class="line-chart__cell"></td>
+								<td class="line-chart__cell"></td>
+								<td class="line-chart__cell"></td>
+								<td class="line-chart__cell"></td>
+							</tr>
+							<tr class="line-chart__line">
+								<td class="line-chart__cell"></td>
+								<td class="line-chart__cell"></td>
+								<td class="line-chart__cell"></td>
+								<td class="line-chart__cell"></td>
+								<td class="line-chart__cell"></td>
+								<td class="line-chart__cell"></td>
+								<td class="line-chart__cell"></td>
+								<td class="line-chart__cell"></td>
+								<td class="line-chart__cell"></td>
+								<td class="line-chart__cell"></td>
+								<td class="line-chart__cell"></td>
+							</tr>
+						</tbody>
+					</table>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 382 138.7"
+						class="line-chart-dashed-line"
+					>
+						<path
+							class="line-chart-dashed-line__path"
+							d="M.5,138.6s39-142,68-138,35,60,61,64,60-35,60-35,26-16,40,1,31,68,66,67,42-45,56-53,30-15,30-10"
+						/>
+					</svg>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 377.4 143.1"
+						class="line-chart-red-line"
+					>
+						<path
+							class="line-chart-red-line__path"
+							d="M.3,142.9s20-51,29-46,26,38,37,35,19-69,32-60,27,34,40,17,33-96,53-88,45,70,56,73,28-16,38-31,19-18,23-16,19,16,35,43,34,29,34,29"
+						/>
+					</svg>
+				</article>
+			</section>
+		</main>
+	</body>
 </html>
