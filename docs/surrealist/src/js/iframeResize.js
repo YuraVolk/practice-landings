@@ -1,8 +1,8 @@
 window.resizeTreesSectionIframe = (object) => {
-	setTimeout(() => {
-		object.style.height =
-			object.contentWindow.document.documentElement.offsetHeight + "px";
-	}, 500);
+	setInterval(() => {
+		const newHeight = object.contentWindow.document.documentElement.offsetHeight + "px";
+		if (object.style.height !== newHeight) object.style.height = newHeight;
+	}, 750);
 };
 
 window.addEventListener("resize", () => {

@@ -1,0 +1,1 @@
+import"./modernizr-custom-0614519e.js";window.resizeTreesSectionIframe=e=>{setInterval(()=>{const t=e.contentWindow.document.documentElement.offsetHeight+"px";e.style.height!==t&&(e.style.height=t)},750)};window.addEventListener("resize",()=>{[...document.querySelectorAll(".section-iframe")].forEach(e=>window.resizeTreesSectionIframe(e))});
