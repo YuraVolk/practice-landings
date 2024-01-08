@@ -22,7 +22,7 @@
 		"cspell": "^7.3.8",
 		"htmlhint": "^1.1.4",
 		"mega-linter-runner": "^7.7.0",
-		"postcss": "^8.4.31",
+		"postcss": "^8.4.33",
 		"prettier": "^3.0.3",
 		"sass": "^1.69.5",
 		"stylelint": "^15.11.0",
