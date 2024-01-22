@@ -23,7 +23,7 @@
 		"htmlhint": "^1.1.4",
 		"mega-linter-runner": "^7.7.0",
 		"postcss": "^8.4.31",
-		"prettier": "^3.0.3",
+		"prettier": "^3.2.4",
 		"sass": "^1.69.5",
 		"stylelint": "^15.11.0",
 		"stylelint-config-prettier-scss": "^1.0.0",
